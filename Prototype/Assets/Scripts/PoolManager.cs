@@ -17,10 +17,10 @@ public class PoolManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
-        Init();
+        PoolInit();
     }
 
-    void Init()
+    void PoolInit()
     {
         // Projectiles 길이만큼 풀을 생성
         Pools = new Dictionary<string, IObjectPool<GameObject>>();
@@ -36,11 +36,10 @@ public class PoolManager : MonoBehaviour
                 DestroyPool,                  // 객체 파괴
                 true,                         // 자동 확장 여부
                 10,
-                200
+                1000
             );
         }
     }
-
     GameObject CreateObject(int index)
     {
         GameObject poolInstance = Instantiate(Projectiles[index]);
@@ -54,13 +53,11 @@ public class PoolManager : MonoBehaviour
         poolObject.SetActive(true);
         poolObject.transform.parent = GameZone;
     }
-
     public void ReleasePool(GameObject poolObject)
     {
         poolObject.SetActive(false);
         poolObject.transform.parent = this.transform;
     }
-
     public void DestroyPool(GameObject poolObject)
     {
         Destroy(poolObject);

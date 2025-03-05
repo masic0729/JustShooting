@@ -9,7 +9,7 @@ public class PRA_Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.AddComponent<Player>();
+        this.gameObject.AddComponent<Player>();
     }
 
     // Update is called once per frame
@@ -22,10 +22,9 @@ public class PRA_Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            PoolManager.Instance.Pools["PRA_Bullet"].Get();
+            PoolManager.Instance.Pools["PlayerCommonBullet"].Get();
             PoolManager.Instance.Pools["TestSkillBullet"].Get();
-            GameObject instanceProjectile = PoolManager.Instance.Pools["PRA_Bullet"].Get();
+            //GameObject instanceProjectile = PoolManager.Instance.Pools["PlayerCommonBullet"].Get();
         }
-
     }
 }
