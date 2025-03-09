@@ -44,7 +44,7 @@ public class PoolProjectile : MonoBehaviour
             }
             scriptTypes.Clear();
         }
-        pool.Release(this.gameObject);
+        //pool.Release(this.gameObject);
     }
 
     private void Start()
@@ -54,6 +54,6 @@ public class PoolProjectile : MonoBehaviour
 
     private void OnEnable() //풀링 시스템을 다루게 되면 OnEnable을 이용해 효율적으로 투사체들을 관리할 수 있다
     {
-        Invoke("RemoveAllAddedScripts", 5f); // 일정 시간 뒤 반환
+        //Invoke("RemoveAllAddedScripts", 5f); // 일정 시간 뒤 반환
     }
 }

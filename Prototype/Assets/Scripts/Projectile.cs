@@ -3,10 +3,6 @@ using UnityEditor.Animations;
 
 public class Projectile : IObject
 {
-    //각각 스프라이트와 애니메이션은 둘 중 하나만 있으면 된다.
-    public Sprite[] projectileSprites; //각 발사체의 이미지
-    public AnimatorController[] projectileAnimations; //각 발사체의 애니메이션
-
     //GameObject ProjectileEffect; //정확히 어떤 것들이 있는 지 파악이 안되므로 선언만 하였음
     [SerializeField]
     protected float damage; //발사체는 데미지가 있다
@@ -30,7 +26,6 @@ public class Projectile : IObject
     protected override void Start()
     {
         base.Start();
-        Init();
     }
 
     // Update is called once per frame
@@ -43,6 +38,37 @@ public class Projectile : IObject
     {
         maxMoveX = 10.5f;
         maxMoveY = 5.5f;
+        Debug.Log("Projectile");
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(this.transform.tag == "PlayerAttack" && collision.transform.tag == "Enemy" ||
+            this.transform.tag == "EnemyAttack" && collision.transform.tag == "Player")
+        {
+            ClearObjectResources();
+            CheckPoolObject(); //해당 객체가 소멸하는 것
+        }
+    }
+
+    void CheckPoolObject()
+    {
+        if(isPoolObject)
+        {
+            GetComponent<PoolProjectile>().pool.Release(this.gameObject); //이 객체가 풀링된 객체라면 릴리즈
+        }
+        else
+        {
+            Destroy(this.gameObject); //아니라면 일반적인 오브젝트 삭제
+        }
+    }
+
+    void ClearObjectResources()
+    {
+        //기본 리소스 모두 삭제
+        GetComponent<SpriteRenderer>().sprite = null;
+        GetComponent<Animator>().runtimeAnimatorController = null;
     }
 
     //getset

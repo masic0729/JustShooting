@@ -34,7 +34,7 @@ public class PoolManager : MonoBehaviour
                 GetPool,                      // 객체 가져오기
                 ReleasePool,                  // 객체 반환하기
                 DestroyPool,                  // 객체 파괴
-                true,                         // 자동 확장 여부
+                false,                        // 자동 확장 여부
                 10,
                 1000
             );
@@ -55,8 +55,9 @@ public class PoolManager : MonoBehaviour
     }
     public void ReleasePool(GameObject poolObject)
     {
-        poolObject.SetActive(false);
         poolObject.transform.parent = this.transform;
+        
+        poolObject.SetActive(false);
     }
     public void DestroyPool(GameObject poolObject)
     {

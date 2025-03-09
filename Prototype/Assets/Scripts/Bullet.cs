@@ -8,7 +8,6 @@ public class Bullet : Projectile
     protected override void Start()
     {
         base.Start();
-        Init();
     }
 
     // Update is called once per frame
@@ -19,6 +18,7 @@ public class Bullet : Projectile
 
     protected override void Init()
     {
-        
+        base.Init();
+        //Debug.Log("Bullet");
     }
 }
