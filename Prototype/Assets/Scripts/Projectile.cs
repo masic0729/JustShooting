@@ -29,7 +29,7 @@ public class Projectile : IObject
     }
 
     // Update is called once per frame
-    override protected void Update()
+    protected override void Update()
     {
         base.Update();
     }
@@ -38,12 +38,12 @@ public class Projectile : IObject
     {
         maxMoveX = 10.5f;
         maxMoveY = 5.5f;
-        Debug.Log("Projectile");
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //현재는 이런 식으로 묶었지만, 예외적인 처리가 필요한 경우 조건 처리를 분리해야 할 수 있음
         if(this.transform.tag == "PlayerAttack" && collision.transform.tag == "Enemy" ||
             this.transform.tag == "EnemyAttack" && collision.transform.tag == "Player")
         {
