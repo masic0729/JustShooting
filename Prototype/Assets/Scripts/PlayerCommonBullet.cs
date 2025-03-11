@@ -15,7 +15,7 @@ public class PlayerCommonBullet : Bullet
     protected override void Update()
     {
         base.Update();
-        transform.Translate(Vector2.right * Time.deltaTime * 10);
+        transform.Translate(Vector2.right * Time.deltaTime * GetMoveSpeed());
     }
 
     protected override void Init()

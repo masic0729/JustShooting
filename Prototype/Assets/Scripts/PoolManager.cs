@@ -40,11 +40,17 @@ public class PoolManager : MonoBehaviour
             );
         }
     }
+
+
+    /// <summary>
+    /// 요구하는 오브젝트를 생성할 때 실행하며, 이를 딕셔너리화를 통해 호출명을 명확하게 볼 수 있다
+    /// </summary>
+    /// <param name="index">배열로 저장된 발사체들의 인덱스값</param>
+    /// <returns>poolObjects 반환</returns>
     GameObject CreateObject(int index)
     {
         GameObject poolInstance = Instantiate(Projectiles[index]);
         poolInstance.GetComponent<PoolProjectile>().pool = this.Pools[Projectiles[index].name];
-        //poolInstance.GetComponent<PRA_Bullet>().AddScript(typeof(PRA_Test));
         return poolInstance;
     }
 

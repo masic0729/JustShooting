@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+
+
+//임시로 때려박은거
+using UnityEngine.UI;
 
 public class Player : Character
 {
+    public Text text; //임시용
     enum CurrentPlayerBullet //플레이어의 현재 공격타입 확인용
     {
         Wind,
@@ -36,13 +42,15 @@ public class Player : Character
     protected override void Init()
     {
         base.Init();
-        currentBullet = CurrentPlayerBullet.Wind;
-        commonBullets = new Dictionary<string, PlayerBulletData>();
+
+        //딕셔너리화한 이후 현재 무기상태를 초기화한다
+        commonBullets = new Dictionary<string, PlayerBulletData>(); 
         for(int i = 0; i < commonBulletDatas.Length; i++)
         {
-            //딕셔너리화
             commonBullets[commonBulletDatas[i].weaponName] = commonBulletDatas[i];
         }
+        SetCurrentCommonBulletData(CurrentPlayerBullet.Wind); //현재 무기 초기화
+
     }
 
     void Attack() //공격하는 기능들의 모음
@@ -55,28 +63,32 @@ public class Player : Character
             ShootCommmonBullet(currentBullet);
         }
 
-        //스킬 키
+        //스킬 키. 추후 추가 예정
     }
+
+
+    //현재는 테스트 의도로 키를 입력한다.
 
     void TestFunctions()
     {
+        
         if (Input.GetKeyDown(KeyCode.A))
         {
 
             //PoolManager.Instance.Pools["TestSkillBullet"].Get();
-            currentBullet = CurrentPlayerBullet.Wind;
+            SetCurrentCommonBulletData(CurrentPlayerBullet.Wind);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
 
             //PoolManager.Instance.Pools["TestSkillBullet"].Get();
-            currentBullet = CurrentPlayerBullet.Iced;
+            SetCurrentCommonBulletData(CurrentPlayerBullet.Iced);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
 
             //PoolManager.Instance.Pools["TestSkillBullet"].Get();
-            currentBullet = CurrentPlayerBullet.Fire;
+            SetCurrentCommonBulletData(CurrentPlayerBullet.Fire);
         }
     }
 
@@ -91,16 +103,36 @@ public class Player : Character
         instanceCommonBullet.transform.position = shootPositions["CommonBullet"].position; //발사체 위치 조정
 
     }
+
+
     /// <summary>
-    /// 총알의 리소스에 대한 데이터를 불러와 발사하려는 총알에 저장
+    /// 총알의 리소스에 요구하는 모든 데이터를 attackStats에 불러와 저장
     /// </summary>
-    /// <param name="commonBullet"></param>
+    /// <param name="commonBullet">일반 총알 오브젝트를 가리킨다</param>
     void SetCommonBulletData(ref GameObject commonBullet)
     {
-        commonBullet.GetComponent<SpriteRenderer>().sprite = commonBullets[currentBullet.ToString()].sprite;
-        commonBullet.GetComponent<Animator>().runtimeAnimatorController = commonBullets[currentBullet.ToString()].animCtrl;
-        commonBullet.tag = "PlayerAttack";
+        commonBullet.tag = "Player";
+        commonBullet.GetComponent<SpriteRenderer>().sprite = attackStats.sprite;
+        commonBullet.GetComponent<Animator>().runtimeAnimatorController = attackStats.animCtrl;
+
+        commonBullet.GetComponent<Projectile>().SetDamage(this.attackStats.damage);
+        commonBullet.GetComponent<Projectile>().SetMoveSpeed(this.attackStats.moveSpeed);
     }
+
+    void SetCurrentCommonBulletData(CurrentPlayerBullet bulletState)
+    {
+        currentBullet = bulletState;
+        //현재 발사하려는 총알 종류를 변경 및 그에 맞는 능력치 적용
+        attackStats.sprite = commonBullets[bulletState.ToString()].sprite;
+        attackStats.animCtrl = commonBullets[bulletState.ToString()].animCtrl;
+        attackStats.damage = commonBullets[bulletState.ToString()].damage;
+        attackStats.moveSpeed = commonBullets[bulletState.ToString()].moveSpeed;
+
+        //현재 무기에 따른 능력치 적용 확인용 텍스트 출력
+        text.text = "sprite : " + attackStats.sprite + "\nanimCtrl : " + attackStats.animCtrl + "\ndamage : " +
+            attackStats.damage + "\nmoveSpeed : " + attackStats.moveSpeed;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -108,6 +140,7 @@ public class Player : Character
         if (collision.transform.tag == "Enemy" || collision.transform.tag == "EnemyAttack")
         {
             Character instanceEnemyInfo = collision.GetComponent<Character>();
+            
             
         }
     }

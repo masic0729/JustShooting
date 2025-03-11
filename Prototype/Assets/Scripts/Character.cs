@@ -7,10 +7,11 @@ using UnityEngine.Pool;
 
 public class Character : IObject
 {
-    public AttackStats attackStats;
+    public AttackStats attackStats; // 공격하는 객체가 소지하는 데이터 모음
     [SerializeField]
     private Transform[] shootTransforms;//캐릭터의 발사위치
 
+    public Action OnCharacterDeath; //캐릭터가 죽을 때 발생하는 이벤트. 필요에 따라서 상위 클래스에 정의할 수 있음
     public Dictionary<string, Transform> shootPositions; //발사위치를 최종 저장할 딕셔너리
     [SerializeField]
     protected float hp, maxHp; //현재 체력 및 최대 체력.
@@ -31,9 +32,14 @@ public class Character : IObject
         
     }
 
+    /// <summary>
+    /// 해당 클래스부터 모든 하위 클래스들이 개개인이 선언하는 이벤트들을 해당 함수로 액션 행위들을 편집함
+    /// </summary>
+
     protected override void Init()
     {
         //void
+        OnCharacterDeath += DestroyCharacter;
         shootPositions = new Dictionary<string, Transform>();
         
         for(int i = 0; i < shootTransforms.Length; i++)
@@ -42,6 +48,23 @@ public class Character : IObject
             Debug.Log(shootPositions[shootTransforms[i].name]);
         }
 
+    }
+
+
+
+    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //보류
+    }
+
+    /// <summary>
+    /// 현재는 캐릭터 객체들은 삭제처리하지만, 상황에 따라 일부 캐릭터는 풀링과 비슷한 효과로 처리할 수 있음
+    /// </summary>
+    void DestroyCharacter()
+    {
+        Destroy(this.gameObject);
     }
 
     //getset
