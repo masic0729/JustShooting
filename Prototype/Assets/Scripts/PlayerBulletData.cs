@@ -7,11 +7,14 @@ using UnityEditor.Animations;
 [System.Serializable]
 public class PlayerBulletData
 {
-    //public GameObject weapon;
+    /// <summary>
+    /// 
+    /// </summary>
     public Sprite sprite;
     public AnimatorController animCtrl;
     
     public string weaponName; // 공격타입
+    public int weaponLevel;         
 
     public float[] attackDelay; // 공격 주기
     public float[] attackDamage; // 피해량

@@ -32,7 +32,7 @@ public class Enemy : Character
         if (collision.transform.tag == "PlayerAttack")
         {
             Debug.Log("나 충돌했어");
-            OnGetDamageEvent();
+            
 
         }
     }
