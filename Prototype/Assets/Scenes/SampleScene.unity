@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -829,6 +829,9 @@ MonoBehaviour:
   hp: 10
   maxHp: 10
   attackMultiplier: 1
+  attackDelayMultify: 1
+  projectileMoveSpeedMultify: 1
+  characterGetDamageMultify: 1
 --- !u!50 &1453697908
 Rigidbody2D:
   serializedVersion: 4
@@ -951,6 +954,7 @@ GameObject:
   - component: {fileID: 1884231374}
   - component: {fileID: 1884231376}
   - component: {fileID: 1884231377}
+  - component: {fileID: 1884231378}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1131,6 +1135,9 @@ MonoBehaviour:
   hp: 100
   maxHp: 100
   attackMultiplier: 1
+  attackDelayMultify: 1
+  projectileMoveSpeedMultify: 1
+  characterGetDamageMultify: 1
   text: {fileID: 264378949}
   powerStats: {fileID: 11400000, guid: 9d68e54190190e1448507009069bfd9b, type: 2}
   commonBulletDatas:
@@ -1166,6 +1173,19 @@ MonoBehaviour:
     damage: 0
     moveSpeed: 0
     powerValue: 5
+--- !u!114 &1884231378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884231370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb39f3428c831045ba64f27bb805fa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WindPuller: {fileID: 8167536548506605341, guid: ccc9b7c8b28597148b2e9570d1ed3732, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

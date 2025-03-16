@@ -18,9 +18,10 @@ public class PlayerPower : MonoBehaviour
     /// <summary>
     /// power 자연회복을 실행하기 위한 기능
     /// </summary>
-
-    IEnumerator DefaultPowerUp()
+    public IEnumerator DefaultPowerUp()
     {
+        ReStart:
+
         yield return new WaitForSeconds(1.0f); // 매 초마다 실행
 
         //파워가 모두 채워지지 않으면 파워 상승
@@ -28,11 +29,11 @@ public class PlayerPower : MonoBehaviour
         {
             PowerUp(powerUpValue);
         }
-        
+        goto ReStart; //반복
     }
 
     /// <summary>
-    /// power 값이 상승하는 기능. power는 매 초마다 자연 회복하거나, 적을 적중할 때 상승함
+    /// power 값이 상승하는 기능. power는 매 초마다 자연 회복하거나, 적을 적중할 때 상승함(현재로선)
     /// </summary>
     public void PowerUp(float value)
     {
@@ -42,7 +43,7 @@ public class PlayerPower : MonoBehaviour
             //power가 100이 되었으므로 max bool 참으로 변경
             power = 100;
             isPowerMax = true;
-            //Debug.Log();
+            GetComponent<Player>().PowerOn();
         }
         else
         {
@@ -50,8 +51,4 @@ public class PlayerPower : MonoBehaviour
             Debug.Log("power : " + power.ToString());
         }
     }
-
-    
-
-    //void 
 }

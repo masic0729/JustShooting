@@ -21,6 +21,5 @@ public class PlayerCommonBullet : Bullet
     protected override void Init()
     {
         base.Init();
-        //Debug.Log("PlayerBullet");
     }
 }

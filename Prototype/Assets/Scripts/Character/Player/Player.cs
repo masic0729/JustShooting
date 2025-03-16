@@ -11,7 +11,6 @@ using UnityEngine.UI;
 public class Player : Character
 {
     public Text text; //임시용
-    public PlayerPower powerStats;
 
     enum CurrentPlayerBullet //플레이어의 현재 공격타입 확인용
     {
@@ -23,7 +22,7 @@ public class Player : Character
     CurrentPlayerBullet currentBullet;
 
     List<Coroutine> powerCoritineList;
-
+    public PlayerPower powerStats;
     public PlayerBulletData[] commonBulletDatas; //일반 총알 데이터
     public Dictionary<string, PlayerBulletData> commonBullets; //딕셔너리로 정의할 것
     float attackSpeed = 0.5f; //플레이어의 공격 주기.기본값은 0.5이다.
@@ -57,10 +56,8 @@ public class Player : Character
         }
         SetCurrentCommonBulletData(CurrentPlayerBullet.Wind); //현재 무기 초기화
 
+        StartCoroutine(powerStats.DefaultPowerUp());
 
-        //test
-        //powerStats.PowerUp();
-        Debug.Log("power : " + powerStats.power);
     }
 
     void Attack() //공격하는 기능들의 모음
@@ -76,22 +73,18 @@ public class Player : Character
 
     
     //현재는 테스트 의도로 키를 입력한다.
-
     void TestFunctions()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            //PoolManager.Instance.Pools["TestSkillBullet"].Get();
             SetCurrentCommonBulletData(CurrentPlayerBullet.Wind);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            //PoolManager.Instance.Pools["TestSkillBullet"].Get();
             SetCurrentCommonBulletData(CurrentPlayerBullet.Iced);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            //PoolManager.Instance.Pools["TestSkillBullet"].Get();
             SetCurrentCommonBulletData(CurrentPlayerBullet.Fire);
         }
     }
@@ -105,7 +98,6 @@ public class Player : Character
         GameObject instanceCommonBullet = PoolManager.Instance.Pools["PlayerCommonBullet"].Get(); //인스턴스화
         SetCommonBulletData(ref instanceCommonBullet); //발사체 리소스 데이터 로드
         instanceCommonBullet.transform.position = shootPositions["CommonBullet"].position; //발사체 위치 조정
-
     }
 
 
@@ -120,7 +112,6 @@ public class Player : Character
         commonBullet.GetComponent<Animator>().runtimeAnimatorController = attackStats.animCtrl;
         commonBullet.GetComponent<Projectile>().SetDamage(this.attackStats.damage);
         commonBullet.GetComponent<Projectile>().SetMoveSpeed(this.attackStats.moveSpeed);
-
     }
 
     void SetCurrentCommonBulletData(CurrentPlayerBullet bulletState)
@@ -139,11 +130,26 @@ public class Player : Character
             attackStats.damage + "\nmoveSpeed : " + attackStats.moveSpeed + "\npower : " + powerStats.powerUpValue; ;
     }
 
-    IEnumerator PowerUp()
+    /// <summary>
+    /// 플레이어가 파워를 모두 획득한 순간 발동되는 버프 효과
+    /// </summary>
+    public void PowerOn()
     {
-        
-        yield return new WaitForSeconds(1.0f);
-        
+        switch (currentBullet)
+        {
+            case CurrentPlayerBullet.Wind:
+
+                break;
+            case CurrentPlayerBullet.Iced:
+
+                break;
+            case CurrentPlayerBullet.Fire:
+
+                break;
+            case CurrentPlayerBullet.Lightning:
+                break;
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
