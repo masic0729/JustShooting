@@ -25,6 +25,8 @@ public class Player : Character
     public PlayerPower powerStats;
     public PlayerBulletData[] commonBulletDatas; //일반 총알 데이터
     public Dictionary<string, PlayerBulletData> commonBullets; //딕셔너리로 정의할 것
+    public GameObject WindPuller;
+
     float attackSpeed = 0.5f; //플레이어의 공격 주기.기본값은 0.5이다.
     
     // Start is called before the first frame update
@@ -86,6 +88,10 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.D))
         {
             SetCurrentCommonBulletData(CurrentPlayerBullet.Fire);
+        }
+        if(powerStats.isPowerMax)
+        {
+
         }
     }
 
@@ -150,6 +156,32 @@ public class Player : Character
                 break;
         }
 
+    }
+
+    void PowerSkill ()// 파워가 100이 된 이후 유저가 스킬 키를 발동할 때
+    {
+        switch(currentBullet)
+        {
+            case CurrentPlayerBullet.Wind:
+
+                break;
+            case CurrentPlayerBullet.Iced:
+
+                break;
+            case CurrentPlayerBullet.Fire:
+
+                break;
+            case CurrentPlayerBullet.Lightning:
+
+                break;
+        }
+    }
+
+    void WindSkill()
+    {
+        //주위의 적 총알을 흡수하고, 유도탄으로 발사한다.(흡수 기능 및 유도탄 발사)
+        GameObject instance = Instantiate(WindPuller, transform.position, transform.rotation);
+        instance.transform.parent = this.transform; //플레이어에 고정
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
