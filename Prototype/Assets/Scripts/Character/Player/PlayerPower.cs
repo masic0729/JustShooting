@@ -7,13 +7,21 @@ using UnityEngine;
 
 public class PlayerPower : MonoBehaviour
 {
+    Player player;
     [Header("플레이어가 독단적으로 소지하는 파워 관련 데이터")]
     public Action powerEvents; //파워와 관련된 모든 기능을 매 초마다 실행하려는 액션
     public float power;
     public const float maxPower = 100; //파워 값. 100 값은 고정이다
     public float powerUpValue; //파워가 오르는 수치
     public bool isPowerMax; //파워가 모두 회복했는 지 확인하는 데이터
+    [Header("플레이어가 각 속성의 스킬을 사용하기 위한 기능들의 모임")]
+    public GameObject[] SkillObjects;
 
+    void Start()
+    {
+        GetComponent<Player>().PowerOn();
+
+    }
 
     /// <summary>
     /// power 자연회복을 실행하기 위한 기능
@@ -43,7 +51,6 @@ public class PlayerPower : MonoBehaviour
             //power가 100이 되었으므로 max bool 참으로 변경
             power = 100;
             isPowerMax = true;
-            GetComponent<Player>().PowerOn();
         }
         else
         {
