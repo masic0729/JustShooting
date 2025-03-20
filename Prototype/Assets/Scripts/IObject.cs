@@ -6,9 +6,11 @@ public abstract class IObject : MonoBehaviour
 {
     // [SerializeField] protected bool isCheckEscape; //화면 밖으로 나갈 때 보통 삭제되는데, 삭제해야되는 발사체인 지 확인하는 변수
 
-    [SerializeField] protected float maxMoveX, maxMoveY; //화면 기준 객체들이 존재하거나 이동할 수 있는 기준
+    protected float maxMoveX, maxMoveY; //화면 기준 객체들이 존재하거나 이동할 수 있는 기준
+    [Header("IObject")]
 
-    private float moveSpeed = 0f; // 모든 오브젝트는 일반적으로 이동속도가 존재한다.
+    [SerializeField]
+    protected float moveSpeed = 0f; // 모든 오브젝트는 일반적으로 이동속도가 존재한다.
 
     virtual protected void Awake()
     {

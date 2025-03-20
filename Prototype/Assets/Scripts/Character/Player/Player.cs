@@ -39,13 +39,13 @@ public class Player : Character
     override protected void Update()
     {
         base.Update();
-        Attack();
-        TestFunctions();
+        UserInput();
     }
 
     protected override void Init()
     {
         base.Init();
+        SetMoveSpeed(10f);
         powerStats = gameObject.AddComponent<PlayerPower>();
         powerCoritineList = new List<Coroutine>();
 
@@ -58,7 +58,34 @@ public class Player : Character
         SetCurrentCommonBulletData(CurrentPlayerBullet.Wind); //현재 무기 초기화
 
         StartCoroutine(powerStats.DefaultPowerUp());
+    }
 
+    void UserInput()
+    {
+        MoveInput();
+        Attack();
+        TestFunctions();
+        
+    }
+
+    void MoveInput()
+    {
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            ObjectMove(Vector3.left);
+        }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            ObjectMove(Vector3.right);
+        }
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            ObjectMove(Vector3.up);   
+        }
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            ObjectMove(Vector3.down);
+        }
     }
 
     void Attack() //공격하는 기능들의 모음

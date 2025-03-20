@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 48
+  controlID: 148
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,8 +245,8 @@ MonoBehaviour:
     y: 0
     width: 309
     height: 626
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -1029,9 +1029,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 1a5e0000
-      m_LastClickedID: 24090
-      m_ExpandedIDs: 26f9ffff145e0000
+      m_SelectedIDs: 945d0000
+      m_LastClickedID: 23956
+      m_ExpandedIDs: 20fbffff8e5d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1144,14 +1144,14 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts/Character/Player
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: C:\Users\552ST003\Desktop\JustShooting\Prototype
+  m_LastProjectPath: C:\Users\USER\Desktop\JustShooting\Prototype
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 925f0000
-    m_LastClickedID: 24466
-    m_ExpandedIDs: 00000000c45e0000c65e0000c85e0000ca5e0000cc5e00005c5f000000ca9a3bffffff7f
+    m_SelectedIDs: fa5e0000
+    m_LastClickedID: 24314
+    m_ExpandedIDs: 000000003e5e0000405e0000425e0000445e0000465e0000da5e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1179,7 +1179,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c45e0000c65e0000c85e0000ca5e0000cc5e0000
+    m_ExpandedIDs: 000000003e5e0000405e0000425e0000445e0000465e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1276,7 +1276,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 756
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
