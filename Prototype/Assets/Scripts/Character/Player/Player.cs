@@ -25,14 +25,22 @@ public class Player : Character
     public PlayerPower powerStats;
     public PlayerBulletData[] commonBulletDatas; //일반 총알 데이터
     public Dictionary<string, PlayerBulletData> commonBullets; //딕셔너리로 정의할 것
+    [Header("플레이어가 각 속성의 스킬을 사용하기 위한 기능들의 모임")]
+    public GameObject[] buffObjectsData;
+    public Dictionary<string, GameObject> buffObject;
 
     float attackSpeed = 0.5f; //플레이어의 공격 주기.기본값은 0.5이다.
+    float attackTime; //플레이어의 일반 총알을 발사하려는 시간
+
     
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
         Init();
+        //Time.timeScale = 0;
+        Instantiate(buffObject["Iced"]);
+
     }
 
     // Update is called once per frame
@@ -46,14 +54,17 @@ public class Player : Character
     {
         base.Init();
         SetMoveSpeed(10f);
-        powerStats = gameObject.AddComponent<PlayerPower>();
+        powerStats = gameObject.GetComponent<PlayerPower>();
         powerCoritineList = new List<Coroutine>();
 
-        //딕셔너리화한 이후 현재 무기상태를 초기화한다
-        commonBullets = new Dictionary<string, PlayerBulletData>(); 
-        for(int i = 0; i < commonBulletDatas.Length; i++)
+        //딕셔너리화한 이후 현재 무기상태 및 스킬을 초기화한다
+        commonBullets = new Dictionary<string, PlayerBulletData>();
+        buffObject = new Dictionary<string, GameObject>();
+        for (int i = 0; i < commonBulletDatas.Length; i++)
         {
+            //무기 상태, 스킬을 딕셔너리
             commonBullets[commonBulletDatas[i].weaponName] = commonBulletDatas[i];
+            buffObject[commonBulletDatas[i].weaponName] = buffObjectsData[i];
         }
         SetCurrentCommonBulletData(CurrentPlayerBullet.Wind); //현재 무기 초기화
 
@@ -90,19 +101,25 @@ public class Player : Character
 
     void Attack() //공격하는 기능들의 모음
     {
+        //발사하기 위한 대기 시간을 카운트 하는 행위 
+        attackTime += Time.deltaTime;
         //일반 총알 공격
-        if (Input.GetKeyDown(KeyCode.Space)) 
-        {            
-            //PoolManager.Instance.Pools["TestSkillBullet"].Get();
+        if (attackTime >= attackDelay)
+        {
             ShootCommmonBullet(currentBullet);
+            attackTime = 0;
+
         }
         //스킬 키. 추후 추가 예정
+
     }
 
-    
+
     //현재는 테스트 의도로 키를 입력한다.
     void TestFunctions()
     {
+        //과거 테스트용 무기 변경
+        /*
         if (Input.GetKeyDown(KeyCode.A))
         {
             SetCurrentCommonBulletData(CurrentPlayerBullet.Wind);
@@ -115,9 +132,15 @@ public class Player : Character
         {
             SetCurrentCommonBulletData(CurrentPlayerBullet.Fire);
         }
-        if(powerStats.isPowerMax)
+        */
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-
+            if (currentBullet == CurrentPlayerBullet.Lightning)
+                currentBullet = 0;
+            else
+                currentBullet += 1;
+            SetCurrentCommonBulletData(currentBullet);
+            
         }
     }
 
@@ -156,7 +179,7 @@ public class Player : Character
         attackStats.damage = commonBullets[bulletState.ToString()].damage;
         attackStats.moveSpeed = commonBullets[bulletState.ToString()].moveSpeed;
         powerStats.powerUpValue = commonBullets[bulletState.ToString()].powerValue;
-
+        attackDelay = commonBullets[bulletState.ToString()].attackDelay;
         //현재 무기에 따른 능력치 적용 확인용 텍스트 출력
         text.text = "sprite : " + attackStats.sprite + "\nanimCtrl : " + attackStats.animCtrl + "\ndamage : " +
             attackStats.damage + "\nmoveSpeed : " + attackStats.moveSpeed + "\npower : " + powerStats.powerUpValue; ;
@@ -170,10 +193,10 @@ public class Player : Character
         switch (currentBullet)
         {
             case CurrentPlayerBullet.Wind:
-
+                Debug.Log("바람 버프는 아직 없어요.");
                 break;
             case CurrentPlayerBullet.Iced:
-
+                Instantiate(buffObject["Iced"]);
                 break;
             case CurrentPlayerBullet.Fire:
 

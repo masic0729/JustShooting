@@ -15,13 +15,13 @@ public class Character : IObject
     public Dictionary<string, Transform> shootPositions; //발사위치를 최종 저장할 딕셔너리
     [SerializeField]
     protected float hp, maxHp; //현재 체력 및 최대 체력.
-
+    protected float shield; //보호막, 보호막 존재 시 체력 대신 감소
     //todo 각 배율에 따른 캐릭터들의 이동 및 발사체 적용 구현할 것(급하지 않음)
     [Header("캐릭터의 전투 시스템 공식 배율")]
     [SerializeField]
-    protected float attackMultiplier = 1; // 피해를 줄 수 있는 공격력 및 피해 계수. 값이 오를 수록 피해량이 커진다.
+    protected float damageMultiplier = 1; // 피해를 줄 수 있는 공격력 및 피해 계수. 값이 오를 수록 피해량이 커진다.
     [SerializeField]
-    protected float attackDelayMultify = 1; //발사 주기 계수. 값이 오를 수록 초당 공격 횟수가 빨라진다.
+    protected float attackDelay, attackDelayMultify = 1; //발사 주기 계수. 값이 오를 수록 초당 공격 횟수가 빨라진다.
     [SerializeField]
     protected float projectileMoveSpeedMultify = 1; //발사체 속도 계수. 값이 클 수록 발사체의 속도가 빨라진다.
     [SerializeField]
@@ -93,14 +93,24 @@ public class Character : IObject
         return maxHp;
     }
 
+    public void SetShield(float value)
+    {
+        shield = value;
+    }
+
+    public float GetShield()
+    {
+        return shield;
+    }
+
 
     public void SetAttackMultiplier(float value)
     {
-        attackMultiplier = value;
+        damageMultiplier = value;
     }
 
     public float GetAttackMultiplier()
     {
-        return attackMultiplier;
+        return damageMultiplier;
     }
 }

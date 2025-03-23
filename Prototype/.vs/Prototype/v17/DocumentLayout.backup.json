@@ -1,33 +1,61 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\",
+  "WorkspaceRootPath": "D:\\PM\\JustShooting\\Prototype\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|c:\\users\\user\\desktop\\justshooting\\prototype\\assets\\scripts\\character\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|d:\\pm\\justshooting\\prototype\\assets\\scripts\\effect\\playereffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effect\\playereffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|d:\\pm\\justshooting\\prototype\\assets\\scripts\\effect\\ieffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effect\\ieffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\projectile\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\effect\\icedbuffeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effect\\icedbuffeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\projectile\\playerwindskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile\\playerwindskill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|c:\\users\\user\\desktop\\justshooting\\prototype\\assets\\scripts\\character\\player\\playerpower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\playerpower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\playerpower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\playerskillinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\iobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\iobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\playerskillinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\playerskillinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\attackstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\attackstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\testscripts\\waveeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\testscripts\\waveeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\playercommonbullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\playercommonbullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercommonbullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\playerbulletdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\attackstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\attackstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\playerbulletdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\playerbulletdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -42,66 +70,151 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
+              "Title": "IcedBuffEffect.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\IcedBuffEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Effect\\IcedBuffEffect.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\IcedBuffEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Effect\\IcedBuffEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T05:06:05.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IEffect.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\IEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Effect\\IEffect.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\IEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Effect\\IEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T05:04:50.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "PlayerCommonBullet.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\PlayerCommonBullet.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\PlayerCommonBullet.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerCommonBullet.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\PlayerCommonBullet.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\PlayerCommonBullet.cs",
               "RelativeToolTip": "Assets\\Scripts\\PlayerCommonBullet.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-15T08:01:49.572Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "PlayerPower.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerPower.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerPower.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\PlayerPower.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerPower.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerPower.cs",
               "RelativeToolTip": "Assets\\Scripts\\Character\\Player\\PlayerPower.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAIwCwAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T00:07:00.034Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T00:07:00.034Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "PlayerSkillInfo.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerSkillInfo.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerSkillInfo.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\PlayerSkillInfo.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerSkillInfo.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerSkillInfo.cs",
               "RelativeToolTip": "Assets\\Scripts\\Character\\Player\\PlayerSkillInfo.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-16T04:22:36.138Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "AttackStats.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\AttackStats.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\AttackStats.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\AttackStats.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\AttackStats.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\AttackStats.cs",
               "RelativeToolTip": "Assets\\Scripts\\Character\\Player\\AttackStats.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-12T02:32:38.052Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "WaveEffect.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\TestScripts\\WaveEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\TestScripts\\WaveEffect.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\TestScripts\\WaveEffect.cs",
+              "RelativeToolTip": "Assets\\TestScripts\\WaveEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T13:15:36.948Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlayerWindSkill.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\PlayerWindSkill.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\PlayerWindSkill.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\PlayerWindSkill.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Projectile\\PlayerWindSkill.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T04:29:26.139Z"
             }
           ]
         },
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "PlayerEffect.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\PlayerEffect.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Effect\\PlayerEffect.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\PlayerEffect.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Effect\\PlayerEffect.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T05:17:05.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Projectile.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\Projectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\Projectile.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\Projectile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Projectile\\Projectile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T04:36:45.259Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IObject.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\IObject.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\IObject.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\IObject.cs",
+              "RelativeToolTip": "Assets\\Scripts\\IObject.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-20T03:31:57.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "PlayerBulletData.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerBulletData.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerBulletData.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\PlayerBulletData.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerBulletData.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerBulletData.cs",
               "RelativeToolTip": "Assets\\Scripts\\Character\\Player\\PlayerBulletData.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -109,29 +222,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Player.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\Player.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\Player.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\Player.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\Player.cs",
               "RelativeToolTip": "Assets\\Scripts\\Character\\Player\\Player.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAUwEkAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAYwGcAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T02:36:56.773Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T02:36:56.773Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Character.cs",
-              "DocumentMoniker": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Character.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Character.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Character.cs",
-              "ToolTip": "C:\\Users\\USER\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Character.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Character.cs",
               "RelativeToolTip": "Assets\\Scripts\\Character\\Character.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T04:54:13.001Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-12T04:54:13.001Z"
             }
           ]
         }
