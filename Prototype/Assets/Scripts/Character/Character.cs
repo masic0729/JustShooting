@@ -46,7 +46,9 @@ public class Character : IObject
     /// </summary>
     protected override void Init()
     {
-        //void
+
+        
+
         attackStats = gameObject.AddComponent<AttackStats>();
         OnCharacterDeath += DestroyCharacter;
         shootPositions = new Dictionary<string, Transform>();

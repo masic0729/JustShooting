@@ -14,7 +14,10 @@ public class IEffect : MonoBehaviour
         {
             transform.position = TargetObject.transform.position;
             transform.parent = TargetObject.transform;
-            
+        }
+        else
+        {
+            Debug.Log(this.gameObject + "'s TargetObject is not found");
         }
     }
 }

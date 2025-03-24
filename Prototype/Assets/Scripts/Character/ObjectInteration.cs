@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectInteration : MonoBehaviour
+public class ObjectInteration
 {
     /// <summary>
     /// 충돌한 상대 편의 데이터를 불러와 체력을 감소하는 행위.

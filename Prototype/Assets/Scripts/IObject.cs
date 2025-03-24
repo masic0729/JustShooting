@@ -20,7 +20,7 @@ public abstract class IObject : MonoBehaviour
     // Start is called before the first frame update
     virtual protected void Start()
     {
-        
+        transform.parent = GameObject.Find("GameZone").transform;
     }
 
     // Update is called once per frame

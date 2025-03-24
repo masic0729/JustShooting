@@ -8,6 +8,8 @@ using UnityEngine;
 //임시로 때려박은거
 using UnityEngine.UI;
 
+
+//플레이어 활동 범위는 x = 9.5f, y = 4.5f
 public class Player : Character
 {
     public Text text; //임시용
@@ -45,11 +47,16 @@ public class Player : Character
     {
         base.Update();
         UserInput();
+        
     }
 
     protected override void Init()
     {
         base.Init();
+        //이동 구역 제한
+        maxMoveX = 9.5f;
+        maxMoveY = 4.5f;
+
         SetMoveSpeed(10f);
         powerStats = gameObject.GetComponent<PlayerPower>();
 
@@ -67,6 +74,9 @@ public class Player : Character
         SetCurrentCommonBulletData(CurrentPlayerBullet.Wind); //현재 무기 초기화
 
         StartCoroutine(powerStats.DefaultPowerUp());
+
+        //Instantiate(skillObjects["Wind"]);
+
     }
 
     void UserInput()
@@ -78,19 +88,19 @@ public class Player : Character
 
     void MoveInput()
     {
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if(Input.GetKey(KeyCode.LeftArrow) && -maxMoveX < this.transform.position.x)
         {
             ObjectMove(Vector3.left);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && maxMoveX > this.transform.position.x)
         {
             ObjectMove(Vector3.right);
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && maxMoveY > this.transform.position.y)
         {
             ObjectMove(Vector3.up);   
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) && -maxMoveY < this.transform.position.y)
         {
             ObjectMove(Vector3.down);
         }
@@ -160,6 +170,7 @@ public class Player : Character
         GameObject instanceCommonBullet = PoolManager.Instance.Pools["PlayerCommonBullet"].Get(); //인스턴스화
         SetCommonBulletData(ref instanceCommonBullet); //발사체 리소스 데이터 로드
         instanceCommonBullet.transform.position = shootPositions["CommonBullet"].position; //발사체 위치 조정
+        instanceCommonBullet.transform.rotation = shootPositions["CommonBullet"].rotation; //발사체 회전 값 조정
     }
 
 
@@ -237,11 +248,30 @@ public class Player : Character
         }
     }
 
-    void WindSkill()
+    public void WindSkill(GameObject bulletInstance, int shootCount)
     {
-        //주위의 적 총알을 흡수하고, 유도탄으로 발사한다.(흡수 기능 및 유도탄 발사)
-        //GameObject instance = Instantiate(WindPuller, transform.position, transform.rotation);
-        //instance.transform.parent = this.transform; //플레이어에 고정
+        StartCoroutine(WindBulletShoot(bulletInstance, shootCount));
+    }
+
+    IEnumerator WindBulletShoot(GameObject windBullet, int shootCount)
+    {
+        Transform shootVector = transform.GetChild(1).transform;
+
+        for (int i = 0; i < shootCount; i++)
+        {
+            GameObject instance = Instantiate(windBullet, shootVector.position, shootVector.rotation);
+            float rotateRandom = Random.Range(-45f, 45f);
+            instance.transform.Rotate(0,0, rotateRandom);
+            //일단 플레이어가 발사하는 주체이므로, 태그 값은 플레이어로 고정
+            if (instance != null)
+            {
+                instance.transform.tag = "Player";
+                instance.GetComponent<Projectile>().SetMoveSpeed(attackStats.moveSpeed);
+                instance.GetComponent<Projectile>().SetDamage(attackStats.damage);
+
+            }
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

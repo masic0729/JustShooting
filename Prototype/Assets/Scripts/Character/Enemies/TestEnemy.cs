@@ -21,9 +21,4 @@ public class TestEnemy : Enemy
         
     }
 
-    
-
-    
-
-    
 }

@@ -12,6 +12,7 @@ public class Projectile : IObject
     protected float lifeTimer = 0, lifeTime; // 발사체의 지속 시간을 정의함
     [SerializeField]
     private bool isPoolObject; //발사체의 출처가 풀링된 객채를 확인함
+    protected bool isCanMove = true;
 
     protected void OnEnable()
     {
@@ -29,7 +30,6 @@ public class Projectile : IObject
     protected override void Start()
     {
         base.Start();
-        Debug.Log(this.gameObject.name + lifeTime);
     }
 
     // Update is called once per frame
@@ -41,7 +41,10 @@ public class Projectile : IObject
         {
             CheckPoolObject();
         }
-
+        if(isCanMove == true)
+        {
+            ObjectMove(Vector3.up);
+        }
     }
 
     protected override void Init()
@@ -59,8 +62,12 @@ public class Projectile : IObject
             this.transform.tag == "Enemy" && collision.transform.tag == "Player")
         {
             Character instanceHitCharacter = collision.GetComponent<Character>();
-            projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
-            CheckPoolObject(); //발사체인 본인이 소멸하는 것
+            if(instanceHitCharacter != null)
+            {
+                projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
+                CheckPoolObject(); //발사체인 본인이 소멸하는 것
+            }
+            
         }
     }
     

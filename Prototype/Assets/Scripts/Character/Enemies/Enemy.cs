@@ -8,6 +8,7 @@ public class Enemy : Character
     //적군은 기본적으로 데미지가 1고정이다
     ObjectInteration characterIteraction;
 
+    [SerializeField]
     bool isBoss = false; //보스 유무 확인. 기본값은 거짓
 
     // Start is called before the first frame update
@@ -38,5 +39,15 @@ public class Enemy : Character
             characterIteraction.SendDamage(ref instancePlayer, 1f);
             Debug.Log(instancePlayer.GetHp());
         }
+    }
+
+    public bool GetIsBoss()
+    {
+        return isBoss;
+    }
+
+    public void SetIsBoss(bool state)
+    {
+        isBoss = state;
     }
 }
