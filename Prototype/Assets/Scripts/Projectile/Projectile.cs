@@ -5,11 +5,11 @@ using UnityEngine.TextCore.Text;
 public class Projectile : IObject
 {
     //GameObject ProjectileEffect; //정확히 어떤 것들이 있는 지 파악이 안되므로 선언만 하였음
-
+    ObjectInteration projectileInteraction;
     [SerializeField]
     protected float damage; //발사체는 데미지가 있다
     [SerializeField]
-    protected float lifeTime = 10f; // 발사체의 지속 시간을 정의함
+    protected float lifeTimer = 0, lifeTime; // 발사체의 지속 시간을 정의함
     [SerializeField]
     private bool isPoolObject; //발사체의 출처가 풀링된 객채를 확인함
 
@@ -18,6 +18,7 @@ public class Projectile : IObject
         //해당 오브젝트가 등장할 때마다 풀링 스크립트 존재 시 사실임을 확인
         if (this.gameObject.GetComponent<PoolProjectile>())
             isPoolObject = true;
+        lifeTimer = 0;
 
     }
     protected override void Awake()
@@ -28,19 +29,27 @@ public class Projectile : IObject
     protected override void Start()
     {
         base.Start();
+        Debug.Log(this.gameObject.name + lifeTime);
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
+        lifeTimer += Time.deltaTime;
+        if(lifeTimer >= lifeTime)
+        {
+            CheckPoolObject();
+        }
+
     }
 
     protected override void Init()
     {
         maxMoveX = 10.5f;
         maxMoveY = 5.5f;
-
+        projectileInteraction = new ObjectInteration();
+        lifeTime = 10;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,46 +59,11 @@ public class Projectile : IObject
             this.transform.tag == "Enemy" && collision.transform.tag == "Player")
         {
             Character instanceHitCharacter = collision.GetComponent<Character>();
-            SendDamage(ref instanceHitCharacter);
+            projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
             CheckPoolObject(); //발사체인 본인이 소멸하는 것
         }
     }
-    /// <summary>
-    /// 적중한 상대 편의 데이터를 불러와 체력을 감소하는 행위. 만약 대상의 체력이 0이하가 되면 죽음 액션이 실행된다
-    /// </summary>
-    /// <param name="character"> 발사체 기준 적으로 간주되는 객체</param>
-    void SendDamage(ref Character character)
-    {
-        if(character.GetShield() > 0)
-        {
-            //보호막이 있으니까 보호막 값 감소
-            if (character.GetShield() - damage <= 0)
-            {
-                //보호막 0이 되니까 보호막 0으로 만들기
-                character.SetShield(0);
-            }
-            else
-            {
-                //피격 돼도 보호막이 남으므로 단순 감소
-                character.SetShield(character.GetShield() - damage);
-            }
-        }
-        else
-        {
-            //보호막이 없으니까 체력 감소
-            if (character.GetHp() - damage <= 0)
-            {
-                //체력이 0이므로 죽음처리
-                character.SetHp(0);
-                character.OnCharacterDeath?.Invoke();
-            }
-            else
-            {
-                //죽지 않으므로 체력감소 처리
-                character.SetHp(character.GetHp() - damage);
-            }
-        }
-    }
+    
 
     void CheckPoolObject()
     {

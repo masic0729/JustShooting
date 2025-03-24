@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWindSkill : MonoBehaviour
+public class PlayerWindSkill : PlayerEffect
 {
     int enemyBulletCount = 0;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        //1.5초 뒤 자동 삭제 및 흡수한 총알 개수 플레이어에게 전달
-        Invoke("DestroyAndSenddata", 1.5f);
+        base.Start();
+        DestroyAndAttack();
     }
 
     void DestroyAndAttack()

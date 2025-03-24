@@ -21,15 +21,13 @@ public class Player : Character
     }
     CurrentPlayerBullet currentBullet;
 
-    List<Coroutine> powerCoritineList;
     public PlayerPower powerStats;
     public PlayerBulletData[] commonBulletDatas; //일반 총알 데이터
     public Dictionary<string, PlayerBulletData> commonBullets; //딕셔너리로 정의할 것
     [Header("플레이어가 각 속성의 스킬을 사용하기 위한 기능들의 모임")]
-    public GameObject[] buffObjectsData;
-    public Dictionary<string, GameObject> buffObject;
+    public GameObject[] buffObjectsData, skillObjectsData;
+    public Dictionary<string, GameObject> buffObject,skillObjects;
 
-    float attackSpeed = 0.5f; //플레이어의 공격 주기.기본값은 0.5이다.
     float attackTime; //플레이어의 일반 총알을 발사하려는 시간
 
     
@@ -39,7 +37,6 @@ public class Player : Character
         base.Start();
         Init();
         //Time.timeScale = 0;
-        Instantiate(buffObject["Iced"]);
 
     }
 
@@ -55,16 +52,17 @@ public class Player : Character
         base.Init();
         SetMoveSpeed(10f);
         powerStats = gameObject.GetComponent<PlayerPower>();
-        powerCoritineList = new List<Coroutine>();
 
         //딕셔너리화한 이후 현재 무기상태 및 스킬을 초기화한다
         commonBullets = new Dictionary<string, PlayerBulletData>();
         buffObject = new Dictionary<string, GameObject>();
+        skillObjects = new Dictionary<string, GameObject>();
         for (int i = 0; i < commonBulletDatas.Length; i++)
         {
             //무기 상태, 스킬을 딕셔너리
             commonBullets[commonBulletDatas[i].weaponName] = commonBulletDatas[i];
             buffObject[commonBulletDatas[i].weaponName] = buffObjectsData[i];
+            skillObjects[commonBulletDatas[i].weaponName] = skillObjectsData[i];
         }
         SetCurrentCommonBulletData(CurrentPlayerBullet.Wind); //현재 무기 초기화
 
@@ -75,8 +73,7 @@ public class Player : Character
     {
         MoveInput();
         Attack();
-        TestFunctions();
-        
+        TransWeapon();   
     }
 
     void MoveInput()
@@ -116,7 +113,7 @@ public class Player : Character
 
 
     //현재는 테스트 의도로 키를 입력한다.
-    void TestFunctions()
+    void TransWeapon()
     {
         //과거 테스트용 무기 변경
         /*
@@ -135,13 +132,23 @@ public class Player : Character
         */
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (currentBullet == CurrentPlayerBullet.Lightning)
-                currentBullet = 0;
-            else
-                currentBullet += 1;
-            SetCurrentCommonBulletData(currentBullet);
-            
+            TransCurrentWeapon();
+            if(powerStats.isPowerMax == true)
+            {
+                powerStats.playerPower = 0;
+                powerStats.isPowerMax = false;
+                PowerSkill();
+            }
         }
+    }
+
+    void TransCurrentWeapon()
+    {
+        if (currentBullet == CurrentPlayerBullet.Lightning)
+            currentBullet = 0;
+        else
+            currentBullet += 1;
+        SetCurrentCommonBulletData(currentBullet);
     }
 
     /// <summary>
@@ -207,20 +214,24 @@ public class Player : Character
 
     }
 
-    void PowerSkill ()// 파워가 100이 된 이후 유저가 스킬 키를 발동할 때
+    void PowerSkill()// 파워가 100이 된 이후 유저가 스킬 키를 발동할 때
     {
         switch(currentBullet)
         {
             case CurrentPlayerBullet.Wind:
-
+                Instantiate(skillObjects["Wind"]);
+                Debug.Log("바람 스킬 발동");
                 break;
             case CurrentPlayerBullet.Iced:
-
+                Instantiate(skillObjects["Iced"]);
+                Debug.Log("얼음 스킬 발동");
                 break;
             case CurrentPlayerBullet.Fire:
+                Debug.Log("불 스킬 발동");
 
                 break;
             case CurrentPlayerBullet.Lightning:
+                Debug.Log("번개 스킬 발동");
 
                 break;
         }
@@ -240,6 +251,7 @@ public class Player : Character
         {
             //적 객체의 충돌에 의한 피해를 받는 과정
             Character instanceEnemyInfo = collision.GetComponent<Character>();
+            
         }
     }
 }

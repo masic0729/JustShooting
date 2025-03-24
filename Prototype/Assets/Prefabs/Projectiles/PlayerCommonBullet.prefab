@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -168,16 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 586595219a7c68443af62282da866282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveX: 0
-  maxMoveY: 0
-  projectileSprites:
-  - {fileID: -2322180950842035098, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
-  - {fileID: 6582046967323461550, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
-  - {fileID: -4986890610287934012, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
-  projectileAnimations:
-  - {fileID: 9100000, guid: 70742dfab053f5d43a15a4818f173079, type: 2}
-  - {fileID: 9100000, guid: e6f7700098845194c893f1ceddda9b04, type: 2}
-  - {fileID: 9100000, guid: c301c9e640d272446b522bec68e5e93c, type: 2}
+  moveSpeed: 0
   damage: 10
   lifeTime: 0
   isPoolObject: 0

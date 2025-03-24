@@ -53,6 +53,7 @@ public class PlayerPower : MonoBehaviour
             power = 100;
             isPowerMax = true;
             player.PowerOn();
+            Debug.Log("파워 다 차면 참" + isPowerMax);
         }
         else
         {

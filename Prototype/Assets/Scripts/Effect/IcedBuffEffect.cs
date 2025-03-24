@@ -5,11 +5,19 @@ using UnityEngine;
 public class IcedBuffEffect : PlayerEffect
 {
     public float shieldValue = 1;
-    // Start is called before the first frame update
+
     protected override void Start()
     {
         base.Start();
         TargetObject.GetComponent<Player>().SetShield(shieldValue);
+    }
+
+    void Update()
+    {
+        if(TargetObject.GetComponent<Player>().GetShield() <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnDestroy()
