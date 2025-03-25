@@ -167,10 +167,30 @@ public class Player : Character
     /// <param name="currentState">현재 플레이어가 발사하려는 일반 총알 정보</param>
     void ShootCommmonBullet(CurrentPlayerBullet currentState)
     {
-        GameObject instanceCommonBullet = PoolManager.Instance.Pools["PlayerCommonBullet"].Get(); //인스턴스화
-        SetCommonBulletData(ref instanceCommonBullet); //발사체 리소스 데이터 로드
-        instanceCommonBullet.transform.position = shootPositions["CommonBullet"].position; //발사체 위치 조정
-        instanceCommonBullet.transform.rotation = shootPositions["CommonBullet"].rotation; //발사체 회전 값 조정
+        if(currentState == CurrentPlayerBullet.Fire)
+        {
+            float rotateValue = -20f;
+            for(int i = 1; i <= 5; i++)
+            {
+                GameObject instanceCommonBullet = PoolManager.Instance.Pools["PlayerCommonBullet"].Get(); //인스턴스화
+                SetCommonBulletData(ref instanceCommonBullet); //발사체 리소스 데이터 로드
+                instanceCommonBullet.transform.position = shootPositions["CommonBullet"].position; //발사체 위치 조정
+                instanceCommonBullet.transform.rotation = shootPositions["CommonBullet"].rotation; //발사체 회전 값 조정
+                instanceCommonBullet.transform.Rotate(0, 0, rotateValue);
+                rotateValue += 10f;
+            }
+        }
+        else
+        {
+            GameObject instanceCommonBullet = PoolManager.Instance.Pools["PlayerCommonBullet"].Get(); //인스턴스화
+            SetCommonBulletData(ref instanceCommonBullet); //발사체 리소스 데이터 로드
+            instanceCommonBullet.transform.position = shootPositions["CommonBullet"].position; //발사체 위치 조정
+            instanceCommonBullet.transform.rotation = shootPositions["CommonBullet"].rotation; //발사체 회전 값 조정
+        }
+
+        
+
+        
     }
 
 
