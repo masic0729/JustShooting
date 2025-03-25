@@ -12,7 +12,7 @@ public class PlayerPower : MonoBehaviour
     [Header("플레이어가 독단적으로 소지하는 파워 관련 데이터")]
     public Action powerEvents; //파워와 관련된 모든 기능을 매 초마다 실행하려는 액션
     private float power;
-    public float playerPower { get { return power; } set { power += value;  } }
+    public float playerPower { get { return power; } set { power = value;  } }
     public const float maxPower = 100; //파워 값. 100 값은 고정이다
     public float powerUpValue; //파워가 오르는 수치
     public bool isPowerMax; //파워가 모두 회복했는 지 확인하는 데이터
