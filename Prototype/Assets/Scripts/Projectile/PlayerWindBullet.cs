@@ -7,7 +7,7 @@ public class PlayerWindBullet : Bullet
 {
     GameObject target;
     TargetBulletManagement targetBulletManager;
-    public float rotateAddValue;
+    public float rotateAddValue = 0.01f;
 
     protected override void Start()
     {

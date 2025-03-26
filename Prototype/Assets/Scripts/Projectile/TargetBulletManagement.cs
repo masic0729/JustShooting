@@ -85,8 +85,10 @@ public class TargetBulletManagement : MonoBehaviour
                 Quaternion rotation = Quaternion.Euler(0, 0, angle * rotationSpeed * Time.deltaTime);
                 thisProjectile.transform.rotation = rotation * transform.rotation;
 
-                rotationSpeedAddValue += rotationSpeed;
+                rotationSpeed += rotationSpeedAddValue;
             }
         }
     }
+
+
 }

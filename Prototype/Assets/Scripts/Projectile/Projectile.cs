@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEditor.Animations;
-using UnityEngine.TextCore.Text;
+
 
 public class Projectile : IObject
 {
@@ -52,10 +51,10 @@ public class Projectile : IObject
         maxMoveX = 10.5f;
         maxMoveY = 5.5f;
         projectileInteraction = new ObjectInteration();
-        lifeTime = 10;
+        lifeTime = 5;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         //현재는 이런 식으로 묶었지만, 예외적인 처리가 필요한 경우 조건 처리를 분리해야 할 수 있음
         if(this.transform.tag == "Player" && collision.transform.tag == "Enemy" ||
@@ -67,7 +66,6 @@ public class Projectile : IObject
                 projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
                 CheckPoolObject(); //발사체인 본인이 소멸하는 것
             }
-            
         }
     }
     
@@ -76,12 +74,12 @@ public class Projectile : IObject
     {
         if(isPoolObject)
         {
-            ClearObjectResources();        //기본 리소스 모두 삭제
+            ClearObjectResources();                                       //기본 리소스 모두 삭제
             GetComponent<PoolProjectile>().pool.Release(this.gameObject); //이 객체가 풀링된 객체라면 릴리즈
         }
         else
         {
-            Destroy(this.gameObject); //아니라면 일반적인 오브젝트 삭제
+            Destroy(this.gameObject);                                     //아니라면 일반적인 오브젝트 삭제
         }
     }
 

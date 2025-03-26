@@ -9,12 +9,12 @@ public class IcedBuffEffect : PlayerEffect
     protected override void Start()
     {
         base.Start();
-        TargetObject.GetComponent<Player>().SetShield(shieldValue);
+        player.SetShield(shieldValue);
     }
 
     void Update()
     {
-        if(TargetObject.GetComponent<Player>().GetShield() <= 0)
+        if(player.GetShield() <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -22,7 +22,7 @@ public class IcedBuffEffect : PlayerEffect
 
     private void OnDestroy()
     {
-        if (TargetObject.GetComponent<Player>().GetShield() > 0)
-            TargetObject.GetComponent<Player>().SetShield(0);
+        if (player.GetShield() > 0)
+            player.SetShield(0);
     }
 }

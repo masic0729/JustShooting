@@ -35,7 +35,7 @@ public class PoolManager : MonoBehaviour
                 ReleasePool,                  // 객체 반환하기
                 DestroyPool,                  // 객체 파괴
                 false,                        // 자동 확장 여부
-                10,
+                100,
                 1000
             );
         }

@@ -16,7 +16,7 @@ public class PlayerPower : MonoBehaviour
     public const float maxPower = 100; //파워 값. 100 값은 고정이다
     public float powerUpValue; //파워가 오르는 수치
     public bool isPowerMax; //파워가 모두 회복했는 지 확인하는 데이터
-    
+    bool isActivedSkill;
 
     void Start()
     {
@@ -33,8 +33,8 @@ public class PlayerPower : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f); // 매 초마다 실행
 
-        //파워가 모두 채워지지 않으면 파워 상승
-        if(isPowerMax == false)
+        //파워가 모두 채워지지 않거나 채울 수 있는 상황이라면 파워 상승
+        if(isPowerMax == false && isActivedSkill == false)
         {
             PowerUp(powerUpValue);
         }
@@ -60,5 +60,15 @@ public class PlayerPower : MonoBehaviour
             power += value;
             Debug.Log("power : " + power.ToString());
         }
+    }
+
+    public bool GetIsActivedSkill()
+    {
+        return isActivedSkill;
+    }
+
+    public void SetIsActivedSkill(bool state)
+    {
+        isActivedSkill = state;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class IObject : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public abstract class IObject : MonoBehaviour
 
     [SerializeField]
     protected float moveSpeed = 0f; // 모든 오브젝트는 일반적으로 이동속도가 존재한다.
+    [SerializeField]
+    protected float objectMoveSpeedMultify; // 오브젝트의 이동 배율. 높을 수록 이동 속도가 빨라진다.
 
     virtual protected void Awake()
     {
@@ -21,6 +24,7 @@ public abstract class IObject : MonoBehaviour
     virtual protected void Start()
     {
         transform.parent = GameObject.Find("GameZone").transform;
+        objectMoveSpeedMultify = 1;
     }
 
     // Update is called once per frame
@@ -39,7 +43,7 @@ public abstract class IObject : MonoBehaviour
             Debug.Log(this.gameObject.name + "is moveSpeed 0");
 
         //저장된 속도와 입력된 방향을 기반으로 이동
-        transform.Translate(vector * moveSpeed * Time.deltaTime);
+        transform.Translate(vector * moveSpeed * objectMoveSpeedMultify * Time.deltaTime);
     }
 
     //getset
@@ -51,5 +55,15 @@ public abstract class IObject : MonoBehaviour
     public void SetMoveSpeed(float Value)
     {
         moveSpeed = Value;
+    }
+
+    public void SetObjectMoveSpeedMultify(float value)
+    {
+        objectMoveSpeedMultify = value;
+    }
+
+    public float GetObjectMoveSpeedMultify()
+    {
+        return objectMoveSpeedMultify;
     }
 }

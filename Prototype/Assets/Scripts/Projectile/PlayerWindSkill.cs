@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerWindSkill : PlayerEffect
 {
     public GameObject WindSkillBullet;
-    int enemyBulletCount;
+    int enemyBulletCount = 10;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -14,8 +14,6 @@ public class PlayerWindSkill : PlayerEffect
         base.Start();
         
     }
-
-    
 
     private void OnDestroy()
     {
@@ -25,7 +23,7 @@ public class PlayerWindSkill : PlayerEffect
     void DestroyAndAttack()
     {
         //windBullet load
-        TargetObject.GetComponent<Player>().WindSkill(WindSkillBullet, enemyBulletCount);
+        player.WindSkill(WindSkillBullet, enemyBulletCount);
 
         Destroy(this.gameObject);
     }

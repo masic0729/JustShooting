@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UI;
 
 
 public class Character : IObject
@@ -16,16 +17,18 @@ public class Character : IObject
     [SerializeField]
     protected float hp, maxHp; //현재 체력 및 최대 체력.
     protected float shield; //보호막, 보호막 존재 시 체력 대신 감소
-    //todo 각 배율에 따른 캐릭터들의 이동 및 발사체 적용 구현할 것(급하지 않음)
+    
     [Header("캐릭터의 전투 시스템 공식 배율")]
     [SerializeField]
-    protected float damageMultiplier = 1; // 피해를 줄 수 있는 공격력 및 피해 계수. 값이 오를 수록 피해량이 커진다.
+    protected float attackMultiplier = 1; // 피해를 줄 수 있는 공격력 및 피해 계수. 값이 오를 수록 피해량이 커진다.
     [SerializeField]
-    protected float attackDelay, attackDelayMultify = 1; //발사 주기 계수. 값이 오를 수록 초당 공격 횟수가 빨라진다.
+    protected float attackDelay; //발사 주기. 값이 오를 수록 초당 공격 횟수가 느려진다.
     [SerializeField]
     protected float projectileMoveSpeedMultify = 1; //발사체 속도 계수. 값이 클 수록 발사체의 속도가 빨라진다.
     [SerializeField]
     protected float characterGetDamageMultify = 1; //캐릭터가 피해를 받는 배율. 높을 수록 받는 피해가 상승한다.
+    
+    
 
     // Start is called before the first frame update
     protected override void Start()
@@ -56,7 +59,6 @@ public class Character : IObject
         for(int i = 0; i < shootTransforms.Length; i++)
         {
             shootPositions[shootTransforms[i].name] = shootTransforms[i]; //딕셔너리 명은 캐릭터의 발사위치를 담당하는 오브젝트이름을 사용한다.
-            Debug.Log(shootPositions[shootTransforms[i].name]);
         }
 
     }
@@ -108,11 +110,14 @@ public class Character : IObject
 
     public void SetAttackMultiplier(float value)
     {
-        damageMultiplier = value;
+        attackMultiplier = value;
     }
 
     public float GetAttackMultiplier()
     {
-        return damageMultiplier;
+        return attackMultiplier;
     }
+
+    
+    
 }

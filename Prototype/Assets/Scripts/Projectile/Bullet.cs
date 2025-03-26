@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : Projectile
 {
+    
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -20,5 +21,10 @@ public class Bullet : Projectile
     {
         base.Init();
         //Debug.Log("Bullet");
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
     }
 }
