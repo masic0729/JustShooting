@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Projectile\PlayerIcedSkill.cs" />
+    <Compile Include="Assets\Scripts\Character\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Effect\IcedBuffEffect.cs" />
     <Compile Include="Assets\Scripts\Character\Player\AttackStats.cs" />
     <Compile Include="Assets\Scripts\Projectile\PoolProjectile.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Assets\Scripts\Projectile\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\Character\ObjectInteration.cs" />
     <Compile Include="Assets\Scripts\Practice\PRA_Player.cs" />
+    <Compile Include="Assets\Scripts\Character\Enemies\Enemy_A.cs" />
     <Compile Include="Assets\Scripts\Effect\IEffect.cs" />
     <Compile Include="Assets\Scripts\Projectile\PlayerFireSkill.cs" />
     <Compile Include="Assets\Scripts\PoolManager.cs" />

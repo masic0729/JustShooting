@@ -9,12 +9,17 @@ public class PlayerCommonBullet : Bullet
     float windAttackDelayTransValue = 0.05f;
     Player player;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        Init();
+        
+    }
+
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        Init();
-        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -23,19 +28,34 @@ public class PlayerCommonBullet : Bullet
         base.Update();
     }
 
+    private void LateUpdate()
+    {
+        if (bulletName == "Fire")
+        {
+            //SetLifeTime(0.25f);
+            Debug.Log("난 불속성이라 짧아");
+        }
+    }
+
     protected override void Init()
     {
         base.Init();
+        if(player == null)
+        {
+            player = GameObject.Find("Player").GetComponent<Player>();
+        }
+
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
         if (bulletName == player.GetPlayerWeaponName() && player.windBulletHitCount < 6 &&
-            collision.transform.tag =="Enemy" && bulletName == "Wind")
+            collision.transform.tag =="Enemy" && bulletName == "Wind" && player != null)
         {
             player.attackStats.attackDelayMultify -= windAttackDelayTransValue;
             player.windBulletHitCount++;
         }
+        
     }
 }

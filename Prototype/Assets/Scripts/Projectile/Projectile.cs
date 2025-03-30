@@ -7,13 +7,13 @@ public class Projectile : IObject
     ObjectInteration projectileInteraction;
     [SerializeField]
     protected float damage; //발사체는 데미지가 있다
-    [SerializeField]
-    protected float lifeTimer = 0, lifeTime; // 발사체의 지속 시간을 정의함
+//    [SerializeField]
+    protected float lifeTimer = 0, lifeTime = 5; // 발사체의 지속 시간을 정의함
     [SerializeField]
     private bool isPoolObject; //발사체의 출처가 풀링된 객채를 확인함
     protected bool isCanMove = true;
 
-    protected void OnEnable()
+    virtual protected void OnEnable()
     {
         //해당 오브젝트가 등장할 때마다 풀링 스크립트 존재 시 사실임을 확인
         if (this.gameObject.GetComponent<PoolProjectile>())
@@ -21,10 +21,7 @@ public class Projectile : IObject
         lifeTimer = 0;
 
     }
-    protected override void Awake()
-    {
-        base.Awake();
-    }
+    
 
     protected override void Start()
     {
@@ -51,7 +48,6 @@ public class Projectile : IObject
         maxMoveX = 10.5f;
         maxMoveY = 5.5f;
         projectileInteraction = new ObjectInteration();
-        lifeTime = 5;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

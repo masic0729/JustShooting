@@ -12,7 +12,6 @@ public class PlayerFireSkill : PlayerEffect
     {
         base.Start();
         interation = new ObjectInteration();
-        playerDamage = player.attackStats.damage;
 
         StartCoroutine(FireDamaging());
     }
@@ -25,7 +24,7 @@ public class PlayerFireSkill : PlayerEffect
             float colliderRadius = GetComponent<CircleCollider2D>().radius;
             float objectScale = transform.localScale.x;
             Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, colliderRadius * objectScale);
-            
+            playerDamage = player.attackStats.damage;
             EnemyAttack(cols);
             yield return new WaitForSeconds(attackDelay);
             

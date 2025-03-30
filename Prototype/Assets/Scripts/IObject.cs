@@ -15,10 +15,7 @@ public abstract class IObject : MonoBehaviour
     [SerializeField]
     protected float objectMoveSpeedMultify; // 오브젝트의 이동 배율. 높을 수록 이동 속도가 빨라진다.
 
-    virtual protected void Awake()
-    {
-        
-    }
+    
 
     // Start is called before the first frame update
     virtual protected void Start()

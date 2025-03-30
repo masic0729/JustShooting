@@ -51,7 +51,7 @@ public class Player : Character
         text.text = "weapon : " + currentBullet + "\ndamage : " + this.attackStats.damage * attackStats.damageMultiplier + 
             "\nAttackDelay : " + attackDelay * attackStats.attackDelayMultify +
             "\nmoveSpeed : " + attackStats.moveSpeed + "\npower : " + powerStats.powerUpValue + 
-            "\nplayerMoveSpeed : " + moveSpeed * objectMoveSpeedMultify;
+            "\nplayerMoveSpeed : " + moveSpeed * objectMoveSpeedMultify + "\nPlayerPowerValue : " + powerStats.playerPower;
     }
 
     protected override void Init()
@@ -194,7 +194,7 @@ public class Player : Character
         commonBullet.GetComponent<Projectile>().SetDamage(this.attackStats.damage * attackStats.damageMultiplier);
         commonBullet.GetComponent<Projectile>().SetMoveSpeed(this.attackStats.moveSpeed);
         commonBullet.GetComponent<PlayerCommonBullet>().bulletName = currentBullet.ToString();
-        
+        commonBullet.GetComponent<Projectile>().SetLifeTime(commonBullets[currentBullet.ToString()].lifeTime);
     }
 
     /// <summary>
@@ -342,7 +342,7 @@ public class Player : Character
             {
                 instance.transform.tag = "Player";
                 instance.GetComponent<Projectile>().SetMoveSpeed(attackStats.moveSpeed * 2f);
-                instance.GetComponent<Projectile>().SetDamage(this.attackStats.damage * attackStats.damageMultiplier * 0.8f);
+                instance.GetComponent<Projectile>().SetDamage(this.attackStats.damage * attackStats.damageMultiplier * 0.7f);
             }
             yield return new WaitForSeconds(attackDelay * attackStats.attackDelayMultify);
 

@@ -49,10 +49,8 @@ public class Character : IObject
     /// </summary>
     protected override void Init()
     {
-
-        
-
         attackStats = gameObject.AddComponent<AttackStats>();
+        //지금은 단순히 체력 감소만 존재함
         OnCharacterDeath += DestroyCharacter;
         shootPositions = new Dictionary<string, Transform>();
         
@@ -63,10 +61,7 @@ public class Character : IObject
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //보류
-    }
+    
 
     /// <summary>
     /// 현재는 캐릭터 객체들은 삭제처리하지만, 상황에 따라 일부 캐릭터는 풀링과 비슷한 효과로 처리할 수 있음

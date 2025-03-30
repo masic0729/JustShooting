@@ -13,6 +13,7 @@ public class TestEnemy : Enemy
     protected override void Update()
     {
         base.Update();
+
     }
 
     protected override void Init()

@@ -7,7 +7,8 @@ public class Enemy : Character
 {
     //적군은 기본적으로 데미지가 1고정이다
     ObjectInteration characterIteraction;
-
+    protected EnemyMovement movement;
+    protected GameObject thisGameObject;
     [SerializeField]
     bool isBoss = false; //보스 유무 확인. 기본값은 거짓
 
@@ -28,6 +29,8 @@ public class Enemy : Character
     {
         base.Init();
         characterIteraction = new ObjectInteration();
+        movement = new EnemyMovement();
+        thisGameObject = this.gameObject;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +40,6 @@ public class Enemy : Character
             //플레이어 데이터를 불러와 피해를준다
             Character instancePlayer = collision.gameObject.GetComponent<Character>();
             characterIteraction.SendDamage(ref instancePlayer, 1f);
-            Debug.Log(instancePlayer.GetHp());
         }
     }
 

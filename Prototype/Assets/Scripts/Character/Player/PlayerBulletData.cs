@@ -14,8 +14,8 @@ public class PlayerBulletData
     public AnimatorController animCtrl;
     
     public string weaponName; // 공격타입
-    public int weaponLevel = 1;         
-
+    public int weaponLevel = 1;
+    public float lifeTime; //각 속성의 발사체 생명시간
     public float attackDelayMultify; // 공격 주기 배율
 
     //번개 속성은 히트스캔 방식이기에 해당 객체는 0이다

@@ -41,6 +41,7 @@ public class ObjectInteration
                 //죽지 않으므로 체력감소 처리
                 character.SetHp(character.GetHp() - damage);
             }
+
         }
     }
 }

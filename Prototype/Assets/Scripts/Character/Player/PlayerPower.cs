@@ -58,7 +58,6 @@ public class PlayerPower : MonoBehaviour
         else
         {
             power += value;
-            Debug.Log("power : " + power.ToString());
         }
     }
 

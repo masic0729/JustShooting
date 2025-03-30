@@ -361,6 +361,8 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.21f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/Character/Character.cs"
 "Assets/Scripts/Character/Enemies/Enemy.cs"
+"Assets/Scripts/Character/Enemies/EnemyMovement.cs"
+"Assets/Scripts/Character/Enemies/Enemy_A.cs"
 "Assets/Scripts/Character/Enemies/TestEnemy.cs"
 "Assets/Scripts/Character/ObjectInteration.cs"
 "Assets/Scripts/Character/Player/AttackStats.cs"
