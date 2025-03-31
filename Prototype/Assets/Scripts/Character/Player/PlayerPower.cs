@@ -21,7 +21,6 @@ public class PlayerPower : MonoBehaviour
     void Start()
     {
         player = GetComponent<Player>();
-
     }
 
     /// <summary>

@@ -23,6 +23,7 @@ public class Enemy : Character
     protected override void Update()
     {
         base.Update();
+        CheckOverGameZone();
     }
 
     protected override void Init()
@@ -31,6 +32,14 @@ public class Enemy : Character
         characterIteraction = new ObjectInteration();
         movement = new EnemyMovement();
         thisGameObject = this.gameObject;
+    }
+
+    void CheckOverGameZone()
+    {
+        if(this.transform.position.x < -12f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

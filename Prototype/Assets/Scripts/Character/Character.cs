@@ -27,8 +27,9 @@ public class Character : IObject
     protected float projectileMoveSpeedMultify = 1; //발사체 속도 계수. 값이 클 수록 발사체의 속도가 빨라진다.
     [SerializeField]
     protected float characterGetDamageMultify = 1; //캐릭터가 피해를 받는 배율. 높을 수록 받는 피해가 상승한다.
-    
-    
+
+    private bool isInvincibility; //무적 여부
+
 
     // Start is called before the first frame update
     protected override void Start()
@@ -113,6 +114,19 @@ public class Character : IObject
         return attackMultiplier;
     }
 
-    
-    
+    public void SetIsInvincibility(bool state)
+    {
+        isInvincibility = state;
+    }
+
+    public bool GetIsInvincibility()
+    {
+        return isInvincibility;
+    }
+
+    public void TransIsInvincibilityFalse()
+    {
+        isInvincibility = false;
+    }
+
 }

@@ -48,7 +48,7 @@ public class Player : Character
         base.Update();
         UserInput();
         //현재 무기에 따른 능력치 적용 확인용 텍스트 출력
-        text.text = "weapon : " + currentBullet + "\ndamage : " + this.attackStats.damage * attackStats.damageMultiplier + 
+        text.text = "hp : " + GetHp() + "\nweapon : " + currentBullet + "\ndamage : " + this.attackStats.damage * attackStats.damageMultiplier + 
             "\nAttackDelay : " + attackDelay * attackStats.attackDelayMultify +
             "\nmoveSpeed : " + attackStats.moveSpeed + "\npower : " + powerStats.powerUpValue + 
             "\nplayerMoveSpeed : " + moveSpeed * objectMoveSpeedMultify + "\nPlayerPowerValue : " + powerStats.playerPower;
@@ -60,7 +60,7 @@ public class Player : Character
         //이동 구역 제한
         maxMoveX = 9.5f;
         maxMoveY = 4.5f;
-        attackDelay = 0.05f;
+        attackDelay = 0.1f;
         SetMoveSpeed(10f);
         powerStats = gameObject.GetComponent<PlayerPower>();
 

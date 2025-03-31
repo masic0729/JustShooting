@@ -27,7 +27,7 @@ public class Enemy_A : Enemy
         if (Vector2.Distance(transform.position, currentTargetPos) > 0.1f && isArriveTargetPos == false)
         {
             //transform.position = Vector2.MoveTowards(transform.position, currentTargetPos, Time.deltaTime * GetMoveSpeed() * 5f);
-            movement.MoveToPointNormal(ref thisGameObject, ref currentTargetPos, ref targetMoveSpeed);
+            movement.MoveToPointLerp(ref thisGameObject, ref currentTargetPos, ref targetMoveSpeed);
         }
         else if(isArriveTargetPos == false)
         {
@@ -46,7 +46,7 @@ public class Enemy_A : Enemy
     protected override void Init()
     {
         base.Init();
-        targetMoveSpeed = GetMoveSpeed() * 5f;
+        targetMoveSpeed = GetMoveSpeed() / 150f;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
