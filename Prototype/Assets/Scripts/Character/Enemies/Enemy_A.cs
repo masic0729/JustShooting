@@ -7,7 +7,8 @@ public class Enemy_A : Enemy
 {
     [Header("몬스터의 이동과 관련된 데이터")]
     [SerializeField]
-    float targetPosY, targetMoveSpeed;
+    float targetPosY;
+    float targetMoveSpeed;
     Vector2 currentTargetPos;
 
     bool isArriveTargetPos = false;
@@ -46,7 +47,7 @@ public class Enemy_A : Enemy
     protected override void Init()
     {
         base.Init();
-        targetMoveSpeed = GetMoveSpeed() / 150f;
+        targetMoveSpeed = 0.01f;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

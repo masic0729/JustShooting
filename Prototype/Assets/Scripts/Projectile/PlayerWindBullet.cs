@@ -39,6 +39,9 @@ public class PlayerWindBullet : Bullet
     {
         base.Init();
         targetBulletManager = gameObject.AddComponent<TargetBulletManagement>();
-
+        float rotateRandom = Random.Range(30f, 60f);
+        int randValue = Random.Range(0, 2);
+        rotateRandom = randValue == 1 ? rotateRandom *= -1 : rotateRandom;
+        this.gameObject.transform.Rotate(0, 0, rotateRandom);
     }
 }

@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    public GameObject enemyProjectiles; //나중에 딕셔너리 기반으로 가독성 있는 코드로 변형 예정
+
     //적군은 기본적으로 데미지가 1고정이다
     ObjectInteration characterIteraction;
     protected EnemyMovement movement;
+    
     protected GameObject thisGameObject;
+
     [SerializeField]
     bool isBoss = false; //보스 유무 확인. 기본값은 거짓
 
@@ -16,7 +20,6 @@ public class Enemy : Character
     protected override void Start()
     {
         base.Start();
-
     }
 
     // Update is called once per frame

@@ -11,9 +11,10 @@ public class Character : IObject
     public AttackStats attackStats; // 공격하는 객체가 소지하는 데이터 모음
     [SerializeField]
     private Transform[] shootTransforms;//캐릭터의 발사위치
+    protected AttackManagement attackManage;
 
     public Action OnCharacterDeath; //캐릭터가 죽을 때 발생하는 이벤트. 필요에 따라서 상위 클래스에 정의할 수 있음
-    public Dictionary<string, Transform> shootPositions; //발사위치를 최종 저장할 딕셔너리
+    public Dictionary<string, Transform> shootTransform; //발사위치를 최종 저장할 딕셔너리
     [SerializeField]
     protected float hp, maxHp; //현재 체력 및 최대 체력.
     protected float shield; //보호막, 보호막 존재 시 체력 대신 감소
@@ -51,13 +52,14 @@ public class Character : IObject
     protected override void Init()
     {
         attackStats = gameObject.AddComponent<AttackStats>();
+        attackManage = new AttackManagement();
         //지금은 단순히 체력 감소만 존재함
         OnCharacterDeath += DestroyCharacter;
-        shootPositions = new Dictionary<string, Transform>();
+        shootTransform = new Dictionary<string, Transform>();
         
         for(int i = 0; i < shootTransforms.Length; i++)
         {
-            shootPositions[shootTransforms[i].name] = shootTransforms[i]; //딕셔너리 명은 캐릭터의 발사위치를 담당하는 오브젝트이름을 사용한다.
+            shootTransform[shootTransforms[i].name] = shootTransforms[i]; //딕셔너리 명은 캐릭터의 발사위치를 담당하는 오브젝트이름을 사용한다.
         }
 
     }

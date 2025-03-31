@@ -3,19 +3,47 @@
   "WorkspaceRootPath": "D:\\PM\\JustShooting\\Prototype\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|d:\\pm\\justshooting\\prototype\\assets\\scripts\\character\\attackmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\attackmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\attackstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\attackstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\enemies\\enemy_b.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\enemy_b.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\playerpower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\playerpower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|d:\\pm\\justshooting\\prototype\\assets\\scripts\\character\\enemies\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|d:\\pm\\justshooting\\prototype\\assets\\scripts\\character\\enemies\\enemy_a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\enemy_a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|d:\\pm\\justshooting\\prototype\\assets\\scripts\\character\\enemies\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\enemies\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\enemies\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\projectile\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|d:\\pm\\justshooting\\prototype\\assets\\scripts\\character\\objectinteration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\objectinteration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\objectinteration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -23,20 +51,8 @@
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\testenemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\projectile\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\iobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\iobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\effect\\firebuffeffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,14 +65,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\projectile\\playercommonbullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile\\playercommonbullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\playerpower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\playerpower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\character\\player\\attackstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\player\\attackstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\projectile\\bullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -81,10 +89,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\effect\\playereffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effect\\playereffect.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\projectile\\playerwindbullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile\\playerwindbullet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|D:\\PM\\JustShooting\\Prototype\\assets\\scripts\\practice\\pra_test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -126,49 +130,115 @@
       "DocumentGroups": [
         {
           "DockedWidth": 199,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Enemy_B.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy_B.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Enemies\\Enemy_B.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy_B.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\Enemies\\Enemy_B.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwD8AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T11:32:03.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "EnemyMovement.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\EnemyMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Enemies\\EnemyMovement.cs",
               "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\EnemyMovement.cs",
               "RelativeToolTip": "Assets\\Scripts\\Character\\Enemies\\EnemyMovement.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-29T05:33:28.817Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Enemy.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Enemies\\Enemy.cs",
               "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy.cs",
               "RelativeToolTip": "Assets\\Scripts\\Character\\Enemies\\Enemy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-24T14:44:47.128Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 5,
+              "Title": "Player.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\Player.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\Player.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\Player\\Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T14:02:34.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Character.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Character.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Character.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Character.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\Character.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T03:06:36.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Projectile.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\Projectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\Projectile.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\Projectile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Projectile\\Projectile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T14:31:41.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AttackStats.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\AttackStats.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\AttackStats.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\AttackStats.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\Player\\AttackStats.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T02:52:44.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "PlayerPower.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerPower.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\PlayerPower.cs",
               "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerPower.cs",
               "RelativeToolTip": "Assets\\Scripts\\Character\\Player\\PlayerPower.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBIAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T13:30:57.211Z"
+              "WhenOpened": "2025-03-25T13:30:57.211Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Bullet.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\Bullet.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\Bullet.cs",
@@ -180,43 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Player.cs",
-              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\Player.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\Player.cs",
-              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\Player.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Character\\Player\\Player.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T14:02:34.198Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Character.cs",
-              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Character.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Character.cs",
-              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Character.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Character\\Character.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwCwAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T03:06:36.609Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Projectile.cs",
-              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\Projectile.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\Projectile.cs",
-              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\Projectile.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Projectile\\Projectile.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAgwD0AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T14:31:41.84Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "ObjectInteration.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\ObjectInteration.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\ObjectInteration.cs",
@@ -224,12 +258,11 @@
               "RelativeToolTip": "Assets\\Scripts\\Character\\ObjectInteration.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T14:40:37.884Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-24T14:40:37.884Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "PlayerCommonBullet.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\PlayerCommonBullet.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\PlayerCommonBullet.cs",
@@ -241,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "FireBuffEffect.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\FireBuffEffect.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Effect\\FireBuffEffect.cs",
@@ -253,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "PlayerFireSkill.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\PlayerFireSkill.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\PlayerFireSkill.cs",
@@ -265,7 +298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "WindBuffEffect.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\WindBuffEffect.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Effect\\WindBuffEffect.cs",
@@ -277,7 +310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "PlayerIcedBullet.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\PlayerIcedBullet.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\PlayerIcedBullet.cs",
@@ -289,19 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AttackStats.cs",
-              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\AttackStats.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\AttackStats.cs",
-              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\AttackStats.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Character\\Player\\AttackStats.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA4AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T02:52:44.615Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "IEffect.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\IEffect.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Effect\\IEffect.cs",
@@ -313,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "PlayerBulletData.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Player\\PlayerBulletData.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Player\\PlayerBulletData.cs",
@@ -325,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "PRA_Test.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Practice\\PRA_Test.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Practice\\PRA_Test.cs",
@@ -337,7 +358,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "PlayerIcedSkill.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\PlayerIcedSkill.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\PlayerIcedSkill.cs",
@@ -349,7 +370,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "PoolManager.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\PoolManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PoolManager.cs",
@@ -361,7 +382,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "PlayerWindSkill.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\PlayerWindSkill.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\PlayerWindSkill.cs",
@@ -373,7 +394,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "EnemyBullet.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\EnemyBullet.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\EnemyBullet.cs",
@@ -387,24 +408,24 @@
         },
         {
           "DockedWidth": 201,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "Enemy_A.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy_A.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Enemies\\Enemy_A.cs",
               "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy_A.cs",
               "RelativeToolTip": "Assets\\Scripts\\Character\\Enemies\\Enemy_A.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-29T04:55:17.255Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "TestEnemy.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\TestEnemy.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Enemies\\TestEnemy.cs",
@@ -416,7 +437,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "IObject.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\IObject.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\IObject.cs",
@@ -428,7 +449,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "TargetBulletManagement.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\TargetBulletManagement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\TargetBulletManagement.cs",
@@ -440,7 +461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "IcedBuffEffect.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\IcedBuffEffect.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Effect\\IcedBuffEffect.cs",
@@ -452,19 +473,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "PlayerWindBullet.cs",
-              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\PlayerWindBullet.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\PlayerWindBullet.cs",
-              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\PlayerWindBullet.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Projectile\\PlayerWindBullet.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "AttackManagement.cs",
+              "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\AttackManagement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\AttackManagement.cs",
+              "ToolTip": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\AttackManagement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\AttackManagement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T14:19:32.454Z"
+              "WhenOpened": "2025-03-31T11:34:29.28Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "ProjectileManagement.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\ProjectileManagement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\ProjectileManagement.cs",
@@ -476,7 +498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "PlayerEffect.cs",
               "DocumentMoniker": "D:\\PM\\JustShooting\\Prototype\\Assets\\Scripts\\Effect\\PlayerEffect.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Effect\\PlayerEffect.cs",

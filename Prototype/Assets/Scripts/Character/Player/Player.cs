@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-
-
 //임시로 때려박은거
 using UnityEngine.UI;
 
@@ -154,30 +150,33 @@ public class Player : Character
     }
 
     /// <summary>
-    /// 일반 총알공격
+    /// 번개를 제외한 일반 총알공격
     /// </summary>
     /// <param name="currentState">현재 플레이어가 발사하려는 일반 총알 정보</param>
     void ShootCommmonBullet(CurrentPlayerBullet currentState)
     {
-        if(currentState == CurrentPlayerBullet.Fire)
+        int shootBulletCount;
+        float rotateValue;
+
+        //불 속성만 유일하게 5개의 탄환을 동시에 발사하여 산탄한다. 이를 고려하여 예외처리
+        if (currentState == CurrentPlayerBullet.Fire)
         {
-            float rotateValue = -20f;
-            for(int i = 1; i <= 5; i++)
-            {
-                GameObject instanceCommonBullet = PoolManager.Instance.Pools["PlayerCommonBullet"].Get(); //인스턴스화
-                SetCommonBulletData(ref instanceCommonBullet); //발사체 리소스 데이터 로드
-                instanceCommonBullet.transform.position = shootPositions["CommonBullet"].position; //발사체 위치 조정
-                instanceCommonBullet.transform.rotation = shootPositions["CommonBullet"].rotation; //발사체 회전 값 조정
-                instanceCommonBullet.transform.Rotate(0, 0, rotateValue);
-                rotateValue += 10f;
-            }
+            shootBulletCount = 5;
+            rotateValue = -20f;
         }
         else
         {
+            shootBulletCount = 1;
+            rotateValue = 0;
+        }
+
+        //총알 최종 발사
+        for (int i = 1; i <= shootBulletCount; i++)
+        {
             GameObject instanceCommonBullet = PoolManager.Instance.Pools["PlayerCommonBullet"].Get(); //인스턴스화
             SetCommonBulletData(ref instanceCommonBullet); //발사체 리소스 데이터 로드
-            instanceCommonBullet.transform.position = shootPositions["CommonBullet"].position; //발사체 위치 조정
-            instanceCommonBullet.transform.rotation = shootPositions["CommonBullet"].rotation; //발사체 회전 값 조정
+            attackManage.ShootBulletRotate(ref instanceCommonBullet, shootTransform["CommonBullet"], rotateValue);
+            rotateValue += 10f;
         }
     }
 
@@ -303,9 +302,10 @@ public class Player : Character
         
         for (int i = 0; i < shootCount; i++)
         {
-            GameObject instance = Instantiate(windBullet, shootPositions["Skill"].position,
-                shootPositions["Skill"].rotation);
+            GameObject instance = Instantiate(windBullet, shootTransform["Skill"].position,
+                shootTransform["Skill"].rotation);
             
+            /*
             if(instance.GetComponent<PlayerWindBullet>()) //바람 속성이라면, 첫 생성 시 연출을 위한 회전 값을 부여
             {
                 float rotateRandom = Random.Range(30f, 60f);
@@ -313,6 +313,8 @@ public class Player : Character
                 rotateRandom = randValue == 1 ? rotateRandom *= -1 : rotateRandom;
                 instance.transform.Rotate(0, 0, rotateRandom);
             }
+            */
+
             //일단 플레이어가 발사하는 주체이므로, 태그 값은 플레이어로 고정
             if (instance != null)
             {
@@ -334,8 +336,8 @@ public class Player : Character
         
         for (int i = 0; i < 15; i++)
         {
-            GameObject instance = Instantiate(icedBullet, shootPositions["Skill"].position,
-                shootPositions["Skill"].rotation);
+            GameObject instance = Instantiate(icedBullet, shootTransform["Skill"].position,
+                shootTransform["Skill"].rotation);
 
             //일단 플레이어가 발사하는 주체이므로, 태그 값은 플레이어로 고정
             if (instance != null)
