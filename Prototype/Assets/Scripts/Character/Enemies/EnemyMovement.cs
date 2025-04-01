@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class EnemyMovement
 {
-    public void MoveToPointNormal(ref GameObject enemy, ref Vector2 targetPos, ref float ratio)
+    public void MoveToPointNormal(ref GameObject enemy, Vector2 targetPos, float speed)
     {
-        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, targetPos, ratio * Time.deltaTime);
+        enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, targetPos, speed);
     }
 
     
 
     
 
-    public void MoveToPointLerp(ref GameObject enemy, ref Vector2 targetPos, ref float ratio)
+    public void MoveToPointLerp(ref GameObject enemy, Vector2 targetPos, float ratio)
     {
         enemy.transform.position = Vector2.Lerp(enemy.transform.position, targetPos, ratio);
     }

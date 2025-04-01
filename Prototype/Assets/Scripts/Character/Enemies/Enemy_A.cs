@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Enemy_A : Enemy
 {
@@ -25,17 +22,17 @@ public class Enemy_A : Enemy
         base.Update();
         ObjectMove(Vector2.left);
         currentTargetPos = new Vector2(transform.position.x, targetPosY);
+
         if (Vector2.Distance(transform.position, currentTargetPos) > 0.1f && isArriveTargetPos == false)
         {
             //transform.position = Vector2.MoveTowards(transform.position, currentTargetPos, Time.deltaTime * GetMoveSpeed() * 5f);
-            movement.MoveToPointLerp(ref thisGameObject, ref currentTargetPos, ref targetMoveSpeed);
+            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
         }
         else if(isArriveTargetPos == false)
         {
             isArriveTargetPos = true;
             Invoke("SetTransTargetTransform", 0.2f);
         }
-
     }
 
     void SetTransTargetTransform()

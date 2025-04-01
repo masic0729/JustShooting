@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -495,7 +495,7 @@ GameObject:
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1506,6 +1506,10 @@ MonoBehaviour:
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
   enemyProjectiles: {fileID: 0}
+  attackData:
+    sprite: {fileID: 0}
+    animCtrl: {fileID: 0}
+    moveSpeed: 0
   isBoss: 0
   targetPosY: 4.5
 --- !u!1 &1476774123
@@ -1704,6 +1708,10 @@ MonoBehaviour:
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
   enemyProjectiles: {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
+  attackData:
+    sprite: {fileID: 0}
+    animCtrl: {fileID: 9100000, guid: 152a5b2a92ab8b148ab153fdff637c3b, type: 2}
+    moveSpeed: 10
   isBoss: 0
   maxY_Range: 4
   arrivePositionX: 1
@@ -2140,6 +2148,10 @@ MonoBehaviour:
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
   enemyProjectiles: {fileID: 0}
+  attackData:
+    sprite: {fileID: 0}
+    animCtrl: {fileID: 0}
+    moveSpeed: 0
   isBoss: 1
 --- !u!95 &1956503309
 Animator:

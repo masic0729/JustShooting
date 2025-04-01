@@ -8,7 +8,18 @@ using UnityEngine.UI;
 
 public class Character : IObject
 {
+    //생각
+    /// <summary>
+    ///아니 그래서 델리는 언제 쓸까?
+    ///객체 지향은 어디까지 하는 것일까?
+    /// 코딩의 품질? 어떻게 짜내려는 생각을 기르는게 중요하다.
+    /// 요즘 보면 강의하는거나 보면 형식적이고 그냥 때려박거나 일관성이 없는게 허다해
+    /// 이걸 벗어나야 한다고 생각함. -> 기본기고, 가독성 포스팅에서 다루는건 결국 이 개념을 알아야 검색을 해.
+    /// 코딩 잘하는법 -> 검색
+    /// 코드의 가독성 향상 *메인
+    /// </summary>
     public AttackStats attackStats; // 공격하는 객체가 소지하는 데이터 모음
+    protected ProjectileManagement projectileManage;
     [SerializeField]
     private Transform[] shootTransforms;//캐릭터의 발사위치
     protected AttackManagement attackManage;
@@ -53,6 +64,7 @@ public class Character : IObject
     {
         attackStats = gameObject.AddComponent<AttackStats>();
         attackManage = new AttackManagement();
+        projectileManage = new ProjectileManagement();
         //지금은 단순히 체력 감소만 존재함
         OnCharacterDeath += DestroyCharacter;
         shootTransform = new Dictionary<string, Transform>();
