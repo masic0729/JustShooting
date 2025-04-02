@@ -59,7 +59,7 @@ public class Enemy_A_Test : Enemy
         targetPosY *= -1;
 
         // X 목표 위치도 반전
-        targetPosX *= -1;
+        targetPosX -= 1;
 
         isArriveTargetPos = false;
     }
@@ -68,6 +68,8 @@ public class Enemy_A_Test : Enemy
     {
         base.Init();
         targetMoveSpeed = GetMoveSpeed() / 2f * Time.deltaTime;
+        targetPosX = transform.position.x;
+        targetPosY = 4f;
         SetTransTargetTransform();
     }
 

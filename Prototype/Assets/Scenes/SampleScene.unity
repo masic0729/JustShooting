@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -558,7 +558,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321243215}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1617,7 +1617,6 @@ GameObject:
   - component: {fileID: 1453697909}
   - component: {fileID: 1453697910}
   - component: {fileID: 1453697912}
-  - component: {fileID: 1453697911}
   m_Layer: 0
   m_Name: Enemy_A
   m_TagString: Enemy
@@ -1748,7 +1747,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453697903}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1807,37 +1806,6 @@ MonoBehaviour:
   enemyState: 0
   targetPosY: 4.5
   targetPosX: 0
---- !u!114 &1453697911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453697903}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a395bfcebed00438b18a693cb7a01b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  objectMoveSpeedMultify: 0
-  attackStats: {fileID: 0}
-  shootTransforms: []
-  hp: 10
-  maxHp: 10
-  attackMultiplier: 1
-  attackDelay: 0
-  projectileMoveSpeedMultify: 1
-  characterGetDamageMultify: 1
-  enemyProjectiles: {fileID: 0}
-  attackData:
-    sprite: {fileID: 0}
-    animCtrl: {fileID: 0}
-    moveSpeed: 0
-  isBoss: 0
-  enemyState: 0
-  targetPosY: 4.5
-  targetPosX: 0
 --- !u!114 &1453697912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1850,8 +1818,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6425125e5588d0a4281c27b4bf04d76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  objectMoveSpeedMultify: 0
+  moveSpeed: 2
+  objectMoveSpeedMultify: 1
   attackStats: {fileID: 0}
   shootTransforms: []
   hp: 0
@@ -1913,7 +1881,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1476774123}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

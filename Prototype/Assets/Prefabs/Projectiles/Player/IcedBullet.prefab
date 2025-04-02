@@ -136,6 +136,4 @@ MonoBehaviour:
   moveSpeed: 30
   objectMoveSpeedMultify: 0
   damage: 0.64000005
-  lifeTimer: 0
-  lifeTime: 0
   isPoolObject: 0
