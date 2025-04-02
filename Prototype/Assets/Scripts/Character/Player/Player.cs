@@ -187,13 +187,11 @@ public class Player : Character
     /// <param name="commonBullet">일반 총알 오브젝트를 가리킨다</param>
     void SetCommonBulletData(ref GameObject commonBullet)
     {
-        commonBullet.tag = "Player";
         commonBullet.GetComponent<SpriteRenderer>().sprite = attackStats.sprite;
-        commonBullet.GetComponent<Animator>().runtimeAnimatorController = attackStats.animCtrl;
-        commonBullet.GetComponent<Projectile>().SetDamage(this.attackStats.damage * attackStats.damageMultiplier);
-        commonBullet.GetComponent<Projectile>().SetMoveSpeed(this.attackStats.moveSpeed);
         commonBullet.GetComponent<PlayerCommonBullet>().bulletName = currentBullet.ToString();
-        commonBullet.GetComponent<Projectile>().SetLifeTime(commonBullets[currentBullet.ToString()].lifeTime);
+        projectileManage.SetProjectileData(ref commonBullet, attackStats.animCtrl,
+            attackStats.moveSpeed, attackStats.damage * attackStats.damageMultiplier,
+            commonBullets[currentBullet.ToString()].lifeTime, "Player");
     }
 
     /// <summary>

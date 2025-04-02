@@ -7,6 +7,8 @@ public class Enemy : Character
 {
     public GameObject enemyProjectiles; //나중에 딕셔너리 기반으로 가독성 있는 코드로 변형 예정
 
+    [Header("Enemy의 공격 데이터")]
+    public EnemyAttackData attackData;
     //적군은 기본적으로 데미지가 1고정이다
     ObjectInteration characterIteraction;
     protected EnemyMovement movement;
