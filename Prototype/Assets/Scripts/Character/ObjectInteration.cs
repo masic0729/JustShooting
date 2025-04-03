@@ -51,8 +51,9 @@ public class ObjectInteration
             }
             if(character.transform.name == "Player")
             {
-                character.SetIsInvincibility(true);
-                character.Invoke("TransIsInvincibilityFalse", invincibilityTime);
+                //character.SetIsInvincibility(true);
+
+                //character.Invoke("TransIsInvincibilityFalse", invincibilityTime);
             }
         }
     }

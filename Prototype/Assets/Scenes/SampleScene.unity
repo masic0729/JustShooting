@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 321243220}
   - component: {fileID: 321243219}
   - component: {fileID: 321243218}
-  - component: {fileID: 321243217}
+  - component: {fileID: 321243222}
   m_Layer: 0
   m_Name: Enemy_C
   m_TagString: Enemy
@@ -519,38 +519,6 @@ Transform:
   - {fileID: 1400665406}
   m_Father: {fileID: 1653120864}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &321243217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321243215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e7247a8a15621f489477c90daf15d3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  objectMoveSpeedMultify: 0
-  attackStats: {fileID: 0}
-  shootTransforms:
-  - {fileID: 1747630384}
-  - {fileID: 1400665406}
-  hp: 0
-  maxHp: 0
-  attackMultiplier: 1
-  attackDelay: 0
-  projectileMoveSpeedMultify: 1
-  characterGetDamageMultify: 1
-  enemyProjectiles: {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
-  attackData:
-    sprite: {fileID: 0}
-    animCtrl: {fileID: 9100000, guid: 152a5b2a92ab8b148ab153fdff637c3b, type: 2}
-    moveSpeed: 10
-  isBoss: 0
-  maxY_Range: 4
-  arrivePositionX: 1
 --- !u!58 &321243218
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -580,7 +548,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -686,6 +654,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &321243222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321243215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2a732661d0a9f40aab7d61f21e5174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  objectMoveSpeedMultify: 0
+  attackStats: {fileID: 0}
+  shootTransforms: []
+  hp: 0
+  maxHp: 0
+  attackMultiplier: 1
+  attackDelay: 0
+  projectileMoveSpeedMultify: 1
+  characterGetDamageMultify: 1
+  enemyProjectiles: {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
+  attackData:
+    sprite: {fileID: 0}
+    animCtrl: {fileID: 0}
+    moveSpeed: 0
+  isBoss: 0
 --- !u!1 &430628702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,13 +1591,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400665405}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 321243216}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &1453697903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,7 +1765,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1903,7 +1899,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2021,13 +2017,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7247a8a15621f489477c90daf15d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 2
   objectMoveSpeedMultify: 0
   attackStats: {fileID: 0}
   shootTransforms:
   - {fileID: 530197590}
-  hp: 0
-  maxHp: 0
+  hp: 10
+  maxHp: 10
   attackMultiplier: 1
   attackDelay: 0
   projectileMoveSpeedMultify: 1
@@ -2113,13 +2109,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747630383}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 321243216}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &1884231370
 GameObject:
   m_ObjectHideFlags: 0

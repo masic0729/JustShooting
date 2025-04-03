@@ -34,8 +34,7 @@ public class Enemy_C : Enemy
         else if (isArrivePoint == false)
         {
             isArrivePoint = true;
-            SetTransTargetTransform();
-
+            //SetTransTargetTransform();
         }
     }
 
@@ -48,28 +47,31 @@ public class Enemy_C : Enemy
     protected override void Init()
     {
         base.Init();
+        StartCoroutine(AttackEnemyBullet());
     }
 
     IEnumerator AttackEnemyBullet()
     {
         const float reAttackDelay = 0.2f; //연사 발사의 발사 주기
         const int shootCount = 10;
-
+        const int shootVectors = 2;
     Repeat:
 
         yield return new WaitForSeconds(attackDelay);
 
-        for (int i = 1; i <= shootCount; i++)
+        for(int i = 0; i < shootCount; i++)
         {
-            GameObject instance = Instantiate(enemyProjectiles);
+            for (int j = 0; j < shootVectors; j++)
+            {
+                GameObject instance = Instantiate(enemyProjectiles);
 
-            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 10f, 1f, 5f, "Enemy");
+                projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 10f, 1f, 5f, "Enemy");
 
-            attackManage.ShootBulletRotate(ref instance, shootTransform["CommonBullet"], 360 / shootCount * i);
-            
+                attackManage.ShootBulletRotate(ref instance, shootTransform["CommonBullet" + j.ToString()], 0);
+
+            }
             yield return new WaitForSeconds(reAttackDelay);
         }
-
         goto Repeat;
     }
 

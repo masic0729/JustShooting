@@ -75,6 +75,8 @@ public class Enemy_A_Test : Enemy
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(characterIteraction);
         base.OnTriggerEnter2D(collision);
+
     }
 }

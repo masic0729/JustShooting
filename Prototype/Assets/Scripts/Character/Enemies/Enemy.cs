@@ -10,7 +10,7 @@ public class Enemy : Character
     [Header("Enemy의 공격 데이터")]
     public EnemyAttackData attackData;
     //적군은 기본적으로 데미지가 1고정이다
-    ObjectInteration characterIteraction;
+    protected ObjectInteration characterIteraction;
     protected EnemyMovement movement;
     
     protected GameObject thisGameObject;
@@ -37,6 +37,9 @@ public class Enemy : Character
         characterIteraction = new ObjectInteration();
         movement = new EnemyMovement();
         thisGameObject = this.gameObject;
+        SetHp(10);
+        SetMaxHp(GetHp());
+        attackDelay = 3f;
     }
 
     void CheckOverGameZone()
@@ -53,7 +56,7 @@ public class Enemy : Character
         {
             //플레이어 데이터를 불러와 피해를준다
             Character instancePlayer = collision.gameObject.GetComponent<Character>();
-            characterIteraction.SendDamage(ref instancePlayer, 1f);
+            //characterIteraction.SendDamage(ref instancePlayer, 1f);
         }
     }
 
