@@ -29,7 +29,10 @@ public class Character : IObject
     [SerializeField]
     protected float hp, maxHp; //현재 체력 및 최대 체력.
     protected float shield; //보호막, 보호막 존재 시 체력 대신 감소
-    
+
+    //적군은 기본적으로 데미지가 1고정이다
+    protected ObjectInteration characterInteraction;
+
     [Header("캐릭터의 전투 시스템 공식 배율")]
     [SerializeField]
     protected float attackMultiplier = 1; // 피해를 줄 수 있는 공격력 및 피해 계수. 값이 오를 수록 피해량이 커진다.
@@ -39,8 +42,9 @@ public class Character : IObject
     protected float projectileMoveSpeedMultify = 1; //발사체 속도 계수. 값이 클 수록 발사체의 속도가 빨라진다.
     [SerializeField]
     protected float characterGetDamageMultify = 1; //캐릭터가 피해를 받는 배율. 높을 수록 받는 피해가 상승한다.
+    protected float invincibilityTime = 0f;
 
-    private bool isInvincibility; //무적 여부
+    protected bool isInvincibility; //무적 여부
 
 
     // Start is called before the first frame update
@@ -65,6 +69,8 @@ public class Character : IObject
         attackStats = gameObject.AddComponent<AttackStats>();
         attackManage = new AttackManagement();
         projectileManage = new ProjectileManagement();
+        characterInteraction = new ObjectInteration();
+
         //지금은 단순히 체력 감소만 존재함
         OnCharacterDeath += DestroyCharacter;
         shootTransform = new Dictionary<string, Transform>();
@@ -76,7 +82,12 @@ public class Character : IObject
 
     }
 
-    
+    public void OnInvincibility()
+    {
+        SetIsInvincibility(true);
+        Debug.Log("내가 죄냐");
+        Invoke("TransIsInvincibilityFalse", invincibilityTime);
+    }
 
     /// <summary>
     /// 현재는 캐릭터 객체들은 삭제처리하지만, 상황에 따라 일부 캐릭터는 풀링과 비슷한 효과로 처리할 수 있음
@@ -138,8 +149,14 @@ public class Character : IObject
         return isInvincibility;
     }
 
+    public float GetInvincibilityTime()
+    {
+        return invincibilityTime;
+    }
+
     public void TransIsInvincibilityFalse()
     {
+        Debug.Log("난 무죄");
         isInvincibility = false;
     }
 

@@ -9,8 +9,7 @@ public class Enemy : Character
 
     [Header("Enemy의 공격 데이터")]
     public EnemyAttackData attackData;
-    //적군은 기본적으로 데미지가 1고정이다
-    ObjectInteration characterIteraction;
+
     protected EnemyMovement movement;
     
     protected GameObject thisGameObject;
@@ -34,7 +33,6 @@ public class Enemy : Character
     protected override void Init()
     {
         base.Init();
-        characterIteraction = new ObjectInteration();
         movement = new EnemyMovement();
         thisGameObject = this.gameObject;
     }
@@ -47,13 +45,18 @@ public class Enemy : Character
         }
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    virtual protected void OnTriggerEnter2D(Collider2D collision)
     {
+        const float damageValue = 1f;
         if(collision.transform.name == "Player")
         {
             //플레이어 데이터를 불러와 피해를준다
             Character instancePlayer = collision.gameObject.GetComponent<Character>();
-            characterIteraction.SendDamage(ref instancePlayer, 1f);
+            if(instancePlayer != null && characterInteraction != null)
+            {
+                characterInteraction.SendDamage(ref instancePlayer, damageValue);
+                Debug.Log(instancePlayer.GetHp());
+            }
         }
     }
 

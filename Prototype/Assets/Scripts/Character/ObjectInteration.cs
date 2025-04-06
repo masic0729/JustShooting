@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class ObjectInteration
 {
 
-    const float invincibilityTime = 2.0f;
 
     /// <summary>
     /// 충돌한 상대 편의 데이터를 불러와 체력을 감소하는 행위.
@@ -17,8 +12,10 @@ public class ObjectInteration
     public void SendDamage(ref Character character, float damage)
     {
         //해당 캐릭터가 무적이라면, 데미지 자체 효과는 발생하지 않는다
+
         if(character.GetIsInvincibility() == false)
         {
+            character.OnInvincibility();
             if (character.GetShield() > 0)
             {
                 //보호막이 있으니까 보호막 값 감소
@@ -49,11 +46,7 @@ public class ObjectInteration
                 }
 
             }
-            if(character.transform.name == "Player")
-            {
-                character.SetIsInvincibility(true);
-                character.Invoke("TransIsInvincibilityFalse", invincibilityTime);
-            }
+
         }
     }
 }

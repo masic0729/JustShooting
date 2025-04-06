@@ -537,8 +537,8 @@ MonoBehaviour:
   shootTransforms:
   - {fileID: 1747630384}
   - {fileID: 1400665406}
-  hp: 0
-  maxHp: 0
+  hp: 10
+  maxHp: 10
   attackMultiplier: 1
   attackDelay: 0
   projectileMoveSpeedMultify: 1
@@ -580,7 +580,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1769,7 +1769,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1903,7 +1903,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2026,8 +2026,8 @@ MonoBehaviour:
   attackStats: {fileID: 0}
   shootTransforms:
   - {fileID: 530197590}
-  hp: 0
-  maxHp: 0
+  hp: 10
+  maxHp: 10
   attackMultiplier: 1
   attackDelay: 0
   projectileMoveSpeedMultify: 1

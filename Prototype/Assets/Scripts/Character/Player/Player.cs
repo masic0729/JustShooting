@@ -29,6 +29,7 @@ public class Player : Character
     float attackTime; //플레이어의 일반 총알을 발사하려는 시간
     const float powerRestartTime = 5f;
     public int windBulletHitCount;
+    
 
 
     // Start is called before the first frame update
@@ -59,6 +60,7 @@ public class Player : Character
         attackDelay = 0.1f;
         SetMoveSpeed(10f);
         powerStats = gameObject.GetComponent<PlayerPower>();
+        invincibilityTime = 2f;
 
         //딕셔너리화한 이후 현재 무기상태 및 스킬을 초기화한다
         commonBullets = new Dictionary<string, PlayerBulletData>();
