@@ -20,7 +20,7 @@ public class Character : IObject
     /// </summary>
     public AttackStats attackStats; // 공격하는 객체가 소지하는 데이터 모음
     protected ProjectileManagement projectileManage;
-    [SerializeField]
+    //[SerializeField]
     private Transform[] shootTransforms;//캐릭터의 발사위치
     protected AttackManagement attackManage;
 
@@ -74,18 +74,28 @@ public class Character : IObject
         //지금은 단순히 체력 감소만 존재함
         OnCharacterDeath += DestroyCharacter;
         shootTransform = new Dictionary<string, Transform>();
-        
-        for(int i = 0; i < shootTransforms.Length; i++)
+
+        // shootTransforms 배열을 자식 오브젝트로 초기화
+        shootTransforms = GetComponentsInChildren<Transform>(); // 부모 오브젝트의 모든 자식 Transform을 가져옴
+
+
+        foreach (Transform shootTransformItem in shootTransforms)
         {
-            shootTransform[shootTransforms[i].name] = shootTransforms[i]; //딕셔너리 명은 캐릭터의 발사위치를 담당하는 오브젝트이름을 사용한다.
+            if (shootTransformItem != this.transform) // 부모 오브젝트는 제외
+            {
+                shootTransform[shootTransformItem.gameObject.name] = shootTransformItem;
+            }
         }
+        /*for (int i = 0; i < shootTransforms.Length; i++)
+        {
+            shootTransform[shootTransforms[i].gameObject.name] = shootTransforms[i]; //딕셔너리 명은 캐릭터의 발사위치를 담당하는 오브젝트이름을 사용한다.
+        }*/
 
     }
 
     public void OnInvincibility()
     {
         SetIsInvincibility(true);
-        Debug.Log("내가 죄냐");
         Invoke("TransIsInvincibilityFalse", invincibilityTime);
     }
 
@@ -156,7 +166,6 @@ public class Character : IObject
 
     public void TransIsInvincibilityFalse()
     {
-        Debug.Log("난 무죄");
         isInvincibility = false;
     }
 

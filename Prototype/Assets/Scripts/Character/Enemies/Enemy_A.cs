@@ -4,14 +4,14 @@ using UnityEngine.UIElements;
 public class Enemy_A : Enemy
 {
     public enum EnemyState
-    { 
+    {
         Spawn,
         Move,
         Action,
         Attack
     }
     public EnemyState enemyState;
-    
+
     [SerializeField]
     float targetPosY, targetPosX;
     float targetMoveSpeed;
@@ -30,16 +30,23 @@ public class Enemy_A : Enemy
     protected override void Update()
     {
         base.Update();
-        //ObjectMove(Vector2.left);
-        currentTargetPosY = new Vector2(transform.position.x, targetPosY);
 
-        if (Vector2.Distance(transform.position, currentTargetPosY) > 0.1f && isArriveTargetPos == false)
+        // 목표 위치 설정
+        currentTargetPosY = new Vector2(transform.position.x, targetPosY);
+        currentTargetPosX = new Vector2(targetPosX, transform.position.y);
+
+        // X와 Y 모두 목표 위치에 가까워질 때까지 이동
+        if (Vector2.Distance(transform.position, currentTargetPosY) > 0.1f || Vector2.Distance(transform.position, currentTargetPosX) > 0.1f)
         {
-            //transform.position = Vector2.MoveTowards(transform.position, currentTargetPos, Time.deltaTime * GetMoveSpeed() * 5f);
-            movement.MoveToPointLerp(ref thisGameObject, currentTargetPosY, targetMoveSpeed);
-            //movement.MoveToPointLerp(ref thisGameObject, currentTargetPosX, targetMoveSpeed);
+            // X 방향으로 이동
+            if (Vector2.Distance(transform.position, currentTargetPosX) > 0.1f)
+                movement.MoveToPointLerp(ref thisGameObject, currentTargetPosX, targetMoveSpeed);
+
+            // Y 방향으로 이동
+            if (Vector2.Distance(transform.position, currentTargetPosY) > 0.1f)
+                movement.MoveToPointLerp(ref thisGameObject, currentTargetPosY, targetMoveSpeed);
         }
-        else if(isArriveTargetPos == false)
+        else if (isArriveTargetPos == false)
         {
             isArriveTargetPos = true;
             Invoke("SetTransTargetTransform", 0.2f);
@@ -48,9 +55,12 @@ public class Enemy_A : Enemy
 
     void SetTransTargetTransform()
     {
+        // Y 목표 위치 반전
         targetPosY *= -1;
-        //targetPosX = transform.position.x - GetMoveSpeed() * 1.5f;
-        //currentTargetPosX = new Vector2(targetPosX, transform.position.y);
+
+        // X 목표 위치도 반전
+        targetPosX -= 1;
+
         isArriveTargetPos = false;
     }
 
@@ -58,6 +68,8 @@ public class Enemy_A : Enemy
     {
         base.Init();
         targetMoveSpeed = GetMoveSpeed() / 2f * Time.deltaTime;
+        targetPosX = transform.position.x;
+        targetPosY = 4f;
         SetTransTargetTransform();
     }
 

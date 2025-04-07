@@ -6,7 +6,6 @@ public class TargetBulletManagement : MonoBehaviour
 {
     GameObject targetObject;
     Vector3[] targetObjectsVec;
-    //Vector3 tunningDir;
     float rotationSpeed = 4f; //미사일이 회전한도 상승 값. 미사일일 특정 오브젝트를 추격하는 시간이 길어질 수록 값이 오르게 됨
 
 

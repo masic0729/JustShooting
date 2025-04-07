@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Enemy_B : Enemy
 {
@@ -90,8 +89,7 @@ public class Enemy_B : Enemy
             GameObject instance = Instantiate(enemyProjectiles);
             
             projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 10f, 1f, 5f, "Enemy");
-            
-            //attackManage.ShootBulletRotate(ref instance, shootTransform["CommonBullet"], 360 / shootCount * i);
+            attackManage.ShootBulletRotate(ref instance, shootTransform["CommonBullet"], 360 / shootCount * i);
         }
         goto Repeat;
     }
