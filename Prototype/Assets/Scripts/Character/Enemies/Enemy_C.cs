@@ -1,13 +1,20 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Enemy_C : Enemy
 {
+    GameObject[] test;
     float targetPosY;
     float targetMoveSpeed;
 
 
     Vector2 currentTargetPos;
+
+    //new
+    GameObject[] shootGameObject;
+    Vector2[] currentShootPos;
 
     bool isArrivePoint = false;
 
@@ -25,20 +32,39 @@ public class Enemy_C : Enemy
     {
         base.Update();
 
-        if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > 0.1f && isArrivePoint == false)
+        //move
+        if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > 0.1f)
         {
             //ObjectMove(Vector2.left);
-            movement.MoveToPointNormal(ref thisGameObject, currentTargetPos, targetMoveSpeed);
+            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
 
         }
         else if (isArrivePoint == false)
         {
             isArrivePoint = true;
-            SetTransTargetTransform();
+
+            currentShootPos[0] = shootTransform["CommonBullet0"].transform.position;
+            currentShootPos[1] = shootTransform["CommonBullet1"].transform.position;
+            StartCoroutine(AttackEnemyBullet());
         }
         
+
+        if (isArrivePoint == true)
+        {
+            //attackVecTransfer
+            if (Vector2.Distance(shootTransform["CommonBullet0"].transform.position, currentShootPos[0]) > 0.05f)
+            {
+                movement.MoveToPointLerp(ref shootGameObject[0], currentShootPos[0], targetMoveSpeed);
+                movement.MoveToPointLerp(ref shootGameObject[1], currentShootPos[1], targetMoveSpeed);
+            }
+            else
+            {
+                TransShootPosition();
+            }
+        }
     }
 
+    //todo ¼öÁ¤ ¿ä¸Á
     void SetTransTargetTransform()
     {
         isArriveTargetPos = false;
@@ -47,9 +73,30 @@ public class Enemy_C : Enemy
     protected override void Init()
     {
         base.Init();
-        targetMoveSpeed = GetMoveSpeed() / 2f * Time.deltaTime;
         currentTargetPos = new Vector2(1f, this.transform.position.y);
-        StartCoroutine(AttackEnemyBullet());
+        currentShootPos = new Vector2[2];
+        shootGameObject = new GameObject[2];
+        
+        
+        for(int i = 0; i < currentShootPos.Length; i++)
+        {
+            shootGameObject[i] = shootTransform["CommonBullet" + i.ToString()].gameObject;
+        }
+        targetMoveSpeed = GetMoveSpeed() / 2f * Time.deltaTime;
+
+    }
+
+    void TransShootPosition()
+    {
+        
+        /*for (int i = 0; i < 2; i++)
+        {
+            currentShootPos[i] = shootGameObject[i].transform.position;
+            currentShootPos[i] = new Vector2(currentShootPos[i].x, currentShootPos[i].y * -1);
+        }
+*/
+
+        (currentShootPos[0], currentShootPos[1]) = (currentShootPos[1], currentShootPos[0]);
     }
 
     IEnumerator AttackEnemyBullet()

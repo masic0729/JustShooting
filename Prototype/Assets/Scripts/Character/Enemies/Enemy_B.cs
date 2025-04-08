@@ -7,16 +7,13 @@ public class Enemy_B : Enemy
     [SerializeField]
     float maxY_Range;
     [SerializeField]
-    float arrivePositionX;
     float targetPosY;
     float targetMoveSpeed;
     
 
     Vector2 currentTargetPos;
-    Vector2 randTargetPosY;
 
     bool isArrivePoint = false;
-    bool isArriveTargetPos = false;
 
 
     // Start is called before the first frame update
@@ -30,34 +27,19 @@ public class Enemy_B : Enemy
     protected override void Update()
     {
         base.Update();
-        //아직 정지하려는 위치에 도달하지 않았으므로 앞으로 이동
 
+        //아직 정지하려는 위치에 도달하지 않았으므로 앞으로 이동
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > 0.1f && isArrivePoint == false)
         {
             //ObjectMove(Vector2.left);
-            movement.MoveToPointNormal(ref thisGameObject, currentTargetPos, targetMoveSpeed);
-
+            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
         }
-        else if(isArrivePoint == false)
+        else if (isArrivePoint == false)
         {
             isArrivePoint = true;
-            SetTransTargetTransform();
-
+            Invoke("SetTransTargetTransform", 1f);
         }
 
-        if (isArrivePoint == true)
-        {
-
-            if (Vector2.Distance(transform.position, randTargetPosY) > 0.1f && isArriveTargetPos == false)
-            {
-                movement.MoveToPointLerp(ref thisGameObject, randTargetPosY, targetMoveSpeed);
-            }
-            else if (isArriveTargetPos == false)
-            {
-                isArriveTargetPos = true;
-                Invoke("SetTransTargetTransform", 1f);
-            }
-        }
     }
 
     protected override void Init()
@@ -73,8 +55,8 @@ public class Enemy_B : Enemy
     void SetTransTargetTransform()
     {
         targetPosY = Random.Range(-maxY_Range, maxY_Range);
-        randTargetPosY = new Vector2(transform.position.x, targetPosY);
-        isArriveTargetPos = false;
+        currentTargetPos = new Vector2(transform.position.x, targetPosY);
+        isArrivePoint = false;
     }
 
     IEnumerator AttackEnemyBullet()

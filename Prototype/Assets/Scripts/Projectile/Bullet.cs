@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Bullet : Projectile
 {
+    protected TargetBulletManagement targetBulletManager;
+    public float rotateValue = 0.6f;
+    protected float rotateDefaultValue;
+    protected float rotateAddValue = 0.4f;
+
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -25,10 +30,17 @@ public class Bullet : Projectile
     {
         base.Init();
         //Debug.Log("Bullet");
+        targetBulletManager = new TargetBulletManagement();
+        rotateDefaultValue = rotateValue;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+    }
+
+    public void InitRotateValue()
+    {
+        rotateValue = rotateDefaultValue;
     }
 }

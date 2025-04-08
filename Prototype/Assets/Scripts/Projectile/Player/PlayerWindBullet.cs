@@ -6,8 +6,7 @@ using UnityEngine;
 public class PlayerWindBullet : Bullet
 {
     GameObject target;
-    TargetBulletManagement targetBulletManager;
-    public float rotateAddValue = 0.01f;
+
 
     protected override void Start()
     {
@@ -18,28 +17,41 @@ public class PlayerWindBullet : Bullet
     protected override void Update()
     {
         base.Update();
-        if(target != null)
+
+        /*if (target != null)
         {
-            GameObject instanceThisGameobject = this.gameObject;
-            targetBulletManager.TunningObject(ref instanceThisGameobject, ref target, rotateAddValue);
+            targetBulletManager.TunningObject(ref thisGameObject, ref target, ref rotateValue);
+            rotateValue += 0.4f;
         }
         else
         {
+            rotateValue = 0.3f;
+            Debug.Log("함정이지롱");
             //보스 탐지
-            target = targetBulletManager.TargetSearching("Enemy", true);
+            //target = targetBulletManager.TargetSearching("Enemy", true);
+            target = targetBulletManager.TargetSearching(ref thisGameObject, "Enemy", true);
         }
+
         if (target == null)
         {
             //보스가 없으니 일반 몬스터 탐지
-            target = targetBulletManager.TargetSearching("Enemy");
+            //target = targetBulletManager.TargetSearching("Enemy");
+
+        }*/
+        if (target == null)
+        {
+            target = targetBulletManager.TargetSearching(ref thisGameObject, "Enemy", true);
         }
+        targetBulletManager.TunningObject(ref thisGameObject, ref target, ref rotateValue, rotateAddValue);
+
+
     }
 
     protected override void Init()
     {
         base.Init();
-        targetBulletManager = gameObject.AddComponent<TargetBulletManagement>();
-        float rotateRandom = Random.Range(30f, 60f);
+
+        float rotateRandom = Random.Range(50f, 60f);
         int randValue = Random.Range(0, 2);
         rotateRandom = randValue == 1 ? rotateRandom *= -1 : rotateRandom;
         this.gameObject.transform.Rotate(0, 0, rotateRandom);
