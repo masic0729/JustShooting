@@ -17,7 +17,6 @@ public class Enemy : Character
     [SerializeField]
     bool isBoss = false; //보스 유무 확인. 기본값은 거짓
 
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();

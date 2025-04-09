@@ -60,18 +60,21 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.21f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Character\Enemies\Boss\Boss.cs" />
     <Compile Include="Assets\Scripts\Projectile\Player\PlayerIcedBullet.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\Enemy_B.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\Enemy_C.cs" />
     <Compile Include="Assets\Scripts\Projectile\Player\PlayerIcedSkill.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Effect\IcedBuffEffect.cs" />
+    <Compile Include="Assets\Scripts\Managers\PoolManager.cs" />
     <Compile Include="Assets\Scripts\Character\Player\AttackStats.cs" />
     <Compile Include="Assets\Scripts\Projectile\PoolProjectile.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Practice\PRA_Anim.cs" />
     <Compile Include="Assets\Scripts\Projectile\ProjectileManagement.cs" />
     <Compile Include="Assets\Scripts\Practice\PRA_Delegate.cs" />
+    <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\Projectile\Projectile.cs" />
     <Compile Include="Assets\Scripts\Projectile\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\Projectile\Player\PlayerFireSkill.cs" />
@@ -82,13 +85,13 @@
     <Compile Include="Assets\Scripts\Character\AttackManagement.cs" />
     <Compile Include="Assets\Scripts\Projectile\Player\PlayerWindSkill.cs" />
     <Compile Include="Assets\Scripts\Effect\IEffect.cs" />
-    <Compile Include="Assets\Scripts\PoolManager.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerBulletData.cs" />
     <Compile Include="Assets\Scripts\Projectile\Bullet.cs" />
     <Compile Include="Assets\Scripts\Practice\PRA_DelegateSkills.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\Enemy_D.cs" />
     <Compile Include="Assets\Scripts\Practice\PRA_Test.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\IObject.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\TestEnemy.cs" />
     <Compile Include="Assets\Scripts\Effect\WindBuffEffect.cs" />
@@ -96,6 +99,7 @@
     <Compile Include="Assets\Scripts\Projectile\Player\PlayerCommonBullet.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerPower.cs" />
     <Compile Include="Assets\Scripts\Effect\PlayerEffect.cs" />
+    <Compile Include="Assets\Scripts\Managers\SpawnTest.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\EnemyAttackData.cs" />
     <Compile Include="Assets\Scripts\Practice\PRA_Bullet.cs" />
     <Compile Include="Assets\Scripts\Effect\FireBuffEffect.cs" />
@@ -466,18 +470,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Android.Types">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.21f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Android.Gradle">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.21f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Android.GradleProject">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.21f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.GradleProject.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
