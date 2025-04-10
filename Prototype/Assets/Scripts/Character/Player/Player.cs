@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 //임시로 때려박은거
 using UnityEngine.UI;
@@ -77,8 +79,15 @@ public class Player : Character
 
         StartCoroutine(powerStats.DefaultPowerUp());
 
-        //Instantiate(skillObjects["Wind"]);
 
+        /*currentBullet = currentBullet switch
+        {
+            CurrentPlayerBullet.Wind => CurrentPlayerBullet.Iced,
+            CurrentPlayerBullet.Iced => CurrentPlayerBullet.Fire,
+            CurrentPlayerBullet.Fire => CurrentPlayerBullet.Lightning,
+            CurrentPlayerBullet.Lightning => CurrentPlayerBullet.Wind,
+            _ => 히히 나중에 써먹어라
+        }；*/
     }
 
     void UserInput()

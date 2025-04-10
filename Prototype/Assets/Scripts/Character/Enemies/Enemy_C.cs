@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 
 public class Enemy_C : Enemy
 {
-    GameObject[] test;
     float targetPosY;
     float targetMoveSpeed;
 
@@ -88,14 +87,13 @@ public class Enemy_C : Enemy
 
     void TransShootPosition()
     {
-        
+
         /*for (int i = 0; i < 2; i++)
         {
             currentShootPos[i] = shootGameObject[i].transform.position;
             currentShootPos[i] = new Vector2(currentShootPos[i].x, currentShootPos[i].y * -1);
         }
-*/
-
+        */
         (currentShootPos[0], currentShootPos[1]) = (currentShootPos[1], currentShootPos[0]);
     }
 
@@ -122,6 +120,7 @@ public class Enemy_C : Enemy
             }
             yield return new WaitForSeconds(reAttackDelay);
         }
+        
 
         goto Repeat;
     }

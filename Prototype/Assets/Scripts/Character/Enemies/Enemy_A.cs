@@ -3,6 +3,7 @@ using UnityEngine.UIElements;
 
 public class Enemy_A : Enemy
 {
+    /*
     [SerializeField]
     float targetPosY, targetPosX;
     float targetMoveSpeed;
@@ -21,14 +22,14 @@ public class Enemy_A : Enemy
     protected override void Update()
     {
         base.Update();
-
+        /*
         // 목표 위치 설정
         currentTargetPosY = new Vector2(transform.position.x, targetPosY);
         currentTargetPosX = new Vector2(-22f, transform.position.y);
         //|| Vector2.Distance(transform.position, currentTargetPosX> 0.1f) //todo
 
         // X와 Y 모두 목표 위치에 가까워질 때까지 이동
-        if (Vector2.Distance(transform.position, currentTargetPosY) > 1f)
+        if (Vector2.Distance(transform.position, currentTargetPosY) > 0.5f)
         {
             // X 방향으로 이동
             //if (Vector2.Distance(transform.position, currentTargetPosX) > 0.1f)
@@ -44,6 +45,9 @@ public class Enemy_A : Enemy
             //Invoke("SetTransTargetTransform", 0.01f);
             SetTransTargetTransform();
         }
+        
+
+
     }
 
     void SetTransTargetTransform()
@@ -69,5 +73,30 @@ public class Enemy_A : Enemy
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+    }
+    */
+    [Header("y최댓값")]
+    [SerializeField]
+    private float length = 4.5f;
+
+    private float runningTime = 0f;
+
+    // Use this for initialization
+    protected override void Start()
+    {
+        base.Start();
+        Init();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        ObjectMove(Vector2.left);
+        movement.MoveToSinY(ref thisGameObject, ref runningTime, length, GetMoveSpeed());
+    }
+
+    protected override void Init()
+    {
+        base.Init();
     }
 }

@@ -10,7 +10,7 @@ public class Enemy : Character
     [Header("Enemy의 공격 데이터")]
     public EnemyAttackData attackData;
 
-    protected EnemyMovement movement;
+    protected ObjectMovement movement;
     
     protected GameObject thisGameObject;
 
@@ -32,7 +32,7 @@ public class Enemy : Character
     protected override void Init()
     {
         base.Init();
-        movement = new EnemyMovement();
+        movement = new ObjectMovement();
         thisGameObject = this.gameObject;
     }
 

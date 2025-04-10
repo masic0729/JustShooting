@@ -5,6 +5,7 @@ public class Projectile : IObject
 {
     protected GameObject thisGameObject;
 
+
     //GameObject ProjectileEffect; //정확히 어떤 것들이 있는 지 파악이 안되므로 선언만 하였음
     ObjectInteration projectileInteraction;
     [SerializeField]

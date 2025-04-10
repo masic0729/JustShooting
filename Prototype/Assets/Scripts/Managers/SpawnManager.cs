@@ -24,11 +24,10 @@ public class SpawnManager : MonoBehaviour
 
     public IEnumerator Wave01(GameObject enemy, Vector2 spawnPos, int spawnCount, float spawnDelay)
     {
-        for(int i = 0; i < spawnCount; i++)
+        for(int i = 0; i <spawnCount; i++)
         {
-            yield return new WaitForSeconds(spawnDelay);
-
             Instantiate(enemy, spawnPos, transform.rotation);
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
 }

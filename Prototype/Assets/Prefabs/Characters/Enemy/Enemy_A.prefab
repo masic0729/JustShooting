@@ -230,5 +230,3 @@ MonoBehaviour:
     animCtrl: {fileID: 0}
     moveSpeed: 0
   isBoss: 0
-  targetPosY: 4.5
-  targetPosX: 0
