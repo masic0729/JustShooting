@@ -29,14 +29,11 @@ public class PlayerIcedBullet : Bullet
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
-        if(collision.transform.tag == "Enemy")
+        //일반 몬스터일 경우 데미지 증폭(즉사급 데미지)
+        if(collision.transform.tag == "Enemy" && collision.GetComponent<Enemy>().GetIsBoss() == false)
         {
-            //보스가 아니면 즉사, 보스면 얼음의 정규 피해 만큼 부여하기에 일반 몬스터에 대한 예외 처리
-            if(collision.GetComponent<Enemy>().GetIsBoss() == false)
-            {
-                Destroy(collision.gameObject);
-            }
+            SetDamage(999f);
         }
+        base.OnTriggerEnter2D(collision);
     }
 }

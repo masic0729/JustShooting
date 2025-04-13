@@ -9,6 +9,9 @@ public class Enemy_D : Enemy
     Vector2 currentTargetPos;
 
     float targetMoveSpeed;
+    float targetPosY;
+
+    bool isArrivePoint = false;
 
 
     // Start is called before the first frame update
@@ -23,9 +26,14 @@ public class Enemy_D : Enemy
     {
         base.Update();
 
-        if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > 0.1f)
+        if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > 0.1f && isArrivePoint == false)
         {
             movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
+        }
+        else if(isArrivePoint == false)
+        {
+            isArrivePoint = true;
+            SetTransTargetTransform();
         }
     }
 
@@ -57,6 +65,11 @@ public class Enemy_D : Enemy
         goto Repeat;
     }
 
+    void SetTransTargetTransform()
+    {
+        currentTargetPos = new Vector2(transform.position.x, transform.position.y * -1);
+        isArrivePoint = false;
+    }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {

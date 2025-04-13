@@ -1,33 +1,61 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SpawnManager : MonoBehaviour
 {
-    Vector2 SpawnPos;
-    public GameObject[] Enemies;
-
-    public enum SpawnType
+    public static SpawnManager instance;
+    SpawnData spawnData;
+    private Coroutine spawnCoroutine;
+    private void Awake()
     {
-        Type_A = 0,
-        Type_B,
-        Type_C,
-        Type_D = 3
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
-    public SpawnType spawnType;
 
     private void Start()
     {
-        SpawnPos = new Vector2(11, 0);
-        StartCoroutine(Wave01(Enemies[0], SpawnPos, 10, 0.5f));
+        spawnData = this.gameObject.GetComponent<SpawnData>();
+        spawnCoroutine = StartCoroutine(WaveCoroutine());
+        Invoke("Test", 1.0f);
     }
 
-    public IEnumerator Wave01(GameObject enemy, Vector2 spawnPos, int spawnCount, float spawnDelay)
+    private void LateUpdate()
     {
-        for(int i = 0; i <spawnCount; i++)
+
+    }
+
+    void Test()
+    {
+        //StopCoroutine(spawnCoroutine);
+
+    }
+
+    void Test2()
+    {
+        //StartCoroutine(spawnCoroutine);
+    }
+
+    IEnumerator WaveCoroutine()
+    {
+        Repeat:
+        Debug.Log("¾È³ç");
+
+        /*for(int i = 0; i < spawnData.spawnDataList.Count; i++)
         {
-            Instantiate(enemy, spawnPos, transform.rotation);
-            yield return new WaitForSeconds(spawnDelay);
-        }
+            yield return new WaitForSeconds(0);
+
+        }*/
+        yield return new WaitForSeconds(0);
+
+        goto Repeat;
     }
 }

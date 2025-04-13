@@ -78,7 +78,8 @@ public class Enemy_A : Enemy
     [Header("yÃÖ´ñ°ª")]
     [SerializeField]
     private float length = 4.5f;
-
+    [SerializeField]
+    private float yMoveSpeedMultify;
     private float runningTime = 0f;
 
     // Use this for initialization
@@ -92,7 +93,7 @@ public class Enemy_A : Enemy
     {
         base.Update();
         ObjectMove(Vector2.left);
-        movement.MoveToSinY(ref thisGameObject, ref runningTime, length, GetMoveSpeed());
+        movement.MoveToSinY(ref thisGameObject, ref runningTime, length, GetMoveSpeed() * yMoveSpeedMultify);
     }
 
     protected override void Init()

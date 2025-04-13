@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5012336801616778110}
   - component: {fileID: 862276225899845012}
   - component: {fileID: 1232188365687118388}
-  - component: {fileID: 8736088907672425173}
   - component: {fileID: 4119013905171593145}
   m_Layer: 0
   m_Name: Enemy_D
@@ -146,7 +145,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464916229279255196}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -174,33 +173,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &8736088907672425173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464916229279255196}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae2a732661d0a9f40aab7d61f21e5174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  objectMoveSpeedMultify: 1
-  attackStats: {fileID: 0}
-  hp: 50
-  maxHp: 50
-  attackMultiplier: 1
-  attackDelay: 2
-  projectileMoveSpeedMultify: 1
-  characterGetDamageMultify: 1
-  enemyProjectiles: {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
-  attackData:
-    sprite: {fileID: 0}
-    animCtrl: {fileID: 9100000, guid: 152a5b2a92ab8b148ab153fdff637c3b, type: 2}
-    moveSpeed: 5
-  isBoss: 0
 --- !u!114 &4119013905171593145
 MonoBehaviour:
   m_ObjectHideFlags: 0
