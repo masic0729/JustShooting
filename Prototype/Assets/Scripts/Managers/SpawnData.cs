@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpawnData : MonoBehaviour
 {
-    //public GameObject[] spawnEnemy;
 
     [System.Serializable]
     public class SpawnInfomation
