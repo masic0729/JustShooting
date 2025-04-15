@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a395bfcebed00438b18a693cb7a01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 1
   objectMoveSpeedMultify: 1
   attackStats: {fileID: 0}
   hp: 10
@@ -231,4 +231,4 @@ MonoBehaviour:
     moveSpeed: 0
   isBoss: 0
   length: 4.5
-  yMoveSpeedMultify: 3
+  yMoveSpeedMultify: 9

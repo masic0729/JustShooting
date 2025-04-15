@@ -1,14 +1,19 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using static SpawnData;
 
 public class SpawnManager : MonoBehaviour
 {
-    public static SpawnManager instance;            //싱글톤. 사실 의미 없을 수도 있지만, 참조를 의도로 기능 활성화
+    public GameObject[] EnemyList;
+    public static SpawnManager instance;            //싱글톤. 사실 의미 없을 수도 있지만, 참조를 의도로 기능 활성화\
+    public Dictionary<string, GameObject> enemyName;
     SpawnData spawnData;                            //적 스폰에 대한 데이터
     float waveTimer = 0, waveTime = 99f;            //기본적인 스폰 관련 타이머
     int waveIndex;
     bool isWaveTimerOn;                             //외부 객체에 의해 웨이브 타이머가 통제될 수 있음
     bool isSpawning;                                //몬스터 스폰 중에는 스폰 타이머가 돌아가지 않음
+    bool isWaveEnd;
 
     private void Awake()
     {
@@ -36,14 +41,22 @@ public class SpawnManager : MonoBehaviour
     void Init()
     {
         spawnData = this.gameObject.GetComponent<SpawnData>();
-        SetWaveTimerOnState(false);
+        enemyName = new Dictionary<string, GameObject>();
+        for(int i = 0; i <EnemyList.Length; i++)
+        {
+            enemyName[EnemyList[i].name] = EnemyList[i];
+        }
+        WaveDataLoad();
+
+        SetWaveTimerOnState(true);
         SetIsSpawningState(false);
         waveIndex = 0;
+        waveTime = spawnData.spawnDataList[0].waveDelay;
     }
 
-    void WaveDataLoad(SpawnData data)
+    void WaveDataLoad()
     {
-        //waveTime = 
+        waveTime = spawnData.spawnDataList[waveIndex].waveDelay;
     }
 
     void WaveTimer()
@@ -52,7 +65,7 @@ public class SpawnManager : MonoBehaviour
         {
             waveTimer += Time.deltaTime;
         }
-        if (waveTimer > waveTime)
+        if (waveTimer > waveTime && waveIndex != spawnData.spawnDataList.Count)
         {
             SetTimer(0);
             WaveOn();
@@ -63,23 +76,39 @@ public class SpawnManager : MonoBehaviour
 
     void WaveOn()
     {
-        StartCoroutine(SpawnCoroutine(spawnData));
+        
+        StartCoroutine(SpawnCoroutine(spawnData.spawnDataList[waveIndex]));
     }
 
-    IEnumerator SpawnCoroutine(SpawnData spawnInfo)
+    IEnumerator SpawnCoroutine(SpawnInfomation info)
     {
         SetIsSpawningState(true);
+        
 
-
-        for (int i = 0; i < spawnData.spawnDataList.Count; i++)
+        for (int i = 0; i < info.spawnEnemyCount; i++)
         {
+            Vector2 spawnPosition;
+            if (info.isCustomPosition == false)
+            {
+                float yInstance = -4.5f + (4.5f / info.spawnEnemyCount);
+                spawnPosition = new Vector2(12f, yInstance + (9f * i / info.spawnEnemyCount));
+            }
+            else
+            {
+                spawnPosition = new Vector2(info.spawnX_Value[i], info.spawnY_Value[i]);
+            }
 
-            yield return new WaitForSeconds(spawnInfo.spawnDataList[waveIndex].spawnDelay);
+            Instantiate(enemyName[info.enemyData.ToString()], spawnPosition, transform.rotation);
+            if(info.spawnDelay != 0)
+            {
+                yield return new WaitForSeconds(info.spawnDelay);
+            }
 
         }
 
-        waveIndex++;
         SetIsSpawningState(false);
+        
+        waveIndex++;
     }
 
     void SetTimer(float value)
