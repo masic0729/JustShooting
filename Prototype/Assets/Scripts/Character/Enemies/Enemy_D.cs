@@ -6,11 +6,7 @@ public class Enemy_D : Enemy
     GameObject targetPlayer;
     TargetBulletManagement targetManage;
 
-    Vector2 currentTargetPos;
-
-    float targetMoveSpeed;
     float targetPosY;
-    float distanceNeedValue;
 
     bool isArrivePoint = false;
 
@@ -27,11 +23,16 @@ public class Enemy_D : Enemy
     {
         base.Update();
 
+        
+    }
+
+    private void FixedUpdate()
+    {
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
             movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
         }
-        else if(isArrivePoint == false)
+        else if (isArrivePoint == false)
         {
             isArrivePoint = true;
             SetTransTargetTransform();
@@ -43,9 +44,11 @@ public class Enemy_D : Enemy
         base.Init();
         targetManage = new TargetBulletManagement();
         targetPlayer = GameObject.Find("Player");
-        currentTargetPos = new Vector2(1f, this.transform.position.y);
-        targetMoveSpeed = GetMoveSpeed() / 2f * Time.deltaTime;
-        distanceNeedValue = 0.1f;
+        if(isSelfPosition == true)
+        {
+            currentTargetPos = new Vector2(1f, this.transform.position.y);
+        }
+        targetMoveSpeed = GetMoveSpeed() / 2f;
         targetPosY = transform.position.y;
     }
 

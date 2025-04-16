@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Character
 {
     public GameObject enemyProjectiles; //나중에 딕셔너리 기반으로 가독성 있는 코드로 변형 예정
+    protected Vector2 currentTargetPos;
 
     [Header("Enemy의 공격 데이터")]
     public EnemyAttackData attackData;
@@ -13,9 +15,14 @@ public class Enemy : Character
     protected ObjectMovement movement;
     
     protected GameObject thisGameObject;
+    protected float targetMoveSpeed;
+    protected float distanceNeedValue = 1f;
+
+
 
     [SerializeField]
     bool isBoss = false; //보스 유무 확인. 기본값은 거짓
+    protected bool isSelfPosition = true;
 
     protected override void Start()
     {
@@ -67,5 +74,11 @@ public class Enemy : Character
     public void SetIsBoss(bool state)
     {
         isBoss = state;
+    }
+
+    public void SetTargetPosition(Vector2 pos)
+    {
+        isSelfPosition = false;
+        currentTargetPos = pos;
     }
 }

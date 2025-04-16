@@ -94,6 +94,11 @@ public class Enemy_A : Enemy
     protected override void Update()
     {
         base.Update();
+        
+    }
+
+    private void FixedUpdate()
+    {
         ObjectMove(Vector2.left);
         movement.MoveToSinY(ref thisGameObject, ref runningTime, length * yVector, GetMoveSpeed() * yMoveSpeedMultify);
     }

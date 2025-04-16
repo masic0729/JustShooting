@@ -23,6 +23,7 @@ public class SpawnData : MonoBehaviour
         public bool isCustomPosition;
         public float[] spawnX_Value;
         public float[] spawnY_Value;
+        public Vector2[] ArrivePosition;
     }
 
     public List<SpawnInfomation> spawnDataList;

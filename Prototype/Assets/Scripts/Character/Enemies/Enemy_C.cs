@@ -6,10 +6,7 @@ using UnityEngine.UIElements;
 public class Enemy_C : Enemy
 {
     float targetPosY;
-    float targetMoveSpeed;
 
-
-    Vector2 currentTargetPos;
 
     //new
     GameObject[] shootGameObject;
@@ -31,8 +28,13 @@ public class Enemy_C : Enemy
     {
         base.Update();
 
+        
+    }
+
+    private void FixedUpdate()
+    {
         //move
-        if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > 0.1f)
+        if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
             //ObjectMove(Vector2.left);
             movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
@@ -46,7 +48,7 @@ public class Enemy_C : Enemy
             currentShootPos[1] = shootTransform["CommonBullet1"].transform.position;
             StartCoroutine(AttackEnemyBullet());
         }
-        
+
 
         if (isArrivePoint == true)
         {
@@ -72,7 +74,10 @@ public class Enemy_C : Enemy
     protected override void Init()
     {
         base.Init();
-        currentTargetPos = new Vector2(1f, this.transform.position.y);
+        if (isSelfPosition == true)
+        {
+            currentTargetPos = new Vector2(1f, this.transform.position.y);
+        }
         currentShootPos = new Vector2[2];
         shootGameObject = new GameObject[2];
         
@@ -81,7 +86,7 @@ public class Enemy_C : Enemy
         {
             shootGameObject[i] = shootTransform["CommonBullet" + i.ToString()].gameObject;
         }
-        targetMoveSpeed = GetMoveSpeed() / 2f * Time.deltaTime;
+        targetMoveSpeed = GetMoveSpeed() / 2f;
 
     }
 

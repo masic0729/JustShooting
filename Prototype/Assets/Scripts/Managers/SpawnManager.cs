@@ -98,17 +98,24 @@ public class SpawnManager : MonoBehaviour
             Vector2 spawnPosition;
             if (info.isCustomPosition == false)
             {
+                //이 부분은 원래 시스템 기획서에 있던 것
                 float yInstance = -4.5f + (4.5f / info.spawnEnemyCount);
-                spawnPosition = new Vector2(12f, yInstance + (9f * i / info.spawnEnemyCount));
+                spawnPosition = new Vector2(20f, yInstance + (9f * i / info.spawnEnemyCount));
             }
             else
             {
-                spawnPosition = new Vector2(info.spawnX_Value[i], info.spawnY_Value[i]);
+                float posX = info.ArrivePosition[i].x;
+                //spawnPosition = new Vector2(info.spawnX_Value[i], info.spawnY_Value[i]);
+                spawnPosition = new Vector2(20f + posX, info.ArrivePosition[i].y);
             }
             
-            Instantiate(enemyName[info.enemyData.ToString()], spawnPosition, transform.rotation);
-            
-            if(info.spawnDelay != 0)
+            Enemy instanceEnemy = Instantiate(enemyName[info.enemyData.ToString()], spawnPosition, transform.rotation).GetComponent<Enemy>();
+            if(info.isCustomPosition == true)
+            {
+                instanceEnemy.SetTargetPosition(info.ArrivePosition[i]);
+            }
+
+            if (info.spawnDelay != 0)
             {
                 yield return new WaitForSeconds(info.spawnDelay);
             }

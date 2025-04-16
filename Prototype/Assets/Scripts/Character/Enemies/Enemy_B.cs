@@ -8,11 +8,7 @@ public class Enemy_B : Enemy
     float maxY_Range;
     [SerializeField]
     float targetPosY;
-    float targetMoveSpeed;
     
-
-    Vector2 currentTargetPos;
-
     bool isArrivePoint = false;
 
 
@@ -28,8 +24,14 @@ public class Enemy_B : Enemy
     {
         base.Update();
 
+        
+
+    }
+
+    private void FixedUpdate()
+    {
         //아직 정지하려는 위치에 도달하지 않았으므로 앞으로 이동
-        if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > 0.1f && isArrivePoint == false)
+        if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
             //ObjectMove(Vector2.left);
             movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
@@ -39,16 +41,20 @@ public class Enemy_B : Enemy
             isArrivePoint = true;
             Invoke("SetTransTargetTransform", 1f);
         }
-
     }
 
     protected override void Init()
     {
         base.Init();
         attackDelay = 3f;
-        targetMoveSpeed = GetMoveSpeed() / 2f * Time.deltaTime;
+        targetMoveSpeed = GetMoveSpeed() / 2f;
         targetPosY = this.transform.position.y;
-        currentTargetPos = new Vector2(1f, targetPosY);
+        if (isSelfPosition == true)
+        {
+            //currentTargetPos = new Vector2(1f, this.transform.position.y);
+            currentTargetPos = new Vector2(1f, targetPosY);
+        }
+        
         StartCoroutine(AttackEnemyBullet());
     }
 
