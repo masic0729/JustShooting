@@ -1,7 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss : Enemy
+public class EndBoss : Boss
 {
+
     protected override void Start()
     {
         base.Start();
@@ -15,16 +18,11 @@ public class Boss : Enemy
     protected override void Init()
     {
         base.Init();
-        OnCharacterDeath += RestartWave;
-    }
-
-    void RestartWave()
-    {
-
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+
     }
 }

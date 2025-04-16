@@ -78,9 +78,11 @@ public class Enemy_A : Enemy
     [Header("yÃÖ´ñ°ª")]
     [SerializeField]
     private float length = 4.5f;
+    float yVector;
     [SerializeField]
     private float yMoveSpeedMultify;
     private float runningTime = 0f;
+
 
     // Use this for initialization
     protected override void Start()
@@ -93,11 +95,12 @@ public class Enemy_A : Enemy
     {
         base.Update();
         ObjectMove(Vector2.left);
-        movement.MoveToSinY(ref thisGameObject, ref runningTime, length, GetMoveSpeed() * yMoveSpeedMultify);
+        movement.MoveToSinY(ref thisGameObject, ref runningTime, length * yVector, GetMoveSpeed() * yMoveSpeedMultify);
     }
 
     protected override void Init()
     {
         base.Init();
+        yVector = SpawnManager.instance.isEnemyA_Down == true ? -1 : 1;
     }
 }

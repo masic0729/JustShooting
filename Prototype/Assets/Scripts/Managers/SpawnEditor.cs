@@ -65,9 +65,13 @@ public class SpawnEditor : Editor
             EditorGUILayout.Space(5);
         }
 
-        if (GUILayout.Button("Add Spawn Data"))
+        if (GUILayout.Button("Add new Spawn Data"))
         {
             spawnDataList.InsertArrayElementAtIndex(spawnDataList.arraySize);
+        }
+        if (GUILayout.Button("Delete Last Spawn Data"))
+        {
+            spawnDataList.DeleteArrayElementAtIndex(spawnDataList.arraySize - 1);
         }
 
         serializedObject.ApplyModifiedProperties();

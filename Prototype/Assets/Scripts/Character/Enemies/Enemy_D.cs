@@ -10,6 +10,7 @@ public class Enemy_D : Enemy
 
     float targetMoveSpeed;
     float targetPosY;
+    float distanceNeedValue;
 
     bool isArrivePoint = false;
 
@@ -26,7 +27,7 @@ public class Enemy_D : Enemy
     {
         base.Update();
 
-        if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > 0.1f && isArrivePoint == false)
+        if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
             movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
         }
@@ -44,6 +45,8 @@ public class Enemy_D : Enemy
         targetPlayer = GameObject.Find("Player");
         currentTargetPos = new Vector2(1f, this.transform.position.y);
         targetMoveSpeed = GetMoveSpeed() / 2f * Time.deltaTime;
+        distanceNeedValue = 0.1f;
+        targetPosY = transform.position.y;
     }
 
     IEnumerator AttackEnemyBullet()
@@ -67,8 +70,11 @@ public class Enemy_D : Enemy
 
     void SetTransTargetTransform()
     {
-        currentTargetPos = new Vector2(transform.position.x, transform.position.y * -1);
+        targetPosY = targetPosY * -1f;
+        currentTargetPos = new Vector2(transform.position.x, targetPosY);
         isArrivePoint = false;
+        distanceNeedValue = 1f;
+        Debug.Log(distanceNeedValue);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

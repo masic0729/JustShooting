@@ -12,11 +12,6 @@ public class ObjectMovement
         instance.transform.position = Vector2.Lerp(instance.transform.position, targetPos, ratio);
     }
 
-    /*public void MoveToPointLerp(ref GameObject enemy, Vector2 targetPos, float ratio)
-    {
-        enemy.transform.position = Vector2.Lerp(enemy.transform.position, targetPos, ratio);
-    }*/
-
     public void MoveToSinY(ref GameObject instance, ref float runningTime, float yValue, float speed)
     {
         runningTime += Time.deltaTime; //이 부분은 추후 클래스 설계에서 너어질 수도 있음. 단순 객체의 작동 시간이기 때문
