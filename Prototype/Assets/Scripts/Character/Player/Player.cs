@@ -53,6 +53,11 @@ public class Player : Character
             "\nplayerMoveSpeed : " + moveSpeed * objectMoveSpeedMultify + "\nPlayerPowerValue : " + powerStats.playerPower;
     }
 
+    private void FixedUpdate()
+    {
+
+    }
+
     protected override void Init()
     {
         base.Init();
