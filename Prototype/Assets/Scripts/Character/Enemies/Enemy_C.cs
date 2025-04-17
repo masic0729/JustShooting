@@ -14,8 +14,7 @@ public class Enemy_C : Enemy
 
     bool isArrivePoint = false;
 
-    //todo 이름 변경(무기 위치 변경으로)
-    bool isArriveTargetPos = false;
+
 
 
     protected override void Start()
@@ -28,11 +27,6 @@ public class Enemy_C : Enemy
     {
         base.Update();
 
-        
-    }
-
-    private void FixedUpdate()
-    {
         //move
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
@@ -65,11 +59,7 @@ public class Enemy_C : Enemy
         }
     }
 
-    //todo 수정 요망
-    void SetTransTargetTransform()
-    {
-        isArriveTargetPos = false;
-    }
+
 
     protected override void Init()
     {

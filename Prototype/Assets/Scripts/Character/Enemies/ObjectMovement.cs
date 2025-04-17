@@ -4,12 +4,12 @@ public class ObjectMovement
 {
     public void MoveToPointNormal(ref GameObject instance, Vector2 targetPos, float speed)
     {
-        instance.transform.position = Vector2.MoveTowards(instance.transform.position, targetPos, speed * Time.fixedDeltaTime);
+        instance.transform.position = Vector2.MoveTowards(instance.transform.position, targetPos, speed * Time.deltaTime);
     }
 
     public void MoveToPointLerp(ref GameObject instance, Vector2 targetPos, float ratio)
     {
-        instance.transform.position = Vector2.Lerp(instance.transform.position, targetPos, ratio * Time.fixedDeltaTime);
+        instance.transform.position = Vector2.Lerp(instance.transform.position, targetPos, ratio * Time.deltaTime);
     }
 
     public void MoveToSinY(ref GameObject instance, ref float runningTime, float yValue, float speed)

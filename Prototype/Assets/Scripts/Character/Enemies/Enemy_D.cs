@@ -23,11 +23,6 @@ public class Enemy_D : Enemy
     {
         base.Update();
 
-        
-    }
-
-    private void FixedUpdate()
-    {
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
             movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
@@ -38,6 +33,7 @@ public class Enemy_D : Enemy
             SetTransTargetTransform();
         }
     }
+
 
     protected override void Init()
     {

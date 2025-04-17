@@ -23,13 +23,6 @@ public class Enemy_B : Enemy
     protected override void Update()
     {
         base.Update();
-
-        
-
-    }
-
-    private void FixedUpdate()
-    {
         //아직 정지하려는 위치에 도달하지 않았으므로 앞으로 이동
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
