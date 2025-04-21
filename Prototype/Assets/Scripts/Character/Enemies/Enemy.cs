@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class Enemy : Character
 {
-    public GameObject enemyProjectiles; //나중에 딕셔너리 기반으로 가독성 있는 코드로 변형 예정
+    public GameObject[] enemyProjectiles; //나중에 딕셔너리 기반으로 가독성 있는 코드로 변형 예정
+    protected Dictionary<string, GameObject> enemyProjectile;
     protected Vector2 currentTargetPos;
 
     [Header("Enemy의 공격 데이터")]
@@ -36,11 +37,25 @@ public class Enemy : Character
         CheckOverGameZone();
     }
 
+    private void OnDestroy()
+    {
+        Debug.Log("어쨋든 난 실행됨");
+    }
+
     protected override void Init()
     {
         base.Init();
         movement = new ObjectMovement();
         thisGameObject = this.gameObject;
+        enemyProjectile = new Dictionary<string, GameObject>();
+        if(enemyProjectiles != null)
+        {
+            for (int i = 0; i < enemyProjectiles.Length; i++)
+            {
+                enemyProjectile[enemyProjectiles[i].name] = enemyProjectiles[i];
+            }
+        }
+
     }
 
     void CheckOverGameZone()
@@ -65,6 +80,15 @@ public class Enemy : Character
             }
         }
     }
+    /// <summary>
+    /// getset
+    /// </summary>
+    /// <param name="pos"></param>
+    public void SetTargetPosition(Vector2 pos)
+    {
+        isSelfPosition = false;
+        currentTargetPos = pos;
+    }
 
     public bool GetIsBoss()
     {
@@ -76,9 +100,5 @@ public class Enemy : Character
         isBoss = state;
     }
 
-    public void SetTargetPosition(Vector2 pos)
-    {
-        isSelfPosition = false;
-        currentTargetPos = pos;
-    }
+    
 }

@@ -3,7 +3,6 @@ using UnityEngine;
 public abstract class IObject : MonoBehaviour
 {
     // [SerializeField] protected bool isCheckEscape; //화면 밖으로 나갈 때 보통 삭제되는데, 삭제해야되는 발사체인 지 확인하는 변수
-
     protected float maxMoveX, maxMoveY; //화면 기준 객체들이 존재하거나 이동할 수 있는 기준
     [Header("IObject")]
 

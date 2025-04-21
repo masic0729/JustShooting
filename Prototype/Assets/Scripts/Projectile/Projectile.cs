@@ -5,6 +5,7 @@ public class Projectile : IObject
 {
     protected GameObject thisGameObject;
 
+    protected Vector3 projectileMoveVector;
 
     //GameObject ProjectileEffect; //정확히 어떤 것들이 있는 지 파악이 안되므로 선언만 하였음
     ObjectInteration projectileInteraction;
@@ -22,7 +23,6 @@ public class Projectile : IObject
         if (this.gameObject.GetComponent<PoolProjectile>())
             isPoolObject = true;
         lifeTimer = 0;
-
     }
     
 
@@ -35,15 +35,8 @@ public class Projectile : IObject
     protected override void Update()
     {
         base.Update();
-        lifeTimer += Time.deltaTime;
-        if(lifeTimer >= lifeTime)
-        {
-            CheckPoolObject();
-        }
-        if(isCanMove == true)
-        {
-            ObjectMove(Vector3.up);
-        }
+        ProjectileMovement();
+        AutoDestroy();
     }
 
     protected override void Init()
@@ -53,7 +46,25 @@ public class Projectile : IObject
         maxMoveX = 10.5f;
         maxMoveY = 5.5f;
         thisGameObject = this.gameObject;
+        projectileMoveVector = Vector3.up;
+    }
 
+    void ProjectileMovement()
+    {
+        
+        if (isCanMove == true)
+        {
+            ObjectMove(projectileMoveVector);
+        }
+    }
+
+    void AutoDestroy()
+    {
+        lifeTimer += Time.deltaTime;
+        if (lifeTimer >= lifeTime)
+        {
+            CheckPoolObject();
+        }
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

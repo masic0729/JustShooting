@@ -16,6 +16,7 @@ public class Boss : Enemy
     {
         base.Init();
         OnCharacterDeath += RestartWave;
+        SetIsBoss(true);
     }
 
     void RestartWave()

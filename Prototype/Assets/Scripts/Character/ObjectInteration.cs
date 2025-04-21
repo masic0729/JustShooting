@@ -15,7 +15,7 @@ public class ObjectInteration
 
         if(character.GetIsInvincibility() == false)
         {
-            character.OnInvincibility();
+            character.OnDamage();
             if (character.GetShield() > 0)
             {
                 //보호막이 있으니까 보호막 값 감소

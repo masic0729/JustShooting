@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,6 @@ public class TargetBulletManagement
 {
     GameObject targetObject;
     Vector3[] targetObjectsVec;
-    float rotationSpeed = 4f; //미사일이 회전한도 상승 값. 미사일일 특정 오브젝트를 추격하는 시간이 길어질 수록 값이 오르게 됨
 
 
     //캐릭터가 원하는 대상의 태그를 불러와 관련 캐릭터들을 탐지해내는 기능. 해당 함수는 보통 적이 사용한다.
@@ -168,22 +166,22 @@ public class TargetBulletManagement
             }
         }*/
 
-        //Vector3 directionToTarget;
-        //if (targetObject != null)
-        //{
-        //    directionToTarget = (targetObject.transform.position - thisProjectile.transform.position).normalized;
-        //    Vector3 currentForward = thisProjectile.transform.up;
-        //    float angle = Vector3.SignedAngle(currentForward, directionToTarget, Vector3.forward);
+        /*Vector3 directionToTarget;
+        if (targetObject != null)
+        {
+            directionToTarget = (targetObject.transform.position - thisProjectile.transform.position).normalized;
+            Vector3 currentForward = thisProjectile.transform.up;
+            float angle = Vector3.SignedAngle(currentForward, directionToTarget, Vector3.forward);
 
-        //    // 회전 적용
-        //    if (angle != 0)
-        //    {
-        //        // 회전각을 더하는 이유는 일정한 각도로 빠르게 설정하면 유도탄 답지 않은 연출이 되며, 낮게 주면 오브젝트를 맞추지 못하고 공전하는듯한 현상을 보인다.
-        //        // 이로 인해 한번 타깃을 정한 오브젝트의 추적이 길어질 수록 회전 한계값을 늘려 결국 적중하게 만듦
-        //        Quaternion rotation = Quaternion.Euler(0, 0, angle * rotateValue * Time.deltaTime);
-        //        thisProjectile.transform.rotation = rotation * thisProjectile.transform.rotation;
-        //    }
-        //}
+            // 회전 적용
+            if (angle != 0)
+            {
+                // 회전각을 더하는 이유는 일정한 각도로 빠르게 설정하면 유도탄 답지 않은 연출이 되며, 낮게 주면 오브젝트를 맞추지 못하고 공전하는듯한 현상을 보인다.
+                // 이로 인해 한번 타깃을 정한 오브젝트의 추적이 길어질 수록 회전 한계값을 늘려 결국 적중하게 만듦
+                Quaternion rotation = Quaternion.Euler(0, 0, angle * rotateValue * Time.deltaTime);
+                thisProjectile.transform.rotation = rotation * thisProjectile.transform.rotation;
+            }
+        }*/
 
         Vector3 directionToTarget;
         if (targetObject != null)

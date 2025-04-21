@@ -67,7 +67,7 @@ public class Enemy_B : Enemy
 
         for (int i = 1; i <= 10; i++)
         {
-            GameObject instance = Instantiate(enemyProjectiles);
+            GameObject instance = Instantiate(enemyProjectile["EnemyBullet"]);
             
             projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 10f, 1f, 5f, "Enemy");
             attackManage.ShootBulletRotate(ref instance, shootTransform["CommonBullet"], 360 / shootCount * i);

@@ -106,7 +106,7 @@ public class Enemy_C : Enemy
 
             for(int j = 0; j < shootTransform.Count; j++)
             {
-                GameObject instance = Instantiate(enemyProjectiles);
+                GameObject instance = Instantiate(enemyProjectile["EnemyBullet"]);
 
                 projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 10f, 1f, 5f, "Enemy");
 

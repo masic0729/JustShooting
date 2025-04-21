@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6104197369426313266}
   - component: {fileID: 4370465899576511048}
   - component: {fileID: 157650305858915822}
-  - component: {fileID: 2490792377616425473}
+  - component: {fileID: -6619986818155576343}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -143,7 +143,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2490792377616425473
+--- !u!114 &-6619986818155576343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,3 +159,4 @@ MonoBehaviour:
   objectMoveSpeedMultify: 0
   damage: 0
   isPoolObject: 0
+  rotateValue: 0.6

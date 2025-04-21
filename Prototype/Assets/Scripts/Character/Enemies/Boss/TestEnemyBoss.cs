@@ -2,19 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 임시용 클래스
-/// </summary>
-public class EnemyBullet : Bullet
+public class TestEnemyBoss : EndBoss
 {
-    // Start is called before the first frame update
+
     protected override void Start()
     {
         base.Start();
-        Init();
     }
 
-    // Update is called once per frame
     protected override void Update()
     {
         base.Update();
@@ -29,6 +24,4 @@ public class EnemyBullet : Bullet
     {
         base.OnTriggerEnter2D(collision);
     }
-
-    
 }

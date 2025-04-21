@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class Character : IObject
 {
+    /// <summary>
+    /// 기본적인 캐릭터의 상태머신
+    /// </summary>
     public enum FSM_Info
     {
         Spawn,
@@ -23,43 +26,41 @@ public class Character : IObject
     public AttackStats attackStats;                                     // 공격하는 객체가 소지하는 데이터 모음
     protected ProjectileManagement projectileManage;
     private Transform[] shootTransforms;                                //캐릭터의 발사위치
-    protected AttackManagement attackManage;
+    protected AttackManagement attackManage;                            //공격 방식에 대한 정보
 
     public Action OnCharacterDeath;                                     //캐릭터가 죽을 때 발생하는 이벤트. 필요에 따라서 상위 클래스에 정의할 수 있음
+    public Action OnCharacterDamaged;                                   //캐릭터가 피해를 받을 때 발생하는 이벤트. 데미지를 받으면, 소리나, 이펙트, 점수 획득 등등 다양한 액션이 존재
     public Dictionary<string, Transform> shootTransform;                //발사위치를 최종 저장할 딕셔너리
+
     [SerializeField]
     protected float hp, maxHp;                                          //현재 체력 및 최대 체력.
     protected float shield;                                             //보호막, 보호막 존재 시 체력 대신 감소
 
-    //적군은 기본적으로 데미지가 1고정이다
-    protected ObjectInteration characterInteraction;
+    
+    protected ObjectInteration characterInteraction;                    //몬스터는 기본적으로 데미지가 1고정이다
 
     [Header("캐릭터의 전투 시스템 공식 배율")]
     [SerializeField]
-    protected float attackMultiplier = 1; // 피해를 줄 수 있는 공격력 및 피해 계수. 값이 오를 수록 피해량이 커진다.
+    protected float attackMultiplier = 1;                               //피해를 줄 수 있는 공격력 및 피해 계수. 값이 오를 수록 피해량이 커진다.
     [SerializeField]
-    protected float attackDelay; //발사 주기. 값이 오를 수록 초당 공격 횟수가 느려진다.
+    protected float attackDelay;                                        //발사 주기. 값이 오를 수록 초당 공격 횟수가 느려진다.
     [SerializeField]
-    protected float projectileMoveSpeedMultify = 1; //발사체 속도 계수. 값이 클 수록 발사체의 속도가 빨라진다.
+    protected float projectileMoveSpeedMultify = 1;                     //발사체 속도 계수. 값이 클 수록 발사체의 속도가 빨라진다.
     [SerializeField]
-    protected float characterGetDamageMultify = 1; //캐릭터가 피해를 받는 배율. 높을 수록 받는 피해가 상승한다.
-    protected float invincibilityTime = 0f;
+    protected float characterGetDamageMultify = 1;                      //캐릭터가 피해를 받는 배율. 높을 수록 받는 피해가 상승한다.
+    protected float invincibilityTime = 0f;                             //무적 시간
+    protected bool  isInvincibility;                                    //무적 여부
 
-    protected bool isInvincibility; //무적 여부
 
-
-    // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        
     }
 
     // Update is called once per frame
     protected override void Update()
     {
         base.Update();
-        
     }
 
     /// <summary>
@@ -94,10 +95,11 @@ public class Character : IObject
 
     }
 
-    public void OnInvincibility()
+    public void OnDamage()
     {
         SetIsInvincibility(true);
         Invoke("TransIsInvincibilityFalse", invincibilityTime);
+        OnCharacterDamaged?.Invoke();
     }
 
     /// <summary>

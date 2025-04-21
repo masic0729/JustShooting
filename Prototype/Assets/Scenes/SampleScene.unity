@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18188584, g: 0.2275654, b: 0.3074171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -414,10 +414,9 @@ GameObject:
   - component: {fileID: 366055739}
   - component: {fileID: 366055738}
   - component: {fileID: 366055737}
-  - component: {fileID: 366055741}
   - component: {fileID: 366055742}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,22 +509,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
---- !u!114 &366055741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366055736}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce1a53c6823ff0438e1f1a456b64a17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scrollSpeedX: 0.1
-  scrollSpeedY: 0
-  mat: {fileID: 0}
-  offset: {x: 0, y: 0}
 --- !u!114 &366055742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,7 +521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aae209493cc94b4ea50fa1a354c09d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollMat: {fileID: 2100000, guid: d2837ba9a851b404c89c920e4c717e9c, type: 2}
+  scrollMat:
+  - {fileID: 2100000, guid: d2837ba9a851b404c89c920e4c717e9c, type: 2}
+  - {fileID: 2100000, guid: 2af3af99a205d36408cee3a3c17ff31a, type: 2}
+  - {fileID: 2100000, guid: 47fc2792d93a6ee4cb42e59b656f6f61, type: 2}
 --- !u!1 &414130672
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDataList:
-  - enemyData: 2
+  - enemyData: 1
     spawnEnemyCount: 2
     waveDelay: 0
     spawnDelay: 0
@@ -1940,7 +1926,7 @@ MonoBehaviour:
   attackDelay: 0
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
-  enemyProjectiles: {fileID: 0}
+  enemyProjectiles: []
   attackData:
     sprite: {fileID: 0}
     animCtrl: {fileID: 0}
