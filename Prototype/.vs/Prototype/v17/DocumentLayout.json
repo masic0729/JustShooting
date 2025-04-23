@@ -1,0 +1,254 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|c:\\users\\552st003\\desktop\\justshooting\\prototype\\assets\\scripts\\character\\fsm\\enemystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\fsm\\enemystate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\enemies\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|c:\\users\\552st003\\desktop\\justshooting\\prototype\\assets\\scripts\\character\\enemies\\enemy_b.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\enemy_b.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|c:\\users\\552st003\\desktop\\justshooting\\prototype\\assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\fsm\\enemyspawnstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\fsm\\enemyspawnstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|c:\\users\\552st003\\desktop\\justshooting\\prototype\\assets\\scripts\\character\\enemies\\enemy_a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\enemy_a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\managers\\spawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\managers\\spawnmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\character.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\fsm\\enemyattackstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\fsm\\enemyattackstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\fsm\\statemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\fsm\\statemachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\fsm\\enemyidlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\fsm\\enemyidlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\projectile\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\projectile\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\enemies\\boss\\endboss_a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\boss\\endboss_a.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\assets\\scripts\\character\\enemies\\boss\\testenemyboss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1235EE4-71EE-C815-28F8-C3378E5ADB84}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\character\\enemies\\boss\\testenemyboss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Managers\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\GameManager.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Managers\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Managers\\GameManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T05:55:40.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Enemy_B.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy_B.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Enemies\\Enemy_B.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy_B.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\Enemies\\Enemy_B.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T05:09:25.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnemyState.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\FSM\\EnemyState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\FSM\\EnemyState.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\FSM\\EnemyState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\FSM\\EnemyState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA0AAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T05:08:06.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Enemy_A.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy_A.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Enemies\\Enemy_A.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy_A.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\Enemies\\Enemy_A.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAxwCQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T05:04:04.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Character.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Character.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Character.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Character.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\Character.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T03:45:33.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SpawnManager.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Managers\\SpawnManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Managers\\SpawnManager.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Managers\\SpawnManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Managers\\SpawnManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T01:17:29.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EnemyAttackState.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\FSM\\EnemyAttackState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\FSM\\EnemyAttackState.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\FSM\\EnemyAttackState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\FSM\\EnemyAttackState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T04:32:28.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "StateMachine.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\FSM\\StateMachine.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\FSM\\StateMachine.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\FSM\\StateMachine.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\FSM\\StateMachine.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T03:39:51.754Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EnemySpawnState.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\FSM\\EnemySpawnState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\FSM\\EnemySpawnState.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\FSM\\EnemySpawnState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\FSM\\EnemySpawnState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwA0AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T04:54:49.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "EnemyIdleState.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\FSM\\EnemyIdleState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\FSM\\EnemyIdleState.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\FSM\\EnemyIdleState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\FSM\\EnemyIdleState.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T03:54:38.113Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Enemies\\Enemy.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Enemy.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\Enemies\\Enemy.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAADwvzQAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T03:53:49.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Projectile.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\Projectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Projectile\\Projectile.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Projectile\\Projectile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Projectile\\Projectile.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAA1wE4AAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T02:31:15.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EndBoss_A.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Boss\\EndBoss_A.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Enemies\\Boss\\EndBoss_A.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Boss\\EndBoss_A.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\Enemies\\Boss\\EndBoss_A.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T23:55:42.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TestEnemyBoss.cs",
+              "DocumentMoniker": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Boss\\TestEnemyBoss.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Character\\Enemies\\Boss\\TestEnemyBoss.cs",
+              "ToolTip": "C:\\Users\\552ST003\\Desktop\\JustShooting\\Prototype\\Assets\\Scripts\\Character\\Enemies\\Boss\\TestEnemyBoss.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Character\\Enemies\\Boss\\TestEnemyBoss.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T23:55:25.682Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

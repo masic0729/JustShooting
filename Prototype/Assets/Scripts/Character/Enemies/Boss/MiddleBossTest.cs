@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndBoss_A : EndBoss
+public class MiddleBossTest : MiddleBoss
 {
+
     protected override void Start()
     {
         base.Start();
+        Init();
     }
 
     protected override void Update()
@@ -24,4 +26,3 @@ public class EndBoss_A : EndBoss
         base.OnTriggerEnter2D(collision);
     }
 }
-

@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 2321300122657600470}
   - component: {fileID: 509943874786013412}
   - component: {fileID: 1112783213065795924}
-  - component: {fileID: 3885323098777266293}
+  - component: {fileID: 3264664708799099428}
   m_Layer: 0
   m_Name: Enemy_Boss
   m_TagString: Enemy
@@ -91,8 +91,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7691790650951377814}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.87, y: -3.92, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -142,7 +142,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 8596640243658272642, guid: 5d4daff38e3d9174b873918abcf2c1d4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9245283, g: 0.2747419, b: 0.2747419, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -235,7 +235,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &3885323098777266293
+--- !u!114 &3264664708799099428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,10 +244,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7691790650951377814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03ccf6fb28d9e7a43be26418f8e27349, type: 3}
+  m_Script: {fileID: 11500000, guid: 8df1953df15d3774c9e3204087529f4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 10
   objectMoveSpeedMultify: 1
   characterFSM: 0
   attackStats: {fileID: 0}
@@ -257,9 +257,9 @@ MonoBehaviour:
   attackDelay: 3
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
-  enemyProjectiles: {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
+  enemyProjectiles: []
   attackData:
     sprite: {fileID: 0}
-    animCtrl: {fileID: 9100000, guid: 152a5b2a92ab8b148ab153fdff637c3b, type: 2}
-    moveSpeed: 5
+    animCtrl: {fileID: 0}
+    moveSpeed: 0
   isBoss: 0

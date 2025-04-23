@@ -10,6 +10,8 @@ public class SpawnManager : MonoBehaviour
     public static SpawnManager instance;            //싱글톤. 사실 의미 없을 수도 있지만, 참조를 의도로 기능 활성화\
     public Dictionary<string, GameObject> enemyName;
     SpawnData spawnData;                            //적 스폰에 대한 데이터
+    [SerializeField]
+    float firstWaveTime;
     float waveTimer = 0, waveTime = 99f;            //기본적인 스폰 관련 타이머
     int waveIndex;
     bool isWaveTimerOn;                             //외부 객체에 의해 웨이브 타이머가 통제될 수 있음
@@ -63,23 +65,21 @@ public class SpawnManager : MonoBehaviour
 
     void WaveTimer()
     {
-        if (GetWaveTimerOnState() == true && GetIsSpawningState() == false)
+        if (GetWaveTimerOnState() == true &&
+            GetIsSpawningState() == false &&
+            GetIsBossSpawn() == false)
         {
             waveTimer += Time.deltaTime;
         }
-        if (waveTimer > waveTime && waveIndex != spawnData.spawnDataList.Count)
+        if (waveTimer > waveTime && (waveIndex != spawnData.spawnDataList.Count))
         {
             SetTimer(0);
             WaveOn();
         }
     }
 
-
-
-
     void WaveOn()
     {
-        
         StartCoroutine(SpawnCoroutine(spawnData.spawnDataList[waveIndex]));
     }
 
@@ -125,6 +125,16 @@ public class SpawnManager : MonoBehaviour
         SetIsSpawningState(false);
         
         waveIndex++;
+    }
+
+    public void SetIsBossSpawn(bool state)
+    {
+        isBossSpawn = state;
+    }
+
+    public bool GetIsBossSpawn()
+    {
+        return isBossSpawn;
     }
 
     void SetTimer(float value)

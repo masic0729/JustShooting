@@ -8,7 +8,8 @@ public class Enemy_B : Enemy
     float maxY_Range;
     [SerializeField]
     float targetPosY;
-    
+    [SerializeField]
+    int shootCount = 10;
     bool isArrivePoint = false;
 
 
@@ -23,6 +24,7 @@ public class Enemy_B : Enemy
     protected override void Update()
     {
         base.Update();
+
         //아직 정지하려는 위치에 도달하지 않았으므로 앞으로 이동
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
@@ -49,6 +51,9 @@ public class Enemy_B : Enemy
         }
         
         StartCoroutine(AttackEnemyBullet());
+
+        stateMachine.ChangeState(new EnemySpawnState(this)); //여기를 기점으로 FSM 시작. 하지만 기능은 지금 없음. 그리고 상위 클래스에 둬도 괜찮은 지 추후 검수 예정
+
     }
 
     void SetTransTargetTransform()
@@ -61,7 +66,6 @@ public class Enemy_B : Enemy
     IEnumerator AttackEnemyBullet()
     {
         Repeat:
-        int shootCount = 10;
        
         yield return new WaitForSeconds(attackDelay);
 

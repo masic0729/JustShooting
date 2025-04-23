@@ -18,6 +18,7 @@ public class Enemy_A : Enemy
     {
         base.Start();
         Init();
+
     }
 
     protected override void Update()
@@ -31,6 +32,9 @@ public class Enemy_A : Enemy
     {
         base.Init();
         yVector = SpawnManager.instance.isEnemyA_Down == true ? -1 : 1;
+        transform.position = new Vector3(12, transform.position.y, 0);
+        //stateMachine.ChangeState(new EnemySpawnState(this));
+
     }
 
     void Tresh()

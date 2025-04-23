@@ -8,22 +8,9 @@ using UnityEngine.UI;
 
 public class Character : IObject
 {
-    /// <summary>
-    /// 기본적인 캐릭터의 상태머신
-    /// </summary>
-    public enum FSM_Info
-    {
-        Spawn,
-        Idle,
-        Move,
-        Attack,
-        Skill,
-        Stun,
-        Die   
-    }
-    public FSM_Info characterFSM;
+    
 
-    public AttackStats attackStats;                                     // 공격하는 객체가 소지하는 데이터 모음
+    public AttackStats attackStats;                                     //공격하는 객체가 소지하는 데이터 모음
     protected ProjectileManagement projectileManage;
     private Transform[] shootTransforms;                                //캐릭터의 발사위치
     protected AttackManagement attackManage;                            //공격 방식에 대한 정보
@@ -51,6 +38,7 @@ public class Character : IObject
     protected float invincibilityTime = 0f;                             //무적 시간
     protected bool  isInvincibility;                                    //무적 여부
 
+    
 
     protected override void Start()
     {

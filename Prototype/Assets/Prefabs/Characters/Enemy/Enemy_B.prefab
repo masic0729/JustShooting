@@ -186,7 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   objectMoveSpeedMultify: 0
-  characterFSM: 0
   attackStats: {fileID: 0}
   hp: 10
   maxHp: 10
@@ -194,6 +193,7 @@ MonoBehaviour:
   attackDelay: 0
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
+  enemyFSM_List: 02000000
   enemyProjectiles:
   - {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
   attackData:
@@ -203,6 +203,7 @@ MonoBehaviour:
   isBoss: 0
   maxY_Range: 4
   targetPosY: 0
+  shootCount: 10
 --- !u!1 &6371941723085937512
 GameObject:
   m_ObjectHideFlags: 0

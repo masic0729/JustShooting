@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void GameOver()
+    {
+        SetIsGameOver(true);
+    }
     //getset
     public void SetIsGameOver(bool state)
     {

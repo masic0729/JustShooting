@@ -14,9 +14,16 @@ public class MiddleBoss : Boss
         base.Update();
     }
 
+    private void OnDestroy()
+    {
+        
+    }
+
     protected override void Init()
     {
         base.Init();
+        OnCharacterDeath += RestartWave; //죽을 때 웨이브 재개
+
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

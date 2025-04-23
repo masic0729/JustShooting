@@ -6,8 +6,25 @@ using UnityEngine.UI;
 
 public class Enemy : Character
 {
-    public GameObject[] enemyProjectiles; //나중에 딕셔너리 기반으로 가독성 있는 코드로 변형 예정
-    protected Dictionary<string, GameObject> enemyProjectile;
+    /// <summary>
+    /// 기본적인 적 상태머신
+    /// </summary>
+    public enum FSM_Info
+    {
+        Spawn = 0,
+        Idle,
+        Move,
+        Attack,
+        Skill,
+        Stun,
+        Die   
+    }
+    public FSM_Info[] enemyFSM_List;
+
+    public StateMachine stateMachine;                                   //FSM 스크립트
+
+    public GameObject[] enemyProjectiles;                               //인스펙터에 등록된 발사체 종류
+    protected Dictionary<string, GameObject> enemyProjectile;           //발사체 종류를 딕셔너리화
     protected Vector2 currentTargetPos;
 
     [Header("Enemy의 공격 데이터")]
@@ -19,15 +36,24 @@ public class Enemy : Character
     protected float targetMoveSpeed;
     protected float distanceNeedValue = 1f;
 
+    public int stateIndex = 0;
+
 
 
     [SerializeField]
     bool isBoss = false; //보스 유무 확인. 기본값은 거짓
     protected bool isSelfPosition = true;
 
+    protected virtual void Awake()
+    {
+        stateMachine = new StateMachine();
+        //Debug.Log("일단 실행은 되는데, 기능은 안될 수 있다?");
+    }
+
     protected override void Start()
     {
         base.Start();
+
     }
 
     // Update is called once per frame
@@ -39,7 +65,7 @@ public class Enemy : Character
 
     private void OnDestroy()
     {
-        Debug.Log("어쨋든 난 실행됨");
+
     }
 
     protected override void Init()
