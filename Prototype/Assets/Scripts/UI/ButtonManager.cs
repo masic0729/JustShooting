@@ -9,15 +9,20 @@ public class ButtonManager : MonoBehaviour
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1.0f;
+
     }
 
     public void HideUI(GameObject target)
     {
         target.SetActive(false);
+        Time.timeScale = 1.0f;
+
     }
 
     public void ShowUI(GameObject target)
     {
         target.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 }

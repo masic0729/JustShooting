@@ -1,4 +1,6 @@
+#if UNITY_EDITOR
 using UnityEditor.Animations;
+#endif
 using UnityEngine;
 
 //지금 하지는 말자, 머리가 안돌아가는 시기에 깔짝대는걸로. 하지만 중요한 스크립트 중 하나라고 봄
@@ -14,7 +16,7 @@ public class ProjectileManagement
         projectile.transform.tag = tag;
     }
 
-    public void SetProjectileData(ref GameObject projectile, AnimatorController animCtrl,
+    public void SetProjectileData(ref GameObject projectile, RuntimeAnimatorController animCtrl,
         float moveSpeed, float damage, float lifeTime, string tag)
     {
         projectile.GetComponent<Animator>().runtimeAnimatorController = animCtrl;

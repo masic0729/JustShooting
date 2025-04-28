@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveEffect : MonoBehaviour
 {
+    Player player;
     private RectTransform rectTransform;
     private Vector2 startPos;
 
@@ -11,6 +10,8 @@ public class WaveEffect : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         startPos = rectTransform.anchoredPosition;
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+
     }
 
     void Update()
@@ -21,9 +22,12 @@ public class WaveEffect : MonoBehaviour
     
     Vector2 CalPlayerPowerOnUI()
     {
-        Player player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        float rectHeight = rectTransform.rect.height / 100;
-        Vector2 instanceValue = new Vector2(0, player.powerStats.playerPower * rectHeight);
+        Vector2 instanceValue = Vector2.zero;
+        if(player != null)
+        {
+            float rectHeight = rectTransform.rect.height / 100;
+            instanceValue = new Vector2(0, player.powerStats.playerPower * rectHeight - rectTransform.rect.height);
+        }
         return instanceValue;
 
     }

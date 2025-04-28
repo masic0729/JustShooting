@@ -163,3 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyTime: 5
   WindSkillBullet: {fileID: 8270318897632803940, guid: 69926e6ca4663f2498acb4d13b6b12cc, type: 3}
+  isTest: 1

@@ -5,9 +5,9 @@ using UnityEngine;
 public class Bullet : Projectile
 {
     protected TargetBulletManagement targetBulletManager;
-    public float rotateValue = 0.6f;
+    public float rotateValue = 1.0f;
     protected float rotateDefaultValue;
-    protected float rotateAddValue = 0.4f;
+    protected float rotateAddValue = 0.5f;
 
     protected override void OnEnable()
     {

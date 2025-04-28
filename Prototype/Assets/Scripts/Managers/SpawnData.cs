@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,10 @@ public enum EnemyData
     Enemy_B,
     Enemy_C,
     Enemy_D,
-    Enemy_Boss
+    Enemy_Boss,
+    MiddleBoss_Test,
+    EndBoss_A,
+    EndBoss_Test
 }
 public class SpawnData : MonoBehaviour
 {
@@ -18,7 +20,7 @@ public class SpawnData : MonoBehaviour
     {
         public EnemyData enemyData;
         public int spawnEnemyCount;
-        public float waveDelay;
+        public float nextWaveDelay;
         public float spawnDelay;
         public bool isCustomPosition;
         public float[] spawnX_Value;

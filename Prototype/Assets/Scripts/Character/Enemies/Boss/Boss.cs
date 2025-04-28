@@ -36,6 +36,8 @@ public class Boss : Enemy
         SpawnManager.instance.SetIsBossSpawn(true);
     }
 
+    
+
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);

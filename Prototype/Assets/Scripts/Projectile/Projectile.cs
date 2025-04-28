@@ -61,7 +61,7 @@ public class Projectile : IObject
     void AutoDestroy()
     {
         lifeTimer += Time.deltaTime;
-        if (lifeTimer >= lifeTime)
+        if (lifeTimer >= lifeTime || Mathf.Abs(transform.position.x) > maxMoveX || Mathf.Abs(transform.position.y) > maxMoveY)
         {
             CheckPoolObject();
         }

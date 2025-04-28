@@ -1,11 +1,9 @@
-using UnityEditor.Animations;
 using UnityEngine;
-
 //[CreateAssetMenu(fileName = "AttackStats", menuName = "ScriptableObjects/AttackStats", order = 1)]
 public class AttackStats : MonoBehaviour
 {
     [Header("공격 객체들의 발사체 데이터")]
-    public AnimatorController animCtrl;             // 발사체의 애니메이션
+    public RuntimeAnimatorController animCtrl;             //발사체의 애니메이션
     public Sprite sprite;                           // 발사체의 리소스
     [HideInInspector]
     public float damage = 1f;                       // 피해량

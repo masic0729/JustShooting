@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+
+#if UNITY_EDITOR
 using UnityEditor.Animations;
+#endif
 using UnityEngine;
 
 public class PRA_Anim : MonoBehaviour
 {
     Animator anim;
-    public AnimatorController[] animCtrl;
+    public RuntimeAnimatorController[] animCtrl;
     /*
     이 스크립트에서 알 수 있는 것.
     우선, 델리게이트를 통해서 같은 형태의 객체(예를 들어 총알, 캐릭터 등등 다양하고 같은 계열들)들을 효율적으로 설계가 가능할 확률이 높게됨.

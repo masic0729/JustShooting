@@ -1,6 +1,7 @@
-using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor.Animations;
-
+#endif
+using UnityEngine;
 
 [System.Serializable]
 public class PlayerBulletData
@@ -9,7 +10,7 @@ public class PlayerBulletData
     /// 
     /// </summary>
     public Sprite sprite;
-    public AnimatorController animCtrl;
+    public RuntimeAnimatorController animCtrl;
     
     public string weaponName; // 공격타입
     public int weaponLevel = 1;

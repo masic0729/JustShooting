@@ -187,8 +187,8 @@ MonoBehaviour:
   moveSpeed: 2
   objectMoveSpeedMultify: 0
   attackStats: {fileID: 0}
-  hp: 10
-  maxHp: 10
+  hp: 15
+  maxHp: 15
   attackMultiplier: 1
   attackDelay: 0
   projectileMoveSpeedMultify: 1
@@ -200,6 +200,7 @@ MonoBehaviour:
     sprite: {fileID: 0}
     animCtrl: {fileID: 9100000, guid: 152a5b2a92ab8b148ab153fdff637c3b, type: 2}
     moveSpeed: 10
+  stateIndex: 0
   isBoss: 0
   maxY_Range: 4
   targetPosY: 0

@@ -217,19 +217,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   objectMoveSpeedMultify: 1
-  characterFSM: 0
   attackStats: {fileID: 0}
-  hp: 10
-  maxHp: 10
+  hp: 1
+  maxHp: 1
   attackMultiplier: 1
   attackDelay: 0
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
+  enemyFSM_List: 
   enemyProjectiles: []
   attackData:
     sprite: {fileID: 0}
     animCtrl: {fileID: 0}
     moveSpeed: 0
+  stateIndex: 0
   isBoss: 0
   length: 4.5
   yMoveSpeedMultify: 9

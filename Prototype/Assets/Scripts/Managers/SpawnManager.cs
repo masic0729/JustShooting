@@ -55,12 +55,12 @@ public class SpawnManager : MonoBehaviour
         SetWaveTimerOnState(true);
         SetIsSpawningState(false);
         waveIndex = 0;
-        waveTime = spawnData.spawnDataList[0].waveDelay;
+        waveTime = spawnData.spawnDataList[0].nextWaveDelay;
     }
 
     void WaveDataLoad()
     {
-        waveTime = spawnData.spawnDataList[waveIndex].waveDelay;
+        waveTime = spawnData.spawnDataList[waveIndex].nextWaveDelay;
     }
 
     void WaveTimer()

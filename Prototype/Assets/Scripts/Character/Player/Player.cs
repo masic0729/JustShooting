@@ -53,10 +53,6 @@ public class Player : Character
             "\nplayerMoveSpeed : " + moveSpeed * objectMoveSpeedMultify + "\nPlayerPowerValue : " + powerStats.playerPower;
     }
 
-    private void FixedUpdate()
-    {
-
-    }
 
     protected override void Init()
     {
@@ -67,7 +63,8 @@ public class Player : Character
         attackDelay = 0.1f;
         SetMoveSpeed(10f);
         powerStats = gameObject.GetComponent<PlayerPower>();
-        invincibilityTime = 2f;
+        //invincibilityTime = 2f;
+        invincibilityTime = 0f;
 
         //딕셔너리화한 이후 현재 무기상태 및 스킬을 초기화한다
         commonBullets = new Dictionary<string, PlayerBulletData>();
@@ -83,7 +80,7 @@ public class Player : Character
         SetCurrentCommonBulletData(CurrentPlayerBullet.Wind); //현재 무기 초기화
 
         StartCoroutine(powerStats.DefaultPowerUp());
-
+        OnCharacterDeath += PlayerDeath;                                                //플레이어 사망액션
 
         /*currentBullet = currentBullet switch
         {
@@ -313,7 +310,7 @@ public class Player : Character
     /// <returns></returns>
     IEnumerator WindBulletShoot(GameObject windBullet, int shootCount)
     {
-        
+        float skillAttackDelay = attackDelay * attackStats.attackDelayMultify;
         for (int i = 0; i < shootCount; i++)
         {
             GameObject instance = Instantiate(windBullet, shootTransform["Skill"].position,
@@ -336,7 +333,7 @@ public class Player : Character
                 instance.GetComponent<Projectile>().SetMoveSpeed(attackStats.moveSpeed * 2f);
                 instance.GetComponent<Projectile>().SetDamage(this.attackStats.damage * attackStats.damageMultiplier * 0.8f);
             }
-            yield return new WaitForSeconds(attackDelay * attackStats.attackDelayMultify);
+            yield return new WaitForSeconds(skillAttackDelay);
         }
     }
 
@@ -347,7 +344,8 @@ public class Player : Character
     /// <returns></returns>
     IEnumerator IcedBulletShoot(GameObject icedBullet)
     {
-        
+        float skillAttackDelay = attackDelay * attackStats.attackDelayMultify;
+
         for (int i = 0; i < 15; i++)
         {
             GameObject instance = Instantiate(icedBullet, shootTransform["Skill"].position,
@@ -360,9 +358,16 @@ public class Player : Character
                 instance.GetComponent<Projectile>().SetMoveSpeed(attackStats.moveSpeed * 2f);
                 instance.GetComponent<Projectile>().SetDamage(this.attackStats.damage * attackStats.damageMultiplier * 0.7f);
             }
-            yield return new WaitForSeconds(attackDelay * attackStats.attackDelayMultify);
+            yield return new WaitForSeconds(skillAttackDelay);
 
         }
+    }
+
+    void PlayerDeath()
+    {
+        GameManager.instance.isGameEnd = true;
+        UI_Manager.instance.ShowScreen(UI_Manager.ScreenInfo.LoseScreen);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -68,10 +68,10 @@
     <Compile Include="Assets\Scripts\Character\Enemies\Boss\TestEnemyBoss.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnData.cs" />
     <Compile Include="Assets\Scripts\Projectile\PoolProjectile.cs" />
-    <Compile Include="Assets\Scripts\Practice\TestEditor.cs" />
     <Compile Include="Assets\Scripts\Practice\PRA_Delegate.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\Boss\EndBoss_A.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\UI_Manager.cs" />
     <Compile Include="Assets\Scripts\Projectile\Projectile.cs" />
     <Compile Include="Assets\Scripts\Character\FSM\EnemySpawnState.cs" />
     <Compile Include="Assets\Scripts\Projectile\Player\PlayerFireSkill.cs" />
@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Character\Enemies\Enemy_A.cs" />
     <Compile Include="Assets\Scripts\Projectile\Bullet.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Character\Enemies\Boss\EndBossTest.cs" />
     <Compile Include="Assets\Scripts\IObject.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\TestEnemy.cs" />
     <Compile Include="Assets\Scripts\Projectile\BounceBullet.cs" />
@@ -96,7 +97,6 @@
     <Compile Include="Assets\Scripts\Projectile\Player\PlayerIcedSkill.cs" />
     <Compile Include="Assets\Scripts\Effect\IcedBuffEffect.cs" />
     <Compile Include="Assets\Scripts\Managers\PoolManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\SpawnEditor.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Practice\PRA_Anim.cs" />
     <Compile Include="Assets\Scripts\Projectile\ProjectileManagement.cs" />
