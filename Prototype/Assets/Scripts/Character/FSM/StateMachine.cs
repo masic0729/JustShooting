@@ -23,7 +23,7 @@ public class StateMachine
     /// </summary>
     public void Update()
     {
-        //현재 스탠그가 있으면 업데이트 구동.
+        //현재 스탠스가 있으면 업데이트 구동.
         currentState?.Update();
     }
 }

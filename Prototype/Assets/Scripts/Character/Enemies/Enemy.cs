@@ -1,27 +1,13 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Enemy : Character
 {
-    /// <summary>
-    /// 기본적인 적 상태머신
-    /// </summary>
-    public enum FSM_Info
-    {
-        Spawn = 0,
-        Idle,
-        Move,
-        Attack,
-        Skill,
-        Stun,
-        Die   
-    }
-    public FSM_Info[] enemyFSM_List;
+    public StateMachine enemyState;                                     //FSM 스크립트
+    public int stateIndex = 0;
+    public Vector2 arriveVector;                                               //객체가 도착하려는 위치값
 
-    public StateMachine stateMachine;                                   //FSM 스크립트
+    //public StateMachine stateMachine;                                   
 
     public GameObject[] enemyProjectiles;                               //인스펙터에 등록된 발사체 종류
     protected Dictionary<string, GameObject> enemyProjectile;           //발사체 종류를 딕셔너리화
@@ -30,13 +16,12 @@ public class Enemy : Character
     [Header("Enemy의 공격 데이터")]
     public EnemyAttackData attackData;
 
-    protected ObjectMovement movement;
+    public ObjectMovement movement;
     
     protected GameObject thisGameObject;
     protected float targetMoveSpeed;
     protected float distanceNeedValue = 1f;
 
-    public int stateIndex = 0;
 
 
 
@@ -46,7 +31,7 @@ public class Enemy : Character
 
     protected virtual void Awake()
     {
-        stateMachine = new StateMachine();
+        //stateMachine = new StateMachine();
         //Debug.Log("일단 실행은 되는데, 기능은 안될 수 있다?");
     }
 
@@ -81,7 +66,7 @@ public class Enemy : Character
                 enemyProjectile[enemyProjectiles[i].name] = enemyProjectiles[i];
             }
         }
-
+        arriveVector = new Vector2(3f, 0);
     }
 
     void CheckOverGameZone()

@@ -52,7 +52,7 @@ public class Enemy_B : Enemy
         
         StartCoroutine(AttackEnemyBullet());
 
-        stateMachine.ChangeState(new EnemySpawnState(this)); //여기를 기점으로 FSM 시작. 하지만 기능은 지금 없음. 그리고 상위 클래스에 둬도 괜찮은 지 추후 검수 예정
+        //stateMachine.ChangeState(new BossSpawnState(this)); //여기를 기점으로 FSM 시작. 하지만 기능은 지금 없음. 그리고 상위 클래스에 둬도 괜찮은 지 추후 검수 예정
 
     }
 

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Boss : Enemy
 {
+    //public int stateIndex = 0;
+
     protected override void Start()
     {
         base.Start();   
