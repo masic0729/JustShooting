@@ -20,7 +20,8 @@ public class BossSpawnState : EnemyState
         }
         else
         {
-            enemy.enemyState.ChangeState(new BossMoveState(enemy));
+            enemy.ChangeState(new BossMoveState(enemy));
+            Debug.Log("º¯°æ");
         }
     }
 }

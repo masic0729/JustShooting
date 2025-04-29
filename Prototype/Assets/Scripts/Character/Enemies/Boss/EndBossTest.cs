@@ -22,13 +22,10 @@ public class EndBossTest : EndBoss
         base.Init();
         enemyState = new StateMachine();
 
-        TestChangeState(new BossSpawnState(this));
+        ChangeState(new BossSpawnState(this));
     }
 
-    public void TestChangeState(EnemyState state)
-    {
-        enemyState.ChangeState(state);
-    }
+    
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {

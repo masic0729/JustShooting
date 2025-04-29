@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18188584, g: 0.2275654, b: 0.3074171, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -688,7 +688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &366055737
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1288,15 +1288,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnDataList:
-  - enemyData: 7
-    spawnEnemyCount: 1
-    nextWaveDelay: 3
+  - enemyData: 0
+    spawnEnemyCount: 5
+    nextWaveDelay: 5
     spawnDelay: 0.3
     isCustomPosition: 0
     spawnX_Value:
     - 0
+    - 0
+    - 0
+    - 0
+    - 0
     spawnY_Value: []
     ArrivePosition:
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
     - {x: 0, y: 0}
 --- !u!114 &653613542
 MonoBehaviour:

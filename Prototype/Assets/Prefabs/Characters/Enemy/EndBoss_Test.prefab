@@ -93,8 +93,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 519906832882662033}
   - {fileID: 7166350262667182869}
@@ -256,12 +256,12 @@ MonoBehaviour:
   attackDelay: 0
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
-  enemyFSM_List: 
+  stateIndex: 0
+  arriveVector: {x: 0, y: 0}
   enemyProjectiles: []
   attackData:
     sprite: {fileID: 0}
     animCtrl: {fileID: 0}
     moveSpeed: 0
-  stateIndex: 0
   isBoss: 1
   isFinalBoss: 1

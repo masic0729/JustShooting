@@ -77,6 +77,11 @@ public class Enemy : Character
         }
     }
 
+    public void ChangeState(EnemyState state)
+    {
+        enemyState.ChangeState(state);
+    }
+
     virtual protected void OnTriggerEnter2D(Collider2D collision)
     {
         const float damageValue = 1f;
