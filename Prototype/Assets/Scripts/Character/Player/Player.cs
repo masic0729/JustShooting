@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 //임시로 때려박은거
 using UnityEngine.UI;
@@ -101,21 +99,24 @@ public class Player : Character
 
     void MoveInput()
     {
-        if(Input.GetKey(KeyCode.LeftArrow) && -maxMoveX < this.transform.position.x)
+        if(Time.time != 0)
         {
-            ObjectMove(Vector3.left);
-        }
-        if (Input.GetKey(KeyCode.RightArrow) && maxMoveX > this.transform.position.x)
-        {
-            ObjectMove(Vector3.right);
-        }
-        if (Input.GetKey(KeyCode.UpArrow) && maxMoveY > this.transform.position.y)
-        {
-            ObjectMove(Vector3.up);   
-        }
-        if (Input.GetKey(KeyCode.DownArrow) && -maxMoveY < this.transform.position.y)
-        {
-            ObjectMove(Vector3.down);
+            if (Input.GetKey(KeyCode.LeftArrow) && -maxMoveX < this.transform.position.x)
+            {
+                ObjectMove(Vector3.left);
+            }
+            if (Input.GetKey(KeyCode.RightArrow) && maxMoveX > this.transform.position.x)
+            {
+                ObjectMove(Vector3.right);
+            }
+            if (Input.GetKey(KeyCode.UpArrow) && maxMoveY > this.transform.position.y)
+            {
+                ObjectMove(Vector3.up);
+            }
+            if (Input.GetKey(KeyCode.DownArrow) && -maxMoveY < this.transform.position.y)
+            {
+                ObjectMove(Vector3.down);
+            }
         }
     }
 
