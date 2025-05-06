@@ -32,7 +32,7 @@ public class PlayerCommonBullet : Bullet
     {
         if (bulletName == "Fire")
         {
-            //SetLifeTime(0.25f);
+            SetLifeTime(0.25f);
             Debug.Log("난 불속성이라 짧아");
         }
     }

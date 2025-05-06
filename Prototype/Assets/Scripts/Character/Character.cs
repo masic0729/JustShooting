@@ -8,7 +8,8 @@ using UnityEngine.UI;
 
 public class Character : IObject
 {
-    
+    public GameObject hitExplosion;
+    public GameObject destroyExplosion;
 
     public AttackStats attackStats;                                     //공격하는 객체가 소지하는 데이터 모음
     protected ProjectileManagement projectileManage;

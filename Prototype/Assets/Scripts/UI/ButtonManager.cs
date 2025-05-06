@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ButtonManager : MonoBehaviour
 {
 
+
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
@@ -24,5 +25,19 @@ public class ButtonManager : MonoBehaviour
     {
         target.SetActive(true);
         Time.timeScale = 0.0f;
+    }
+
+    public void ButtonSoundOutPut(string soundName)
+    {
+        if(soundName == "")
+        {
+            soundName = "ClickSample";
+        }
+        AudioManager.Instance.PlayINF(soundName);
+    }
+
+    public void ChangeBGM(string soundName)
+    {
+        AudioManager.Instance.PlayBGM(soundName);
     }
 }

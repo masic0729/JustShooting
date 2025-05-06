@@ -40,9 +40,10 @@ public class Enemy_D : Enemy
         base.Init();
         targetManage = new TargetBulletManagement();
         targetPlayer = GameObject.Find("Player");
-        if(isSelfPosition == true)
+        if (isSelfPosition == true)
         {
-            currentTargetPos = new Vector2(1f, this.transform.position.y);
+            //currentTargetPos = new Vector2(1f, this.transform.position.y);
+            currentTargetPos = new Vector2(transform.position.x - 22f, targetPosY);
         }
         targetMoveSpeed = GetMoveSpeed() / 2f;
         targetPosY = transform.position.y;

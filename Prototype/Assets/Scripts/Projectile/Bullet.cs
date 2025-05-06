@@ -7,7 +7,7 @@ public class Bullet : Projectile
     protected TargetBulletManagement targetBulletManager;
     public float rotateValue = 1.0f;
     protected float rotateDefaultValue;
-    protected float rotateAddValue = 0.5f;
+    protected float rotateAddValue = 1.5f;
 
     protected override void OnEnable()
     {

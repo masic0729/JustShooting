@@ -43,7 +43,7 @@ public class Projectile : IObject
     {
         projectileInteraction = new ObjectInteration();
 
-        maxMoveX = 10.5f;
+        maxMoveX = 10f;
         maxMoveY = 5.5f;
         thisGameObject = this.gameObject;
         projectileMoveVector = Vector3.up;

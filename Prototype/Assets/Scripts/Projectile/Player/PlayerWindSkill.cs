@@ -12,7 +12,7 @@ public class PlayerWindSkill : PlayerEffect
     protected override void Start()
     {
         base.Start();
-        
+        AudioManager.Instance.PlaySFX("WindPuller");
     }
 
     private void OnDestroy()

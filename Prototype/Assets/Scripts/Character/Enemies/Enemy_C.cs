@@ -66,7 +66,8 @@ public class Enemy_C : Enemy
         base.Init();
         if (isSelfPosition == true)
         {
-            currentTargetPos = new Vector2(1f, this.transform.position.y);
+            //currentTargetPos = new Vector2(1f, this.transform.position.y);
+            currentTargetPos = new Vector2(transform.position.x - 22f, targetPosY);
         }
         currentShootPos = new Vector2[2];
         shootGameObject = new GameObject[2];

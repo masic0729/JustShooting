@@ -22,8 +22,8 @@ public class Enemy : Character
     protected float targetMoveSpeed;
     protected float distanceNeedValue = 1f;
 
-
-
+    private float hitSoundCooldown = 0.05f;
+    private float lastHitSoundTime = -1f;
 
     [SerializeField]
     bool isBoss = false; //보스 유무 확인. 기본값은 거짓
@@ -48,18 +48,16 @@ public class Enemy : Character
         CheckOverGameZone();
     }
 
-    private void OnDestroy()
-    {
-
-    }
-
     protected override void Init()
     {
         base.Init();
+        OnCharacterDeath += DefaultEnemyDestroyEffect;                                      //사망 시 기본폭발 이펙트
         movement = new ObjectMovement();
         thisGameObject = this.gameObject;
         enemyProjectile = new Dictionary<string, GameObject>();
-        if(enemyProjectiles != null)
+        
+
+        if (enemyProjectiles != null)
         {
             for (int i = 0; i < enemyProjectiles.Length; i++)
             {
@@ -77,6 +75,14 @@ public class Enemy : Character
         }
     }
 
+    void DefaultEnemyDestroyEffect()
+    {
+        //객체의 중심에 폭발 이펙트 생성
+        ParticleManager.Instance.PlayEffect("EnemyExplosion", this.transform.position);
+        AudioManager.Instance.PlaySFX("EnemyExplosion");
+
+    }
+
     public void ChangeState(EnemyState state)
     {
         enemyState.ChangeState(state);
@@ -85,16 +91,33 @@ public class Enemy : Character
     virtual protected void OnTriggerEnter2D(Collider2D collision)
     {
         const float damageValue = 1f;
-        if(collision.transform.name == "Player")
+        if(collision.transform.name == "Player" && collision.TryGetComponent(out Character character))
         {
-            //플레이어 데이터를 불러와 피해를준다
-            Character instancePlayer = collision.gameObject.GetComponent<Character>();
-            if(instancePlayer != null && characterInteraction != null)
+            
+            if(character != null && characterInteraction != null)
             {
-                characterInteraction.SendDamage(ref instancePlayer, damageValue);
-                Debug.Log(instancePlayer.GetHp());
+                characterInteraction.SendDamage(ref character, damageValue);
+                Debug.Log(character.GetHp());
             }
         }
+
+        if (collision.transform.tag == "Player" && collision.GetComponent<Projectile>())
+        {
+            float randY = Random.Range(-0.1f, 1f);
+            Vector2 spawnHitEffectPosition = new Vector2(collision.transform.position.x, transform.position.y + randY);
+            ParticleManager.Instance.PlayEffect("EnemyHit", collision.ClosestPoint(spawnHitEffectPosition));
+            DemagedSound();
+        }
+    }
+
+    
+
+    public void DemagedSound()
+    {
+        if (Time.time - lastHitSoundTime < hitSoundCooldown) return;
+
+        AudioManager.Instance.PlaySFX("EnemyHit");
+        lastHitSoundTime = Time.time;
     }
     /// <summary>
     /// getset

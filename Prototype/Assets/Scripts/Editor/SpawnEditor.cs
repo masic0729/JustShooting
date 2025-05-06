@@ -1,108 +1,4 @@
-/*using Unity.VisualScripting;
-using UnityEditor;
-using UnityEngine;
-
-[CustomEditor(typeof(SpawnData))]
-public class SpawnEditor : Editor
-{
-    private SerializedProperty spawnDataList;
-
-    private void OnEnable()
-    {
-        spawnDataList = serializedObject.FindProperty("spawnDataList");
-    }
-
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
-
-        EditorGUILayout.LabelField("Spawn Data List", EditorStyles.boldLabel);
-
-        for (int i = 0; i < spawnDataList.arraySize; i++)
-        {
-            SerializedProperty element = spawnDataList.GetArrayElementAtIndex(i);
-
-            SerializedProperty enemyData = element.FindPropertyRelative("enemyData");
-            SerializedProperty spawnEnemyCount = element.FindPropertyRelative("spawnEnemyCount");
-            SerializedProperty nextWaveDelay = element.FindPropertyRelative("nextWaveDelay");
-            SerializedProperty spawnDelay = element.FindPropertyRelative("spawnDelay");
-            SerializedProperty isCustomPosition = element.FindPropertyRelative("isCustomPosition");
-            SerializedProperty spawnXArray = element.FindPropertyRelative("spawnX_Value");
-            SerializedProperty arrivePos = element.FindPropertyRelative("ArrivePosition");
-
-            EditorGUILayout.BeginVertical("box");
-
-            EditorGUILayout.PropertyField(enemyData);
-            EditorGUILayout.PropertyField(nextWaveDelay);
-            EditorGUILayout.PropertyField(spawnDelay);
-            EditorGUILayout.PropertyField(isCustomPosition);
-
-            // ªÁ¿¸ø° πËø≠ µø±‚»≠∏∏ µ˚∑Œ ºˆ«‡
-            int count = Mathf.Max(1, spawnEnemyCount.intValue); // √÷º“ 1 ¿ÃªÛ ∫∏¿Â
-            ResizeArray(spawnXArray, count);
-            ResizeArray(arrivePos, count);
-
-            EditorGUILayout.PropertyField(spawnEnemyCount);
-
-            // ºˆµø πËø≠ ±◊∏Æ±‚
-            if (isCustomPosition.boolValue)
-            {
-                EditorGUILayout.LabelField("Custom Spawn Positions");
-
-                for (int j = 0; j < count; j++)
-                {
-                    SerializedProperty vecElement = arrivePos.GetArrayElementAtIndex(j);
-                    SerializedProperty xOffset = spawnXArray.GetArrayElementAtIndex(j);
-
-                    EditorGUILayout.BeginHorizontal();
-                    EditorGUI.BeginChangeCheck();
-                    Vector2 newVec = EditorGUILayout.Vector2Field($"Pos[{j}]", vecElement.vector2Value);
-                    if (EditorGUI.EndChangeCheck())
-                        vecElement.vector2Value = newVec;
-
-                    EditorGUILayout.PropertyField(xOffset, GUIContent.none);
-                    EditorGUILayout.EndHorizontal();
-                }
-            }
-
-            EditorGUILayout.EndVertical();
-            EditorGUILayout.Space(5);
-        }
-
-        if (GUILayout.Button("Add new Spawn Data"))
-        {
-            spawnDataList.InsertArrayElementAtIndex(spawnDataList.arraySize);
-        }
-        if (GUILayout.Button("Delete Last Spawn Data"))
-        {
-            if (spawnDataList.arraySize > 0)
-                spawnDataList.DeleteArrayElementAtIndex(spawnDataList.arraySize - 1);
-        }
-
-        serializedObject.ApplyModifiedProperties();
-    }
-
-    private void ResizeArray(SerializedProperty arrayProp, int newSize)
-    {
-        while (arrayProp.arraySize < newSize)
-        {
-            arrayProp.InsertArrayElementAtIndex(arrayProp.arraySize);
-            var newElement = arrayProp.GetArrayElementAtIndex(arrayProp.arraySize - 1);
-
-            if (newElement.propertyType == SerializedPropertyType.Float)
-                newElement.floatValue = 0f;
-            else if (newElement.propertyType == SerializedPropertyType.Vector2)
-                newElement.vector2Value = Vector2.zero;
-        }
-
-        while (arrayProp.arraySize > newSize)
-        {
-            arrayProp.DeleteArrayElementAtIndex(arrayProp.arraySize - 1);
-        }
-    }
-}
-*/
-using UnityEditor;
+Ôªøusing UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(SpawnData))]
@@ -147,6 +43,8 @@ public class SpawnEditor : Editor
 
             EditorGUILayout.PropertyField(spawnEnemyCount);
 
+            SerializedProperty isRandY = element.FindPropertyRelative("isRandPositionY");
+            EditorGUILayout.PropertyField(isRandY);
             // Draw positions if custom position is enabled
             if (isCustomPosition.boolValue)
             {
@@ -157,22 +55,28 @@ public class SpawnEditor : Editor
                     SerializedProperty vecElement = arrivePos.GetArrayElementAtIndex(j);
                     SerializedProperty xOffset = spawnXArray.GetArrayElementAtIndex(j);
 
-                    // Instead of Vector2Field, manually handle X and Y values
                     EditorGUILayout.BeginHorizontal();
+
                     SerializedProperty xValue = vecElement.FindPropertyRelative("x");
                     SerializedProperty yValue = vecElement.FindPropertyRelative("y");
 
+                    // X ÏûÖÎ†•ÏùÄ Ìï≠ÏÉÅ Í∞ÄÎä•
                     EditorGUI.BeginChangeCheck();
                     float newX = EditorGUILayout.FloatField($"Pos[{j}] X", xValue.floatValue);
-                    if (EditorGUI.EndChangeCheck())
-                        xValue.floatValue = newX;
+                    if (EditorGUI.EndChangeCheck()) xValue.floatValue = newX;
 
-                    EditorGUI.BeginChangeCheck();
-                    float newY = EditorGUILayout.FloatField($"Pos[{j}] Y", yValue.floatValue);
-                    if (EditorGUI.EndChangeCheck())
-                        yValue.floatValue = newY;
+                    // Y ÏûÖÎ†•ÏùÄ isRandPositionYÍ∞Ä falseÏùº ÎïåÎßå Í∞ÄÎä•
+                    if (!isRandY.boolValue)
+                    {
+                        EditorGUI.BeginChangeCheck();
+                        float newY = EditorGUILayout.FloatField($"Y", yValue.floatValue);
+                        if (EditorGUI.EndChangeCheck()) yValue.floatValue = newY;
+                    }
+                    else
+                    {
+                        EditorGUILayout.LabelField("Y = ÎûúÎç§", GUILayout.Width(80));
+                    }
 
-                    // Make sure xOffset is editable
                     EditorGUILayout.PropertyField(xOffset, GUIContent.none);
                     EditorGUILayout.EndHorizontal();
                 }

@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEngine.InputSystem.InputControlExtensions;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,12 +24,23 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape) && isGameEnd == false)
         {
+
             UI_Manager.instance.ShowScreen(UI_Manager.ScreenInfo.PauseScreen);
         }
     }
 
     public void GameEnd(UI_Manager.ScreenInfo enumState)
     {
-        UI_Manager.instance.ShowScreen(enumState);
+        StartCoroutine(EndStart(enumState));
+        
     }
+
+    IEnumerator EndStart(UI_Manager.ScreenInfo enumState)
+    {
+        yield return new WaitForSeconds(1f);
+        UI_Manager.instance.ShowScreen(enumState);
+        isGameEnd = true;
+        AudioManager.Instance.PlayBGM("Soft1");
+    }
+
 }

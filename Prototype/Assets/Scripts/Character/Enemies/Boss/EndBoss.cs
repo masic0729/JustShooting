@@ -26,7 +26,6 @@ public class EndBoss : Boss
     protected void FinalEndBossDeath()
     {
         GameManager.instance.GameEnd(UI_Manager.ScreenInfo.WinScreen);
-        GameManager.instance.isGameEnd = true;
     }
 
     protected override void Init()

@@ -6,19 +6,22 @@ public class BossSpawnState : EnemyState
     public override void Enter()
     {
         base.Enter();
-        
+        stateTime = 2f;
         enemy.arriveVector = new Vector2(3f, 0f);
     }
 
     public override void Update()
     {
-        base.Update();
         if (Vector2.Distance(enemy.transform.position, enemy.arriveVector) > 0.5f)
         {
             enemy.movement.MoveToPointLerp(ref thisGameObject, enemy.arriveVector, enemy.GetMoveSpeed());
             Debug.Log("나 움직이는 중");
         }
         else
+        {
+            base.Update();
+        }
+        if(stateTime <= 0)
         {
             enemy.ChangeState(new BossMoveState(enemy));
             Debug.Log("변경");

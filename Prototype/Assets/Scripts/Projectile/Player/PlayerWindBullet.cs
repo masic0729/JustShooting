@@ -53,7 +53,7 @@ public class PlayerWindBullet : Bullet
     {
         base.Init();
 
-        float rotateRandom = Random.Range(50f, 60f);
+        float rotateRandom = Random.Range(60f, 70f);
         int randValue = Random.Range(0, 2);
         rotateRandom = randValue == 1 ? rotateRandom *= -1 : rotateRandom;
         this.gameObject.transform.Rotate(0, 0, rotateRandom);

@@ -47,7 +47,7 @@ public class Enemy_B : Enemy
         if (isSelfPosition == true)
         {
             //currentTargetPos = new Vector2(1f, this.transform.position.y);
-            currentTargetPos = new Vector2(1f, targetPosY);
+            currentTargetPos = new Vector2(transform.position.x - 22f, targetPosY);
         }
         
         StartCoroutine(AttackEnemyBullet());

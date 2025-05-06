@@ -6,7 +6,7 @@ public class Enemy_A : Enemy
     
     [Header("yÃÖ´ñ°ª")]
     [SerializeField]
-    private float length = 4.5f;
+    private float length = 4f;
     float yVector;
     [SerializeField]
     private float yMoveSpeedMultify;
@@ -35,6 +35,11 @@ public class Enemy_A : Enemy
         transform.position = new Vector3(12, transform.position.y, 0);
         //stateMachine.ChangeState(new EnemySpawnState(this));
 
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
     }
 
     void Tresh()

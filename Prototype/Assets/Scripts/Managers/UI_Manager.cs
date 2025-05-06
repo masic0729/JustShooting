@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -55,6 +52,5 @@ public class UI_Manager : MonoBehaviour
     {
         GameScreenName[state.ToString()].SetActive(true);
         Time.timeScale = 0.0f;
-
     }
 }

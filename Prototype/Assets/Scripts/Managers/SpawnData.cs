@@ -23,8 +23,9 @@ public class SpawnData : MonoBehaviour
         public float nextWaveDelay;
         public float spawnDelay;
         public bool isCustomPosition;
-        public float[] spawnX_Value;
-        public float[] spawnY_Value;
+        public bool isRandPositionY;
+        public float[] spawnX_Value;  
+        public float[] spawnY_Value;  
         public Vector2[] ArrivePosition;
     }
 

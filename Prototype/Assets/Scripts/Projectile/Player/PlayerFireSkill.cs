@@ -14,6 +14,7 @@ public class PlayerFireSkill : PlayerEffect
         interation = new ObjectInteration();
 
         StartCoroutine(FireDamaging());
+        AudioManager.Instance.PlaySFX("FireSkill");
     }
 
 
