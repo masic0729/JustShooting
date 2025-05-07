@@ -13,7 +13,7 @@ public abstract class EnemyState
 
     public virtual void Enter() 
     {
-        enemy.stateIndex++;
+
     }
     public virtual void Update()
     {

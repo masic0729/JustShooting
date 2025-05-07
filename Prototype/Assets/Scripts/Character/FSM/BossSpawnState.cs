@@ -15,7 +15,6 @@ public class BossSpawnState : EnemyState
         if (Vector2.Distance(enemy.transform.position, enemy.arriveVector) > 0.5f)
         {
             enemy.movement.MoveToPointLerp(ref thisGameObject, enemy.arriveVector, enemy.GetMoveSpeed());
-            Debug.Log("나 움직이는 중");
         }
         else
         {
@@ -24,7 +23,6 @@ public class BossSpawnState : EnemyState
         if(stateTime <= 0)
         {
             enemy.ChangeState(new BossMoveState(enemy));
-            Debug.Log("변경");
         }
     }
 }

@@ -11,17 +11,16 @@ public class BossMoveState : EnemyState
         base.Enter();
         enemy.stateIndex++;
         float randMoveX = Random.Range(2f,10f);
-        float randMoveY = Random.Range(-4f, 4f);
+        float randMoveY = Random.Range(-3.5f, 3.5f);
         stateTime = 1f;
         enemy.arriveVector = new Vector2(randMoveX, randMoveY);
     }
 
     public override void Update()
     {
-        if (Vector2.Distance(enemy.transform.position, enemy.arriveVector) > 0.5f)
+        if (Vector2.Distance(enemy.transform.position, enemy.arriveVector) > 0.3f)
         {
             enemy.movement.MoveToPointLerp(ref thisGameObject, enemy.arriveVector, enemy.GetMoveSpeed());
-            Debug.Log("나 움직이는 중");
         }
         else
         {
@@ -30,8 +29,17 @@ public class BossMoveState : EnemyState
 
         if (stateTime <= 0)
         {
-            enemy.ChangeState(new BossMoveState(enemy));
-            Debug.Log("변경");
+            if (enemy.stateIndex >= 3)
+            {
+                enemy.stateIndex = 0;
+
+                enemy.ChangeState(new BossAttactState1(enemy));
+            }
+            else
+            {
+                enemy.ChangeState(new BossMoveState(enemy));
+            }
         }
+
     }
 }

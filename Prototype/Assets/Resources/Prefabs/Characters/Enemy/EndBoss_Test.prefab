@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65cba1406fcc7f34a9ce1fa577f1690e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  objectMoveSpeedMultify: 1
+  moveSpeed: 4
+  objectMoveSpeedMultify: 0.7
   hitExplosion: {fileID: 0}
   destroyExplosion: {fileID: 0}
   attackStats: {fileID: 0}
