@@ -21,7 +21,7 @@ public class EndBossTest : EndBoss
     {
         base.Init();
         enemyState = new StateMachine();
-
+        //Debug.Log(shootTransform.Count);
         ChangeState(new BossSpawnState(this));
     }
 
@@ -31,4 +31,16 @@ public class EndBossTest : EndBoss
     {
         base.OnTriggerEnter2D(collision);
     }
+
+    public void SpreadAttack(int shootCount, float rootRotateValue)
+    {
+        for (int i = 1; i <= shootCount; i++)
+        {
+            GameObject instance = Instantiate(enemyProjectile["EnemyBullet"]);
+            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 10f, 1f, 5f, "Enemy");
+            attackManage.ShootBulletRotate(ref instance, shootTransform["CommonBullet"], 360 / shootCount * i + rootRotateValue);
+        }
+    }
+
+    
 }

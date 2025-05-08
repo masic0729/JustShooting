@@ -12,9 +12,9 @@ public class Character : IObject
     public GameObject destroyExplosion;
 
     public AttackStats attackStats;                                     //공격하는 객체가 소지하는 데이터 모음
-    protected ProjectileManagement projectileManage;
+    public ProjectileManagement projectileManage;
     private Transform[] shootTransforms;                                //캐릭터의 발사위치
-    protected AttackManagement attackManage;                            //공격 방식에 대한 정보
+    public AttackManagement attackManage;                            //공격 방식에 대한 정보
 
     public Action OnCharacterDeath;                                     //캐릭터가 죽을 때 발생하는 이벤트. 필요에 따라서 상위 클래스에 정의할 수 있음
     public Action OnCharacterDamaged;                                   //캐릭터가 피해를 받을 때 발생하는 이벤트. 데미지를 받으면, 소리나, 이펙트, 점수 획득 등등 다양한 액션이 존재

@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class BossAttactState1 : EnemyAttackBaseState
 {
+    EndBossTest boss;
     public BossAttactState1(Enemy enemy) : base(enemy) {
 
     }
@@ -14,6 +15,8 @@ public class BossAttactState1 : EnemyAttackBaseState
     public override void Enter()
     {
         base.Enter();
+        boss = enemy as EndBossTest;
+
         enemy.StartCoroutine(Attack());
 
     }
@@ -30,9 +33,11 @@ public class BossAttactState1 : EnemyAttackBaseState
 
     protected override IEnumerator Attack()
     {
-
-        yield return new WaitForSeconds(3f);
-
+        boss.SpreadAttack(10, 0f);
+        yield return new WaitForSeconds(1f);
+        boss.SpreadAttack(10, 30f);
+        yield return new WaitForSeconds(1f);
+        
         enemy.ChangeState(new BossMoveState(enemy));
     }
 }

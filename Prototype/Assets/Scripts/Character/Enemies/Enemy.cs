@@ -10,7 +10,7 @@ public class Enemy : Character
     //public StateMachine stateMachine;                                   
 
     public GameObject[] enemyProjectiles;                               //인스펙터에 등록된 발사체 종류
-    protected Dictionary<string, GameObject> enemyProjectile;           //발사체 종류를 딕셔너리화
+    public Dictionary<string, GameObject> enemyProjectile;           //발사체 종류를 딕셔너리화
     protected Vector2 currentTargetPos;
 
     [Header("Enemy의 공격 데이터")]
