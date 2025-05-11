@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7145198348311737387, guid: f73dfe034c22cfc41bd7e8799020a5ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4615a5c65f2ded84e8f9b2edbfe8837a, type: 3}
   m_Color: {r: 0.35686275, g: 0.5272482, b: 0.8509804, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +120,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.3
 --- !u!114 &480066191283978885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,3 +137,4 @@ MonoBehaviour:
   objectMoveSpeedMultify: 0
   damage: 0.64000005
   isPoolObject: 0
+  rotateValue: 1

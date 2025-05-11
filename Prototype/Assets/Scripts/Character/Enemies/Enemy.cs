@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class Enemy : Character
     public Vector2 arriveVector;                                               //객체가 도착하려는 위치값
 
     //public StateMachine stateMachine;                                   
+    protected TargetBulletManagement targetManage;
 
     public GameObject[] enemyProjectiles;                               //인스펙터에 등록된 발사체 종류
     public Dictionary<string, GameObject> enemyProjectile;           //발사체 종류를 딕셔너리화
@@ -22,7 +24,7 @@ public class Enemy : Character
     protected float targetMoveSpeed;
     protected float distanceNeedValue = 1f;
 
-    private float hitSoundCooldown = 0.05f;
+    private float hitSoundCooldown = 0.2f;
     private float lastHitSoundTime = -1f;
 
     [SerializeField]
@@ -54,8 +56,10 @@ public class Enemy : Character
         OnCharacterDeath += DefaultEnemyDestroyEffect;                                      //사망 시 기본폭발 이펙트
         movement = new ObjectMovement();
         thisGameObject = this.gameObject;
+        targetManage = new TargetBulletManagement();
+
         enemyProjectile = new Dictionary<string, GameObject>();
-        
+        AddX4();
 
         if (enemyProjectiles != null)
         {
@@ -65,6 +69,12 @@ public class Enemy : Character
             }
         }
         arriveVector = new Vector2(3f, 0);
+    }
+
+    void AddX4()
+    {
+        destroyExplosion = Resources.Load("Prefabs/PlayX4/Explosion", typeof(GameObject)) as GameObject;
+        hitExplosion = Resources.Load("Prefabs/PlayX4/Hit", typeof(GameObject)) as GameObject;
     }
 
     void CheckOverGameZone()
@@ -78,7 +88,11 @@ public class Enemy : Character
     void DefaultEnemyDestroyEffect()
     {
         //객체의 중심에 폭발 이펙트 생성
-        ParticleManager.Instance.PlayEffect("EnemyExplosion", this.transform.position);
+        //ParticleManager.Instance.PlayEffect("EnemyExplosion", this.transform.position); //X4
+        GameObject instance = Instantiate(destroyExplosion, transform.position, transform.rotation);
+        float randZ = Random.Range(0f, 179f);
+        instance.transform.Rotate(0, 0, randZ);
+
         AudioManager.Instance.PlaySFX("EnemyExplosion");
 
     }
@@ -91,27 +105,42 @@ public class Enemy : Character
     virtual protected void OnTriggerEnter2D(Collider2D collision)
     {
         const float damageValue = 1f;
-        if(collision.transform.name == "Player" && collision.TryGetComponent(out Character character))
+        if(collision.transform.name == "Player" && 
+            collision.TryGetComponent(out Character character))
         {
             
-            if(character != null && characterInteraction != null)
+            if(character != null && characterInteraction != null &&
+                character.GetIsInvincibility() == false)
             {
                 characterInteraction.SendDamage(ref character, damageValue);
                 Debug.Log(character.GetHp());
             }
         }
 
-        if (collision.transform.tag == "Player" && collision.GetComponent<Projectile>())
+        if (collision.transform.tag == "Player" && (collision.GetComponent<Projectile>()) )
         {
-            float randY = Random.Range(-0.1f, 1f);
-            Vector2 spawnHitEffectPosition = new Vector2(collision.transform.position.x, transform.position.y + randY);
-            ParticleManager.Instance.PlayEffect("EnemyHit", collision.ClosestPoint(spawnHitEffectPosition));
+            float randPos = Random.Range(-0.15f, 0.15f);
+            Vector2 spawnHitEffectPosition = new Vector2(collision.transform.position.x + Mathf.Abs(randPos), transform.position.y + randPos);
+            //ParticleManager.Instance.PlayEffect("EnemyHit", collision.ClosestPoint(spawnHitEffectPosition)); //X4
+            GameObject instance = Instantiate(hitExplosion, transform.position, transform.rotation);
+
+            float randZ = Random.Range(0f, 179f);
+            instance.transform.position = collision.ClosestPoint(spawnHitEffectPosition);
+            instance.transform.Rotate(0, 0, randZ);
+            Destroy(instance, 0.3f);
             DemagedSound();
         }
+        /*if (collision.transform.tag == "Player" && collision.GetComponent<PlayerEffect>())
+        {
+            float randPos = Random.Range(-0.1f, 1f);
+            Vector2 spawnHitEffectPosition = new Vector2(collision.transform.position.x, transform.position.y + randPos);
+            ParticleManager.Instance.PlayEffect("EnemyHit", collision.transform.position);
+            DemagedSound();
+        }*/
+        
     }
 
     
-
     public void DemagedSound()
     {
         if (Time.time - lastHitSoundTime < hitSoundCooldown) return;
@@ -139,5 +168,9 @@ public class Enemy : Character
         isBoss = state;
     }
 
-    
+    public virtual IEnumerator EnemyAttack()
+    {
+        Debug.LogWarning(this.name + "의 공격 패턴 미작업");
+        yield return null;
+    }
 }

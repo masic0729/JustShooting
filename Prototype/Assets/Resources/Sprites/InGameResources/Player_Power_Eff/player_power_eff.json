@@ -1,0 +1,121 @@
+{
+"skeleton": {
+	"hash": "JDoLze3Xgqw",
+	"spine": "4.2.40",
+	"x": -333.92,
+	"y": -253.61,
+	"width": 693.35,
+	"height": 647.44,
+	"images": "./player power eff/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bonny1", "parent": "root", "x": -38.5, "y": 132.5 },
+	{ "name": "bonny2", "parent": "root", "x": 158.95, "y": -45.95 },
+	{ "name": "bonny3", "parent": "root", "x": -178.33, "y": 55.38 }
+],
+"slots": [
+	{ "name": "turnaround_root", "bone": "root", "attachment": "turnaround_root" },
+	{ "name": "bonny1", "bone": "bonny1" },
+	{ "name": "2", "bone": "bonny2" },
+	{ "name": "3", "bone": "bonny3" },
+	{ "name": "bonny_02", "bone": "bonny2", "attachment": "ef_pawer" },
+	{ "name": "bonny_03", "bone": "bonny3", "attachment": "ef_pawer" },
+	{ "name": "bonny_01", "bone": "bonny1", "attachment": "ef_pawer" }
+],
+"path": [
+	{
+		"name": "1",
+		"bones": [ "bonny1" ],
+		"target": "turnaround_root"
+	},
+	{
+		"name": "2",
+		"order": 1,
+		"bones": [ "bonny2" ],
+		"target": "turnaround_root",
+		"position": 0.33
+	},
+	{
+		"name": "3",
+		"order": 2,
+		"bones": [ "bonny3" ],
+		"target": "turnaround_root",
+		"position": 0.66
+	}
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"bonny_01": {
+				"ef_pawer": {
+					"x": -13.26,
+					"y": 0.37,
+					"scaleX": 0.15,
+					"scaleY": 0.15,
+					"rotation": 94,
+					"width": 541,
+					"height": 695
+				}
+			},
+			"bonny_02": {
+				"ef_pawer": {
+					"x": -16.14,
+					"y": -1.77,
+					"scaleX": 0.15,
+					"scaleY": 0.15,
+					"rotation": 103.51,
+					"width": 541,
+					"height": 695
+				}
+			},
+			"bonny_03": {
+				"ef_pawer": {
+					"x": -16.7,
+					"y": -0.79,
+					"scaleX": 0.15,
+					"scaleY": 0.15,
+					"rotation": 94.03,
+					"width": 541,
+					"height": 695
+				}
+			},
+			"turnaround_root": {
+				"turnaround_root": {
+					"type": "path",
+					"closed": true,
+					"lengths": [ 533.31, 1063.21, 1594.97, 2122.97 ],
+					"vertexCount": 12,
+					"vertices": [ -149.42, 350.12, -0.5, 349.5, 168.4, 348.8, 352.29, 149.42, 352.5, 0.5, 352.71, -148.42, 149.73, -349.92, 0.5, -349.5, -148.73, -349.08, -352.29, -147.05, -352.5, 2.5, -352.71, 152.05 ]
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"path": {
+			"1": {
+				"position": [
+					{},
+					{ "time": 2, "value": 1 }
+				]
+			},
+			"2": {
+				"position": [
+					{ "value": 0.33 },
+					{ "time": 2, "value": 1.33 }
+				]
+			},
+			"3": {
+				"position": [
+					{ "value": 0.66 },
+					{ "time": 2, "value": 1.66 }
+				]
+			}
+		}
+	}
+}
+}

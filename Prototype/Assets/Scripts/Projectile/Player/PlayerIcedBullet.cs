@@ -30,10 +30,10 @@ public class PlayerIcedBullet : Bullet
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         //일반 몬스터일 경우 데미지 증폭(즉사급 데미지)
-        if(collision.transform.tag == "Enemy" && collision.GetComponent<Enemy>().GetIsBoss() == false)
+        /*if(collision.transform.tag == "Enemy" && collision.GetComponent<Enemy>().GetIsBoss() == false)
         {
             SetDamage(999f);
-        }
+        }*/
         base.OnTriggerEnter2D(collision);
     }
 }

@@ -15,6 +15,7 @@ public class EndBoss : Boss
     protected override void Update()
     {
         base.Update();
+
     }
 
     private void OnDestroy()
@@ -25,7 +26,7 @@ public class EndBoss : Boss
     //보스가 죽었으므로 게임 승리
     protected void FinalEndBossDeath()
     {
-        GameManager.instance.GameEnd(UI_Manager.ScreenInfo.WinScreen);
+        GameManager.instance.GameEnd(UI_Manager.ScreenInfo.Win);
     }
 
     protected override void Init()
@@ -38,7 +39,9 @@ public class EndBoss : Boss
         else
         {
             OnCharacterDeath += StageClearAction;
+            OnCharacterDeath += RestartWave; //추후 삭제해야됨
         }
+        
     }
 
     void StageClearAction()

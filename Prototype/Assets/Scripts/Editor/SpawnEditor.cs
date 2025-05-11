@@ -4,118 +4,96 @@ using UnityEngine;
 [CustomEditor(typeof(SpawnData))]
 public class SpawnEditor : Editor
 {
-    private SerializedProperty spawnDataList;
+    private SerializedProperty waveGroups;
 
     private void OnEnable()
     {
-        spawnDataList = serializedObject.FindProperty("spawnDataList");
+        waveGroups = serializedObject.FindProperty("waveGroups");
     }
 
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
+        EditorGUILayout.LabelField("Wave Groups", EditorStyles.boldLabel);
 
-        EditorGUILayout.LabelField("Spawn Data List", EditorStyles.boldLabel);
-
-        for (int i = 0; i < spawnDataList.arraySize; i++)
+        for (int i = 0; i < waveGroups.arraySize; i++)
         {
-            SerializedProperty element = spawnDataList.GetArrayElementAtIndex(i);
-
-            SerializedProperty enemyData = element.FindPropertyRelative("enemyData");
-            SerializedProperty spawnEnemyCount = element.FindPropertyRelative("spawnEnemyCount");
-            SerializedProperty nextWaveDelay = element.FindPropertyRelative("nextWaveDelay");
-            SerializedProperty spawnDelay = element.FindPropertyRelative("spawnDelay");
-            SerializedProperty isCustomPosition = element.FindPropertyRelative("isCustomPosition");
-            SerializedProperty spawnXArray = element.FindPropertyRelative("spawnX_Value");
-            SerializedProperty arrivePos = element.FindPropertyRelative("ArrivePosition");
+            SerializedProperty group = waveGroups.GetArrayElementAtIndex(i);
+            SerializedProperty nextDelay = group.FindPropertyRelative("nextWaveDelay");
+            SerializedProperty waveList = group.FindPropertyRelative("wavesInGroup");
 
             EditorGUILayout.BeginVertical("box");
+            EditorGUILayout.LabelField($"Group {i + 1}", EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(nextDelay);
 
-            EditorGUILayout.PropertyField(enemyData);
-            EditorGUILayout.PropertyField(nextWaveDelay);
-            EditorGUILayout.PropertyField(spawnDelay);
-            EditorGUILayout.PropertyField(isCustomPosition);
-
-            // Synchronize array sizes
-            int count = Mathf.Max(1, spawnEnemyCount.intValue); // Ensure at least 1 element
-            ResizeArray(spawnXArray, count);
-            ResizeArray(arrivePos, count);
-
-            EditorGUILayout.PropertyField(spawnEnemyCount);
-
-            SerializedProperty isRandY = element.FindPropertyRelative("isRandPositionY");
-            EditorGUILayout.PropertyField(isRandY);
-            // Draw positions if custom position is enabled
-            if (isCustomPosition.boolValue)
+            for (int j = 0; j < waveList.arraySize; j++)
             {
-                EditorGUILayout.LabelField("Custom Spawn Positions");
+                SerializedProperty wave = waveList.GetArrayElementAtIndex(j);
+                SerializedProperty enemyData = wave.FindPropertyRelative("enemyData");
+                SerializedProperty spawnCount = wave.FindPropertyRelative("spawnEnemyCount");
+                SerializedProperty spawnDelay = wave.FindPropertyRelative("spawnDelay");
+                SerializedProperty isCustom = wave.FindPropertyRelative("isCustomPosition");
+                SerializedProperty isRandY = wave.FindPropertyRelative("isRandPositionY");
+                SerializedProperty spawnX = wave.FindPropertyRelative("spawnX_Value");
+                SerializedProperty arrivePos = wave.FindPropertyRelative("ArrivePosition");
 
-                for (int j = 0; j < count; j++)
+                EditorGUILayout.BeginVertical("box");
+                EditorGUILayout.PropertyField(enemyData);
+                EditorGUILayout.PropertyField(spawnCount);
+                EditorGUILayout.PropertyField(spawnDelay);
+                EditorGUILayout.PropertyField(isCustom);
+                EditorGUILayout.PropertyField(isRandY);
+
+                // 배열 동기화
+                int count = Mathf.Max(1, spawnCount.intValue);
+                ResizeArray(spawnX, count);
+                ResizeArray(arrivePos, count);
+
+                if (isCustom.boolValue)
                 {
-                    SerializedProperty vecElement = arrivePos.GetArrayElementAtIndex(j);
-                    SerializedProperty xOffset = spawnXArray.GetArrayElementAtIndex(j);
-
-                    EditorGUILayout.BeginHorizontal();
-
-                    SerializedProperty xValue = vecElement.FindPropertyRelative("x");
-                    SerializedProperty yValue = vecElement.FindPropertyRelative("y");
-
-                    // X 입력은 항상 가능
-                    EditorGUI.BeginChangeCheck();
-                    float newX = EditorGUILayout.FloatField($"Pos[{j}] X", xValue.floatValue);
-                    if (EditorGUI.EndChangeCheck()) xValue.floatValue = newX;
-
-                    // Y 입력은 isRandPositionY가 false일 때만 가능
-                    if (!isRandY.boolValue)
+                    EditorGUILayout.LabelField("Custom Positions");
+                    for (int k = 0; k < count; k++)
                     {
-                        EditorGUI.BeginChangeCheck();
-                        float newY = EditorGUILayout.FloatField($"Y", yValue.floatValue);
-                        if (EditorGUI.EndChangeCheck()) yValue.floatValue = newY;
-                    }
-                    else
-                    {
-                        EditorGUILayout.LabelField("Y = 랜덤", GUILayout.Width(80));
-                    }
+                        SerializedProperty vec = arrivePos.GetArrayElementAtIndex(k);
+                        SerializedProperty x = vec.FindPropertyRelative("x");
+                        SerializedProperty y = vec.FindPropertyRelative("y");
 
-                    EditorGUILayout.PropertyField(xOffset, GUIContent.none);
-                    EditorGUILayout.EndHorizontal();
+                        EditorGUILayout.BeginHorizontal();
+                        x.floatValue = EditorGUILayout.FloatField($"X [{k}]", x.floatValue);
+                        if (!isRandY.boolValue)
+                            y.floatValue = EditorGUILayout.FloatField("Y", y.floatValue);
+                        else
+                            EditorGUILayout.LabelField("Y = 랜덤", GUILayout.Width(70));
+                        EditorGUILayout.EndHorizontal();
+                    }
                 }
+
+                EditorGUILayout.EndVertical();
             }
+
+            if (GUILayout.Button("Add Spawn to Group"))
+                waveList.InsertArrayElementAtIndex(waveList.arraySize);
+            if (waveList.arraySize > 0 && GUILayout.Button("Delete Last Spawn from Group"))
+                waveList.DeleteArrayElementAtIndex(waveList.arraySize - 1);
 
             EditorGUILayout.EndVertical();
             EditorGUILayout.Space(5);
         }
 
-        // Buttons to add or remove spawn data
-        if (GUILayout.Button("Add new Spawn Data"))
-        {
-            spawnDataList.InsertArrayElementAtIndex(spawnDataList.arraySize);
-        }
-        if (GUILayout.Button("Delete Last Spawn Data"))
-        {
-            if (spawnDataList.arraySize > 0)
-                spawnDataList.DeleteArrayElementAtIndex(spawnDataList.arraySize - 1);
-        }
+        if (GUILayout.Button("Add new Wave Group"))
+            waveGroups.InsertArrayElementAtIndex(waveGroups.arraySize);
+
+        if (waveGroups.arraySize > 0 && GUILayout.Button("Delete Last Wave Group"))
+            waveGroups.DeleteArrayElementAtIndex(waveGroups.arraySize - 1);
 
         serializedObject.ApplyModifiedProperties();
     }
 
-    private void ResizeArray(SerializedProperty arrayProp, int newSize)
+    void ResizeArray(SerializedProperty array, int size)
     {
-        while (arrayProp.arraySize < newSize)
-        {
-            arrayProp.InsertArrayElementAtIndex(arrayProp.arraySize);
-            var newElement = arrayProp.GetArrayElementAtIndex(arrayProp.arraySize - 1);
-
-            if (newElement.propertyType == SerializedPropertyType.Float)
-                newElement.floatValue = 0f;
-            else if (newElement.propertyType == SerializedPropertyType.Vector2)
-                newElement.vector2Value = Vector2.zero;
-        }
-
-        while (arrayProp.arraySize > newSize)
-        {
-            arrayProp.DeleteArrayElementAtIndex(arrayProp.arraySize - 1);
-        }
+        while (array.arraySize < size)
+            array.InsertArrayElementAtIndex(array.arraySize);
+        while (array.arraySize > size)
+            array.DeleteArrayElementAtIndex(array.arraySize - 1);
     }
 }

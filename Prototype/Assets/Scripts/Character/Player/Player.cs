@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Experimental.AI;
 
 public class Player : Character
 {
@@ -22,6 +23,7 @@ public class Player : Character
     float attackTimer;
     const float PowerRestartDelay = 5f;
     public int windBulletHitCount;
+    public Transform skillTrans;
 
     protected override void Start()
     {
@@ -41,6 +43,7 @@ public class Player : Character
         base.Init();
         InitDic();
 
+
         maxMoveX = 9.5f;
         maxMoveY = 4.5f;
         attackDelay = 0.1f;
@@ -48,14 +51,16 @@ public class Player : Character
         powerStats = GetComponent<PlayerPower>();
         invincibilityTime = 2f;
         OnCharacterDamaged += GetDamageEffect;
-        OnCharacterDeath += HandleDeath;
+        OnCharacterDamaged += UpdateHpUI;
+        //OnCharacterDeath += HandleDeath;
+        OnCharacterDeath += PlayerDeath;
 
-        SetHp(100);
-        SetMaxHp(GetHp());
+        /*SetHp(100);
+        SetMaxHp(GetHp());*/
 
-        hitExplosion = Instantiate(hitExplosion, transform.position, transform.rotation);
+        /*hitExplosion = Instantiate(hitExplosion, transform.position, transform.rotation);
         hitExplosion.transform.parent = this.transform;
-        hitExplosion.SetActive(false);
+        hitExplosion.SetActive(false);*/ //X4
 
         SetCurrentBullet(BulletType.Wind);
         StartCoroutine(powerStats.DefaultPowerUp());
@@ -72,11 +77,31 @@ public class Player : Character
         }
     }
 
+    
+
     void HandleInput()
     {
         MoveInput();
         HandleAttack();
         HandleWeaponSwitch();
+
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            gameObject.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            if(GetIsInvincibility())
+            {
+                SetIsInvincibility(false);
+            }
+            else
+            {
+                SetIsInvincibility(true);
+
+            }
+        }
     }
 
     void MoveInput()
@@ -106,7 +131,7 @@ public class Player : Character
     {
         if (!Input.GetKeyDown(KeyCode.Space)) return;
 
-        currentBullet = (BulletType)(((int)currentBullet + 1) % 4);
+        currentBullet = (BulletType)(((int)currentBullet + 1) % 3);
         SetCurrentBullet(currentBullet);
 
         if (powerStats.isPowerMax)
@@ -135,6 +160,8 @@ public class Player : Character
         powerStats.powerUpValue = data.powerValue;
 
         windBulletHitCount = 0;
+
+        UI_Manager.instance.UpdateWeaponUI(currentBullet.ToString());
     }
 
     void FireBullet(BulletType type)
@@ -172,10 +199,30 @@ public class Player : Character
         }
     }
 
+    void UpdateHpUI()
+    {
+        UI_Manager.instance.UpdatePlayerHP(GetHp());
+    }
+
     void GetDamageEffect()
     {
-        StartCoroutine(EffectCycle(hitExplosion));
+        //StartCoroutine(EffectCycle(hitExplosion)); //X4
+        GameObject instance = Instantiate(hitExplosion, skillTrans.position, transform.rotation);
+//        Vector2 instancePos = new Vector2(transform.position.x, transform.position.y + 1);
+        instance.gameObject.transform.parent = this.transform;
+//        instance.transform.position = instancePos;
+
         AudioManager.Instance.PlaySFX("PlayerHitSample");
+    }
+
+    void PlayerDeath()
+    {
+        gameObject.SetActive(false);
+        //StartCoroutine(EffectCycle(destroyExplosion)); //X4
+//        Vector3 instanceX4 = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+        Instantiate(destroyExplosion, skillTrans.position, transform.rotation);
+        AudioManager.Instance.PlaySFX("PlayerHitSample");
+        GameManager.instance.GameEnd(UI_Manager.ScreenInfo.Lose);
     }
 
     IEnumerator EffectCycle(GameObject effect)
@@ -230,11 +277,11 @@ public class Player : Character
         }
     }
 
-    void HandleDeath()
+    /*void HandleDeath()
     {
         GameManager.instance.isGameEnd = true;
-        UI_Manager.instance.ShowScreen(UI_Manager.ScreenInfo.LoseScreen);
-    }
+        UI_Manager.instance.ShowScreen(UI_Manager.ScreenInfo.Lose);
+    }*/
 
     void UpdateDebugText()
     {
@@ -247,7 +294,8 @@ public class Player : Character
                     $"moveSpeed: {attackStats.moveSpeed}\n" +
                     $"power: {powerStats.powerUpValue}\n" +
                     $"playerMoveSpeed: {moveSpeed * objectMoveSpeedMultify}\n" +
-                    $"PlayerPowerValue: {powerStats.playerPower}";
+                    $"PlayerPowerValue: {powerStats.playerPower}\n" + 
+                    $"무적 여부: { GetIsInvincibility().ToString()}";
     }
 
     

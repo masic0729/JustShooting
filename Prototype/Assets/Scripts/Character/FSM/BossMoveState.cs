@@ -33,7 +33,7 @@ public class BossMoveState : EnemyState
             {
                 enemy.stateIndex = 0;
 
-                enemy.ChangeState(new BossAttactState1(enemy));
+                enemy.ChangeState(new BossAttactState(enemy));
             }
             else
             {

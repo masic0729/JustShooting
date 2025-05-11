@@ -74,11 +74,25 @@ public class Projectile : IObject
             this.transform.tag == "Enemy" && collision.transform.tag == "Player")
         {
             Character instanceHitCharacter = collision.GetComponent<Character>();
-            if(instanceHitCharacter != null)
+            if(instanceHitCharacter != null && instanceHitCharacter.GetIsInvincibility() == false)
             {
-                projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
-                CheckPoolObject(); //발사체인 본인이 소멸하는 것
+                if(this.gameObject.GetComponent<PlayerIcedBullet>() == true &&
+                    collision.GetComponent<Enemy>().GetIsBoss() == false)
+                {
+                    SetDamage(999f);
+                    projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
+                }
+                else
+                {
+                    projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
+                }
+                if (collision.transform.tag == "Player" && collision.transform.name == "Player")
+                {
+                    Debug.Log(collision.GetComponent<Player>().GetHp());
+                }
             }
+            CheckPoolObject(); //발사체인 본인이 소멸하는 것
+
         }
     }
     

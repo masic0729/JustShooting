@@ -14,17 +14,13 @@ public class EndBossTest : EndBoss
     protected override void Update()
     {
         base.Update();
-        enemyState.Update();
     }
 
     protected override void Init()
     {
         base.Init();
-        enemyState = new StateMachine();
-        //Debug.Log(shootTransform.Count);
-        ChangeState(new BossSpawnState(this));
+        
     }
-
     
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -32,15 +28,26 @@ public class EndBossTest : EndBoss
         base.OnTriggerEnter2D(collision);
     }
 
+    public override IEnumerator EnemyAttack()
+    {
+        SpreadAttack(10, 0f);
+        yield return new WaitForSeconds(0.5f);
+        SpreadAttack(10, 30f);
+        yield return new WaitForSeconds(1f);
+        SpreadAttack(18, 0f);
+
+        yield return new WaitForSeconds(attackEndStopTime);
+
+
+    }
+
     public void SpreadAttack(int shootCount, float rootRotateValue)
     {
         for (int i = 1; i <= shootCount; i++)
         {
             GameObject instance = Instantiate(enemyProjectile["EnemyBullet"]);
-            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 10f, 1f, 5f, "Enemy");
-            attackManage.ShootBulletRotate(ref instance, shootTransform["CommonBullet"], 360 / shootCount * i + rootRotateValue);
+            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 20f, 1f, 5f, "Enemy");
+            attackManage.ShootBulletRotate(ref instance, root.transform, 360 / shootCount * i + rootRotateValue);
         }
     }
-
-    
 }

@@ -25,14 +25,13 @@ public class GameManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape) && isGameEnd == false)
         {
 
-            UI_Manager.instance.ShowScreen(UI_Manager.ScreenInfo.PauseScreen);
+            UI_Manager.instance.ShowScreen(UI_Manager.ScreenInfo.Pause);
         }
     }
 
     public void GameEnd(UI_Manager.ScreenInfo enumState)
     {
         StartCoroutine(EndStart(enumState));
-        
     }
 
     IEnumerator EndStart(UI_Manager.ScreenInfo enumState)

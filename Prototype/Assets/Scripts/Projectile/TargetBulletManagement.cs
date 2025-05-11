@@ -64,7 +64,7 @@ public class TargetBulletManagement
 
     }
 
-    public GameObject TargetSearching(ref GameObject thisProjectile, string targetTag, bool wantBoss)
+    public GameObject TargetSearching(ref GameObject thisProjectile, string targetTag, bool wantBoss = false)
     {
         GameObject[] instance = GameObject.FindGameObjectsWithTag(targetTag);
 

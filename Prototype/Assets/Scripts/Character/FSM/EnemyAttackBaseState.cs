@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class EnemyAttackBaseState : EnemyState
 {
+
     public EnemyAttackBaseState(Enemy enemy) : base(enemy) { }
 
     public override void Enter()

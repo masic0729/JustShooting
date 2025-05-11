@@ -4,7 +4,6 @@ using UnityEngine;
 public class Enemy_D : Enemy
 {
     GameObject targetPlayer;
-    TargetBulletManagement targetManage;
 
     float targetPosY;
 
@@ -38,7 +37,6 @@ public class Enemy_D : Enemy
     protected override void Init()
     {
         base.Init();
-        targetManage = new TargetBulletManagement();
         targetPlayer = GameObject.Find("Player");
         if (isSelfPosition == true)
         {

@@ -13,40 +13,36 @@ public class ObjectInteration
     {
         //해당 캐릭터가 무적이라면, 데미지 자체 효과는 발생하지 않는다
 
-        if(character.GetIsInvincibility() == false)
+        if (character.GetIsInvincibility() == false)
         {
-            character.OnDamage();
             if (character.GetShield() > 0)
             {
-                //보호막이 있으니까 보호막 값 감소
-                if (character.GetShield() - damage <= 0)
+                if (character.GetShield() - damage < 0)
                 {
-                    //보호막 0이 되니까 보호막 0으로 만들기
                     character.SetShield(0);
                 }
                 else
                 {
-                    //피격 돼도 보호막이 남으므로 단순 감소
                     character.SetShield(character.GetShield() - damage);
                 }
             }
             else
             {
-                //보호막이 없으니까 체력 감소
-                if (character.GetHp() - damage <= 0)
+                float newHp = character.GetHp() - damage;
+
+                if (newHp <= 0)
                 {
-                    //체력이 0이므로 죽음처리
                     character.SetHp(0);
                     character.OnCharacterDeath?.Invoke();
                 }
                 else
                 {
-                    //죽지 않으므로 체력감소 처리
-                    character.SetHp(character.GetHp() - damage);
+                    character.SetHp(newHp);
                 }
-
             }
 
+            character.OnDamage();
         }
+
     }
 }

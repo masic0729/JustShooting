@@ -21,53 +21,48 @@ public class BounceBullet : Bullet
     protected override void Init()
     {
         base.Init();
-        /*isCanBounceX = true;
-        isCanBounceY = true;*/
+        maxMoveX = 10.5f; // 무시해도 됨
     }
 
-    /// <summary>
-    /// 튕기는 총알 클래스 특성 상 좌표값을 기반으로 확인 후 조치를 함
-    /// </summary>
     void CheckBounce()
     {
-        /*if(Mathf.Abs(this.gameObject.transform.position.x) > Mathf.Abs(maxMoveX) && isCanBounceX == true)
-        {
-            //isCanBounceX = false;
-            Debug.Log(projectileMoveVector);
-            projectileMoveVector = new Vector3(projectileMoveVector.x, projectileMoveVector.y * -1, projectileMoveVector.z);
-            Debug.Log(projectileMoveVector);
-            //Invoke("SetTransBounceX", 0.3f);
-        }
-        if (Mathf.Abs(this.gameObject.transform.position.y) > Mathf.Abs(maxMoveY) && isCanBounceY == true)
-        {
-            //isCanBounceY = false;
-            projectileMoveVector = new Vector3(projectileMoveVector.x, projectileMoveVector.y * -1, projectileMoveVector.z);
-            //Invoke("SetTransBounceY", 0.3f);
-        }*/
+        Vector3 pos = transform.position;
 
-        if ((Mathf.Abs(this.gameObject.transform.position.y) > Mathf.Abs(maxMoveY))  ||
-            Mathf.Abs(this.gameObject.transform.position.x) > Mathf.Abs(maxMoveX))
+        // Y축 상단 벽 반사
+        if (pos.y > maxMoveY - 0.1f)
         {
-            projectileMoveVector = new Vector3(projectileMoveVector.x, projectileMoveVector.y * -1, projectileMoveVector.z);
+            ApplyBounceRotation(Vector3.down);
         }
+        // Y축 하단 벽 반사
+        else if (pos.y < -maxMoveY + 0.1f)
+        {
+            ApplyBounceRotation(Vector3.up);
+        }
+
+        // X축 초과 시 삭제 (튕김 없음)
+        if (Mathf.Abs(pos.x) > maxMoveX)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    void ApplyBounceRotation(Vector3 normal)
+    {
+        // 현재 Sprite의 방향 (총알이 바라보는 방향 기준)
+        Vector3 currentDir = transform.up;
+
+        // 반사 방향 계산 (입사각 = 반사각)
+        Vector3 reflected = Vector3.Reflect(currentDir, normal);
+
+        // 회전 각도 계산 (Z축 기준)
+        float angle = Vector3.SignedAngle(currentDir, reflected, Vector3.forward);
+
+        // Sprite 회전만 적용 (projectileMoveVector는 그대로)
+        transform.Rotate(0f, 0f, angle);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
     }
-
-    /// <summary>
-    /// getset
-    /// </summary>
-    /*void SetTransBounceX()
-    {
-        isCanBounceX = true;
-    }
-    void SetTransBounceY()
-    {
-        isCanBounceY = true;
-    }*/
-
-    
 }

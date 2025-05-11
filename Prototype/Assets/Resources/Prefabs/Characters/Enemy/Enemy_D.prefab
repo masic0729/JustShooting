@@ -179,8 +179,8 @@ MonoBehaviour:
   enemyProjectiles:
   - {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
   attackData:
-    sprite: {fileID: 0}
-    animCtrl: {fileID: 9100000, guid: 152a5b2a92ab8b148ab153fdff637c3b, type: 2}
+    sprite: {fileID: 21300000, guid: 02d258acc9bd4344fba7f301403cfac7, type: 3}
+    animCtrl: {fileID: 0}
     moveSpeed: 5
   isBoss: 0
 --- !u!1 &3585849649420135481

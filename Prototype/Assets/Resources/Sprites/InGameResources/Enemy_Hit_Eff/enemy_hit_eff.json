@@ -1,0 +1,138 @@
+{
+"skeleton": {
+	"hash": "ovWJcGmNqLs",
+	"spine": "4.2.40",
+	"x": -421.08,
+	"y": -371.18,
+	"width": 817,
+	"height": 759,
+	"images": "./images/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "enemy_hit_eff01", "bone": "root", "attachment": "enemy_hit_eff01" },
+	{ "name": "enemy_hit_eff02", "bone": "root", "attachment": "enemy_hit_eff02" },
+	{ "name": "enemy_hit_eff03", "bone": "root", "attachment": "enemy_hit_eff03" },
+	{ "name": "enemy_hit_eff04", "bone": "root", "attachment": "enemy_hit_eff04" },
+	{ "name": "enemy_hit_eff05", "bone": "root", "attachment": "enemy_hit_eff05" },
+	{ "name": "enemy_hit_eff06", "bone": "root", "attachment": "enemy_hit_eff06" },
+	{ "name": "enemy_hit_eff07", "bone": "root", "attachment": "enemy_hit_eff07" },
+	{ "name": "enemy_hit_eff08", "bone": "root", "attachment": "enemy_hit_eff08" },
+	{ "name": "enemy_hit_eff09", "bone": "root", "attachment": "enemy_hit_eff09" },
+	{ "name": "enemy_hit_eff10", "bone": "root", "attachment": "enemy_hit_eff10" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"enemy_hit_eff01": {
+				"enemy_hit_eff01": { "x": 3.42, "y": -2.68, "width": 161, "height": 157 }
+			},
+			"enemy_hit_eff02": {
+				"enemy_hit_eff02": { "x": -3.08, "y": 4.32, "width": 262, "height": 279 }
+			},
+			"enemy_hit_eff03": {
+				"enemy_hit_eff03": { "x": 17.92, "y": -48.68, "width": 486, "height": 527 }
+			},
+			"enemy_hit_eff04": {
+				"enemy_hit_eff04": { "x": 33.42, "y": -6.68, "width": 659, "height": 653 }
+			},
+			"enemy_hit_eff05": {
+				"enemy_hit_eff05": { "x": -16.08, "y": -8.18, "width": 756, "height": 684 }
+			},
+			"enemy_hit_eff06": {
+				"enemy_hit_eff06": { "x": -15.58, "y": -10.18, "width": 797, "height": 714 }
+			},
+			"enemy_hit_eff07": {
+				"enemy_hit_eff07": { "x": -15.58, "y": -0.68, "width": 811, "height": 741 }
+			},
+			"enemy_hit_eff08": {
+				"enemy_hit_eff08": { "x": 6.92, "y": 14.82, "width": 768, "height": 740 }
+			},
+			"enemy_hit_eff09": {
+				"enemy_hit_eff09": { "x": 10.42, "y": 49.32, "width": 771, "height": 677 }
+			},
+			"enemy_hit_eff10": {
+				"enemy_hit_eff10": { "x": 6.92, "y": 24.82, "width": 778, "height": 636 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"enemy_hit_eff01": {
+				"attachment": [
+					{ "name": "enemy_hit_eff01" },
+					{ "time": 0.0333 }
+				]
+			},
+			"enemy_hit_eff02": {
+				"attachment": [
+					{},
+					{ "time": 0.0333, "name": "enemy_hit_eff02" },
+					{ "time": 0.0667 }
+				]
+			},
+			"enemy_hit_eff03": {
+				"attachment": [
+					{},
+					{ "time": 0.0667, "name": "enemy_hit_eff03" },
+					{ "time": 0.1 }
+				]
+			},
+			"enemy_hit_eff04": {
+				"attachment": [
+					{},
+					{ "time": 0.1, "name": "enemy_hit_eff04" },
+					{ "time": 0.1333 }
+				]
+			},
+			"enemy_hit_eff05": {
+				"attachment": [
+					{},
+					{ "time": 0.1333, "name": "enemy_hit_eff05" },
+					{ "time": 0.1667 }
+				]
+			},
+			"enemy_hit_eff06": {
+				"attachment": [
+					{},
+					{ "time": 0.1667, "name": "enemy_hit_eff06" },
+					{ "time": 0.2 }
+				]
+			},
+			"enemy_hit_eff07": {
+				"attachment": [
+					{},
+					{ "time": 0.2, "name": "enemy_hit_eff07" },
+					{ "time": 0.2333 }
+				]
+			},
+			"enemy_hit_eff08": {
+				"attachment": [
+					{},
+					{ "time": 0.2333, "name": "enemy_hit_eff08" },
+					{ "time": 0.2667 }
+				]
+			},
+			"enemy_hit_eff09": {
+				"attachment": [
+					{},
+					{ "time": 0.2667, "name": "enemy_hit_eff09" },
+					{ "time": 0.3 }
+				]
+			},
+			"enemy_hit_eff10": {
+				"attachment": [
+					{},
+					{ "time": 0.3, "name": "enemy_hit_eff10" }
+				]
+			}
+		}
+	}
+}
+}

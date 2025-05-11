@@ -32,8 +32,9 @@ public class PlayerFireSkill : PlayerEffect
         }
     }
 
-    void EnemyAttack(Collider2D[] objects)
+    protected override void EnemyAttack(Collider2D[] objects)
     {
+        bool isHit = false;
         foreach(Collider2D col in objects)
         {
             //확실하게 적 계열인 지 걸러낸 뒤, 대상에게 피해를 준다.
@@ -41,8 +42,15 @@ public class PlayerFireSkill : PlayerEffect
             {
                 interation.SendDamage(ref enemy, playerDamage);
                 Debug.Log("불속성으로 적에게 " + playerDamage + "피해");
-            }
 
+                Vector2 hitPos = col.ClosestPoint(transform.position); // 스킬 중심 기준 위치에 이펙트 생성
+                ParticleManager.Instance.PlayEffect("EnemyHit", hitPos);
+                isHit = true;
+            }
+        }
+        if(isHit == true)
+        {
+            AudioManager.Instance.PlaySFX("EnemyHit");
         }
     }
 }

@@ -1,0 +1,94 @@
+{
+"skeleton": {
+	"hash": "pwh2S0u61Ko",
+	"spine": "4.2.40",
+	"x": -1088.81,
+	"y": -1091.22,
+	"width": 2182,
+	"height": 2182,
+	"images": "./images/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" }
+],
+"slots": [
+	{ "name": "wind_eff1", "bone": "root", "attachment": "wind_eff1" },
+	{ "name": "wind_eff2", "bone": "root", "attachment": "wind_eff2" },
+	{ "name": "wind_eff3", "bone": "root", "attachment": "wind_eff3" },
+	{ "name": "wind_eff4", "bone": "root", "attachment": "wind_eff4" },
+	{ "name": "wind_eff5", "bone": "root", "attachment": "wind_eff5" },
+	{ "name": "wind_eff6", "bone": "root", "attachment": "wind_eff6" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"wind_eff1": {
+				"wind_eff1": { "x": 1.69, "y": 0.28, "width": 1979, "height": 1979 }
+			},
+			"wind_eff2": {
+				"wind_eff2": { "x": 1.19, "y": 0.78, "width": 2110, "height": 2110 }
+			},
+			"wind_eff3": {
+				"wind_eff3": { "x": 1.69, "y": 0.28, "width": 1861, "height": 1861 }
+			},
+			"wind_eff4": {
+				"wind_eff4": { "x": 1.19, "y": 0.28, "width": 2056, "height": 2057 }
+			},
+			"wind_eff5": {
+				"wind_eff5": { "x": 2.19, "y": -0.22, "width": 2182, "height": 2182 }
+			},
+			"wind_eff6": {
+				"wind_eff6": { "x": 2.19, "y": 0.28, "width": 2012, "height": 2013 }
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"wind_eff1": {
+				"attachment": [
+					{ "name": "wind_eff1" },
+					{ "time": 0.0667 }
+				]
+			},
+			"wind_eff2": {
+				"attachment": [
+					{},
+					{ "time": 0.0667, "name": "wind_eff2" },
+					{ "time": 0.1333 }
+				]
+			},
+			"wind_eff3": {
+				"attachment": [
+					{},
+					{ "time": 0.1333, "name": "wind_eff3" },
+					{ "time": 0.2 }
+				]
+			},
+			"wind_eff4": {
+				"attachment": [
+					{},
+					{ "time": 0.2, "name": "wind_eff4" },
+					{ "time": 0.2667 }
+				]
+			},
+			"wind_eff5": {
+				"attachment": [
+					{},
+					{ "time": 0.2667, "name": "wind_eff5" },
+					{ "time": 0.3333 }
+				]
+			},
+			"wind_eff6": {
+				"attachment": [
+					{},
+					{ "time": 0.3333, "name": "wind_eff6" }
+				]
+			}
+		}
+	}
+}
+}

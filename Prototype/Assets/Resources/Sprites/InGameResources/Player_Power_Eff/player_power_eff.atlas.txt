@@ -1,0 +1,6 @@
+player_power_eff.png
+size:699,699
+filter:Linear,Linear
+pma:true
+ef_pawer
+bounds:2,2,541,695

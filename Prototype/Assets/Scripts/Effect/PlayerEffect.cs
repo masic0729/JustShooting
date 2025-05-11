@@ -16,4 +16,8 @@ public class PlayerEffect : IEffect
         player = TargetObject.GetComponent<Player>();
     }
 
+    protected virtual void EnemyAttack(Collider2D[] objects)
+    {
+        //ParticleManager.Instance.PlayEffect("")
+    }
 }

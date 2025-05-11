@@ -6,71 +6,59 @@ using static SpawnData;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject[] EnemyList;
-    public bool isEnemyA_Down;
-    public static SpawnManager instance;                        //싱글톤. 사실 의미 없을 수도 있지만, 참조를 의도로 기능 활성화\
-    public Dictionary<string, GameObject> enemyName;
-    SpawnData spawnData;                                        //적 스폰에 대한 데이터
+    public static SpawnManager instance;
+
+    private Dictionary<string, GameObject> enemyName;
+    private SpawnData spawnData;
+
     [SerializeField]
-    float firstWaveTime;
-    float waveTimer = 0, waveTime = 99f;                        //기본적인 스폰 관련 타이머
-    int waveIndex;
-    bool isWaveTimerOn;                                         //외부 객체에 의해 웨이브 타이머가 통제될 수 있음
-    bool isSpawning;                                            //몬스터 스폰 중에는 스폰 타이머가 돌아가지 않음
-    bool isBossSpawn;                                           //보스 소환될 때 역시 타이머가 돌아가지 않음
-    bool isWaveEnd;                                             //모든 웨이브가 끝나게 되면, 스탠스가 변경되어 게임이 끝남(승리)
+    private float firstWaveTime = 1f;
+
+    private float waveTimer = 0f;
+    private float waveTime = 99f;
+
+    private int waveGroupIndex = 0;
+    private bool isWaveTimerOn = true;
+    private bool isSpawning = false;
+    private bool isBossSpawn = false;
+    public bool isEnemyA_Down;
 
     private void Awake()
     {
-        //싱글톤
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        if (instance == null) instance = this;
+        else Destroy(this.gameObject);
     }
 
-    private void Start()
-    {
-        Init();
-    }
+    private void Start() => Init();
 
-    private void Update()
-    {
-        WaveTimer();
-    }
+    private void Update() => WaveTimer();
 
     void Init()
     {
-        spawnData = this.gameObject.GetComponent<SpawnData>();
+        spawnData = GetComponent<SpawnData>();
         enemyName = new Dictionary<string, GameObject>();
-        for(int i = 0; i <EnemyList.Length; i++)
+
+        foreach (var enemy in EnemyList)
         {
-            enemyName[EnemyList[i].name] = EnemyList[i];
+            enemyName[enemy.name] = enemy;
         }
 
-        SetWaveTimerOnState(true);
-        SetIsSpawningState(false);
-        waveIndex = 0;
+        waveGroupIndex = 0;
         waveTime = firstWaveTime;
     }
 
     void WaveDataLoad()
     {
-        waveTime = spawnData.spawnDataList[waveIndex].nextWaveDelay;
+        waveTime = spawnData.waveGroups[waveGroupIndex].nextWaveDelay;
     }
 
     void WaveTimer()
     {
-        if (GetWaveTimerOnState() == true &&
-            GetIsSpawningState() == false &&
-            GetIsBossSpawn() == false)
-        {
-            waveTimer += Time.deltaTime;
-        }
-        if (waveTimer > waveTime && (waveIndex != spawnData.spawnDataList.Count))
+        if (!isWaveTimerOn || isSpawning || isBossSpawn) return;
+
+        waveTimer += Time.deltaTime;
+
+        if (waveTimer > waveTime && waveGroupIndex < spawnData.waveGroups.Count)
         {
             SetTimer(0);
             WaveOn();
@@ -79,93 +67,69 @@ public class SpawnManager : MonoBehaviour
 
     void WaveOn()
     {
-        StartCoroutine(SpawnCoroutine(spawnData.spawnDataList[waveIndex]));
+        StartCoroutine(SpawnCoroutineGroup(spawnData.waveGroups[waveGroupIndex]));
     }
 
-    IEnumerator SpawnCoroutine(SpawnInfomation info)
+    IEnumerator SpawnCoroutineGroup(WaveGroup group)
     {
-        SetIsSpawningState(true);
+        isSpawning = true;
 
-        if (info.enemyData == EnemyData.Enemy_A)
+        List<Coroutine> activeSpawns = new List<Coroutine>();
+
+        foreach (var wave in group.wavesInGroup)
         {
-            int instanceRand = Random.Range(0, 2);
-            isEnemyA_Down = instanceRand == 1;
+            activeSpawns.Add(StartCoroutine(SpawnSingleWave(wave)));
         }
 
+        foreach (var co in activeSpawns)
+        {
+            yield return co;
+        }
+
+        waveGroupIndex++;
+        isSpawning = false;
+
+        if (waveGroupIndex < spawnData.waveGroups.Count)
+            WaveDataLoad();
+    }
+
+    IEnumerator SpawnSingleWave(SpawnInfomation info)
+    {
         for (int i = 0; i < info.spawnEnemyCount; i++)
         {
             Vector2 spawnPosition;
-            float x;
-            float y;
-            x = info.ArrivePosition[i].x;
-            y = info.ArrivePosition[i].y;
 
             if (info.isCustomPosition)
             {
-                y = info.isRandPositionY ? Random.Range(-4f, 4f) : info.ArrivePosition[i].y;
+                float x = info.ArrivePosition[i].x;
+                float y = info.isRandPositionY ? Random.Range(-4f, 4f) : info.ArrivePosition[i].y;
                 spawnPosition = new Vector2(x + 20f, y);
             }
             else
             {
-                float yInstance = -4f + (4.5f / info.spawnEnemyCount);
-                spawnPosition = new Vector2(20f, yInstance + (8f * i / info.spawnEnemyCount));
+                spawnPosition = new Vector2(20f, Random.Range(-4f, 4f));
             }
 
             Enemy instanceEnemy = Instantiate(
                 enemyName[info.enemyData.ToString()],
                 spawnPosition,
-                Quaternion.identity).GetComponent<Enemy>();
+                Quaternion.identity
+            ).GetComponent<Enemy>();
 
-            // Target 위치는 완전히 커스텀일 때만
             if (info.isCustomPosition && !info.isRandPositionY)
-            {
                 instanceEnemy.SetTargetPosition(info.ArrivePosition[i]);
-            }
 
-            if (info.spawnDelay != 0)
+            if (info.spawnDelay > 0f)
                 yield return new WaitForSeconds(info.spawnDelay);
         }
-
-        waveIndex++;
-        SetIsSpawningState(false);
-        if(waveIndex < spawnData.spawnDataList.Count)
-        {
-            WaveDataLoad();
-        }
     }
+
+    void SetTimer(float val) => waveTimer = val;
 
     public void SetIsBossSpawn(bool state)
     {
         isBossSpawn = state;
     }
 
-    public bool GetIsBossSpawn()
-    {
-        return isBossSpawn;
-    }
-
-    void SetTimer(float value)
-    {
-        waveTimer = value;
-    }
-
-    public void SetWaveTimerOnState(bool state)
-    {
-        isWaveTimerOn = state;
-    }
-
-    public bool GetWaveTimerOnState()
-    {
-        return isWaveTimerOn;
-    }
-
-    void SetIsSpawningState(bool state)
-    {
-        isSpawning = state;
-    }
-
-    bool GetIsSpawningState()
-    {
-        return isSpawning;
-    }
+    
 }

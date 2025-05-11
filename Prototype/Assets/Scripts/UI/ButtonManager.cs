@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class ButtonManager : MonoBehaviour
 {
-
+    private GameObject ClickedButton;
 
     public void ChangeScene(string sceneName)
     {
@@ -40,4 +42,16 @@ public class ButtonManager : MonoBehaviour
     {
         AudioManager.Instance.PlayBGM(soundName);
     }
+
+    public void TransText(GameObject target)
+    {
+        
+        target.GetComponent<TextMeshProUGUI>().text = ClickedButton.GetComponentInChildren<TextMeshProUGUI>().text;
+    }
+
+    public void ClickButtonData(GameObject button)
+    {
+        ClickedButton = button;
+    }
+    
 }

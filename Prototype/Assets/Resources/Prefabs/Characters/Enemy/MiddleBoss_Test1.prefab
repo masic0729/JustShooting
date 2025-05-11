@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1134246154617166019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3463542667076026211}
+  m_Layer: 0
+  m_Name: Root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3463542667076026211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134246154617166019}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9148802150557387933}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1459802625328247173
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +108,7 @@ GameObject:
   - component: {fileID: 6248926598511614244}
   - component: {fileID: -9079015277616109379}
   - component: {fileID: 4082635199863810219}
+  - component: {fileID: 3221209494384417661}
   m_Layer: 0
   m_Name: MiddleBoss_Test1
   m_TagString: Enemy
@@ -94,9 +126,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 3463542667076026211}
   - {fileID: 519906832882662033}
   - {fileID: 7166350262667182869}
   m_Father: {fileID: 0}
@@ -155,10 +188,11 @@ MonoBehaviour:
   arriveVector: {x: 0, y: 0}
   enemyProjectiles: []
   attackData:
-    sprite: {fileID: 0}
+    sprite: {fileID: 21300000, guid: 02d258acc9bd4344fba7f301403cfac7, type: 3}
     animCtrl: {fileID: 0}
     moveSpeed: 0
   isBoss: 0
+  bossName: 
 --- !u!95 &-745368172497865223
 Animator:
   serializedVersion: 5
@@ -263,8 +297,8 @@ MonoBehaviour:
   translator:
     autoReset: 1
     useCustomMixMode: 1
-    layerMixModes: 
-    layerBlendModes: 
+    layerMixModes: 01000000
+    layerBlendModes: 01000000
   updateTiming: 1
 --- !u!70 &4082635199863810219
 CapsuleCollider2D:
@@ -301,3 +335,11 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.4}
   m_Size: {x: 1.5, y: 2.8}
   m_Direction: 0
+--- !u!33 &3221209494384417661
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691790650951377814}
+  m_Mesh: {fileID: 0}
