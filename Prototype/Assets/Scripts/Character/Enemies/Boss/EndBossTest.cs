@@ -46,7 +46,7 @@ public class EndBossTest : EndBoss
         for (int i = 1; i <= shootCount; i++)
         {
             GameObject instance = Instantiate(enemyProjectile["EnemyBullet"]);
-            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 20f, 1f, 5f, "Enemy");
+            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 5f, "Enemy");
             attackManage.ShootBulletRotate(ref instance, root.transform, 360 / shootCount * i + rootRotateValue);
         }
     }

@@ -133,9 +133,6 @@ public class Player : Character
     {
         if (!Input.GetKeyDown(KeyCode.Space)) return;
 
-        currentBullet = (BulletType)(((int)currentBullet + 1) % 3);
-        SetCurrentBullet(currentBullet);
-
         if (powerStats.isPowerMax)
         {
             powerStats.playerPower = 0;
@@ -148,6 +145,11 @@ public class Player : Character
         {
             AudioManager.Instance.PlaySFX("WeaponSwitch");
         }
+
+        currentBullet = (BulletType)(((int)currentBullet + 1) % 3);
+        SetCurrentBullet(currentBullet);
+
+        
     }
 
     void SetCurrentBullet(BulletType type)

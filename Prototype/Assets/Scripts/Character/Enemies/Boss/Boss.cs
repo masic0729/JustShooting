@@ -25,12 +25,13 @@ public class Boss : Enemy
     {
         base.Init();
         SetIsBoss(true);
+        attackData.moveSpeed = 15f;
+
         OnCharacterDamaged += PrintHp;
         OnCharacterDeath += HideHpBar;
         enemyState = new StateMachine();
         ChangeState(new BossSpawnState(this));
         root = gameObject.transform.GetChild(0).gameObject;
-        Debug.Log(root.name);
     }
 
     private void OnEnable()

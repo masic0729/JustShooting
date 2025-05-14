@@ -91,7 +91,11 @@ public class Projectile : IObject
                     Debug.Log(collision.GetComponent<Player>().GetHp());
                 }
             }
-            CheckPoolObject(); //발사체인 본인이 소멸하는 것
+            if (collision.GetComponent<Character>() == true)
+            {
+                CheckPoolObject(); //발사체인 본인이 소멸하는 것
+            }
+
 
         }
     }

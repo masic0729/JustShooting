@@ -58,7 +58,7 @@ public class Enemy_D : Enemy
         for(int i = 0; i < shootCount; i++)
         {
             GameObject instance = Instantiate(enemyProjectile["EnemyBullet"],transform.position,transform.rotation);
-            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 10f, 1f, 5f, "Enemy");
+            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 5f, "Enemy");
             targetManage.DirectTargetObject(ref instance, ref targetPlayer);
             yield return new WaitForSeconds(reAttackDelay);
 

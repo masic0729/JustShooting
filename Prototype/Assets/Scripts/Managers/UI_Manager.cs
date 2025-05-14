@@ -128,7 +128,14 @@ public class UI_Manager : MonoBehaviour
 
         for(int i = 0; i < CountImage.transform.childCount; i++)
         {
-            AudioManager.Instance.PlaySFX("CountSound");
+            if(i < CountImage.transform.childCount - 1)
+            {
+                AudioManager.Instance.PlaySFX("CountSound");
+            }
+            else
+            {
+                AudioManager.Instance.PlaySFX("StartSound");
+            }
             currentImage = CountImage.transform.GetChild(i).gameObject;
 
             currentImage.SetActive(true);
@@ -139,7 +146,6 @@ public class UI_Manager : MonoBehaviour
         }
         GameManager.instance.gameState = GameManager.GameState.Play;
         Time.timeScale = 1;
-        AudioManager.Instance.PlaySFX("StartSound");
 
 
     }

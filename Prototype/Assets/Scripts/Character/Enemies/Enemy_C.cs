@@ -109,7 +109,7 @@ public class Enemy_C : Enemy
             {
                 GameObject instance = Instantiate(enemyProjectile["EnemyBullet"]);
 
-                projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 10f, 1f, 5f, "Enemy");
+                projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 5f, "Enemy");
 
                 attackManage.ShootBulletRotate(ref instance, shootTransform["CommonBullet" + j.ToString()], 90);
 

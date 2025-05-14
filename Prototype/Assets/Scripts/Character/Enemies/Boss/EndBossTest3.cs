@@ -48,7 +48,7 @@ public class EndBossTest3 : EndBoss
         {
             spawnPosition = new Vector3(9.9f, spawnBulletsY[i], 0);
             GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], spawnPosition, shootTransform["HandAttack"].rotation);
-            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, 35f, 1f, 5f, "Enemy");
+            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 5f, "Enemy");
             if(player != null)
             {
                 targetManage.DirectTargetObject(ref instance, ref player);

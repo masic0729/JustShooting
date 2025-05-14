@@ -60,6 +60,7 @@ public class Enemy : Character
 
         enemyProjectile = new Dictionary<string, GameObject>();
         AddX4();
+        attackData.moveSpeed = 10f;
 
         if (enemyProjectiles != null)
         {
