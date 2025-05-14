@@ -1,9 +1,8 @@
-using JetBrains.Annotations;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.UIElements;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class UI_Manager : MonoBehaviour
     }
 
     public static UI_Manager instance;
+    public GameObject CountImage;
     [SerializeField]
     private GameObject[] GameScreens;
     Dictionary<string, GameObject> GameScreenName;
@@ -60,6 +60,8 @@ public class UI_Manager : MonoBehaviour
             GameScreenName[GameScreens[i].name] = GameScreens[i];
         }
         bossHp.SetActive(false);
+        
+        
     }
 
     public void ShowScreen(ScreenInfo state)
@@ -114,6 +116,32 @@ public class UI_Manager : MonoBehaviour
         {
             hpIcons[i].SetActive(true);
         }
+    }
+
+    
+
+    public IEnumerator CountingStart()
+    {
+        Time.timeScale = 0;
+        CountImage.SetActive(true);
+        GameObject currentImage;
+
+        for(int i = 0; i < CountImage.transform.childCount; i++)
+        {
+            AudioManager.Instance.PlaySFX("CountSound");
+            currentImage = CountImage.transform.GetChild(i).gameObject;
+
+            currentImage.SetActive(true);
+
+            yield return new WaitForSecondsRealtime(1f);
+
+            currentImage.SetActive(false);
+        }
+        GameManager.instance.gameState = GameManager.GameState.Play;
+        Time.timeScale = 1;
+        AudioManager.Instance.PlaySFX("StartSound");
+
+
     }
 
     public void ShowBossHp(string bossName)

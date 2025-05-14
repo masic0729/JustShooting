@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Experimental.AI;
 
 public class Player : Character
 {
@@ -33,6 +32,8 @@ public class Player : Character
 
     protected override void Update()
     {
+        if (Time.timeScale <= 0) return;
+
         base.Update();
         HandleInput();
         UpdateDebugText();
@@ -81,6 +82,7 @@ public class Player : Character
 
     void HandleInput()
     {
+
         MoveInput();
         HandleAttack();
         HandleWeaponSwitch();
@@ -106,7 +108,7 @@ public class Player : Character
 
     void MoveInput()
     {
-        if (Time.time <= 0) return;
+        
 
         Vector3 dir = Vector3.zero;
         if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -maxMoveX) dir += Vector3.left;
@@ -208,9 +210,9 @@ public class Player : Character
     {
         //StartCoroutine(EffectCycle(hitExplosion)); //X4
         GameObject instance = Instantiate(hitExplosion, skillTrans.position, transform.rotation);
-//        Vector2 instancePos = new Vector2(transform.position.x, transform.position.y + 1);
+        //Vector2 instancePos = new Vector2(transform.position.x, transform.position.y + 1);
         instance.gameObject.transform.parent = this.transform;
-//        instance.transform.position = instancePos;
+        //instance.transform.position = instancePos;
 
         AudioManager.Instance.PlaySFX("PlayerHitSample");
     }
@@ -219,7 +221,7 @@ public class Player : Character
     {
         gameObject.SetActive(false);
         //StartCoroutine(EffectCycle(destroyExplosion)); //X4
-//        Vector3 instanceX4 = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+        //Vector3 instanceX4 = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         Instantiate(destroyExplosion, skillTrans.position, transform.rotation);
         AudioManager.Instance.PlaySFX("PlayerHitSample");
         GameManager.instance.GameEnd(UI_Manager.ScreenInfo.Lose);
