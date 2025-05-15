@@ -68,7 +68,14 @@ public class Enemy_D : Enemy
 
     void SetTransTargetTransform()
     {
-        targetPosY = targetPosY * -1f;
+        if(transform.position.y < 0)
+        {
+            targetPosY = 4f;
+        }
+        else
+        {
+            targetPosY = -4f;
+        }
         currentTargetPos = new Vector2(transform.position.x, targetPosY);
         isArrivePoint = false;
         distanceNeedValue = 1f;

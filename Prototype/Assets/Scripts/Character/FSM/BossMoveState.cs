@@ -12,14 +12,9 @@ public class BossMoveState : EnemyState
         enemy.stateIndex++;
         float randMoveX = Random.Range(1f, 9f);
         float randMoveY;
-        if (enemy.GetComponent<EndBossTest>() == true)
-        {
-            randMoveY = Random.Range(-5f, 1.5f);
-        }
-        else
-        {
-            randMoveY = Random.Range(-3.5f, 3.5f);
-        }
+
+        randMoveY = Random.Range(-3.5f, 3.5f);
+
         stateTime = 1f;
         enemy.arriveVector = new Vector2(randMoveX, randMoveY);
     }
