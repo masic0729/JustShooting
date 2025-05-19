@@ -1418,7 +1418,7 @@ MonoBehaviour:
       ArrivePosition:
       - {x: 3, y: 0}
       - {x: 3, y: 0}
-  - nextWaveDelay: 3
+  - nextWaveDelay: 2
     wavesInGroup:
     - enemyData: 0
       spawnEnemyCount: 10
@@ -1531,7 +1531,7 @@ MonoBehaviour:
       ArrivePosition:
       - {x: 3, y: 0}
       - {x: 3, y: 0}
-  - nextWaveDelay: 4
+  - nextWaveDelay: 6
     wavesInGroup:
     - enemyData: 0
       spawnEnemyCount: 10
@@ -2526,9 +2526,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: 1.145}
+  m_Offset: {x: -0.05, y: 1.1}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.5
 --- !u!1 &688757639
 GameObject:
   m_ObjectHideFlags: 0

@@ -75,7 +75,7 @@ public class Enemy : Character
     void AddX4()
     {
         destroyExplosion = Resources.Load("Prefabs/PlayX4/Explosion", typeof(GameObject)) as GameObject;
-        hitExplosion = Resources.Load("Prefabs/PlayX4/Hit", typeof(GameObject)) as GameObject;
+        hitExplosion = Resources.Load("Prefabs/PlayX4/EnemyHit", typeof(GameObject)) as GameObject;
     }
 
     void CheckOverGameZone()
@@ -125,7 +125,7 @@ public class Enemy : Character
             //ParticleManager.Instance.PlayEffect("EnemyHit", collision.ClosestPoint(spawnHitEffectPosition)); //X4
             GameObject instance = Instantiate(hitExplosion, transform.position, transform.rotation);
 
-            float randZ = Random.Range(0f, 179f);
+            float randZ = Random.Range(0f, 360f);
             instance.transform.position = collision.ClosestPoint(spawnHitEffectPosition);
             instance.transform.Rotate(0, 0, randZ);
             Destroy(instance, 0.3f);
