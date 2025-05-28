@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Managers\SpawnData.cs" />
     <Compile Include="Assets\Scripts\Projectile\PoolProjectile.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\Boss\EndBossTest3.cs" />
+    <Compile Include="Assets\Scripts\Practice\TestAnimCtrl.cs" />
     <Compile Include="Assets\Scripts\Character\FSM\EnemyAttackBaseState.cs" />
     <Compile Include="Assets\Scripts\Practice\PRA_Delegate.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\Boss\EndBoss_A.cs" />
