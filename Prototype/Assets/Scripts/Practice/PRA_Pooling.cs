@@ -46,7 +46,7 @@ public class PRA_Pooling : MonoBehaviour
     {
         GameObject poolInstance = Instantiate(bulletPrefab);
         poolInstance.GetComponent<PRA_Bullet>().pool = this.bulletPool;
-        poolInstance.GetComponent<PRA_Bullet>().AddScript(typeof(PRA_Test));
+        //poolInstance.GetComponent<PRA_Bullet>().AddScript(typeof(PRA_Test));
         return poolInstance;
     }
 

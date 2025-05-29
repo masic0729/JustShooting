@@ -59,9 +59,9 @@ public class Player : Character
         /*SetHp(100);
         SetMaxHp(GetHp());*/
 
-        /*hitExplosion = Instantiate(hitExplosion, transform.position, transform.rotation);
+        hitExplosion = Instantiate(hitExplosion, transform.position, transform.rotation);
         hitExplosion.transform.parent = this.transform;
-        hitExplosion.SetActive(false);*/ //X4
+        hitExplosion.SetActive(false);
 
         SetCurrentBullet(BulletType.Wind);
         StartCoroutine(powerStats.DefaultPowerUp());
@@ -210,11 +210,10 @@ public class Player : Character
 
     void GetDamageEffect()
     {
-        //StartCoroutine(EffectCycle(hitExplosion)); //X4
-        GameObject instance = Instantiate(hitExplosion, skillTrans.position, transform.rotation);
-        //Vector2 instancePos = new Vector2(transform.position.x, transform.position.y + 1);
-        instance.gameObject.transform.parent = this.transform;
-        //instance.transform.position = instancePos;
+        StartCoroutine(EffectCycle(hitExplosion)); //X4
+        //GameObject instance = Instantiate(hitExplosion, skillTrans.position, transform.rotation);
+        //instance.gameObject.transform.parent = this.transform;
+        
 
         AudioManager.Instance.PlaySFX("PlayerHitSample");
     }
@@ -222,8 +221,7 @@ public class Player : Character
     void PlayerDeath()
     {
         gameObject.SetActive(false);
-        //StartCoroutine(EffectCycle(destroyExplosion)); //X4
-        //Vector3 instanceX4 = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
+        StartCoroutine(EffectCycle(destroyExplosion)); //X4
         Instantiate(destroyExplosion, skillTrans.position, transform.rotation);
         AudioManager.Instance.PlaySFX("PlayerHitSample");
         GameManager.instance.GameEnd(UI_Manager.ScreenInfo.Lose);

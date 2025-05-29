@@ -42,13 +42,13 @@ public class PlayerFireSkill : PlayerEffect
             {
                 interation.SendDamage(ref enemy, playerDamage);
                 Debug.Log("불속성으로 적에게 " + playerDamage + "피해");
-
-                GameObject instanceEffect = Resources.Load("Prefabs/PlayX4/EnemyHit", typeof(GameObject)) as GameObject;
-
                 Vector2 hitPos = col.transform.position; // 스킬 중심 기준 위치에 이펙트 생성
+
+                /*GameObject instanceEffect = Resources.Load("Prefabs/PlayX4/EnemyHit", typeof(GameObject)) as GameObject;
+
                 Instantiate(instanceEffect, hitPos, transform.rotation);
-                instanceEffect.transform.Rotate(0, 0, Random.Range(0f, 360f));
-                //ParticleManager.Instance.PlayEffect("EnemyHit", hitPos);
+                instanceEffect.transform.Rotate(0, 0, Random.Range(0f, 360f));*/
+                ParticleManager.Instance.PlayEffect("EnemyHit", hitPos);
                 
 
                 isHit = true;

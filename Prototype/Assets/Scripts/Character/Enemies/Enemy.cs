@@ -59,7 +59,7 @@ public class Enemy : Character
         targetManage = new TargetBulletManagement();
 
         enemyProjectile = new Dictionary<string, GameObject>();
-        AddX4();
+        //AddX4();
         attackData.moveSpeed = 10f;
 
         if (enemyProjectiles != null)
@@ -71,12 +71,12 @@ public class Enemy : Character
         }
         arriveVector = new Vector2(3f, 0);
     }
-
+/*
     void AddX4()
     {
         destroyExplosion = Resources.Load("Prefabs/PlayX4/Explosion", typeof(GameObject)) as GameObject;
         hitExplosion = Resources.Load("Prefabs/PlayX4/EnemyHit", typeof(GameObject)) as GameObject;
-    }
+    }*/
 
     void CheckOverGameZone()
     {
@@ -89,10 +89,10 @@ public class Enemy : Character
     void DefaultEnemyDestroyEffect()
     {
         //°´Ã¼ÀÇ Áß½É¿¡ Æø¹ß ÀÌÆåÆ® »ý¼º
-        //ParticleManager.Instance.PlayEffect("EnemyExplosion", this.transform.position); //X4
-        GameObject instance = Instantiate(destroyExplosion, transform.position, transform.rotation);
+        ParticleManager.Instance.PlayEffect("EnemyExplosion", this.transform.position); //X4
+        /*GameObject instance = Instantiate(destroyExplosion, transform.position, transform.rotation);
         float randZ = Random.Range(0f, 179f);
-        instance.transform.Rotate(0, 0, randZ);
+        instance.transform.Rotate(0, 0, randZ);*/
 
         AudioManager.Instance.PlaySFX("EnemyExplosion");
 
@@ -122,13 +122,13 @@ public class Enemy : Character
         {
             float randPos = Random.Range(-0.15f, 0.15f);
             Vector2 spawnHitEffectPosition = new Vector2(collision.transform.position.x + Mathf.Abs(randPos), transform.position.y + randPos);
-            //ParticleManager.Instance.PlayEffect("EnemyHit", collision.ClosestPoint(spawnHitEffectPosition)); //X4
-            GameObject instance = Instantiate(hitExplosion, transform.position, transform.rotation);
+            ParticleManager.Instance.PlayEffect("EnemyHit", collision.ClosestPoint(spawnHitEffectPosition)); //X4
+            /*GameObject instance = Instantiate(hitExplosion, transform.position, transform.rotation); //other
 
             float randZ = Random.Range(0f, 360f);
             instance.transform.position = collision.ClosestPoint(spawnHitEffectPosition);
             instance.transform.Rotate(0, 0, randZ);
-            Destroy(instance, 0.3f);
+            Destroy(instance, 0.3f);*/
             DemagedSound();
         }
         /*if (collision.transform.tag == "Player" && collision.GetComponent<PlayerEffect>())

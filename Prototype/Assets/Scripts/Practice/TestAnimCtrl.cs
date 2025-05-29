@@ -15,7 +15,7 @@ public class TestAnimCtrl : MonoBehaviour
 
     }
 
-    void TestA()
+    public void TestA()
     {
         Debug.Log("나 실행했어");
 
