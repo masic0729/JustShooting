@@ -21,7 +21,7 @@ public class EndBossTest3 : EndBoss
         
     }
 
-    public override IEnumerator EnemyAttack()
+    /*public override IEnumerator EnemyAttack()
     {
         GameObject player = GameObject.Find("Player");
         yield return ShootBullets();
@@ -29,7 +29,7 @@ public class EndBossTest3 : EndBoss
         yield return ShootBullets(player);
 
         yield return base.EnemyAttack();
-    }
+    }*/
 
     IEnumerator ShootBullets(GameObject player = null)
     {

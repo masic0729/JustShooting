@@ -37,6 +37,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        bgmSource = GetComponent<AudioSource>();
         PlayBGM("Title");
     }
 

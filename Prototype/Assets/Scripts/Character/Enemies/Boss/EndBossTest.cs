@@ -1,9 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EndBossTest : EndBoss
 {
+    private int attackCount;
+    float attackRotateValue;
     
     protected override void Start()
     {
@@ -28,7 +29,27 @@ public class EndBossTest : EndBoss
         base.OnTriggerEnter2D(collision);
     }
 
-    public override IEnumerator EnemyAttack()
+    public override void EnemyAttack()
+    {
+        AudioManager.Instance.PlaySFX("EnemyAttack");
+        if (attackCount < 2)
+        {
+            SpreadAttack(10, 0);
+            attackCount++;
+            attackRotateValue = 30f;
+        }
+        else
+        {
+            SpreadAttack(18, 0);
+            attackRotateValue = 0f;
+            attackCount = 0;
+            anim.SetBool("Attack", false);
+            base.EnemyAttack();
+        }
+
+    }
+
+    /*public override IEnumerator EnemyAttack()
     {
         SpreadAttack(10, 0f);
         yield return new WaitForSeconds(0.5f);
@@ -37,9 +58,7 @@ public class EndBossTest : EndBoss
         SpreadAttack(18, 0f);
 
         yield return new WaitForSeconds(attackEndStopTime);
-
-
-    }
+    }*/
 
     public void SpreadAttack(int shootCount, float rootRotateValue)
     {

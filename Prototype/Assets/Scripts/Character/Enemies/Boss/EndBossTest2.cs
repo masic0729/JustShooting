@@ -25,7 +25,7 @@ public class EndBossTest2 : EndBoss
         base.OnTriggerEnter2D(collision);
     }
 
-    public override IEnumerator EnemyAttack()
+    /*public override IEnumerator EnemyAttack()
     {
         int shootRandom = Random.Range(2, 5); // 2~4회 발사
         float shootRandomRotate = Random.Range(40f, 60f); // 회전각 랜덤
@@ -40,7 +40,7 @@ public class EndBossTest2 : EndBoss
         yield return new WaitForSeconds(attackEndStopTime);
 
 
-    }
+    }*/
 
     public void BounceAttack(float rotateValue)
     {

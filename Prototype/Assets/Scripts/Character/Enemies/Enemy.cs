@@ -142,6 +142,7 @@ public class Enemy : Character
     }
 
     
+
     public void DemagedSound()
     {
         if (Time.time - lastHitSoundTime < hitSoundCooldown) return;
@@ -169,9 +170,16 @@ public class Enemy : Character
         isBoss = state;
     }
 
-    public virtual IEnumerator EnemyAttack()
+    virtual public void EnemyAttack()
+    {
+        Debug.Log("공격끝");
+        ChangeState(new BossMoveState(this));
+
+    }
+
+    /*public virtual IEnumerator EnemyAttack()
     {
         Debug.LogWarning(this.name + "의 공격 패턴 미작업");
         yield return null;
-    }
+    }*/
 }

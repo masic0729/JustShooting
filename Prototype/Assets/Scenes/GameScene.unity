@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18188584, g: 0.2275654, b: 0.3074171, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2598,7 +2598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &770591038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2719,7 +2719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e18a8af48b3899f4bb847c7b0a04d812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
 --- !u!95 &770591043
 Animator:
   serializedVersion: 5
@@ -3942,8 +3941,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterVolume: 1
-  BGM_Volume: 0.2
-  Interface_Volume: 0.5
+  BGM_Volume: 0.05
+  Interface_Volume: 0.7
   SFX_Volume: 1
 --- !u!4 &971363834
 Transform:
@@ -4268,6 +4267,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 46b1d445f8a547141aee3db8be1ff435, type: 3}
   - {fileID: 8300000, guid: b78c94838a10f8f47b1e848627b1dc82, type: 3}
   - {fileID: 8300000, guid: 3b02715440ba15a4db47383101f2ae7b, type: 3}
+  - {fileID: 8300000, guid: 49aa29f3460a01443ac41542d27984e2, type: 3}
   infClips:
   - {fileID: 8300000, guid: df8749d7cbe18754195d7f642a01dfea, type: 3}
   bgmClips:
@@ -4302,6 +4302,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1176474039}
   - component: {fileID: 1176474040}
+  - component: {fileID: 1176474042}
+  - component: {fileID: 1176474041}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4337,6 +4339,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
+--- !u!114 &1176474041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176474038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42d577684df11545bbcbe107842ff00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefabs:
+  - {fileID: 8525990746615576120, guid: b0e1dddb2493b6341bc362f241812f5f, type: 3}
+  - {fileID: 2433282508537954060, guid: a861b19cb9792164591eab6b8dc2e04f, type: 3}
+  poolSize: 10
+--- !u!114 &1176474042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176474038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405d0ef14bd43f541adb3a6009789047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allCards: []
+  activeCards: []
 --- !u!1 &1190385649
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class Character : IObject
 {
+    protected Animator anim;
     public GameObject hitExplosion;
     public GameObject destroyExplosion;
 
@@ -57,6 +58,7 @@ public class Character : IObject
     /// </summary>
     protected override void Init()
     {
+        anim = GetComponent<Animator>();
         attackStats = gameObject.AddComponent<AttackStats>();
         attackManage = new AttackManagement();
         projectileManage = new ProjectileManagement();

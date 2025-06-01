@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterVolume: 1
-  BGM_Volume: 0.2
-  Interface_Volume: 0.5
+  BGM_Volume: 0.8
+  Interface_Volume: 0.7
   SFX_Volume: 1
 --- !u!4 &194968496
 Transform:
@@ -2731,6 +2731,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 46b1d445f8a547141aee3db8be1ff435, type: 3}
   - {fileID: 8300000, guid: b78c94838a10f8f47b1e848627b1dc82, type: 3}
   - {fileID: 8300000, guid: 3b02715440ba15a4db47383101f2ae7b, type: 3}
+  - {fileID: 8300000, guid: 49aa29f3460a01443ac41542d27984e2, type: 3}
   infClips:
   - {fileID: 8300000, guid: df8749d7cbe18754195d7f642a01dfea, type: 3}
   bgmClips:
@@ -2739,7 +2740,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: df7359a175451de40aee84abff6fec6d, type: 3}
   audioSourcePrefab: {fileID: 5832911902891719984, guid: 54680c8f18cce00449530dbd7d2e65b9, type: 3}
   initialPoolSize: 10
-  bgmSource: {fileID: 1474395671}
+  bgmSource: {fileID: 0}
 --- !u!82 &1474395671
 AudioSource:
   m_ObjectHideFlags: 0

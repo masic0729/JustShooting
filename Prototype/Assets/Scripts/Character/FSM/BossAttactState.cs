@@ -8,17 +8,16 @@ using UnityEngine;
 public class BossAttactState : EnemyAttackBaseState
 {
 
-    public BossAttactState(Enemy enemy) : base(enemy) {
+    public BossAttactState(Enemy enemy) : base(enemy) 
+    {
 
     }
 
     public override void Enter()
     {
         base.Enter();
-        
-
-        enemy.StartCoroutine(Attack());
-
+        //enemy.StartCoroutine(Attack());
+        enemy.GetComponent<Animator>().SetBool("Attack", true);
     }
 
     public  override void Update()
@@ -34,7 +33,8 @@ public class BossAttactState : EnemyAttackBaseState
 
     protected override IEnumerator Attack()
     {
-        yield return enemy.EnemyAttack();
+        //yield return enemy.EnemyAttack();
+        yield return null;
         enemy.ChangeState(new BossMoveState(enemy));
 
     }
