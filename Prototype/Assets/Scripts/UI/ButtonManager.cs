@@ -100,4 +100,9 @@ public class ButtonManager : MonoBehaviour
 
         button.transform.localScale = buttonDefaultScale;
     }
+
+    public void TestInterection()
+    {
+        Debug.Log("버튼이 제대로 누름");
+    }
 }

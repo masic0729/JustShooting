@@ -5,8 +5,11 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    public List<PlayerCardData> allCards;  // 전체 카드 목록
-    public List<PlayerCardData> activeCards; // 현재 선택지 3개
+    [SerializeField]
+    private GameObject[] currentCards;
+    
+    public List<CardInfo> allCards;  // 전체 카드 목록
+    //public List<PlayerCardData> activeCards; // 현재 선택지 3개
 
     /*public List<PlayerCardData> GetAvailableCardChoices(int count)
     {
@@ -53,9 +56,29 @@ public class CardManager : MonoBehaviour
         return selectedSkill.Concat(selectedNormal).ToList();
     }*/
 
-   /* public List<PlayerCardData> GetCards()
+    private void Awake()
     {
         
-        return 
-    }*/
+        CardInit();
+    }
+
+    void CardInit()
+    {
+
+        CardInfo[] loadedCards = Resources.LoadAll<CardInfo>("Scriptable/");
+        allCards = loadedCards.ToList();  // 리스트에 할당
+    }
+
+    /// <summary>
+    /// 카드는 기본적으로 3장을 뽑는다
+    /// 현재는 랜덤한 카드들의 데이터를 기반으로 로드할 것이며, 이후 기획서 기반으로 한정된 획득 횟수로 등장하고,
+    /// 후반에 얻을 카드가 없으면 이에 따라 3개 보다 적은 카드를 출력한다
+    /// </summary>
+    /// <param name="getCount">카드를 가져오려는 개수</param>
+    /// <returns></returns>
+    public List<PlayerCardData> GetCards(int getCount = 3)
+    {
+
+        return null;
+    }
 }
