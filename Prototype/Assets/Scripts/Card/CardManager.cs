@@ -6,42 +6,44 @@ using UnityEngine;
 public class CardManager : MonoBehaviour
 {
     [SerializeField]
+    // currentCards ë³€ìˆ˜ ì„ ì–¸: í˜„ì¬ ë³´ì—¬ì§€ëŠ” ì¹´ë“œ ê²Œì„ì˜¤ë¸Œì íŠ¸ ë°°ì—´
     private GameObject[] currentCards;
-    
-    public List<CardInfo> allCards;  // ÀüÃ¼ Ä«µå ¸ñ·Ï
-    //public List<PlayerCardData> activeCards; // ÇöÀç ¼±ÅÃÁö 3°³
 
-    /*public List<PlayerCardData> GetAvailableCardChoices(int count)
+    // allCards ë³€ìˆ˜ ì„ ì–¸: ì „ì²´ ì¹´ë“œ ì •ë³´ ëª©ë¡
+    public List<CardInfo> allCards;
+
+    /*
+    // GetAvailableCardChoices í•¨ìˆ˜: íŠ¹ì • ê°œìˆ˜ë§Œí¼ ë“±ì¥ ê°€ëŠ¥í•œ ì¹´ë“œ ë¦¬ìŠ¤íŠ¸ë¥¼ í•„í„°ë§í•˜ì—¬ ë°˜í™˜ (ì£¼ì„ ì²˜ë¦¬ë¨)
+    public List<PlayerCardData> GetAvailableCardChoices(int count)
     {
-        // 1. ÇÊÅÍ¸µ
+        // ìŠ¤í‚¬ ì¹´ë“œ ì¤‘ í˜„ì¬ ë ˆë²¨ì´ ìµœëŒ€ ë ˆë²¨ ë¯¸ë§Œì¸ ì¹´ë“œ í•„í„°ë§
         List<PlayerCardData> availableSkillCards = allCards
             .Where(card => card.isSkill && card.currentLevel < card.maxLevel)
             .ToList();
 
+        // ì¼ë°˜ ì¹´ë“œ ì¤‘ ì•„ì§ ë“±ì¥í•˜ì§€ ì•Šì€ ì¹´ë“œ í•„í„°ë§
         List<PlayerCardData> availableNormalCards = allCards
             .Where(card => !card.isSkill && !card.hasAppearedYet)
             .ToList();
 
-        // 2. Á¶°Ç ¿¹¿Ü Ã¼Å©
+        // ìŠ¤í‚¬ ì¹´ë“œê°€ ëª¨ë‘ ë§Œë ™ì¸ ê²½ìš° ì¼ë°˜ ì¹´ë“œë§Œ ë°˜í™˜
         if (availableSkillCards.Count == 0)
         {
-            // ½ºÅ³ Ä«µå°¡ ¸ğµÎ ¸¸·¾ ¡æ Á¶°Ç ÇØÁ¦
-            // ÀÏ¹İ Ä«µå¸¸ µîÀå Çã¿ë
             return availableNormalCards
                 .OrderBy(_ => Random.value)
                 .Take(Mathf.Min(count, availableNormalCards.Count))
                 .ToList();
         }
 
+        // ë“±ì¥ ê°€ëŠ¥í•œ ì¹´ë“œ ìˆ˜ê°€ ë¶€ì¡±í•œ ê²½ìš° ëª¨ë“  ì¹´ë“œ ë°˜í™˜
         if (availableSkillCards.Count + availableNormalCards.Count <= count)
         {
-            // ÃÑ µîÀå °¡´É Ä«µå ¼ö°¡ ºÎÁ·ÇÒ °æ¿ì ¡æ ÀüºÎ Ãâ·Â
             return availableSkillCards
                 .Concat(availableNormalCards)
                 .ToList();
         }
 
-        // 3. Á¤»ó ÄÉÀÌ½º (½ºÅ³ ÃÖ¼Ò 1, ÃÖ´ë 2)
+        // ì •ìƒì ì¸ ì¹´ë“œ ì„ íƒ (ìŠ¤í‚¬ ì¹´ë“œ 1~2ì¥ í¬í•¨)
         int skillCardCount = Mathf.Min(availableSkillCards.Count, Random.Range(1, 3));
         int normalCardCount = count - skillCardCount;
 
@@ -54,31 +56,31 @@ public class CardManager : MonoBehaviour
             .Take(normalCardCount);
 
         return selectedSkill.Concat(selectedNormal).ToList();
-    }*/
+    }
+    */
 
+    // Awake í•¨ìˆ˜: ê²Œì„ ì˜¤ë¸Œì íŠ¸ê°€ í™œì„±í™”ë  ë•Œ ì´ˆê¸°í™” í˜¸ì¶œ
     private void Awake()
     {
-        
         CardInit();
     }
 
+    // CardInit í•¨ìˆ˜: ë¦¬ì†ŒìŠ¤ í´ë”ì—ì„œ ëª¨ë“  ì¹´ë“œ ë°ì´í„°ë¥¼ ë¡œë“œí•˜ì—¬ ë¦¬ìŠ¤íŠ¸ì— ì €ì¥
     void CardInit()
     {
-
         CardInfo[] loadedCards = Resources.LoadAll<CardInfo>("Scriptable/");
-        allCards = loadedCards.ToList();  // ¸®½ºÆ®¿¡ ÇÒ´ç
+        allCards = loadedCards.ToList();
     }
 
     /// <summary>
-    /// Ä«µå´Â ±âº»ÀûÀ¸·Î 3ÀåÀ» »Ì´Â´Ù
-    /// ÇöÀç´Â ·£´ıÇÑ Ä«µåµéÀÇ µ¥ÀÌÅÍ¸¦ ±â¹İÀ¸·Î ·ÎµåÇÒ °ÍÀÌ¸ç, ÀÌÈÄ ±âÈ¹¼­ ±â¹İÀ¸·Î ÇÑÁ¤µÈ È¹µæ È½¼ö·Î µîÀåÇÏ°í,
-    /// ÈÄ¹İ¿¡ ¾òÀ» Ä«µå°¡ ¾øÀ¸¸é ÀÌ¿¡ µû¶ó 3°³ º¸´Ù ÀûÀº Ä«µå¸¦ Ãâ·ÂÇÑ´Ù
+    /// ê¸°ë³¸ì ìœ¼ë¡œ 3ì¥ì˜ ì¹´ë“œë¥¼ ë¬´ì‘ìœ„ë¡œ ê°€ì ¸ì˜¨ë‹¤.
+    /// íšë“ ì œí•œ ë° ì¹´ë“œê°€ ë¶€ì¡±í•œ ê²½ìš° 3ì¥ ë¯¸ë§Œìœ¼ë¡œ ë°˜í™˜í•  ìˆ˜ ìˆìŒ.
     /// </summary>
-    /// <param name="getCount">Ä«µå¸¦ °¡Á®¿À·Á´Â °³¼ö</param>
-    /// <returns></returns>
+    /// <param name="getCount">ê°€ì ¸ì˜¬ ì¹´ë“œ ê°œìˆ˜</param>
+    /// <returns>ì„ íƒëœ ì¹´ë“œ ë¦¬ìŠ¤íŠ¸</returns>
     public List<PlayerCardData> GetCards(int getCount = 3)
     {
-
+        // í˜„ì¬ êµ¬í˜„ë˜ì§€ ì•ŠìŒ, null ë°˜í™˜
         return null;
     }
 }

@@ -1,60 +1,68 @@
 using UnityEngine;
 
+// 모든 이동형 오브젝트의 공통 기능을 정의한 추상 클래스
 public abstract class IObject : MonoBehaviour
 {
-    // [SerializeField] protected bool isCheckEscape; //화면 밖으로 나갈 때 보통 삭제되는데, 삭제해야되는 발사체인 지 확인하는 변수
-    protected float maxMoveX, maxMoveY; //화면 기준 객체들이 존재하거나 이동할 수 있는 기준
+    // 객체가 이동 가능한 최대 화면 범위
+    protected float maxMoveX, maxMoveY;
+
     [Header("IObject")]
 
     [SerializeField]
-    protected float moveSpeed = 0f; // 모든 오브젝트는 일반적으로 이동속도가 존재한다.
+    protected float moveSpeed = 0f; // 기본 이동 속도
+
     [SerializeField]
-    protected float objectMoveSpeedMultify; // 오브젝트의 이동 배율. 높을 수록 이동 속도가 빨라진다.
+    protected float objectMoveSpeedMultify; // 이동 속도에 곱해지는 배율. 1보다 크면 더 빠르게 이동
 
-    
-
-    // Start is called before the first frame update
+    // 오브젝트가 생성될 때 실행됨
     virtual protected void Start()
     {
+        // 이 오브젝트를 GameZone 오브젝트의 자식으로 설정
         transform.parent = GameObject.Find("GameZone").transform;
+
+        // 이동 배율 초기화
         objectMoveSpeedMultify = 1;
     }
 
-    // Update is called once per frame
+    // 매 프레임마다 실행됨 (여기서는 따로 사용하지 않음)
     virtual protected void Update()
     {
 
     }
 
-
+    // 자식 클래스에서 구현해야 하는 초기화 함수
     protected abstract void Init();
 
+    // 방향 벡터를 받아서 오브젝트를 이동시키는 함수
     protected void ObjectMove(Vector3 vector)
     {
-        //초기화 했는 지 확인하는 과정
-        if(moveSpeed == 0)
-            Debug.Log(this.gameObject.name + "is moveSpeed 0");
+        // 이동 속도가 0이면 디버그 메시지 출력 (이동이 불가능함을 알림)
+        if (moveSpeed == 0)
+            Debug.Log(this.gameObject.name + " is moveSpeed 0");
 
-        //저장된 속도와 입력된 방향을 기반으로 이동
+        // 방향 벡터와 속도, 배율을 곱해서 이동 처리
         transform.Translate(vector * moveSpeed * objectMoveSpeedMultify * Time.deltaTime);
     }
 
-    //getset
+    // 이동 속도 값을 반환
     public float GetMoveSpeed()
     {
         return moveSpeed;
     }
 
+    // 이동 속도를 설정
     public void SetMoveSpeed(float Value)
     {
         moveSpeed = Value;
     }
 
+    // 이동 배율을 설정
     public void SetObjectMoveSpeedMultify(float value)
     {
         objectMoveSpeedMultify = value;
     }
 
+    // 이동 배율 값을 반환
     public float GetObjectMoveSpeedMultify()
     {
         return objectMoveSpeedMultify;

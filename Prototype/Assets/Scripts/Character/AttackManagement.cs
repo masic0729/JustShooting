@@ -5,8 +5,8 @@ public class AttackManagement
     public void ShootBulletRotate(ref GameObject projectile,
         Transform shootTransform, float rotateZ)
     {
-        projectile.transform.position = shootTransform.position;        //¹ß»çÃ¼ À§Ä¡ Á¶Á¤
-        projectile.transform.rotation = shootTransform.rotation;        //¹ß»çÃ¼ È¸Àü °ª Á¶Á¤
-        projectile.transform.Rotate(0, 0, rotateZ);
+        projectile.transform.position = shootTransform.position;        //ë°œì‚¬ì²´ ìœ„ì¹˜ ì¡°ì •
+        projectile.transform.rotation = shootTransform.rotation;        //ë°œì‚¬ì²´ íšŒì „ ê°’ ì¡°ì •
+        projectile.transform.Rotate(0, 0, rotateZ);                     //ë°œì‚¬ì²´ íšŒì „ ì ìš©
     }
 }

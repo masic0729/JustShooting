@@ -12,11 +12,13 @@ public class PoolManager : MonoBehaviour
 
     //int defaultCapacity = 10; //최소 풀링 오브젝트 개수
     //int maxPoolSize = 130; //최대 풀링 오브젝트 개수
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
-        PoolInit();
+
+        PoolInit(); // 풀 초기화
     }
 
     void PoolInit()
@@ -27,19 +29,22 @@ public class PoolManager : MonoBehaviour
         for (int i = 0; i < Projectiles.Length; i++)
         {
             int index = i; // 클로저 문제를 피하기 위해 index 값을 저장
+
             //람다식을 사용하였는데, 현재 코드 흐름으로서 원하는 방향으로 이어갈려면
             //람다식을 이용해 오브젝트풀의 문법을 편법으로 접근하여 다양한 투사체들을 처리할 수 있게 하는 근거이다
-            Pools[Projectiles[index].name] = new ObjectPool<GameObject>(() => CreateObject(index),    // 각 종류에 맞는 객체 생성
-                GetPool,                      // 객체 가져오기
-                ReleasePool,                  // 객체 반환하기
-                DestroyPool,                  // 객체 파괴
-                false,                        // 자동 확장 여부
-                100,
-                1000
+
+            // 각 발사체 이름을 키로 하여 해당 오브젝트 풀 생성 및 등록
+            Pools[Projectiles[index].name] = new ObjectPool<GameObject>(
+                () => CreateObject(index), // 객체 생성
+                GetPool,                   // 가져올 때 실행
+                ReleasePool,               // 반환할 때 실행
+                DestroyPool,               // 삭제할 때 실행
+                false,                     // 자동 생성 여부 (false)
+                100,                       // 기본 개수
+                1000                       // 최대 개수
             );
         }
     }
-
 
     /// <summary>
     /// 요구하는 오브젝트를 생성할 때 실행하며, 이를 딕셔너리화를 통해 호출명을 명확하게 볼 수 있다
@@ -48,22 +53,26 @@ public class PoolManager : MonoBehaviour
     /// <returns>poolObjects 반환</returns>
     GameObject CreateObject(int index)
     {
-        GameObject poolInstance = Instantiate(Projectiles[index]);
-        poolInstance.GetComponent<PoolProjectile>().pool = this.Pools[Projectiles[index].name];
+        GameObject poolInstance = Instantiate(Projectiles[index]); // 발사체 생성
+        poolInstance.GetComponent<PoolProjectile>().pool = this.Pools[Projectiles[index].name]; // 자신의 풀 정보 연결
         return poolInstance;
     }
 
+    // 오브젝트를 풀에서 꺼낼 때 호출되는 메서드
     public void GetPool(GameObject poolObject)
     {
-        poolObject.SetActive(true);
-        poolObject.transform.parent = GameZone;
+        poolObject.SetActive(true);              // 오브젝트 활성화
+        poolObject.transform.parent = GameZone;  // GameZone에 배치
     }
+
+    // 오브젝트를 풀에 반환할 때 호출되는 메서드
     public void ReleasePool(GameObject poolObject)
     {
-        poolObject.transform.parent = this.transform;
-        
-        poolObject.SetActive(false);
+        poolObject.transform.parent = this.transform; // PoolManager 아래로 이동
+        poolObject.SetActive(false);                  // 비활성화
     }
+
+    // 오브젝트를 완전히 제거할 때 호출되는 메서드
     public void DestroyPool(GameObject poolObject)
     {
         Destroy(poolObject);

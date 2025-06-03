@@ -6,51 +6,61 @@ using UnityEngine;
 
 public class PlayerPower : MonoBehaviour
 {
+    // player ë³€ìˆ˜ ì„ ì–¸
     Player player;
-    [Header("ÇÃ·¹ÀÌ¾î°¡ µ¶´ÜÀûÀ¸·Î ¼ÒÁöÇÏ´Â ÆÄ¿ö °ü·Ã µ¥ÀÌÅÍ")]
-    public Action powerEvents; //ÆÄ¿ö¿Í °ü·ÃµÈ ¸ğµç ±â´ÉÀ» ¸Å ÃÊ¸¶´Ù ½ÇÇàÇÏ·Á´Â ¾×¼Ç
+    [Header("í”Œë ˆì´ì–´ê°€ ë…ë‹¨ì ìœ¼ë¡œ ì†Œì§€í•˜ëŠ” íŒŒì›Œ ê´€ë ¨ ë°ì´í„°")]
+    // powerEvents ë³€ìˆ˜ ì„ ì–¸
+    public Action powerEvents; //íŒŒì›Œì™€ ê´€ë ¨ëœ ëª¨ë“  ê¸°ëŠ¥ì„ ë§¤ ì´ˆë§ˆë‹¤ ì‹¤í–‰í•˜ë ¤ëŠ” ì•¡ì…˜
+    // power ë³€ìˆ˜ ì„ ì–¸
     private float power;
     public float playerPower { get { return power; } set { power = value;  } }
-    public const float maxPower = 100; //ÆÄ¿ö °ª. 100 °ªÀº °íÁ¤ÀÌ´Ù
-    public float powerUpValue; //ÆÄ¿ö°¡ ¿À¸£´Â ¼öÄ¡
-    public bool isPowerMax; //ÆÄ¿ö°¡ ¸ğµÎ È¸º¹Çß´Â Áö È®ÀÎÇÏ´Â µ¥ÀÌÅÍ
+    public const float maxPower = 100; //íŒŒì›Œ ê°’. 100 ê°’ì€ ê³ ì •ì´ë‹¤
+    // powerUpValue ë³€ìˆ˜ ì„ ì–¸
+    public float powerUpValue; //íŒŒì›Œê°€ ì˜¤ë¥´ëŠ” ìˆ˜ì¹˜
+    // isPowerMax ë³€ìˆ˜ ì„ ì–¸
+    public bool isPowerMax; //íŒŒì›Œê°€ ëª¨ë‘ íšŒë³µí–ˆëŠ” ì§€ í™•ì¸í•˜ëŠ” ë°ì´í„°
+    // isActivedSkill ë³€ìˆ˜ ì„ ì–¸
     bool isActivedSkill;
 
+    // Start í•¨ìˆ˜: ì£¼ìš” ë™ì‘ì„ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
     void Start()
     {
         player = GetComponent<Player>();
     }
 
     /// <summary>
-    /// power ÀÚ¿¬È¸º¹À» ½ÇÇàÇÏ±â À§ÇÑ ±â´É
+    /// power ìì—°íšŒë³µì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ê¸°ëŠ¥
     /// </summary>
+    // DefaultPowerUp í•¨ìˆ˜: ì£¼ìš” ë™ì‘ì„ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
     public IEnumerator DefaultPowerUp()
     {
         ReStart:
 
-        yield return new WaitForSeconds(1.0f); // ¸Å ÃÊ¸¶´Ù ½ÇÇà
+        yield return new WaitForSeconds(1.0f); // ë§¤ ì´ˆë§ˆë‹¤ ì‹¤í–‰
 
-        //ÆÄ¿ö°¡ ¸ğµÎ Ã¤¿öÁöÁö ¾Ê°Å³ª Ã¤¿ï ¼ö ÀÖ´Â »óÈ²ÀÌ¶ó¸é ÆÄ¿ö »ó½Â
+        //íŒŒì›Œê°€ ëª¨ë‘ ì±„ì›Œì§€ì§€ ì•Šê±°ë‚˜ ì±„ìš¸ ìˆ˜ ìˆëŠ” ìƒí™©ì´ë¼ë©´ íŒŒì›Œ ìƒìŠ¹
         if(isPowerMax == false && isActivedSkill == false)
         {
             PowerUp(powerUpValue);
         }
-        goto ReStart; //¹İº¹
+    // ReStart ë³€ìˆ˜ ì„ ì–¸
+        goto ReStart; //ë°˜ë³µ
     }
 
     /// <summary>
-    /// power °ªÀÌ »ó½ÂÇÏ´Â ±â´É. power´Â ¸Å ÃÊ¸¶´Ù ÀÚ¿¬ È¸º¹ÇÏ°Å³ª, ÀûÀ» ÀûÁßÇÒ ¶§ »ó½ÂÇÔ(ÇöÀç·Î¼±)
+    /// power ê°’ì´ ìƒìŠ¹í•˜ëŠ” ê¸°ëŠ¥. powerëŠ” ë§¤ ì´ˆë§ˆë‹¤ ìì—° íšŒë³µí•˜ê±°ë‚˜, ì ì„ ì ì¤‘í•  ë•Œ ìƒìŠ¹í•¨(í˜„ì¬ë¡œì„ )
     /// </summary>
+    // PowerUp í•¨ìˆ˜: ì£¼ìš” ë™ì‘ì„ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
     public void PowerUp(float value)
     {
-        //ÆÄ¿ö 100¿À¹öÇÏ¸é 100À¸·Î Á¶Á¤. ¾Æ´Ò ½Ã ±×´ë·Î »ó½Â
+        //íŒŒì›Œ 100ì˜¤ë²„í•˜ë©´ 100ìœ¼ë¡œ ì¡°ì •. ì•„ë‹ ì‹œ ê·¸ëŒ€ë¡œ ìƒìŠ¹
         if(power + value >= maxPower)
         {
-            //power°¡ 100ÀÌ µÇ¾úÀ¸¹Ç·Î max bool ÂüÀ¸·Î º¯°æ
+            //powerê°€ 100ì´ ë˜ì—ˆìœ¼ë¯€ë¡œ max bool ì°¸ìœ¼ë¡œ ë³€ê²½
             power = 100;
             isPowerMax = true;
             player.PowerOn();
-            Debug.Log("ÆÄ¿ö ´Ù Â÷¸é Âü" + isPowerMax);
+            Debug.Log("íŒŒì›Œ ë‹¤ ì°¨ë©´ ì°¸" + isPowerMax);
         }
         else
         {
@@ -58,11 +68,14 @@ public class PlayerPower : MonoBehaviour
         }
     }
 
+    // GetIsActivedSkill í•¨ìˆ˜: ì£¼ìš” ë™ì‘ì„ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
     public bool GetIsActivedSkill()
     {
+    // isActivedSkill ë³€ìˆ˜ ì„ ì–¸
         return isActivedSkill;
     }
 
+    // SetIsActivedSkill í•¨ìˆ˜: ì£¼ìš” ë™ì‘ì„ ìˆ˜í–‰í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
     public void SetIsActivedSkill(bool state)
     {
         isActivedSkill = state;

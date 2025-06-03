@@ -4,46 +4,47 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
+    public static AudioManager Instance; // 싱글톤 인스턴스
 
     [Header("Sound Assets")]
-    [SerializeField] AudioClip[] sfxClips;
-    [SerializeField] AudioClip[] infClips;
-    [SerializeField] AudioClip[] bgmClips;
+    [SerializeField] AudioClip[] sfxClips; // 일반 효과음
+    [SerializeField] AudioClip[] infClips; // 인터페이스 효과음
+    [SerializeField] AudioClip[] bgmClips; // 배경음
 
-    private Dictionary<string, AudioClip> sfxDict = new Dictionary<string, AudioClip>();
-    private Dictionary<string, AudioClip> infDict = new Dictionary<string, AudioClip>();
-    private Dictionary<string, AudioClip> bgmDict = new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> sfxDict = new Dictionary<string, AudioClip>(); // 효과음 딕셔너리
+    private Dictionary<string, AudioClip> infDict = new Dictionary<string, AudioClip>(); // 인터페이스 효과음 딕셔너리
+    private Dictionary<string, AudioClip> bgmDict = new Dictionary<string, AudioClip>(); // 배경음 딕셔너리
 
     [Header("Audio Source Pooling")]
-    [SerializeField] private GameObject audioSourcePrefab;
-    [SerializeField] private int initialPoolSize = 10;
-    private Queue<AudioSource> sfxPool = new Queue<AudioSource>();
+    [SerializeField] private GameObject audioSourcePrefab; // 오디오 소스 프리팹
+    [SerializeField] private int initialPoolSize = 10; // 초기 풀 크기
+    private Queue<AudioSource> sfxPool = new Queue<AudioSource>(); // 오디오 소스 풀 큐
 
     [Header("BGM")]
-    [SerializeField] private AudioSource bgmSource;
+    [SerializeField] private AudioSource bgmSource; // BGM 재생용 오디오 소스
 
     private void Awake()
     {
         if (Instance == null)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            InitializeDictionaries();
-            InitializeSFXPool();
+            Instance = this; // 싱글톤 할당
+            DontDestroyOnLoad(gameObject); // 씬 전환 시 오브젝트 유지
+            InitializeDictionaries(); // 오디오 클립 딕셔너리 초기화
+            InitializeSFXPool(); // 오디오 소스 풀 초기화
         }
-        else Destroy(gameObject);
+        else Destroy(gameObject); // 중복 방지
     }
 
     private void Start()
     {
-        bgmSource = GetComponent<AudioSource>();
-        PlayBGM("Title");
+        bgmSource = GetComponent<AudioSource>(); // 오디오 소스 가져오기
+        PlayBGM("Title"); // 시작 시 타이틀 BGM 재생
     }
 
+    // 배열 기반 클립들을 이름으로 딕셔너리에 저장
     private void InitializeDictionaries()
     {
-        for(int i = 0; i < sfxClips.Length; i++)
+        for (int i = 0; i < sfxClips.Length; i++)
         {
             sfxDict[sfxClips[i].name] = sfxClips[i];
         }
@@ -51,12 +52,13 @@ public class AudioManager : MonoBehaviour
         {
             bgmDict[bgmClips[i].name] = bgmClips[i];
         }
-        for(int i = 0; i < infClips.Length; i++)
+        for (int i = 0; i < infClips.Length; i++)
         {
             infDict[infClips[i].name] = infClips[i];
         }
     }
 
+    // 오디오 소스를 미리 생성해서 풀에 저장
     private void InitializeSFXPool()
     {
         for (int i = 0; i < initialPoolSize; i++)
@@ -68,6 +70,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // 풀에서 오디오 소스를 하나 꺼내옴. 없으면 새로 생성
     private AudioSource GetSFXSource()
     {
         if (sfxPool.Count > 0)
@@ -83,6 +86,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    // 일반 효과음 재생
     public void PlaySFX(string name)
     {
         if (!sfxDict.TryGetValue(name, out AudioClip clip))
@@ -95,9 +99,10 @@ public class AudioManager : MonoBehaviour
         src.volume = SoundManager.instance.SFX_Volume * SoundManager.instance.masterVolume;
         src.clip = clip;
         src.Play();
-        StartCoroutine(ReturnToPoolAfterPlay(src));
+        StartCoroutine(ReturnToPoolAfterPlay(src)); // 재생 완료 후 풀에 반환
     }
 
+    // 배경음 재생
     public void PlayBGM(string name, bool loop = true)
     {
         if (!bgmDict.TryGetValue(name, out AudioClip clip))
@@ -111,6 +116,7 @@ public class AudioManager : MonoBehaviour
         bgmSource.Play();
     }
 
+    // 인터페이스 효과음 재생
     public void PlayINF(string name)
     {
         if (!infDict.TryGetValue(name, out AudioClip clip))
@@ -124,14 +130,16 @@ public class AudioManager : MonoBehaviour
 
         src.clip = clip;
         src.Play();
-        StartCoroutine(ReturnToPoolAfterPlay(src));
+        StartCoroutine(ReturnToPoolAfterPlay(src)); // 재생 후 반환
     }
 
+    // BGM 정지
     public void StopBGM()
     {
         bgmSource.Stop();
     }
 
+    // 재생이 끝난 오디오 소스를 풀에 반환하는 코루틴
     private IEnumerator ReturnToPoolAfterPlay(AudioSource source)
     {
         yield return new WaitForSeconds(source.clip.length);
@@ -141,9 +149,9 @@ public class AudioManager : MonoBehaviour
         sfxPool.Enqueue(source);
     }
 
-
-
-    /*public GameObject audioSourcePrefab;
+    /* 아래는 과거 방식의 풀링 코드 백업 */
+    /*
+    public GameObject audioSourcePrefab;
     private Queue<AudioSource> pool = new Queue<AudioSource>();
 
     public AudioSource GetSource()
@@ -166,5 +174,6 @@ public class AudioManager : MonoBehaviour
         src.clip = null;
         src.gameObject.SetActive(false);
         pool.Enqueue(src);
-    }*/
+    }
+    */
 }

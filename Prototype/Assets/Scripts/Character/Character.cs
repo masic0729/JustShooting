@@ -5,56 +5,60 @@ using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UI;
 
-
 public class Character : IObject
 {
+    // ì• ë‹ˆë©”ì´í„° ì»´í¬ë„ŒíŠ¸
     protected Animator anim;
+    // í”¼ê²© ì‹œ ì´í™íŠ¸ ì˜¤ë¸Œì íŠ¸
     public GameObject hitExplosion;
+    // ìºë¦­í„° ì‚¬ë§ ì‹œ ì´í™íŠ¸ ì˜¤ë¸Œì íŠ¸
     public GameObject destroyExplosion;
 
-    public AttackStats attackStats;                                     //°ø°İÇÏ´Â °´Ã¼°¡ ¼ÒÁöÇÏ´Â µ¥ÀÌÅÍ ¸ğÀ½
+    // ê³µê²© ê´€ë ¨ ìŠ¤íƒ¯ ëª¨ìŒ ê°ì²´
+    public AttackStats attackStats;
+    // ë°œì‚¬ì²´ ë°ì´í„° ê´€ë¦¬ ê°ì²´
     public ProjectileManagement projectileManage;
-    private Transform[] shootTransforms;                                //Ä³¸¯ÅÍÀÇ ¹ß»çÀ§Ä¡
-    public AttackManagement attackManage;                            //°ø°İ ¹æ½Ä¿¡ ´ëÇÑ Á¤º¸
+    // ë°œì‚¬ ìœ„ì¹˜ íŠ¸ëœìŠ¤í¼ ë°°ì—´ (ìì‹ ì˜¤ë¸Œì íŠ¸)
+    private Transform[] shootTransforms;
+    // ê³µê²© ì‹¤í–‰ ë° ê´€ë¦¬ ê°ì²´
+    public AttackManagement attackManage;
 
-    public Action OnCharacterDeath;                                     //Ä³¸¯ÅÍ°¡ Á×À» ¶§ ¹ß»ıÇÏ´Â ÀÌº¥Æ®. ÇÊ¿ä¿¡ µû¶ó¼­ »óÀ§ Å¬·¡½º¿¡ Á¤ÀÇÇÒ ¼ö ÀÖÀ½
-    public Action OnCharacterDamaged;                                   //Ä³¸¯ÅÍ°¡ ÇÇÇØ¸¦ ¹ŞÀ» ¶§ ¹ß»ıÇÏ´Â ÀÌº¥Æ®. µ¥¹ÌÁö¸¦ ¹ŞÀ¸¸é, ¼Ò¸®³ª, ÀÌÆåÆ®, Á¡¼ö È¹µæ µîµî ´Ù¾çÇÑ ¾×¼ÇÀÌ Á¸Àç
-    public Dictionary<string, Transform> shootTransform;                //¹ß»çÀ§Ä¡¸¦ ÃÖÁ¾ ÀúÀåÇÒ µñ¼Å³Ê¸®
+    // ìºë¦­í„° ì‚¬ë§ ì‹œ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
+    public Action OnCharacterDeath;
+    // ìºë¦­í„°ê°€ í”¼í•´ë¥¼ ì…ì—ˆì„ ë•Œ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
+    public Action OnCharacterDamaged;
+    // ë°œì‚¬ ìœ„ì¹˜ë¥¼ ì´ë¦„ ê¸°ì¤€ìœ¼ë¡œ ì €ì¥í•˜ëŠ” ë”•ì…”ë„ˆë¦¬
+    public Dictionary<string, Transform> shootTransform;
 
+    // í˜„ì¬ ì²´ë ¥ ë° ìµœëŒ€ ì²´ë ¥
     [SerializeField]
-    protected float hp, maxHp;                                          //ÇöÀç Ã¼·Â ¹× ÃÖ´ë Ã¼·Â.
-    protected float shield;                                             //º¸È£¸·, º¸È£¸· Á¸Àç ½Ã Ã¼·Â ´ë½Å °¨¼Ò
+    protected float hp, maxHp;
+    // ë³´í˜¸ë§‰ ìˆ˜ì¹˜ (ì²´ë ¥ ëŒ€ì‹  ê°ì†Œ)
+    protected float shield;
 
-    
-    protected ObjectInteration characterInteraction;                    //¸ó½ºÅÍ´Â ±âº»ÀûÀ¸·Î µ¥¹ÌÁö°¡ 1°íÁ¤ÀÌ´Ù
+    // ë°ë¯¸ì§€ ì „ë‹¬ ë° ì²˜ë¦¬ìš© ê°ì²´
+    protected ObjectInteration characterInteraction;
 
-    [Header("Ä³¸¯ÅÍÀÇ ÀüÅõ ½Ã½ºÅÛ °ø½Ä ¹èÀ²")]
+    [Header("ìºë¦­í„° ì „íˆ¬ ì‹œìŠ¤í…œ ë°°ìœ¨")]
     [SerializeField]
-    protected float attackMultiplier = 1;                               //ÇÇÇØ¸¦ ÁÙ ¼ö ÀÖ´Â °ø°İ·Â ¹× ÇÇÇØ °è¼ö. °ªÀÌ ¿À¸¦ ¼ö·Ï ÇÇÇØ·®ÀÌ Ä¿Áø´Ù.
+    // ê³µê²©ë ¥ ë°°ìœ¨ (ê°’ì´ í´ìˆ˜ë¡ í”¼í•´ëŸ‰ ì¦ê°€)
+    protected float attackMultiplier = 1;
     [SerializeField]
-    protected float attackDelay;                                        //¹ß»ç ÁÖ±â. °ªÀÌ ¿À¸¦ ¼ö·Ï ÃÊ´ç °ø°İ È½¼ö°¡ ´À·ÁÁø´Ù.
+    // ê³µê²© ê°„ ë”œë ˆì´ (ê°’ì´ í´ìˆ˜ë¡ ê³µê²© ì†ë„ ëŠë¦¼)
+    protected float attackDelay;
     [SerializeField]
-    protected float projectileMoveSpeedMultify = 1;                     //¹ß»çÃ¼ ¼Óµµ °è¼ö. °ªÀÌ Å¬ ¼ö·Ï ¹ß»çÃ¼ÀÇ ¼Óµµ°¡ »¡¶óÁø´Ù.
+    // ë°œì‚¬ì²´ ì†ë„ ë°°ìœ¨
+    protected float projectileMoveSpeedMultify = 1;
     [SerializeField]
-    protected float characterGetDamageMultify = 1;                      //Ä³¸¯ÅÍ°¡ ÇÇÇØ¸¦ ¹Ş´Â ¹èÀ². ³ôÀ» ¼ö·Ï ¹Ş´Â ÇÇÇØ°¡ »ó½ÂÇÑ´Ù.
-    protected float invincibilityTime = 0f;                             //¹«Àû ½Ã°£
-    protected bool  isInvincibility;                                    //¹«Àû ¿©ºÎ
-
-    
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        base.Update();
-    }
+    // ìºë¦­í„°ê°€ ë°›ëŠ” í”¼í•´ ë°°ìœ¨ (ê°’ì´ í´ìˆ˜ë¡ í”¼í•´ëŸ‰ ì¦ê°€)
+    protected float characterGetDamageMultify = 1;
+    // ë¬´ì  ì§€ì† ì‹œê°„
+    protected float invincibilityTime = 0f;
+    // ë¬´ì  ìƒíƒœ ì—¬ë¶€
+    protected bool isInvincibility;
 
     /// <summary>
-    /// ÇØ´ç Å¬·¡½ººÎÅÍ ¸ğµç ÇÏÀ§ Å¬·¡½ºµéÀÌ °³°³ÀÎÀÌ ¼±¾ğÇÏ´Â ÀÌº¥Æ®µéÀ» ÇØ´ç ÇÔ¼ö·Î ¾×¼Ç ÇàÀ§µéÀ» ÆíÁıÇÔ
+    /// ì´ˆê¸°í™” ë° ì»´í¬ë„ŒíŠ¸ ì„¤ì •, ì´ë²¤íŠ¸ ì—°ê²°
     /// </summary>
     protected override void Init()
     {
@@ -64,28 +68,25 @@ public class Character : IObject
         projectileManage = new ProjectileManagement();
         characterInteraction = new ObjectInteration();
 
-        //Áö±İÀº ´Ü¼øÈ÷ Ã¼·Â °¨¼Ò¸¸ Á¸ÀçÇÔ
+        // ìºë¦­í„° ì‚¬ë§ ì‹œ ê²Œì„ ì˜¤ë¸Œì íŠ¸ ì‚­ì œ
         OnCharacterDeath += DestroyCharacter;
         shootTransform = new Dictionary<string, Transform>();
 
-        // shootTransforms ¹è¿­À» ÀÚ½Ä ¿ÀºêÁ§Æ®·Î ÃÊ±âÈ­
-        shootTransforms = GetComponentsInChildren<Transform>(); // ºÎ¸ğ ¿ÀºêÁ§Æ®ÀÇ ¸ğµç ÀÚ½Ä TransformÀ» °¡Á®¿È
+        // ìì‹ íŠ¸ëœìŠ¤í¼ ë°°ì—´ë¡œ ë°›ì•„ì˜´ (ë¶€ëª¨ ì œì™¸)
+        shootTransforms = GetComponentsInChildren<Transform>();
 
-
-        foreach (Transform shootTransformItem in shootTransforms)
+        foreach (Transform t in shootTransforms)
         {
-            if (shootTransformItem != this.transform) // ºÎ¸ğ ¿ÀºêÁ§Æ®´Â Á¦¿Ü
+            if (t != this.transform)
             {
-                shootTransform[shootTransformItem.gameObject.name] = shootTransformItem;
+                shootTransform[t.gameObject.name] = t;
             }
         }
-        /*for (int i = 0; i < shootTransforms.Length; i++)
-        {
-            shootTransform[shootTransforms[i].gameObject.name] = shootTransforms[i]; //µñ¼Å³Ê¸® ¸íÀº Ä³¸¯ÅÍÀÇ ¹ß»çÀ§Ä¡¸¦ ´ã´çÇÏ´Â ¿ÀºêÁ§Æ®ÀÌ¸§À» »ç¿ëÇÑ´Ù.
-        }*/
-
     }
 
+    /// <summary>
+    /// í”¼í•´ë¥¼ ì…ìœ¼ë©´ ë¬´ì  ìƒíƒœ ì‹œì‘ ë° í”¼í•´ ì´ë²¤íŠ¸ ë°œìƒ
+    /// </summary>
     public void OnDamage()
     {
         SetIsInvincibility(true);
@@ -94,73 +95,41 @@ public class Character : IObject
     }
 
     /// <summary>
-    /// ÇöÀç´Â Ä³¸¯ÅÍ °´Ã¼µéÀº »èÁ¦Ã³¸®ÇÏÁö¸¸, »óÈ²¿¡ µû¶ó ÀÏºÎ Ä³¸¯ÅÍ´Â Ç®¸µ°ú ºñ½ÁÇÑ È¿°ú·Î Ã³¸®ÇÒ ¼ö ÀÖÀ½
+    /// ìºë¦­í„° ì‚¬ë§ ì‹œ ê²Œì„ ì˜¤ë¸Œì íŠ¸ ì‚­ì œ ì²˜ë¦¬
     /// </summary>
     void DestroyCharacter()
     {
         Destroy(this.gameObject);
     }
 
-    //getset
-    public void SetHp(float value)
-    {
-        hp = value;
-    }
+    // ì²´ë ¥ ê´€ë ¨ get/set
+    public void SetHp(float value) => hp = value;
+    public float GetHp() => hp;
+    public void SetMaxHp(float value) => maxHp = value;
+    public float GetMaxHp() => maxHp;
 
-    public float GetHp()
-    {
-        return hp;
-    }
+    // ë³´í˜¸ë§‰ ê´€ë ¨ get/set
+    public void SetShield(float value) => shield = value;
+    public float GetShield() => shield;
 
-    public void SetMaxHp(float value)
-    {
-        maxHp = value;
-    }
+    // ê³µê²©ë ¥ ë°°ìœ¨ ê´€ë ¨ get/set
+    public void SetAttackMultiplier(float value) => attackMultiplier = value;
+    public float GetAttackMultiplier() => attackMultiplier;
 
-    public float GetMaxHp()
-    {
-        return maxHp;
-    }
+    // ë¬´ì  ìƒíƒœ ê´€ë ¨ get/set
+    public void SetIsInvincibility(bool state) => isInvincibility = state;
+    public bool GetIsInvincibility() => isInvincibility;
 
-    public void SetShield(float value)
-    {
-        shield = value;
-    }
+    // ë¬´ì  ì§€ì† ì‹œê°„ ë°˜í™˜
+    public float GetInvincibilityTime() => invincibilityTime;
 
-    public float GetShield()
-    {
-        return shield;
-    }
-
-
-    public void SetAttackMultiplier(float value)
-    {
-        attackMultiplier = value;
-    }
-
-    public float GetAttackMultiplier()
-    {
-        return attackMultiplier;
-    }
-
-    public void SetIsInvincibility(bool state)
-    {
-        isInvincibility = state;
-    }
-
-    public bool GetIsInvincibility()
-    {
-        return isInvincibility;
-    }
-
-    public float GetInvincibilityTime()
-    {
-        return invincibilityTime;
-    }
-
+    /// <summary>
+    /// ë¬´ì  ìƒíƒœë¥¼ ì¢…ë£Œí•˜ëŠ” í•¨ìˆ˜
+    /// </summary>
     public void TransIsInvincibilityFalse()
     {
         isInvincibility = false;
     }
 
+    // Start & Update ë“±ì€ ë¶€ëª¨ í´ë˜ìŠ¤ í˜¸ì¶œë§Œ í•˜ë¯€ë¡œ ìƒëµ ê°€ëŠ¥
 }

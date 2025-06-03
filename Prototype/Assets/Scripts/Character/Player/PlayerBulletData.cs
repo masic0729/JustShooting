@@ -1,24 +1,29 @@
-#if UNITY_EDITOR
 using UnityEditor.Animations;
-#endif
 using UnityEngine;
 
 [System.Serializable]
 public class PlayerBulletData
 {
-    /// <summary>
-    /// 
-    /// </summary>
+
+    // sprite ë³€ìˆ˜ ì„ ì–¸
     public Sprite sprite;
+    // animCtrl ë³€ìˆ˜ ì„ ì–¸
     public RuntimeAnimatorController animCtrl;
     
-    public string weaponName; // °ø°İÅ¸ÀÔ
+    // weaponName ë³€ìˆ˜ ì„ ì–¸
+    public string weaponName; // ê³µê²©íƒ€ì…
+    // weaponLevel ë³€ìˆ˜ ì„ ì–¸
     public int weaponLevel = 1;
-    public float lifeTime; //°¢ ¼Ó¼ºÀÇ ¹ß»çÃ¼ »ı¸í½Ã°£
-    public float attackDelayMultify; // °ø°İ ÁÖ±â ¹èÀ²
+    // lifeTime ë³€ìˆ˜ ì„ ì–¸
+    public float lifeTime; //ê° ì†ì„±ì˜ ë°œì‚¬ì²´ ìƒëª…ì‹œê°„
+    // attackDelayMultify ë³€ìˆ˜ ì„ ì–¸
+    public float attackDelayMultify; // ê³µê²© ì£¼ê¸° ë°°ìœ¨
 
-    //¹ø°³ ¼Ó¼ºÀº È÷Æ®½ºÄµ ¹æ½ÄÀÌ±â¿¡ ÇØ´ç °´Ã¼´Â 0ÀÌ´Ù
-    public float moveSpeed; //Åõ»çÃ¼ ¼Óµµ
-    public float powerValue; // ½ºÅ³ »ç¿ëÀ» À§ÇÑ ÆÄ¿ö °ª
-    public float attackMultify; //µ¥¹ÌÁö ¹èÀ²
+    //ë²ˆê°œ ì†ì„±ì€ íˆíŠ¸ìŠ¤ìº” ë°©ì‹ì´ê¸°ì— í•´ë‹¹ ê°ì²´ëŠ” 0ì´ë‹¤
+    // moveSpeed ë³€ìˆ˜ ì„ ì–¸
+    public float moveSpeed; //íˆ¬ì‚¬ì²´ ì†ë„
+    // powerValue ë³€ìˆ˜ ì„ ì–¸
+    public float powerValue; // ìŠ¤í‚¬ ì‚¬ìš©ì„ ìœ„í•œ íŒŒì›Œ ê°’
+    // attackMultify ë³€ìˆ˜ ì„ ì–¸
+    public float attackMultify; //ë°ë¯¸ì§€ ë°°ìœ¨
 }

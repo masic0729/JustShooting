@@ -1,15 +1,15 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScrollBackground : MonoBehaviour
 {
-    public Material[] scrollMat; //¹è°æÀÇ ¸ŞÅ×¸®¾óÀ» ¹è¿­È­ÇÑ °Í
-    private Material instanceMaterial; //¹è¿­È­µÈ µ¥ÀÌÅÍ¸¦ ½ÇÁ¦ ¹è°æ¿¡ Àû¿ëÇÏ·Á´Â µ¥ÀÌÅÍ
-    private float time; //½ÇÇà ½Ã°£
+    public Material[] scrollMat; // ë°°ê²½ì˜ ë©”í…Œë¦¬ì–¼ì„ ë°°ì—´í™”í•œ ê²ƒ (ë‹¤ì–‘í•œ ë°°ê²½ ì „í™˜ìš©ìœ¼ë¡œ ì‚¬ìš© ê°€ëŠ¥)
+    private Material instanceMaterial; // ë°°ì—´í™”ëœ ë°ì´í„°ë¥¼ ì‹¤ì œ ë°°ê²½ì— ì ìš©í•˜ë ¤ëŠ” ë³€ìˆ˜
+    private float time; // ì‹¤í–‰ ì‹œê°„ ëˆ„ì ìš© (ìŠ¤í¬ë¡¤ ì œì–´)
 
-    bool isMoveBG = true; //¹è°æ ¿òÁ÷ÀÓ ±ÇÇÑ
+    bool isMoveBG = true; // ë°°ê²½ ì›€ì§ì„ ê¶Œí•œ (ì¼ì‹œì •ì§€ ì²˜ë¦¬ ë“±ì—ì„œ ì‚¬ìš©)
 
     private void Start()
     {
@@ -18,46 +18,47 @@ public class ScrollBackground : MonoBehaviour
 
     void Update()
     {
-
-        MoveBG();
+        MoveBG(); // ë§¤ í”„ë ˆì„ ë°°ê²½ ì´ë™ ì‹œë„
     }
 
     /// <summary>
-    /// ÃÊ±âÈ­
+    /// ì´ˆê¸°í™”
     /// </summary>
     void Init()
     {
-        instanceMaterial = new Material(scrollMat[0]);
-        GetComponent<Renderer>().material = instanceMaterial;
+        instanceMaterial = new Material(scrollMat[0]); // ë°°ì—´ ì¤‘ ì²« ë°°ê²½ìœ¼ë¡œ ì‹œì‘
+        GetComponent<Renderer>().material = instanceMaterial; // ì‹¤ì œ ì˜¤ë¸Œì íŠ¸ì— ë©”í…Œë¦¬ì–¼ ì ìš©
     }
 
     /// <summary>
-    /// ¹è°æÀ» ¿òÁ÷ÀÌ´Â ¿ø¸®, ½ÇÇà ½Ã°£À» ±â¹İÀ¸·Î ¿òÁ÷ÀÎ´Ù
+    /// ë°°ê²½ì„ ì›€ì§ì´ëŠ” ì›ë¦¬, ì‹¤í–‰ ì‹œê°„ì„ ê¸°ë°˜ìœ¼ë¡œ ì›€ì§ì¸ë‹¤
     /// </summary>
     void MoveBG()
     {
         if (isMoveBG == true)
         {
             time += Time.deltaTime;
-            instanceMaterial.SetFloat("_ScrollTime", time);
+            instanceMaterial.SetFloat("_ScrollTime", time); // ì‰ì´ë”ì—ì„œ '_ScrollTime'ì„ ê¸°ì¤€ìœ¼ë¡œ í…ìŠ¤ì²˜ UV ìŠ¤í¬ë¡¤
         }
     }
 
     /// <summary>
-    /// ¹è°æÀÇ ¿òÁ÷ÀÓ ±ÇÇÑ °ü¸®
+    /// ë°°ê²½ì˜ ì›€ì§ì„ ê¶Œí•œ ê´€ë¦¬
     /// </summary>
-    /// <param name="state"></param>
+    /// <param name="state">true: ì›€ì§ì„ í™œì„±í™”, false: ë©ˆì¶¤</param>
     public void MoveBackgroundState(bool state)
     {
         isMoveBG = state;
     }
 
     /// <summary>
-    /// ÀÓ½Ã¿ë ¹è°æ º¯°æ ÄÚµå
+    /// ì„ì‹œìš© ë°°ê²½ ë³€ê²½ ì½”ë“œ
     /// </summary>
-    /// <param name="index">¸ŞÅ×¸®¾ó µ¥ÀÌÅÍÀÇ ¹è¿­°ª</param>
+    /// <param name="index">ë©”í…Œë¦¬ì–¼ ë°ì´í„°ì˜ ë°°ì—´ê°’</param>
     public void SetBackgroundData(int index)
     {
-        instanceMaterial = scrollMat[index];
+        instanceMaterial = scrollMat[index]; // ë©”í…Œë¦¬ì–¼ ì°¸ì¡°ë§Œ ë°”ë€Œë©°, ì‹¤ì œ ì ìš©ì€ Initì™€ ë‹¤ë¥´ê²Œ Renderer ê°±ì‹ ì´ ì—†ìŒ
+        //ì‹¤ì œë¡œ ë Œë”ë§ì— ì ìš©ë˜ì§€ ì•Šìœ¼ë¯€ë¡œ, ì•„ë˜ í•œ ì¤„ í•„ìš”í•  ìˆ˜ ìˆìŒ
+        // GetComponent<Renderer>().material = instanceMaterial;
     }
 }

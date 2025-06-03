@@ -2,23 +2,31 @@ public class EnemyIdleState : EnemyState
 {
     public EnemyIdleState(Enemy enemy) : base(enemy) { }
 
+    /// <summary>
+    /// ìƒíƒœ ì§„ì… ì‹œ í˜¸ì¶œ
+    /// í˜„ì¬ëŠ” ê¸°ë³¸ Enter ê¸°ëŠ¥ë§Œ ìˆ˜í–‰
+    /// </summary>
     public override void Enter()
     {
         base.Enter();
     }
 
+    /// <summary>
+    /// ìƒíƒœ ë§¤ í”„ë ˆì„ ê°±ì‹  ì‹œ í˜¸ì¶œ
+    /// idle ì‹œê°„ ì¹´ìš´íŠ¸ ë° ê·¼ì ‘ ì‹œ ì¶”ì  ìƒíƒœë¡œ ë³€ê²½ (ì£¼ì„ ì²˜ë¦¬ë¨)
+    /// </summary>
     public override void Update()
     {
         base.Update();
-        /*idleTime -= Time.deltaTime;
-        if (idleTime <= 0f)
-        {
-            enemy.stateMachine.ChangeState(new EnemyChaseState(enemy));
-        }
-        ±×·¯´Ï±î ÀÌ ºÎºĞÀ» ÀÌµ¿ ½ºÅ©¸³Æ®¸¦ µ¹·Á¼­,
-        ÇØ´ç °Å¸®°ª°ú ±ÙÁ¢ÇÏ¸é ½ºÅÄ½º°¡ º¯°æµÇ´Â ½ºÅ©¸³Æ®¸¦ ÀÛ¼ºÇÏ¸é µÈ´Ù.
+
+        /* 
+         * idleTime -= Time.deltaTime;
+         * if (idleTime <= 0f)
+         * {
+         *     enemy.stateMachine.ChangeState(new EnemyChaseState(enemy));
+         * }
+         * í•´ë‹¹ ë¶€ë¶„ ëŒ€ì‹  ì´ë™ ìŠ¤í¬ë¦½íŠ¸ì—ì„œ ê±°ë¦¬ ê³„ì‚° í›„
+         * ê·¼ì ‘ ì‹œ ìƒíƒœ ë³€ê²½ êµ¬í˜„ í•„ìš”
          */
-
-
     }
 }

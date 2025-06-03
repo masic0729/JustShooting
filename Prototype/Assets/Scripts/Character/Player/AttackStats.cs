@@ -2,14 +2,21 @@ using UnityEngine;
 //[CreateAssetMenu(fileName = "AttackStats", menuName = "ScriptableObjects/AttackStats", order = 1)]
 public class AttackStats : MonoBehaviour
 {
-    [Header("°ø°İ °´Ã¼µéÀÇ ¹ß»çÃ¼ µ¥ÀÌÅÍ")]
-    public RuntimeAnimatorController animCtrl;             //¹ß»çÃ¼ÀÇ ¾Ö´Ï¸ŞÀÌ¼Ç
-    public Sprite sprite;                           // ¹ß»çÃ¼ÀÇ ¸®¼Ò½º
+    [Header("ê³µê²© ê°ì²´ë“¤ì˜ ë°œì‚¬ì²´ ë°ì´í„°")]
+    // animCtrl ë³€ìˆ˜ ì„ ì–¸
+    public RuntimeAnimatorController animCtrl;             //ë°œì‚¬ì²´ì˜ ì• ë‹ˆë©”ì´ì…˜
+    // sprite ë³€ìˆ˜ ì„ ì–¸
+    public Sprite sprite;                           // ë°œì‚¬ì²´ì˜ ë¦¬ì†ŒìŠ¤
     [HideInInspector]
-    public float damage = 1f;                       // ÇÇÇØ·®
-    public float moveSpeed = 5f;                    // ¹ß»çÃ¼ ÀÌµ¿ ¼Óµµ
-    public float attackDelayMultify = 1;            // °ø°İ ÁÖ±â(°ø°İ¼Óµµ)
-    public float powerValue = 0;                    //°¢ ÃÑ¾ËÀÌ Á¤ÀÇÇÏ´Â ÆÄ¿ö°ª
-    public float damageMultiplier = 1;              // ÇÇÇØ¸¦ ÁÙ ¼ö ÀÖ´Â °ø°İ·Â ¹× ÇÇÇØ °è¼ö
+    // damage ë³€ìˆ˜ ì„ ì–¸
+    public float damage = 1f;                       // í”¼í•´ëŸ‰
+    // moveSpeed ë³€ìˆ˜ ì„ ì–¸
+    public float moveSpeed = 5f;                    // ë°œì‚¬ì²´ ì´ë™ ì†ë„
+    // attackDelayMultify ë³€ìˆ˜ ì„ ì–¸
+    public float attackDelayMultify = 1;            // ê³µê²© ì£¼ê¸°(ê³µê²©ì†ë„)
+    // powerValue ë³€ìˆ˜ ì„ ì–¸
+    public float powerValue = 0;                    //ê° ì´ì•Œì´ ì •ì˜í•˜ëŠ” íŒŒì›Œê°’
+    // damageMultiplier ë³€ìˆ˜ ì„ ì–¸
+    public float damageMultiplier = 1;              // í”¼í•´ë¥¼ ì¤„ ìˆ˜ ìˆëŠ” ê³µê²©ë ¥ ë° í”¼í•´ ê³„ìˆ˜
     
 }

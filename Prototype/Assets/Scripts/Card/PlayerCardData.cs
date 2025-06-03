@@ -3,24 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// í”Œë ˆì´ì–´ ì¹´ë“œ ë°ì´í„°ë¥¼ ì €ì¥í•˜ëŠ” êµ¬ì¡°ì²´.
+/// ì¹´ë“œ ìœ í˜•, ì‹œê°ì  ìš”ì†Œ, ë ˆë²¨ ì •ë³´, ì„¤ëª… ë“±ì„ í¬í•¨.
+/// </summary>
 [System.Serializable]
 public struct PlayerCardData
 {
-    //Ä«µå °íÀ¯ÀÇ Å¸ÀÔ
+    /// <summary>
+    /// ì¹´ë“œì˜ ê³ ìœ  íƒ€ì… ì •ì˜ (ë¬´ê¸° ê°•í™”, ìŠ¤í‚¬ ê°•í™”)
+    /// </summary>
     public enum CardType
     {
-        Weapon,             //ÇÃ·¹ÀÌ¾î ¹«±â °­È­
-        Skill               //ÇÃ·¹ÀÌ¾î ±â¼ú ºÎ¿© ¹× °­È­
+        Weapon,     // í”Œë ˆì´ì–´ ë¬´ê¸° ê°•í™”
+        Skill       // í”Œë ˆì´ì–´ ê¸°ìˆ  ë¶€ì—¬ ë° ê°•í™”
     }
 
-    //Ä«µå ÀÌ¸§, ¼³¸í, Ä«µåÇÁ·¹ÀÓ, Ä«µå ¾ÆÀÌÄÜ, ±â´É ºÎ¿©
-    public Sprite background;               //Ä«µå ÇÁ·¹ÀÓ
-    public Sprite icon;                     //¾ÆÀÌÄÜ
-    public string cardName;                 //Ä«µå ÀÌ¸§
-    public string description;              //Ä«µå ¼³¸í
-    public int currentLevel;                //Ä«µåÀÇ ·¹º§
-    public int maxLevel;                    //ÃÖ´ë ·¹º§
-    public bool isSkill;                    //½ºÅ³Ä«µå À¯¹«
-
-    
+    // ì¹´ë“œ í”„ë ˆì„ ì´ë¯¸ì§€
+    public Sprite background;
+    // ì¹´ë“œ ì•„ì´ì½˜ ì´ë¯¸ì§€
+    public Sprite icon;
+    // ì¹´ë“œ ì´ë¦„
+    public string cardName;
+    // ì¹´ë“œ ì„¤ëª… í…ìŠ¤íŠ¸
+    public string description;
+    // í˜„ì¬ ì¹´ë“œ ë ˆë²¨
+    public int currentLevel;
+    // ì¹´ë“œ ìµœëŒ€ ë ˆë²¨
+    public int maxLevel;
+    // ìŠ¤í‚¬ ì¹´ë“œ ì—¬ë¶€ (trueë©´ ìŠ¤í‚¬ ì¹´ë“œ)
+    public bool isSkill;
 }

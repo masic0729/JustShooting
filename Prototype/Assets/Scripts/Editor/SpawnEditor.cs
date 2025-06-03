@@ -1,21 +1,26 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
+// SpawnData 클래스에 커스텀 인스펙터를 적용하기 위한 에디터 클래스
 [CustomEditor(typeof(SpawnData))]
 public class SpawnEditor : Editor
 {
+    // SpawnData 내의 waveGroups 리스트를 SerializedProperty로 참조
     private SerializedProperty waveGroups;
 
+    // 에디터가 활성화될 때 SerializedProperty 초기화
     private void OnEnable()
     {
         waveGroups = serializedObject.FindProperty("waveGroups");
     }
 
+    // 커스텀 인스펙터 UI 정의
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
         EditorGUILayout.LabelField("Wave Groups", EditorStyles.boldLabel);
 
+        // 각 WaveGroup 단위로 반복 처리
         for (int i = 0; i < waveGroups.arraySize; i++)
         {
             SerializedProperty group = waveGroups.GetArrayElementAtIndex(i);
@@ -26,6 +31,7 @@ public class SpawnEditor : Editor
             EditorGUILayout.LabelField($"Group {i + 1}", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(nextDelay);
 
+            // Group 내의 각 SpawnInfomation 처리
             for (int j = 0; j < waveList.arraySize; j++)
             {
                 SerializedProperty wave = waveList.GetArrayElementAtIndex(j);
@@ -44,11 +50,12 @@ public class SpawnEditor : Editor
                 EditorGUILayout.PropertyField(isCustom);
                 EditorGUILayout.PropertyField(isRandY);
 
-                // 배열 동기화
+                // spawnCount에 따라 배열 크기를 조절
                 int count = Mathf.Max(1, spawnCount.intValue);
                 ResizeArray(spawnX, count);
                 ResizeArray(arrivePos, count);
 
+                // 커스텀 위치 지정일 경우, X/Y 입력 필드 제공
                 if (isCustom.boolValue)
                 {
                     EditorGUILayout.LabelField("Custom Positions");
@@ -71,6 +78,7 @@ public class SpawnEditor : Editor
                 EditorGUILayout.EndVertical();
             }
 
+            // Group 내 Spawn 정보 추가/삭제 버튼
             if (GUILayout.Button("Add Spawn to Group"))
                 waveList.InsertArrayElementAtIndex(waveList.arraySize);
             if (waveList.arraySize > 0 && GUILayout.Button("Delete Last Spawn from Group"))
@@ -80,6 +88,7 @@ public class SpawnEditor : Editor
             EditorGUILayout.Space(5);
         }
 
+        // WaveGroup 자체 추가/삭제 버튼
         if (GUILayout.Button("Add new Wave Group"))
             waveGroups.InsertArrayElementAtIndex(waveGroups.arraySize);
 
@@ -89,6 +98,7 @@ public class SpawnEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
+    // 배열 크기 자동 조절 메서드
     void ResizeArray(SerializedProperty array, int size)
     {
         while (array.arraySize < size)

@@ -2,56 +2,78 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ì—”ë“œ ë³´ìŠ¤ í´ë˜ìŠ¤.
+/// Boss í´ë˜ìŠ¤ë¥¼ ìƒì†í•˜ë©°, ìµœì¢… ë³´ìŠ¤ ì—¬ë¶€ì— ë”°ë¥¸ ê²Œì„ ì¢…ë£Œ ì´ë²¤íŠ¸ ì²˜ë¦¬ í¬í•¨.
+/// </summary>
 public class EndBoss : Boss
 {
     [SerializeField]
-    bool isFinalBoss; //ÇöÀç °³¹ß ¶Ç´Â Å×½ºÆ®¹öÀüÀÇ ¸¶Áö¸· ¿£µåº¸½º ¿©ºÎ
+    // ìµœì¢… ë³´ìŠ¤ ì—¬ë¶€ í”Œë˜ê·¸
+    bool isFinalBoss;
 
+    /// <summary>
+    /// ì´ˆê¸°í™” ë° ë¶€ëª¨ Start í˜¸ì¶œ
+    /// </summary>
     protected override void Start()
     {
         base.Start();
     }
 
+    /// <summary>
+    /// ë§¤ í”„ë ˆì„ ì—…ë°ì´íŠ¸ í˜¸ì¶œ
+    /// </summary>
     protected override void Update()
     {
         base.Update();
-
     }
 
+    /// <summary>
+    /// ì˜¤ë¸Œì íŠ¸ íŒŒê´´ ì‹œ ë™ì‘ (í˜„ì¬ ë‚´ìš© ì—†ìŒ)
+    /// </summary>
     private void OnDestroy()
     {
-        
     }
 
-    //º¸½º°¡ Á×¾úÀ¸¹Ç·Î °ÔÀÓ ½Â¸®
+    /// <summary>
+    /// ìµœì¢… ë³´ìŠ¤ ì‚¬ë§ ì‹œ ê²Œì„ ìŠ¹ë¦¬ ì²˜ë¦¬
+    /// </summary>
     protected void FinalEndBossDeath()
     {
         GameManager.instance.GameEnd(UI_Manager.ScreenInfo.Win);
     }
 
+    /// <summary>
+    /// ì´ˆê¸° ì„¤ì • ë° ì´ë²¤íŠ¸ êµ¬ë…
+    /// </summary>
     protected override void Init()
     {
         base.Init();
-        if(isFinalBoss == true)
+
+        if (isFinalBoss == true)
         {
-            OnCharacterDeath += FinalEndBossDeath;
+            OnCharacterDeath += FinalEndBossDeath; // ìµœì¢… ë³´ìŠ¤ì¼ ê²½ìš° ìŠ¹ë¦¬ ì´ë²¤íŠ¸ ì—°ê²°
         }
         else
         {
-            OnCharacterDeath += StageClearAction;
-            OnCharacterDeath += RestartWave; //ÃßÈÄ »èÁ¦ÇØ¾ßµÊ
+            OnCharacterDeath += StageClearAction; // ì¼ë°˜ ë³´ìŠ¤ í´ë¦¬ì–´ ì´ë²¤íŠ¸
+            OnCharacterDeath += RestartWave;      // ì›¨ì´ë¸Œ ì¬ì‹œì‘ (ì¶”í›„ ì œê±° ì˜ˆì •)
         }
-        
     }
 
+    /// <summary>
+    /// ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´ ì‹œ ì¶”ê°€ ë™ì‘ (ë§µ ë³€ê²½, í¬íƒˆ ìƒì„± ë“±)
+    /// </summary>
     void StageClearAction()
     {
-        Debug.Log("½ºÅ×ÀÌÁö Å¬¸®¾î. Å¬¸®¾î ÀÌÈÄ ¸Ê º¯°æ, ¸ó½ºÅÍ µ¥ÀÌÅÍ, Æ÷Å» »ı¼º µî ´Ù¾çÇÑ ±â´É Ãß°¡ ¿ä±¸");
+        Debug.Log("ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´. í´ë¦¬ì–´ ì´í›„ ë§µ ë³€ê²½, ëª¬ìŠ¤í„° ë°ì´í„°, í¬íƒˆ ìƒì„± ë“± ë‹¤ì–‘í•œ ê¸°ëŠ¥ ì¶”ê°€ ìš”êµ¬");
     }
 
+    /// <summary>
+    /// ì¶©ëŒ ì²˜ë¦¬, ë¶€ëª¨ í´ë˜ìŠ¤ í˜¸ì¶œ
+    /// </summary>
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
-
     }
 }

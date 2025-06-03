@@ -1,29 +1,36 @@
 /// <summary>
-/// »óÅÂ¸Ó½ÅÀÇ ±âº» Æ²
+/// ìƒíƒœë¨¸ì‹ ì˜ ê¸°ë³¸ í‹€
 /// </summary>
 public class StateMachine
 {
+    // í˜„ì¬ í™œì„±í™”ëœ ìƒíƒœë¥¼ ì €ì¥í•˜ëŠ” ë³€ìˆ˜
     public EnemyState currentState;
 
     /// <summary>
-    /// ÇöÀç ½ºÅÄ½º°¡ ÀÖÀ¸¸é Á¾·áÇÏ°í,
-    /// ½ºÅÄ½º¸¦ ¹Ù²Ù´Â ±â´ÉÀÌ±â¿¡ ½ºÅÄ½º¸¦ ³Ö°í,
-    /// ³Ö¾úÀ¸´Ï ½ÇÇàÇÑ´Ù
+    /// ìƒíƒœ ë³€ê²½ ë©”ì„œë“œ
+    /// ê¸°ì¡´ ìƒíƒœê°€ ìˆìœ¼ë©´ ì¢…ë£Œ(Exit)ì‹œí‚¤ê³ ,
+    /// ìƒˆë¡œìš´ ìƒíƒœë¡œ ë³€ê²½ í›„ ì§„ì…(Enter) ë©”ì„œë“œ í˜¸ì¶œ
     /// </summary>
-    /// <param name="newState">º¯°æ°ªÀ» ³ÖÀ» µ¥ÀÌÅÍ</param>
+    /// <param name="newState">ë³€ê²½í•  ìƒˆë¡œìš´ ìƒíƒœ</param>
     public void ChangeState(EnemyState newState)
     {
+        // í˜„ì¬ ìƒíƒœê°€ ì¡´ì¬í•˜ë©´ ì¢…ë£Œ ì²˜ë¦¬
         currentState?.Exit();
+
+        // ìƒíƒœ ë³€ê²½
         currentState = newState;
+
+        // ìƒˆ ìƒíƒœ ì§„ì… ì²˜ë¦¬
         currentState.Enter();
     }
 
     /// <summary>
-    /// monobehaviorÀÇ Update°¡ ¾Æ´Ñ, ½ºÅÄ½º¸Ó½ÅÀÇ °íÀ¯ ¾÷µ¥ÀÌÆ®
+    /// ìƒíƒœ ë¨¸ì‹ ì˜ ì—…ë°ì´íŠ¸ ë©”ì„œë“œ
+    /// MonoBehaviourì˜ Updateê°€ ì•„ë‹Œ, ìƒíƒœë³„ Update í˜¸ì¶œìš©
     /// </summary>
     public void Update()
     {
-        //ÇöÀç ½ºÅÄ½º°¡ ÀÖÀ¸¸é ¾÷µ¥ÀÌÆ® ±¸µ¿.
+        // í˜„ì¬ ìƒíƒœê°€ ì¡´ì¬í•˜ë©´ ìƒíƒœë³„ ì—…ë°ì´íŠ¸ ì‹¤í–‰
         currentState?.Update();
     }
 }
