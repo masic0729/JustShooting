@@ -6,14 +6,14 @@ using UnityEngine;
 public class CardManager : MonoBehaviour
 {
     [SerializeField]
-    // currentCards 변수 선언: 현재 보여지는 카드 게임오브젝트 배열
+    //현재 보여지는 카드 게임오브젝트 배열
     private GameObject[] currentCards;
-
-    // allCards 변수 선언: 전체 카드 정보 목록
+    CardInfo[] loadedCards;
+    //전체 카드 정보 목록
     public List<CardInfo> allCards;
 
     /*
-    // GetAvailableCardChoices 함수: 특정 개수만큼 등장 가능한 카드 리스트를 필터링하여 반환 (주석 처리됨)
+    //특정 개수만큼 등장 가능한 카드 리스트를 필터링하여 반환 (주석 처리됨)
     public List<PlayerCardData> GetAvailableCardChoices(int count)
     {
         // 스킬 카드 중 현재 레벨이 최대 레벨 미만인 카드 필터링
@@ -59,16 +59,21 @@ public class CardManager : MonoBehaviour
     }
     */
 
-    // Awake 함수: 게임 오브젝트가 활성화될 때 초기화 호출
+    //게임 오브젝트가 활성화될 때 초기화 호출
     private void Awake()
     {
         CardInit();
     }
 
-    // CardInit 함수: 리소스 폴더에서 모든 카드 데이터를 로드하여 리스트에 저장
+    //리소스 폴더에서 모든 카드 데이터를 로드하여 리스트에 저장
     void CardInit()
     {
-        CardInfo[] loadedCards = Resources.LoadAll<CardInfo>("Scriptable/");
+        loadedCards = Resources.LoadAll<CardInfo>("Scriptable/Card/");
+        for(int i = 0; i < loadedCards.Length; i++)
+        {
+            loadedCards[i].cardData.icon = Resources.Load<Sprite>("Card/IconTest");
+            Debug.Log(loadedCards[i].cardData.icon);
+        }
         allCards = loadedCards.ToList();
     }
 
