@@ -118,4 +118,9 @@ public class ButtonManager : MonoBehaviour
     {
         Debug.Log("버튼이 제대로 누름");
     }
+
+    public void GameExit()
+    {
+        Application.Quit();
+    }
 }

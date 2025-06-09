@@ -22,7 +22,10 @@ public class CardManager : MonoBehaviour
 
     private void Update()
     {
-        ShowCards();
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ShowCards();
+        }
 
     }
 
