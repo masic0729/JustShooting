@@ -167,7 +167,7 @@ public class Player : Character
     void SetCurrentBullet(BulletType type)
     {
         currentBullet = type;
-        var data = bulletDataDict[type.ToString()]; // 총알 데이터 조회
+        PlayerBulletData data = bulletDataDict[type.ToString()]; // 총알 데이터 조회
 
         // 공격 스탯에 총알 데이터 반영
         attackStats.sprite = data.sprite;
@@ -185,14 +185,14 @@ public class Player : Character
     // 총알 발사 함수
     void FireBullet(BulletType type)
     {
-        int count = (type == BulletType.Fire) ? 5 : 1;    // 화염은 5발, 나머지는 1발
-        float angle = (type == BulletType.Fire) ? -20f : 0f; // 화염 각도 시작값
+        int count = (type == BulletType.Fire) ? 5 : 1;                                              // 화염은 5발, 나머지는 1발
+        float angle = (type == BulletType.Fire) ? -20f : 0f;                                        // 화염 각도 시작값
 
         for (int i = 0; i < count; i++)
         {
-            GameObject bullet = PoolManager.Instance.Pools["PlayerCommonBullet"].Get(); // 풀에서 총알 가져오기
-            ApplyBulletData(ref bullet);                                                 // 총알 데이터 적용
-            attackManage.ShootBulletRotate(ref bullet, shootTransform["CommonBullet"], angle); // 총알 발사 및 회전
+            GameObject bullet = PoolManager.Instance.Pools["PlayerCommonBullet"].Get();             // 풀에서 총알 가져오기
+            ApplyBulletData(ref bullet);                                                            // 총알 데이터 적용
+            attackManage.ShootBulletRotate(ref bullet, shootTransform["CommonBullet"], angle);      // 총알 발사 및 회전
             angle += 10f; // 각도 증가
         }
     }
