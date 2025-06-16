@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class CardManager : MonoBehaviour
@@ -55,7 +56,9 @@ public class CardManager : MonoBehaviour
     {
         Debug.Log(card.transform.Find("CardFrame/Icon"));
         card.transform.Find("CardFrame/Icon").GetComponent<Image>().sprite = info.icon;
-
+        card.transform.Find("CardFrame/Comment").GetComponent<TextMeshProUGUI>().text = info.description;
+        card.transform.Find("CardFrame/CardName").GetComponent<TextMeshProUGUI>().text = info.cardName;
+        //todo카드 프레임은 추후 변동되지 않거나, 추가 구현 요구
     }
 
     /// <summary>
@@ -69,7 +72,6 @@ public class CardManager : MonoBehaviour
         {
             SetCard(currentCards[i], instanceCards[i]);
         }
-
     }
 
     void Test()
@@ -79,7 +81,7 @@ public class CardManager : MonoBehaviour
 
     void tresh()
     {
-        /*
+    /*
     //특정 개수만큼 등장 가능한 카드 리스트를 필터링하여 반환 (주석 처리됨)
     public List<PlayerCardData> GetAvailableCardChoices(int count)
     {

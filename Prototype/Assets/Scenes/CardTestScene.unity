@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 204541457}
   - component: {fileID: 204541456}
   m_Layer: 5
-  m_Name: CommentText
+  m_Name: Comment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 941505341}
   - component: {fileID: 941505340}
   m_Layer: 5
-  m_Name: CommentText
+  m_Name: Comment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1694,7 +1694,7 @@ GameObject:
   - component: {fileID: 1042123596}
   - component: {fileID: 1042123595}
   m_Layer: 5
-  m_Name: CardNameText
+  m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1988,7 +1988,7 @@ GameObject:
   - component: {fileID: 1402721973}
   - component: {fileID: 1402721972}
   m_Layer: 5
-  m_Name: CommentText
+  m_Name: Comment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2124,7 +2124,7 @@ GameObject:
   - component: {fileID: 1444650882}
   - component: {fileID: 1444650881}
   m_Layer: 5
-  m_Name: CardNameText
+  m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2391,7 +2391,7 @@ GameObject:
   - component: {fileID: 1813134131}
   - component: {fileID: 1813134130}
   m_Layer: 5
-  m_Name: CardNameText
+  m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
