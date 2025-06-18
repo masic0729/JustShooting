@@ -22,7 +22,7 @@ public class ObjectMovement
     /// </summary>
     /// <param name="instance">이동할 객체</param>
     /// <param name="targetPos">이동할 목표 위치</param>
-    /// <param name="ratio">Lerp 속도 비율</param>
+    /// <param name="ratio">Lerp 기능 경과 시간값. 추후 본래의 기능대로 수정할 예정</param>
     public void MoveToPointLerp(ref GameObject instance, Vector2 targetPos, float ratio)
     {
         instance.transform.position = Vector2.Lerp(instance.transform.position, targetPos, ratio * Time.deltaTime);

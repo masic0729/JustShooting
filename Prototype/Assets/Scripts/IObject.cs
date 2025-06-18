@@ -22,6 +22,8 @@ public abstract class IObject : MonoBehaviour
 
         // 이동 배율 초기화
         objectMoveSpeedMultify = 1;
+        //this.transform.rotation = this.transform.parent.transform.rotation;
+        this.transform.Rotate(0, 0, this.transform.parent.rotation.z);
     }
 
     // 매 프레임마다 실행됨 (여기서는 따로 사용하지 않음)
