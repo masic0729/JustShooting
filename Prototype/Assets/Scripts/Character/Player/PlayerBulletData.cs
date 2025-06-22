@@ -1,4 +1,3 @@
-using UnityEditor.Animations;
 using UnityEngine;
 
 [System.Serializable]
@@ -26,4 +25,16 @@ public class PlayerBulletData
     public float powerValue; // 스킬 사용을 위한 파워 값
     // attackMultify 변수 선언
     public float attackMultify; //데미지 배율
+
+    /*
+    Sprite sprite;                              //발사체의 리소스
+    
+    public float canMoveDistance = 100f;        //최대 이동거리는 100이나, 불 속성은 단거리로 조정해야함
+    
+    public float lifeTime;                      //각 속성의 발사체 생명시간
+
+    public float attackSpeed;                   //공격 속도 배율. 빠르게 올릴 것이라면 값을 올려야 함
+    
+    public float 
+     */
 }
