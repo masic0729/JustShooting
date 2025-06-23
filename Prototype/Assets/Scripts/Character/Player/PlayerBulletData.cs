@@ -27,6 +27,7 @@ public class PlayerBulletData
     public float attackMultify; //데미지 배율
 
     /*
+    public string weaponName;                   // 공격타입
     Sprite sprite;                              //발사체의 리소스
     
     public float canMoveDistance = 100f;        //최대 이동거리는 100이나, 불 속성은 단거리로 조정해야함
