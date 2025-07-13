@@ -48,11 +48,7 @@ public class UI_Manager : MonoBehaviour
         Init();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 
     void Init()
     {

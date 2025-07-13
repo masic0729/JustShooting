@@ -29,8 +29,8 @@ public class EndBossTest2 : EndBoss
         base.OnTriggerEnter2D(collision);
     }
 
-    /* 주석 처리된 코루틴 공격 예제
-    public override IEnumerator EnemyAttack()
+    //주석 처리된 코루틴 공격 예제
+    public override IEnumerator Attack()
     {
         // 발사 횟수 랜덤 지정 (2~4회)
         int shootRandom = Random.Range(2, 5);
@@ -45,7 +45,7 @@ public class EndBossTest2 : EndBoss
         }
         yield return new WaitForSeconds(attackEndStopTime); // 공격 종료 대기
     }
-    */
+    
 
     // BounceAttack 함수: 회전값에 따라 탄환을 발사
     public void BounceAttack(float rotateValue)

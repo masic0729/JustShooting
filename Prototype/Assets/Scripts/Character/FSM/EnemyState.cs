@@ -15,7 +15,7 @@ public abstract class EnemyState
     /// EnemyState 생성자
     /// 상태가 제어할 Enemy 인스턴스와 해당 오브젝트 참조 초기화
     /// </summary>
-    /// <param name="enemy">상태가 제어할 Enemy 객체</param>
+    /// <param cardName="enemy">상태가 제어할 Enemy 객체</param>
     public EnemyState(Enemy enemy)
     {
         this.enemy = enemy;

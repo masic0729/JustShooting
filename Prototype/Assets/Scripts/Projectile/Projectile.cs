@@ -7,7 +7,7 @@ public class Projectile : IObject
     protected Vector3 projectileMoveVector; // 발사 방향 벡터
 
     //GameObject ProjectileEffect; //정확히 어떤 것들이 있는 지 파악이 안되므로 선언만 하였음
-    ObjectInteration projectileInteraction; // 피해 전달 클래스
+    ObjectInteraction projectileInteraction; // 피해 전달 클래스
 
     [SerializeField]
     protected float damage; //발사체는 데미지가 있다
@@ -44,7 +44,7 @@ public class Projectile : IObject
 
     protected override void Init()
     {
-        projectileInteraction = new ObjectInteration(); // 피해 처리 클래스 인스턴스 생성
+        projectileInteraction = new ObjectInteraction(); // 피해 처리 클래스 인스턴스 생성
 
         maxMoveX = 10f; // 이동 제한 범위
         maxMoveY = 5.5f;
@@ -89,11 +89,15 @@ public class Projectile : IObject
                     collision.GetComponent<Enemy>().GetIsBoss() == false)
                 {
                     SetDamage(999f);
-                    projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
+                    //projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
+                    instanceHitCharacter.OnCharacterDamaged(GetDamage());
+                    instanceHitCharacter.OnDamage?.Invoke();
                 }
                 else
                 {
-                    projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
+                    //projectileInteraction.SendDamage(ref instanceHitCharacter, this.GetDamage());
+                    instanceHitCharacter.OnCharacterDamaged(GetDamage());
+                    instanceHitCharacter.OnDamage?.Invoke();
                 }
 
                 // 디버깅 용: 플레이어 이름이 "Player"일 때 HP 출력

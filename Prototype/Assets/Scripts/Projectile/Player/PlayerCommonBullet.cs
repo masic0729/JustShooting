@@ -7,13 +7,13 @@ public class PlayerCommonBullet : Bullet
     //어느 속성인 지 확인하려는 문자값
     public string bulletName;
     float windAttackDelayTransValue = 0.05f;
+    bool isCritical = false;                                //치명타 발생하는 발사체인 지 확인
     Player player;
 
     protected override void OnEnable()
     {
         base.OnEnable();
         Init();
-        
     }
 
     // Start is called before the first frame update
@@ -44,7 +44,13 @@ public class PlayerCommonBullet : Bullet
         {
             player = GameObject.Find("Player").GetComponent<Player>();
         }
+        
+    }
 
+    public void SetCritical()
+    {
+        damage *= StatManager.instance.criticalMultify;
+        Debug.Log("크리티컬 처리됨" + damage.ToString() + " " + this.gameObject.name);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

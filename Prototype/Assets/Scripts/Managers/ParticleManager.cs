@@ -18,7 +18,10 @@ public class ParticleManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this; // 싱글톤 초기화
+        if(Instance == null)
+        {
+            Instance = this; // 싱글톤 초기화
+        }
 
         // 프리팹 초기화 및 풀 생성
         foreach (GameObject prefab in particlePrefabs)
@@ -51,7 +54,7 @@ public class ParticleManager : MonoBehaviour
         GameObject effect;
 
         // 해당 이펙트 풀에서 꺼냄
-        var pool = particlePools[effectName];
+        Queue<GameObject> pool = particlePools[effectName];
         if (pool.Count > 0)
         {
             effect = pool.Dequeue();
@@ -69,7 +72,11 @@ public class ParticleManager : MonoBehaviour
         ps.Play();
 
         // 일정 시간 후 다시 반환
-        StartCoroutine(ReturnToPool(effectName, effect, ps.main.duration));
+        if(Instance != null)
+        {
+            StartCoroutine(ReturnToPool(effectName, effect, ps.main.duration));
+        }
+
     }
 
     // 딜레이 후 이펙트를 풀로 복귀

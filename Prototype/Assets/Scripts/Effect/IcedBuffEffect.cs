@@ -4,29 +4,40 @@ using UnityEngine;
 
 public class IcedBuffEffect : PlayerEffect
 {
-    public float shieldValue = 1; // 플레이어에게 부여할 실드 값
+    //public float shieldValue = 1; // 플레이어에게 부여할 실드 값
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        // 플레이어에게 실드 부여
-        player.SetShield(shieldValue);
+        // 플레이어의 피격 기능 해제
+        player.OnCharacterDamaged -= player.TakeDamage;
+        player.OnCharacterDamaged += DestroyBuff;
+        player.OnCharacterDamaged += DamagedAtBuff;
+        //player.SetShield(shieldValue);
+
+        Invoke("DestroyBuff", 10f);                              //10초 뒤 자동 삭제
     }
 
-    void Update()
+    
+    void DamagedAtBuff(float damage)
     {
-        // 실드가 모두 소진되었으면, 이 버프 오브젝트를 제거
-        if (player.GetShield() <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+        player.OnInvincibility(player.GetCommonInvincibilityTime());
+        
     }
 
-    private void OnDestroy()
+    /// <summary>
+    /// 또한 얼음 보호막 상태에서 피격 시 본래 피격 판정은 그대로 두며,
+    /// 얼음 방어막의 본래 기능을 해지한다
+    /// </summary>
+    /// <param cardName="damage">데미지는 비어있다.</param>
+    void DestroyBuff(float damage)
     {
-        // 실드가 남아있을 경우, 버프 해제 시 실드도 제거
-        if (player.GetShield() > 0)
-            player.SetShield(0);
+        player.OnCharacterDamaged += player.TakeDamage;
+        player.OnCharacterDamaged -= DamagedAtBuff;
+        player.OnCharacterDamaged -= DestroyBuff;
+
+        Destroy(this.gameObject);
+
     }
 }

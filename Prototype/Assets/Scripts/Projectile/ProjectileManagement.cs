@@ -23,7 +23,7 @@ public class ProjectileManagement
     {
         projectile.GetComponent<Animator>().runtimeAnimatorController = animCtrl; // 애니메이션 컨트롤러 설정
         projectile.GetComponent<Projectile>().SetMoveSpeed(moveSpeed); // 이동 속도 설정
-        projectile.GetComponent<Projectile>().SetDamage(damage); // 데미지 설정
+        projectile.GetComponent<Projectile>().SetDamage(damage + StatManager.instance.p_damageFromCard); // 데미지 설정
         projectile.GetComponent<Projectile>().SetLifeTime(lifeTime); // 생존 시간 설정
         projectile.transform.tag = tag; // 태그 설정
     }

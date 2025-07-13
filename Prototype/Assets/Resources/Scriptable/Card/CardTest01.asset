@@ -12,19 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defe5c61cb1b3f240b3cf1dd12ec944b, type: 3}
   m_Name: CardTest01
   m_EditorClassIdentifier: 
-  cardData:
-    background: {fileID: 21300000, guid: 88dd9f4e1b7ee0a40beae624db96e4fe, type: 3}
-    icon: {fileID: -447221064, guid: 66ea40a0569d8fa4fa0cc77ecbd0c718, type: 3}
-    cardName: "\uC2A4\uD0AC\uCE74\uB4DC1"
-    description: "\uC2A4\uD0AC\uCE74\uB4DC1\uC5D0 \uB300\uD55C \uBB34\uAD81\uD55C
-      \uC5ED\uC0AC\uC640 \uAE30\uB2A5\uC774 \uC788\uC744\uAC70\uC5D0\uC694. \uC5EC\uB7EC\uBD84\uB4E4\uC740
-      \uC751\uC6D0\uD574\uC8FC\uC138"
-    currentLevel: 1
-    maxLevel: 3
-    isSkill: 1
   background: {fileID: 21300000, guid: 88dd9f4e1b7ee0a40beae624db96e4fe, type: 3}
   icon: {fileID: -447221064, guid: 66ea40a0569d8fa4fa0cc77ecbd0c718, type: 3}
-  cardName: "\uC2A4\uD0AC\uCE74\uB4DC1"
+  cardName: Death
   description: "\uC2A4\uD0AC\uCE74\uB4DC1\uC5D0 \uB300\uD55C \uBB34\uAD81\uD55C \uC5ED\uC0AC\uC640
     \uAE30\uB2A5\uC774 \uC788\uC744\uAC70\uC5D0\uC694. \uC5EC\uB7EC\uBD84\uB4E4\uC740
     \uC751\uC6D0\uD574\uC8FC\uC138"

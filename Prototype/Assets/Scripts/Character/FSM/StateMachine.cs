@@ -11,7 +11,7 @@ public class StateMachine
     /// 기존 상태가 있으면 종료(Exit)시키고,
     /// 새로운 상태로 변경 후 진입(Enter) 메서드 호출
     /// </summary>
-    /// <param name="newState">변경할 새로운 상태</param>
+    /// <param cardName="newState">변경할 새로운 상태</param>
     public void ChangeState(EnemyState newState)
     {
         // 현재 상태가 존재하면 종료 처리

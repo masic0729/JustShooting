@@ -86,6 +86,9 @@ public class ButtonManager : MonoBehaviour
         Vector3 start = button.transform.localScale;
         Vector3 arrive = start * scaleMultiplier;
 
+        //애니메이션 오류를 대처하기 위해 처음부터 스케일 값을 1로 강제 변경한다.
+        button.transform.localScale = new Vector3(1, 1, 1);
+
         while (elapsed < duration)
         {
             button.transform.localScale = Vector3.Lerp(start, arrive, elapsed / duration);

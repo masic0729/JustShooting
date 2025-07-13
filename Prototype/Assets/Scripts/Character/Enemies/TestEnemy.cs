@@ -36,7 +36,7 @@ public class TestEnemy : Enemy
     /// <summary>
     /// 충돌 처리, 부모 OnTriggerEnter2D 호출
     /// </summary>
-    /// <param name="collision">충돌한 콜라이더</param>
+    /// <param cardName="collision">충돌한 콜라이더</param>
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);

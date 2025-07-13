@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class PlayerFireSkill : PlayerEffect
 {
-    ObjectInteration interation;
+    ObjectInteraction interation;
     const float attackDelay = 0.5f;
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        interation = new ObjectInteration();
+        interation = new ObjectInteraction();
 
         StartCoroutine(FireDamaging());
         AudioManager.Instance.PlaySFX("FireSkill");
@@ -25,7 +25,7 @@ public class PlayerFireSkill : PlayerEffect
             float colliderRadius = GetComponent<CircleCollider2D>().radius;
             float objectScale = transform.localScale.x;
             Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, colliderRadius * objectScale);
-            playerDamage = player.attackStats.damage;
+            playerDamage *= player.attackStats.damage;
             EnemyAttack(cols);
             yield return new WaitForSeconds(attackDelay);
             

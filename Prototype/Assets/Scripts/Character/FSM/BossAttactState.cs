@@ -20,9 +20,10 @@ public class BossAttactState : EnemyAttackBaseState
     {
         base.Enter();
         // 공격 애니메이션 시작
-        enemy.GetComponent<Animator>().SetBool("Attack", true);
+        //스파인 애니메이션을 받고 난 뒤에는 이러한 방식으로 공격해야 한다
+        //enemy.GetComponent<Animator>().SetBool("Attack", true);
         // 공격 코루틴 호출 가능 (주석 처리됨)
-        // enemy.StartCoroutine(Attack());
+        enemy.StartCoroutine(Attack());
     }
 
     /// <summary>
@@ -50,7 +51,7 @@ public class BossAttactState : EnemyAttackBaseState
     protected override IEnumerator Attack()
     {
         // 실제 공격 구현 대기 (주석 처리됨)
-        // yield return enemy.EnemyAttack();
+        yield return enemy.Attack();
 
         yield return null;
 

@@ -45,7 +45,7 @@ public class ScrollBackground : MonoBehaviour
     /// <summary>
     /// 배경의 움직임 권한 관리
     /// </summary>
-    /// <param name="state">true: 움직임 활성화, false: 멈춤</param>
+    /// <param cardName="state">true: 움직임 활성화, false: 멈춤</param>
     public void MoveBackgroundState(bool state)
     {
         isMoveBG = state;
@@ -54,7 +54,7 @@ public class ScrollBackground : MonoBehaviour
     /// <summary>
     /// 임시용 배경 변경 코드
     /// </summary>
-    /// <param name="index">메테리얼 데이터의 배열값</param>
+    /// <param cardName="index">메테리얼 데이터의 배열값</param>
     public void SetBackgroundData(int index)
     {
         instanceMaterial = scrollMat[index]; // 메테리얼 참조만 바뀌며, 실제 적용은 Init와 다르게 Renderer 갱신이 없음

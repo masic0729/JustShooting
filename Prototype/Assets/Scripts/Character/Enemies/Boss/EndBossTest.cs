@@ -33,10 +33,10 @@ public class EndBossTest : EndBoss
         base.OnTriggerEnter2D(collision);
     }
 
-    // EnemyAttack 함수: 공격 로직 처리
-    public override void EnemyAttack()
+    // Attack 함수: 공격 로직 처리
+    /*public override void Attack()
     {
-        AudioManager.Instance.PlaySFX("EnemyAttack"); // 공격 사운드 재생
+        AudioManager.Instance.PlaySFX("Attack"); // 공격 사운드 재생
         if (attackCount < 2)
         {
             SpreadAttack(10, 0); // 10발 공격, 회전값 0도
@@ -49,12 +49,12 @@ public class EndBossTest : EndBoss
             attackRotateValue = 0f; // 회전값 초기화
             attackCount = 0;      // 카운트 초기화
             anim.SetBool("Attack", false); // 공격 애니메이션 종료
-            base.EnemyAttack();   // 부모 클래스 공격 처리 호출
+            base.Attack();   // 부모 클래스 공격 처리 호출
         }
-    }
+    }*/
 
-    /* 코루틴 기반 공격 예제 (현재 주석 처리됨)
-    public override IEnumerator EnemyAttack()
+     //코루틴 기반 공격 예제 (현재 주석 처리됨)
+    public override IEnumerator Attack()
     {
         SpreadAttack(10, 0f);
         yield return new WaitForSeconds(0.5f);
@@ -63,7 +63,7 @@ public class EndBossTest : EndBoss
         SpreadAttack(18, 0f);
 
         yield return new WaitForSeconds(attackEndStopTime);
-    }*/
+    }
 
     // SpreadAttack 함수: 원형 탄환 발사
     public void SpreadAttack(int shootCount, float rootRotateValue)

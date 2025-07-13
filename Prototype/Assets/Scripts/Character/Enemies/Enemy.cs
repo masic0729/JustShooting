@@ -129,8 +129,8 @@ public class Enemy : Character
             if (character != null && characterInteraction != null &&
                 character.GetIsInvincibility() == false)
             {
-                characterInteraction.SendDamage(ref character, damageValue);
-                Debug.Log(character.GetHp());
+                character.OnCharacterDamaged(damageValue);
+                character.OnDamage?.Invoke();
             }
         }
 
@@ -173,9 +173,15 @@ public class Enemy : Character
     }
 
     // 적의 기본 공격 함수 (상속 시 오버라이드 가능)
-    virtual public void EnemyAttack()
+    /*virtual public void Attack()
     {
         Debug.Log("공격끝");
         ChangeState(new BossMoveState(this));
+    }*/
+
+    virtual public IEnumerator Attack()
+    {
+        Debug.Log("공격");
+        yield return null;
     }
 }

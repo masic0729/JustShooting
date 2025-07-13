@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Card Data", menuName = "Scriptable Object/Card Data")]
@@ -13,30 +15,25 @@ public class CardInfo : ScriptableObject
     /// </summary>
     public enum CardType
     {
-        Weapon,     // 플레이어 무기 강화
-        Skill       // 플레이어 기술 부여 및 강화
+        Random,     // 플레이어 무기 강화
+        Common       // 플레이어 기술 부여 및 강화
     }
-
+    public CardType cardType = CardType.Common;
     // 카드 프레임 이미지
     public Sprite background;
     // 카드 아이콘 이미지
     public Sprite icon;
     // 카드 이름
     public string cardName;
+    public string showCardName;
     // 카드 설명 텍스트
     public string description;
     // 현재 카드 레벨
-    public int currentLevel;
+    //public int currentLevel;
     // 카드 최대 레벨
-    public int maxLevel;
+    //public int maxLevel;
     // 스킬 카드 여부 (true면 스킬 카드)
-    public bool isSkill;
-    /// <summary>
-    /// 카드가 발동할 때 실행되는 기능
-    /// </summary>
-    // CardAction 함수: 카드의 주요 동작을 수행하는 함수
-    public void CardAction()
-    {
-        Debug.Log("굉장해 엄정나!!"); // 카드 액션 실행 시 콘솔 출력
-    }
+    //public bool isSkill;
+
+    
 }

@@ -23,9 +23,9 @@ public class EndBossTest3 : EndBoss
         base.Init();
     }
 
-    /*
+    
     // 주석 처리된 코루틴 공격 예제
-    public override IEnumerator EnemyAttack()
+    public override IEnumerator Attack()
     {
         // 플레이어 오브젝트 탐색
         GameObject player = GameObject.Find("Player");
@@ -33,9 +33,9 @@ public class EndBossTest3 : EndBoss
         yield return new WaitForSeconds(2.5f); // 대기
         yield return ShootBullets(player);  // 플레이어 타겟팅 총알 발사
 
-        yield return base.EnemyAttack();
+        yield return base.Attack();
     }
-    */
+    
 
     // ShootBullets 함수: 여러 위치에서 탄환 발사 (플레이어 타겟 가능)
     IEnumerator ShootBullets(GameObject player = null)

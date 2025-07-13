@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -210,13 +210,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1032994390}
-        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: TestInterection
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -273,7 +273,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1032994390}
+          m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+          m_MethodName: OnButtonExit
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1111904}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -289,7 +305,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 1
+  - eventID: 3
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -768,6 +784,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 212618563}
   m_CullTransparentMesh: 1
+--- !u!1 &281515402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 281515404}
+  - component: {fileID: 281515403}
+  m_Layer: 0
+  m_Name: StatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &281515403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281515402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5d167f1a6db394faf369a2b35daed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p_damage: 0
+  p_damageMultify: 1
+  p_attackSpeedMultify: 1
+  criticalPercent: 0
+  criticalMultify: 2
+  p_projectileSpeedMultyfy: 1
+  p_moveSpeed: 10
+  p_moveSpeedMultyfy: 1
+  e_damage: 1
+  e_projectileSpeedMultify: 1
+  e_moveSpeedMultify: 1
+  playerData: {fileID: 0}
+  randomAddDamage: 15
+  randomAddMoveSpeed: 8
+  randomSizeMultifyValue: 0.7
+  addDamageByDeathCount: 7
+  cardInvincibilityTime: 5
+--- !u!4 &281515404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281515402}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &313407732
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +901,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1032994390}
+          m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+          m_MethodName: OnButtonExit
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 313407732}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -840,7 +933,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 1
+  - eventID: 3
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -900,13 +993,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1032994390}
-        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: TestInterection
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -965,7 +1058,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &442145909
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1955,7 +2048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1271056478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2644,7 +2737,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 0
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1032994390}
+          m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+          m_MethodName: OnButtonExit
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2023977634}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 2
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -2660,7 +2769,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 1
+  - eventID: 3
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -2720,13 +2829,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1032994390}
-        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: TestInterection
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2785,7 +2894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2042265098
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2989,6 +3098,37 @@ MonoBehaviour:
   - {fileID: 2042265097}
   - {fileID: 1271056477}
   allCards: []
+  cardData:
+  - cardType: 1
+    cardFrame: {fileID: 21300000, guid: 88dd9f4e1b7ee0a40beae624db96e4fe, type: 3}
+    icon: {fileID: -1124781480, guid: 66ea40a0569d8fa4fa0cc77ecbd0c718, type: 3}
+    cardName: Random
+    description: 
+  - cardType: 0
+    cardFrame: {fileID: 21300000, guid: 5755e1fb8ca09f44ea2ea95da695fc94, type: 3}
+    icon: {fileID: -447221064, guid: 66ea40a0569d8fa4fa0cc77ecbd0c718, type: 3}
+    cardName: Death
+    description: 
+  - cardType: 0
+    cardFrame: {fileID: 21300000, guid: 5755e1fb8ca09f44ea2ea95da695fc94, type: 3}
+    icon: {fileID: -744671634, guid: 66ea40a0569d8fa4fa0cc77ecbd0c718, type: 3}
+    cardName: Defense
+    description: 
+  - cardType: 0
+    cardFrame: {fileID: 21300000, guid: 5755e1fb8ca09f44ea2ea95da695fc94, type: 3}
+    icon: {fileID: -704564683, guid: 66ea40a0569d8fa4fa0cc77ecbd0c718, type: 3}
+    cardName: Cri
+    description: 
+  - cardType: 0
+    cardFrame: {fileID: 21300000, guid: 5755e1fb8ca09f44ea2ea95da695fc94, type: 3}
+    icon: {fileID: -309165481, guid: 66ea40a0569d8fa4fa0cc77ecbd0c718, type: 3}
+    cardName: Card_D
+    description: 
+  - cardType: 0
+    cardFrame: {fileID: 21300000, guid: 5755e1fb8ca09f44ea2ea95da695fc94, type: 3}
+    icon: {fileID: -1550819557, guid: 66ea40a0569d8fa4fa0cc77ecbd0c718, type: 3}
+    cardName: Card_E
+    description: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2999,3 +3139,4 @@ SceneRoots:
   - {fileID: 1032994389}
   - {fileID: 954471300}
   - {fileID: 2139857172}
+  - {fileID: 281515404}

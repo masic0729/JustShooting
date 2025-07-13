@@ -17,6 +17,7 @@ public class PlayerPower : MonoBehaviour
     public const float maxPower = 100; //파워 값. 100 값은 고정이다
     // powerUpValue 변수 선언
     public float powerUpValue; //파워가 오르는 수치
+    float powerUptime = 1f, powerUpTimer = 0;
     // isPowerMax 변수 선언
     public bool isPowerMax; //파워가 모두 회복했는 지 확인하는 데이터
     // isActivedSkill 변수 선언
@@ -28,10 +29,35 @@ public class PlayerPower : MonoBehaviour
         player = GetComponent<Player>();
     }
 
+    private void Update()
+    {
+        PowerUp();
+    }
+
+    void PowerUp()
+    {
+        if (isPowerMax == false && isActivedSkill == false)
+        {
+            powerUpTimer += Time.deltaTime;
+        }
+        if (powerUpTimer > powerUptime)
+        {
+            PowerUpTimerReset();
+            //파워가 모두 채워지지 않거나 채울 수 있는 상황이라면 파워 상승
+            
+            PowerUp(powerUpValue);
+        }
+    }
+
+    public void PowerUpTimerReset()
+    {
+        powerUpTimer = 0;
+
+    }
+
     /// <summary>
     /// power 자연회복을 실행하기 위한 기능
     /// </summary>
-    // DefaultPowerUp 함수: 주요 동작을 수행하는 함수입니다.
     public IEnumerator DefaultPowerUp()
     {
         ReStart:
@@ -50,7 +76,6 @@ public class PlayerPower : MonoBehaviour
     /// <summary>
     /// power 값이 상승하는 기능. power는 매 초마다 자연 회복하거나, 적을 적중할 때 상승함(현재로선)
     /// </summary>
-    // PowerUp 함수: 주요 동작을 수행하는 함수입니다.
     public void PowerUp(float value)
     {
         //파워 100오버하면 100으로 조정. 아닐 시 그대로 상승
@@ -68,14 +93,12 @@ public class PlayerPower : MonoBehaviour
         }
     }
 
-    // GetIsActivedSkill 함수: 주요 동작을 수행하는 함수입니다.
     public bool GetIsActivedSkill()
     {
     // isActivedSkill 변수 선언
         return isActivedSkill;
     }
 
-    // SetIsActivedSkill 함수: 주요 동작을 수행하는 함수입니다.
     public void SetIsActivedSkill(bool state)
     {
         isActivedSkill = state;

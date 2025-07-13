@@ -27,11 +27,11 @@ public class IEffect : MonoBehaviour
     }
 
     /// <summary>
-    /// 타겟 오브젝트의 자식들 중 지정한 이름(name) 또는 태그(tag)를 가진 첫 번째 자식을 찾는 재귀 함수
+    /// 타겟 오브젝트의 자식들 중 지정한 이름(cardName) 또는 태그(tag)를 가진 첫 번째 자식을 찾는 재귀 함수
     /// </summary>
-    /// <param name="parent">부모 트랜스폼</param>
-    /// <param name="name">찾고자 하는 자식의 이름</param>
-    /// <param name="tag">찾고자 하는 자식의 태그</param>
+    /// <param cardName="parent">부모 트랜스폼</param>
+    /// <param cardName="name">찾고자 하는 자식의 이름</param>
+    /// <param cardName="tag">찾고자 하는 자식의 태그</param>
     /// <returns>해당 조건을 만족하는 첫 번째 자식 Transform</returns>
     protected Transform FindFirstChild(Transform parent, string name = null, string tag = null)
     {

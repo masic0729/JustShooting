@@ -42,7 +42,7 @@ public class Boss : Enemy
         SetIsBoss(true);
         attackData.moveSpeed = 15f;
 
-        OnCharacterDamaged += PrintHp; // 데미지 입으면 체력 UI 갱신
+        OnDamage += PrintHp; // 데미지 입으면 체력 UI 갱신
         OnCharacterDeath += HideHpBar; // 사망 시 체력 UI 숨김
         enemyState = new StateMachine();
         ChangeState(new BossSpawnState(this));

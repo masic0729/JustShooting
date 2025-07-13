@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
-using UnityEngine.UI;
 
 public class Character : IObject
 {
@@ -26,7 +23,8 @@ public class Character : IObject
     // 캐릭터 사망 시 발생하는 이벤트
     public Action OnCharacterDeath;
     // 캐릭터가 피해를 입었을 때 발생하는 이벤트
-    public Action OnCharacterDamaged;
+    public Action<float> OnCharacterDamaged;
+    public Action OnDamage;
     // 발사 위치를 이름 기준으로 저장하는 딕셔너리
     public Dictionary<string, Transform> shootTransform;
 
@@ -37,7 +35,7 @@ public class Character : IObject
     protected float shield;
 
     // 데미지 전달 및 처리용 객체
-    protected ObjectInteration characterInteraction;
+    protected ObjectInteraction characterInteraction;
 
     [Header("캐릭터 전투 시스템 배율")]
     [SerializeField]
@@ -53,7 +51,8 @@ public class Character : IObject
     // 캐릭터가 받는 피해 배율 (값이 클수록 피해량 증가)
     protected float characterGetDamageMultify = 1;
     // 무적 지속 시간
-    protected float invincibilityTime = 0f;
+    protected float commonInvincibilityTime = 0f;               //일반피해에 의한 무적시간
+    protected float shieldInvincibilityTime = 0f;               //보호막피해에 의한 무적시간
     // 무적 상태 여부
     protected bool isInvincibility;
 
@@ -66,7 +65,10 @@ public class Character : IObject
         attackStats = gameObject.AddComponent<AttackStats>();
         attackManage = new AttackManagement();
         projectileManage = new ProjectileManagement();
-        characterInteraction = new ObjectInteration();
+        characterInteraction = new ObjectInteraction();
+
+        OnCharacterDamaged += TakeDamage;                           //캐릭터는 기본적으로 공격받으면 체력이나 보호막이 감소한다
+        //OnDamage += OnInvincibility;
 
         // 캐릭터 사망 시 게임 오브젝트 삭제
         OnCharacterDeath += DestroyCharacter;
@@ -87,11 +89,52 @@ public class Character : IObject
     /// <summary>
     /// 피해를 입으면 무적 상태 시작 및 피해 이벤트 발생
     /// </summary>
-    public void OnDamage()
+    public void OnInvincibility(float InvincibilityTime)
     {
         SetIsInvincibility(true);
-        Invoke("TransIsInvincibilityFalse", invincibilityTime);
-        OnCharacterDamaged?.Invoke();
+        Invoke("TransIsInvincibilityFalse", InvincibilityTime);
+        //OnCharacterDamaged?.Invoke();
+        
+    }
+
+    public void TakeDamage(float damage)
+    {
+        // 쉴드가 있을 경우 쉴드를 먼저 감소시킴
+        if (shield > 0)
+        {
+            if (shield - damage < 0)
+            {
+                //SetShield(0);  
+                // 쉴드가 0 아래로 내려가면 0으로 설정
+                shield = 0;
+            }
+            else
+            {
+                //SetShield(GetShield() - damage);  
+                // 쉴드 감소
+                shield -= damage;
+            }
+            OnInvincibility(shieldInvincibilityTime);
+        }
+        else
+        {
+            // 쉴드가 없으면 체력에서 직접 데미지 감소 처리
+            float caluHp = hp - damage;
+
+            if (caluHp <= 0)
+            {
+                //SetHp(0);  
+                // 체력이 0 이하가 되면 0으로 설정하고 죽음 처리 실행
+                hp = 0;
+                OnCharacterDeath?.Invoke();
+            }
+            else
+            {
+                hp -= damage;  // 체력 감소
+            }
+            OnInvincibility(commonInvincibilityTime);
+
+        }
     }
 
     /// <summary>
@@ -121,7 +164,11 @@ public class Character : IObject
     public bool GetIsInvincibility() => isInvincibility;
 
     // 무적 지속 시간 반환
-    public float GetInvincibilityTime() => invincibilityTime;
+    public float GetInvincibilityTime() => commonInvincibilityTime;
+
+    public void SetCommonInvincibilityTime(float time) => commonInvincibilityTime = time;
+    public void SetShieldInvincibilityTime(float time) => shieldInvincibilityTime = time;
+    public float GetCommonInvincibilityTime() => commonInvincibilityTime;
 
     /// <summary>
     /// 무적 상태를 종료하는 함수
