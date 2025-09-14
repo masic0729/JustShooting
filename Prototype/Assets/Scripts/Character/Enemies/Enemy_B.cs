@@ -32,7 +32,7 @@ public class Enemy_B : Enemy
         // 목표 위치까지 도달하지 않았다면 부드럽게 이동
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
-            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
+            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, ref moveTimer, 1.2f);
         }
         // 도착했으면 일정 시간 후 새로운 목표로 이동 준비
         else if (isArrivePoint == false)
@@ -66,6 +66,8 @@ public class Enemy_B : Enemy
         targetPosY = Random.Range(-maxY_Range, maxY_Range);
         currentTargetPos = new Vector2(transform.position.x, targetPosY);
         isArrivePoint = false;
+        moveTimer = 0;
+        lastPosition = this.transform.position;
     }
 
     // 일정 시간 간격으로 원형 탄막 공격 수행 코루틴

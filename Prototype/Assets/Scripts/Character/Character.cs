@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : IObject
 {
     // 애니메이터 컴포넌트
-    protected Animator anim;
+    public Animator anim;
     // 피격 시 이펙트 오브젝트
     public GameObject hitExplosion;
     // 캐릭터 사망 시 이펙트 오브젝트

@@ -13,6 +13,8 @@ public enum EnemyData
     MiddleBoss_Test2,
     MiddleBoss_Test3,
     EndBoss_A,
+    EndBoss_B,
+    EndBoss_C,
     EndBoss_Test,
     EndBoss_Test2,
     EndBoss_Test3

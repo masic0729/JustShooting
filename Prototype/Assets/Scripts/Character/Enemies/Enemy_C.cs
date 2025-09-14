@@ -7,10 +7,10 @@ public class Enemy_C : Enemy
 {
     // targetPosY 변수 선언 (현재 미사용)
     float targetPosY;
-
+    float shootTimer = 0;
     // 총구 위치 참조용 배열
-    GameObject[] shootGameObject;
-    Vector2[] currentShootPos;
+    Transform[] shootGameObject;
+    Transform[] currentShootPos;
 
     // 도착 여부 플래그
     bool isArrivePoint = false;
@@ -30,15 +30,15 @@ public class Enemy_C : Enemy
         // 목표 위치에 도달하지 않았으면 부드럽게 이동
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
-            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
+            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, ref moveTimer, 3f);
         }
         // 도달 시: 총구 위치 초기화 후 공격 코루틴 시작
         else if (isArrivePoint == false)
         {
             isArrivePoint = true;
 
-            currentShootPos[0] = shootTransform["CommonBullet0"].transform.position;
-            currentShootPos[1] = shootTransform["CommonBullet1"].transform.position;
+            /*currentShootPos[0] = shootTransform["CommonBullet0"].transform;
+            currentShootPos[1] = shootTransform["CommonBullet1"].transform;*/
             StartCoroutine(AttackEnemyBullet());
         }
 
@@ -46,15 +46,15 @@ public class Enemy_C : Enemy
         if (isArrivePoint == true)
         {
             // 현재 위치와 목표 위치 간 차이가 크면 이동 수행
-            if (Vector2.Distance(shootTransform["CommonBullet0"].transform.position, currentShootPos[0]) > 0.05f)
+            /*if (Vector2.Distance(shootTransform["CommonBullet0"].transform.position, currentShootPos[0].position) > 0.01f)
             {
-                movement.MoveToPointLerp(ref shootGameObject[0], currentShootPos[0], targetMoveSpeed);
-                movement.MoveToPointLerp(ref shootGameObject[1], currentShootPos[1], targetMoveSpeed);
+                movement.MoveToPointLerpForTransform(ref shootGameObject[0], currentShootPos[1].position, ref shootTimer, 1f);
+                movement.MoveToPointLerpForTransform(ref shootGameObject[1], currentShootPos[0].position, ref shootTimer, 1f);
             }
             else
             {
                 TransShootPosition(); // 두 총구 위치 교환
-            }
+            }*/
         }
     }
 
@@ -68,22 +68,27 @@ public class Enemy_C : Enemy
             currentTargetPos = new Vector2(transform.position.x - 22f, transform.position.y);
         }
 
-        currentShootPos = new Vector2[2];
-        shootGameObject = new GameObject[2];
+        /*currentShootPos = new Transform[2];
+        shootGameObject = new Transform[2];
 
         for (int i = 0; i < currentShootPos.Length; i++)
         {
-            shootGameObject[i] = shootTransform["CommonBullet" + i.ToString()].gameObject;
-        }
+            shootGameObject[i] = shootTransform["CommonBullet" + i.ToString()].transform;
+        }*/
 
         targetMoveSpeed = GetMoveSpeed() / 2f;
     }
 
     // 총구 위치를 서로 교환하는 함수
-    void TransShootPosition()
+    /*void TransShootPosition()
     {
+        shootTimer = 0;
         (currentShootPos[0], currentShootPos[1]) = (currentShootPos[1], currentShootPos[0]);
-    }
+        for(int i = 0; i < currentShootPos.Length; i++)
+        {
+            currentShootPos[i].GetComponent<Shooter>().SetLastPosition();
+        }
+    }*/
 
     // 두 총구에서 번갈아가며 일정 간격으로 연사 공격하는 코루틴
     IEnumerator AttackEnemyBullet()

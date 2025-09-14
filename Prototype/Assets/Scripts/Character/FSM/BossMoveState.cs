@@ -6,6 +6,7 @@ public class BossMoveState : EnemyState
 {
     // 생성자: Enemy 객체를 받아 기본 EnemyState 초기화
     public BossMoveState(Enemy enemy) : base(enemy) { }
+    const float moveTime = 1f;
 
     /// <summary>
     /// 상태 진입 시 호출되는 함수
@@ -15,14 +16,22 @@ public class BossMoveState : EnemyState
     {
         base.Enter();
         enemy.stateIndex++; // 상태 이동 횟수 증가
+        enemy.lastPosition = enemy.transform.position;
 
+        enemy.moveTimer = 0;
         // x 좌표 랜덤 범위 설정
         float randMoveX = Random.Range(1f, 9f);
         // y 좌표 랜덤 범위 설정
         float randMoveY = Random.Range(-3.5f, 3.5f);
-
+        RandStayTime();
         stateTime = 1f; // 상태 지속 시간 설정
-        enemy.arriveVector = new Vector2(randMoveX, randMoveY); // 이동 목표 위치 지정
+        enemy.arrivePosition = new Vector2(randMoveX, randMoveY); // 이동 목표 위치 지정
+    }
+
+    void RandStayTime()
+    {
+        int rand = Random.Range(0, 50);
+        stateTime = rand > 25 ? 2 : 1;
     }
 
     /// <summary>
@@ -32,9 +41,9 @@ public class BossMoveState : EnemyState
     public override void Update()
     {
         // 현재 위치와 목표 위치 간 거리가 0.3 이상이면 이동
-        if (Vector2.Distance(enemy.transform.position, enemy.arriveVector) > 0.3f)
+        if (Vector2.Distance(enemy.transform.position, enemy.arrivePosition) > 0.3f)
         {
-            enemy.movement.MoveToPointLerp(ref thisGameObject, enemy.arriveVector, enemy.GetMoveSpeed());
+            enemy.movement.MoveToPointLerp(ref thisGameObject, enemy.arrivePosition, ref enemy.moveTimer, 1.2f);
         }
         else
         {

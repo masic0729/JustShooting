@@ -23,9 +23,13 @@ public class ObjectMovement
     /// <param cardName="instance">이동할 객체</param>
     /// <param cardName="targetPos">이동할 목표 위치</param>
     /// <param cardName="ratio">Lerp 기능 경과 시간값. 추후 본래의 기능대로 수정할 예정</param>
-    public void MoveToPointLerp(ref GameObject instance, Vector2 targetPos, float ratio)
+    public void MoveToPointLerp(ref GameObject instance, Vector2 targetPos, ref float t, float duration)
     {
-        instance.transform.position = Vector2.Lerp(instance.transform.position, targetPos, ratio * Time.deltaTime);
+        Vector2 lastPosition = instance.GetComponent<Enemy>().lastPosition;
+        // t를 0→1로 증가
+        t += Time.deltaTime / duration;
+        t = Mathf.Clamp01(t);             // 안전하게 1 넘지 않게
+        instance.transform.position = Vector2.Lerp(lastPosition, targetPos, t);
     }
 
     /// <summary>
@@ -39,6 +43,22 @@ public class ObjectMovement
     {
         runningTime += Time.deltaTime; // 시간 누적, 객체 작동 시간 관리용
         float posY = Mathf.Sin(runningTime) * yValue;
+        instance.transform.position = new Vector2(instance.transform.position.x, posY);
+    }
+
+    /// <summary>
+    /// 슈터 전용 Sin
+    /// </summary>
+    /// <param name="instance"></param>
+    /// <param name="runningTime"></param>
+    /// <param name="yValue"></param>
+    /// <param name="speed"></param>
+    public void MoveToSinY_ForShooter(ref Shooter instance, ref float runningTime, float yValue, float speed)
+    {
+        if (instance == null)
+            return;
+        runningTime += Time.deltaTime * 3f; // 시간 누적, 객체 작동 시간 관리용
+        float posY = Mathf.Sin(runningTime) * yValue + instance.startShootY;
         instance.transform.position = new Vector2(instance.transform.position.x, posY);
     }
 }

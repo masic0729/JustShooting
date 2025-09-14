@@ -30,7 +30,7 @@ public class Enemy_D : Enemy
         // 현재 위치가 목표 위치와 거리가 허용치 이상이고 아직 도착하지 않았으면 이동
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
-            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, targetMoveSpeed);
+            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, ref moveTimer, 1.2f);
         }
         // 목표에 도착했으면 다음 위치 설정
         else if (isArrivePoint == false)
@@ -91,6 +91,9 @@ public class Enemy_D : Enemy
     /// </summary>
     void SetTransTargetTransform()
     {
+        lastPosition = this.transform.position;
+
+        moveTimer = 0;
         if (transform.position.y < 0)
         {
             targetPosY = 4f; // 위쪽으로 이동

@@ -9,8 +9,12 @@ public class Enemy : Character
     public StateMachine enemyState;
     // 상태 인덱스 (보스 등 복잡한 상태 처리 시 사용)
     public int stateIndex = 0;
+
+
+    // 적이 이동 전 현재 위치를 기억한다
+    public Vector2 lastPosition;
     // 적이 도달하려는 목표 위치 벡터
-    public Vector2 arriveVector;
+    public Vector2 arrivePosition;
 
     // 타겟팅 관련 관리 클래스
     protected TargetBulletManagement targetManage;
@@ -41,6 +45,7 @@ public class Enemy : Character
     private float hitSoundCooldown = 0.2f;
     // 마지막 피격음 재생 시점 기록
     private float lastHitSoundTime = -1f;
+    public float moveTimer = 0f;
 
     [SerializeField]
     // 보스 여부 플래그
@@ -73,7 +78,7 @@ public class Enemy : Character
         base.Init();
         // 사망 시 기본 폭발 이펙트 연결
         OnCharacterDeath += DefaultEnemyDestroyEffect;
-
+        lastPosition = this.transform.position;
         movement = new ObjectMovement();
         thisGameObject = this.gameObject;
         targetManage = new TargetBulletManagement();
@@ -92,7 +97,7 @@ public class Enemy : Character
         }
 
         // 기본 도착 위치 설정
-        arriveVector = new Vector2(3f, 0);
+        arrivePosition = new Vector2(3f, 0);
     }
 
     // 화면 영역 벗어남 체크 후 오브젝트 파괴

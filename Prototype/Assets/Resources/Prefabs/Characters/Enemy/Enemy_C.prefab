@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 667467367458753185}
+  - component: {fileID: 9099048388773982305}
   m_Layer: 0
   m_Name: CommonBullet1
   m_TagString: Untagged
@@ -25,12 +26,26 @@ Transform:
   m_GameObject: {fileID: 2883181288341581766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8111011027976169366}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9099048388773982305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2883181288341581766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f184c323d614ea4db34bee50b4b158f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yMoveSpeedMultify: 1
+  isReverse: 0
 --- !u!1 &4683070181729999003
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +75,7 @@ Transform:
   m_GameObject: {fileID: 4683070181729999003}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.87, y: 1.89, z: 0}
+  m_LocalPosition: {x: 9, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -196,6 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   objectMoveSpeedMultify: 1
+  anim: {fileID: 0}
   hitExplosion: {fileID: 0}
   destroyExplosion: {fileID: 0}
   attackStats: {fileID: 0}
@@ -206,13 +222,15 @@ MonoBehaviour:
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
   stateIndex: 0
-  arriveVector: {x: 0, y: 0}
+  lastPosition: {x: 0, y: 0}
+  arrivePosition: {x: 0, y: 0}
   enemyProjectiles:
   - {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
   attackData:
     sprite: {fileID: 21300000, guid: 02d258acc9bd4344fba7f301403cfac7, type: 3}
     animCtrl: {fileID: 0}
     moveSpeed: 5
+  moveTimer: 0
   isBoss: 0
 --- !u!1 &5028269444858163927
 GameObject:
@@ -223,6 +241,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6737057579975678097}
+  - component: {fileID: 4773556371662923730}
   m_Layer: 0
   m_Name: CommonBullet0
   m_TagString: Untagged
@@ -239,9 +258,23 @@ Transform:
   m_GameObject: {fileID: 5028269444858163927}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8111011027976169366}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4773556371662923730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5028269444858163927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f184c323d614ea4db34bee50b4b158f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yMoveSpeedMultify: 1
+  isReverse: 1

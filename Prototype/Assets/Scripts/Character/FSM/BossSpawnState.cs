@@ -13,7 +13,7 @@ public class BossSpawnState : EnemyState
     {
         base.Enter();
         stateTime = 2f;                             // 상태 지속 시간 2초 설정
-        enemy.arriveVector = new Vector2(3f, 0f);  // 도착할 위치 설정
+        enemy.arrivePosition = new Vector2(3f, 0f);  // 도착할 위치 설정
     }
 
     /// <summary>
@@ -23,19 +23,21 @@ public class BossSpawnState : EnemyState
     public override void Update()
     {
         // 목표 위치와 현재 위치 간 거리 계산 후 이동
-        if (Vector2.Distance(enemy.transform.position, enemy.arriveVector) > 0.5f)
+        if (Vector2.Distance(enemy.transform.position, enemy.arrivePosition) > 0.5f)
         {
-            enemy.movement.MoveToPointLerp(ref thisGameObject, enemy.arriveVector, enemy.GetMoveSpeed());
+            enemy.movement.MoveToPointLerp(ref thisGameObject, enemy.arrivePosition, ref enemy.moveTimer, 2f);
+            
         }
         else
         {
             base.Update(); // 상태 시간 감소
+            enemy.moveTimer = 0;
         }
 
         // 상태 시간이 0 이하가 되면 다음 상태로 변경
         if (stateTime <= 0)
         {
-            enemy.ChangeState(new BossMoveState(enemy));
+            enemy.ChangeState(new EndBossSpawnReAction(enemy));
         }
     }
 }

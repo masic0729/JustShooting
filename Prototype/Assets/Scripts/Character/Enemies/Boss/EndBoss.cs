@@ -49,6 +49,7 @@ public class EndBoss : Boss
     protected override void Init()
     {
         base.Init();
+        TransBossCollider();
 
         if (isFinalBoss == true)
         {
@@ -67,6 +68,16 @@ public class EndBoss : Boss
     void StageClearAction()
     {
         Debug.Log("스테이지 클리어. 클리어 이후 맵 변경, 몬스터 데이터, 포탈 생성 등 다양한 기능 추가 요구");
+    }
+
+    public void TransBossCollider()
+    {
+        Collider2D col = GetComponent<Collider2D>();
+        if (col.enabled == false)
+            col.enabled = true;
+        else if(col.enabled == true)
+            col.enabled = false;
+
     }
 
     /// <summary>
