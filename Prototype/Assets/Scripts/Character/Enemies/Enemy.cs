@@ -18,6 +18,8 @@ public class Enemy : Character
 
     // 타겟팅 관련 관리 클래스
     protected TargetBulletManagement targetManage;
+    public Collider2D enemyCol;
+
 
     // 발사체 프리팹 배열 (인스펙터 등록용)
     public GameObject[] enemyProjectiles;
@@ -76,6 +78,8 @@ public class Enemy : Character
     protected override void Init()
     {
         base.Init();
+        enemyCol = GetComponent<Collider2D>();
+
         // 사망 시 기본 폭발 이펙트 연결
         OnCharacterDeath += DefaultEnemyDestroyEffect;
         lastPosition = this.transform.position;
@@ -184,9 +188,14 @@ public class Enemy : Character
         ChangeState(new BossMoveState(this));
     }*/
 
-    virtual public IEnumerator Attack()
+    /*virtual public IEnumerator Attack()
     {
         Debug.Log("공격");
         yield return null;
+    }*/
+
+    public bool GetEnemyColEnable()
+    {
+        return enemyCol.enabled;
     }
 }

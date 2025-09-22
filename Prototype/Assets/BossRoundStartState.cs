@@ -21,6 +21,7 @@ public class BossRoundStartState : StateMachineBehaviour
     {
         animator.GetComponent<EndBoss>().TransBossCollider();
         animator.GetComponent<EndBoss>().ChangeState(new BossMoveState(animator.GetComponent<Enemy>()));
+        //animator.GetComponent<EndBoss>().TransBossCollider();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

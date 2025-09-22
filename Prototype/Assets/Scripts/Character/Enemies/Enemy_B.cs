@@ -13,7 +13,7 @@ public class Enemy_B : Enemy
     float targetPosY;
     [SerializeField]
     // shootCount 변수 선언: 한 번에 발사할 총알 수
-    int shootCount = 10;
+    int shootCount = 8;
     // isArrivePoint 변수 선언: 목표 지점 도달 여부 판단용
     bool isArrivePoint = false;
 
@@ -32,7 +32,7 @@ public class Enemy_B : Enemy
         // 목표 위치까지 도달하지 않았다면 부드럽게 이동
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
-            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, ref moveTimer, 1.2f);
+            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, ref moveTimer, 3f);
         }
         // 도착했으면 일정 시간 후 새로운 목표로 이동 준비
         else if (isArrivePoint == false)
@@ -81,7 +81,7 @@ public class Enemy_B : Enemy
         {
             GameObject instance = Instantiate(enemyProjectile["EnemyBullet"]);
 
-            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 5f, "Enemy");
+            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 10f, "Enemy");
 
             attackManage.ShootBulletRotate(ref instance, shootTransform["CommonBullet"], 360 / shootCount * i);
         }

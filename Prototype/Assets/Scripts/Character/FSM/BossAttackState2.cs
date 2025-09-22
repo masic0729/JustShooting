@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossAttackState2 : EnemyAttackBaseState
 {
     // EndBossTest2 타입 보스 참조 변수
-    protected EndBossTest2 boss;
+    protected EndBoss boss;
 
     // 생성자: Enemy 객체를 받아 부모 생성자 호출
     public BossAttackState2(Enemy enemy) : base(enemy) { }
@@ -17,8 +17,8 @@ public class BossAttackState2 : EnemyAttackBaseState
     public override void Enter()
     {
         base.Enter();
-        boss = enemy as EndBossTest2;
-        boss.StartCoroutine(Attack());
+        boss = enemy as EndBoss;
+        //boss.StartCoroutine(Attack());
     }
 
     /// <summary>
@@ -44,7 +44,7 @@ public class BossAttackState2 : EnemyAttackBaseState
     /// 랜덤 횟수와 방향으로 보스의 BounceAttack을 반복 실행
     /// 이후 일정 시간 대기 후 이동 상태로 전환
     /// </summary>
-    protected override IEnumerator Attack()
+    /*protected override IEnumerator Attack()
     {
         // 랜덤으로 1~4회 공격 횟수 결정
         int shootRandom = Random.Range(1, 5);
@@ -65,5 +65,5 @@ public class BossAttackState2 : EnemyAttackBaseState
 
         // 공격 후 보스 이동 상태로 전환
         enemy.ChangeState(new BossMoveState(enemy));
-    }
+    }*/
 }

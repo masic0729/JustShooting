@@ -13,6 +13,7 @@ public abstract class EnemyAttackBaseState : EnemyState
     public override void Enter()
     {
         base.Enter();
+        enemy.GetComponent<EndBoss>().Attack();
     }
 
     /// <summary>
@@ -34,5 +35,5 @@ public abstract class EnemyAttackBaseState : EnemyState
     }
 
     // 추상 메서드: 공격 행동을 코루틴으로 구현하도록 강제
-    protected abstract IEnumerator Attack();
+    //protected abstract IEnumerator Attack();
 }

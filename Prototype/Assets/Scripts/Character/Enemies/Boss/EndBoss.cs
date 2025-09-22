@@ -11,6 +11,7 @@ public class EndBoss : Boss
     [SerializeField]
     // 최종 보스 여부 플래그
     bool isFinalBoss;
+    public int maxPatten;
 
     /// <summary>
     /// 초기화 및 부모 Start 호출
@@ -18,6 +19,7 @@ public class EndBoss : Boss
     protected override void Start()
     {
         base.Start();
+        Init();
     }
 
     /// <summary>
@@ -54,6 +56,7 @@ public class EndBoss : Boss
         if (isFinalBoss == true)
         {
             OnCharacterDeath += FinalEndBossDeath; // 최종 보스일 경우 승리 이벤트 연결
+
         }
         else
         {
@@ -72,12 +75,16 @@ public class EndBoss : Boss
 
     public void TransBossCollider()
     {
-        Collider2D col = GetComponent<Collider2D>();
-        if (col.enabled == false)
-            col.enabled = true;
-        else if(col.enabled == true)
-            col.enabled = false;
+        Debug.Log("보스 콜라이더 변환");
+        if (enemyCol.enabled == false)
+        {
+            enemyCol.enabled = true;
 
+        }
+        else if (enemyCol.enabled == true)
+        {
+            enemyCol.enabled = false;
+        }
     }
 
     /// <summary>
@@ -86,5 +93,27 @@ public class EndBoss : Boss
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
+    }
+
+
+    // SpreadAttack 함수: 원형 탄환 발사
+    public void SpreadAttack(int shootCount, float rootRotateValue)
+    {
+        for (int i = 1; i <= shootCount; i++)
+        {
+            // 탄환 생성
+            GameObject instance = Instantiate(enemyProjectile["EnemyBullet"]);
+            // 탄환 데이터 세팅 (애니메이션, 속도, 데미지, 생명주기, 태그)
+            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 5f, "Enemy");
+            // 회전값에 따른 방향으로 탄환 발사
+            attackManage.ShootBulletRotate(ref instance, this.gameObject.transform, 360 / shootCount * i + rootRotateValue);
+        }
+    }
+
+    public virtual void Attack()
+    {
+        int result = Random.Range(0, maxPatten);
+        anim.SetTrigger("Attack");
+        anim.SetInteger("PattenIndex", result);
     }
 }

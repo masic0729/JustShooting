@@ -29,32 +29,17 @@ public class EndBossTest2 : EndBoss
         base.OnTriggerEnter2D(collision);
     }
 
-    //주석 처리된 코루틴 공격 예제
-    public override IEnumerator Attack()
+    //코루틴 기반 공격 예제 (현재 주석 처리됨)
+    public IEnumerator SpreadAttack()
     {
-        // 발사 횟수 랜덤 지정 (2~4회)
-        int shootRandom = Random.Range(2, 5);
-        // 탄환 회전각 랜덤 지정 (40도~60도)
-        float shootRandomRotate = Random.Range(40f, 60f);
+        SpreadAttack(10, 0f);
+        yield return new WaitForSeconds(0.5f);
+        SpreadAttack(10, 30f);
+        yield return new WaitForSeconds(1f);
+        SpreadAttack(18, 0f);
 
-        for (int i = 0; i < shootRandom; i++)
-        {
-            BounceAttack(-shootRandomRotate); // 왼쪽 방향 공격
-            BounceAttack(shootRandomRotate);  // 오른쪽 방향 공격
-            yield return new WaitForSeconds(0.5f); // 0.5초 대기
-        }
-        yield return new WaitForSeconds(attackEndStopTime); // 공격 종료 대기
+        yield return new WaitForSeconds(attackEndStopTime);
     }
-    
 
-    // BounceAttack 함수: 회전값에 따라 탄환을 발사
-    public void BounceAttack(float rotateValue)
-    {
-        // 탄환 생성
-        GameObject instance = Instantiate(enemyProjectile["EnemyBounceBullet"]);
-        // 탄환 데이터 설정 (애니메이션, 속도, 데미지, 생명주기, 태그)
-        projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 10f, "Enemy");
-        // 지정된 회전값과 손 위치 회전값 합산하여 탄환 회전 후 발사
-        attackManage.ShootBulletRotate(ref instance, shootTransform["HandAttack"], rotateValue + shootTransform["HandAttack"].transform.rotation.z);
-    }
+
 }

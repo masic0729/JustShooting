@@ -89,7 +89,7 @@ public class TargetBulletManagement
             targetDistance = (targetObjectsVec[i] - thisProjectile.transform.position).magnitude;
 
             //그 대상이 만약 보스라면 관계 없이 탐지 종료
-            if (wantBoss == true && targetCharacters[i].GetComponent<Enemy>().GetIsBoss() == true)
+            if (wantBoss == true && targetCharacters[i].GetComponent<Enemy>().GetIsBoss() == true && targetCharacters[i].GetComponent<Enemy>().GetEnemyColEnable() == true)
             {
                 targetObject = targetCharacters[i];
                 break;
@@ -97,7 +97,8 @@ public class TargetBulletManagement
             // 거리 비교 및 화면 내 여부 확인 후 타겟 결정
             if (targetObjectDistance > targetDistance &&
                 Mathf.Abs(targetObjectsVec[i].x) <= 11 &&
-                Mathf.Abs(targetObjectsVec[i].y) <= 5)
+                Mathf.Abs(targetObjectsVec[i].y) <= 5 &&
+                targetCharacters[i].GetComponent<Enemy>().GetIsBoss() == false)
             {
                 targetObjectDistance = targetDistance;
                 targetObject = targetCharacters[i];

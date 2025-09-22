@@ -283,7 +283,7 @@ public class CardManager : MonoBehaviour
     void BigBullet()
     {
         Debug.Log("BigBullet");
-        StatManager.instance.p_projectileSizeMultify = 1.2f;
+        StatManager.instance.p_projectileSizeMultify = 2f;
         float playerMoveSpeed = StatManager.instance.playerData.GetObjectMoveSpeedMultify();
         float moveSpeedCalValue = StatManager.instance.p_moveSpeedTransValue;
         StatManager.instance.playerData.SetObjectMoveSpeedMultify(playerMoveSpeed * moveSpeedCalValue);

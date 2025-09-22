@@ -108,7 +108,7 @@ public class Enemy_C : Enemy
                 GameObject instance = Instantiate(enemyProjectile["EnemyBullet"]);
 
                 // 발사체 데이터 설정 (애니메이션, 속도, 데미지, 지속시간, 태그)
-                projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 5f, "Enemy");
+                projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 1.2f, 1f, 10f, "Enemy");
 
                 // 90도 회전 각도로 탄환 발사
                 attackManage.ShootBulletRotate(ref instance, shootTransform["CommonBullet" + j.ToString()], 90);

@@ -30,7 +30,7 @@ public class Enemy_D : Enemy
         // 현재 위치가 목표 위치와 거리가 허용치 이상이고 아직 도착하지 않았으면 이동
         if (Vector2.Distance(thisGameObject.transform.position, currentTargetPos) > distanceNeedValue && isArrivePoint == false)
         {
-            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, ref moveTimer, 1.2f);
+            movement.MoveToPointLerp(ref thisGameObject, currentTargetPos, ref moveTimer, 3f);
         }
         // 목표에 도착했으면 다음 위치 설정
         else if (isArrivePoint == false)
@@ -75,7 +75,7 @@ public class Enemy_D : Enemy
             GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], transform.position, transform.rotation);
 
             // 발사체 데이터 세팅 (애니메이션, 속도, 데미지, 생존 시간, 태그)
-            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 5f, "Enemy");
+            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 10f, "Enemy");
 
             // 플레이어 방향으로 탄환 회전 및 조준
             targetManage.DirectTargetObject(ref instance, ref targetPlayer);

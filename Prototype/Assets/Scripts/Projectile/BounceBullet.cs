@@ -9,6 +9,8 @@ public class BounceBullet : Bullet
     /*bool isCanBounceX;
     bool isCanBounceY;*/
 
+    float turnCool = 0;
+
     // 오브젝트 생성 시 초기화
     protected override void Start()
     {
@@ -20,7 +22,13 @@ public class BounceBullet : Bullet
     protected override void Update()
     {
         base.Update();
+        turnCool -= Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
         CheckBounce(); // 위치를 확인하여 반사 조건 검사
+
     }
 
     // 초기 설정
@@ -33,17 +41,22 @@ public class BounceBullet : Bullet
     // 화면 경계를 기준으로 반사 조건을 체크함
     void CheckBounce()
     {
+        if (turnCool > 0)
+            return;
+
         Vector3 pos = transform.position;
 
         // Y축 상단 벽 반사
-        if (pos.y > maxMoveY - 0.1f)
+        if (pos.y > maxMoveY - 0.3f)
         {
             ApplyBounceRotation(Vector3.down); // 아래 방향으로 반사
+            turnCool = 1f;
         }
         // Y축 하단 벽 반사
-        else if (pos.y < -maxMoveY + 0.1f)
+        if (pos.y < -maxMoveY + 0.3f)
         {
             ApplyBounceRotation(Vector3.up); // 위 방향으로 반사
+            turnCool = 1f;
         }
 
         // X축 초과 시 삭제 (튕김 없음)

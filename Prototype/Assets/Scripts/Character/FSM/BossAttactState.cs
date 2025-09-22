@@ -23,7 +23,7 @@ public class BossAttactState : EnemyAttackBaseState
         //스파인 애니메이션을 받고 난 뒤에는 이러한 방식으로 공격해야 한다
         //enemy.GetComponent<Animator>().SetBool("Attack", true);
         // 공격 코루틴 호출 가능 (주석 처리됨)
-        enemy.StartCoroutine(Attack());
+        //enemy.StartCoroutine(Attack());
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public class BossAttactState : EnemyAttackBaseState
     /// 공격 동작 코루틴 (구현 필요)
     /// 현재는 대기 후 이동 상태로 전환
     /// </summary>
-    protected override IEnumerator Attack()
+    /*protected override IEnumerator Attack()
     {
         // 실제 공격 구현 대기 (주석 처리됨)
         yield return enemy.Attack();
@@ -57,5 +57,5 @@ public class BossAttactState : EnemyAttackBaseState
 
         // 공격 후 이동 상태로 변경
         enemy.ChangeState(new BossMoveState(enemy));
-    }
+    }*/
 }

@@ -41,10 +41,19 @@ public class PlayerWindBullet : Bullet
         }*/
         if (target == null)
         {
+            
             target = targetBulletManager.TargetSearching(ref thisGameObject, "Enemy", true);
             targetBulletManager.TunningObject(ref thisGameObject, ref FakeObject, ref rotateValue, rotateAddValue);
         }
-        targetBulletManager.TunningObject(ref thisGameObject, ref target, ref rotateValue, rotateAddValue);
+
+        if (target.GetComponent<Enemy>().GetEnemyColEnable() == false)
+        {
+            target = null;
+        }
+        else
+        {
+            targetBulletManager.TunningObject(ref thisGameObject, ref target, ref rotateValue, rotateAddValue);
+        }
 
 
     }

@@ -11,6 +11,8 @@ public class Boss : Enemy
     private GameObject bossHpBar;
     // 보스 루트 오브젝트 참조
     public GameObject root;
+
+
     // 공격 종료 후 정지 시간 상수
     protected const float attackEndStopTime = 3f;
     // 보스 이름
@@ -22,6 +24,7 @@ public class Boss : Enemy
     protected override void Start()
     {
         base.Start();
+        Init();
     }
 
     /// <summary>
@@ -41,12 +44,12 @@ public class Boss : Enemy
         base.Init();
         SetIsBoss(true);
         attackData.moveSpeed = 15f;
-
+        //enemyCol.enabled = false;
         OnDamage += PrintHp; // 데미지 입으면 체력 UI 갱신
         OnCharacterDeath += HideHpBar; // 사망 시 체력 UI 숨김
         enemyState = new StateMachine();
         ChangeState(new BossSpawnState(this));
-        root = gameObject.transform.GetChild(0).gameObject;
+        //root = gameObject.transform.GetChild(0).gameObject;
     }
 
     /// <summary>
@@ -86,6 +89,7 @@ public class Boss : Enemy
     {
         UI_Manager.instance.ShowBossHp(bossName);
         bossHpBar = GameObject.Find("Boss_HpBar");
+        bossHpBar.GetComponent<Image>().fillAmount = 1f;
     }
 
     /// <summary>

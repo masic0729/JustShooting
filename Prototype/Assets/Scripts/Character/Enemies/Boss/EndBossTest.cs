@@ -53,29 +53,48 @@ public class EndBossTest : EndBoss
         }
     }*/
 
-     //코루틴 기반 공격 예제 (현재 주석 처리됨)
-    public override IEnumerator Attack()
+    public override void Attack()
     {
-        SpreadAttack(10, 0f);
-        yield return new WaitForSeconds(0.5f);
-        SpreadAttack(10, 30f);
-        yield return new WaitForSeconds(1f);
-        SpreadAttack(18, 0f);
-
-        yield return new WaitForSeconds(attackEndStopTime);
+        base.Attack();
     }
 
-    // SpreadAttack 함수: 원형 탄환 발사
-    public void SpreadAttack(int shootCount, float rootRotateValue)
+    public void StartPatten(int pattenIndex)
     {
-        for (int i = 1; i <= shootCount; i++)
+        if (pattenIndex == 0)
+            StartCoroutine(Patten0());
+        if (pattenIndex == 1)
+            StartCoroutine(Patten0());
+    }
+
+    public IEnumerator Patten0()
+    {
+        // 발사 횟수 랜덤 지정 (2~4회)
+        int shootRandom = 10;
+        // 탄환 회전각 랜덤 지정 (40도~60도)
+        float shootRandomRotate = Random.Range(40f, 60f);
+        float rotateAddValue = 0;
+        for (int i = 0; i < shootRandom; i++)
         {
-            // 탄환 생성
-            GameObject instance = Instantiate(enemyProjectile["EnemyBullet"]);
-            // 탄환 데이터 세팅 (애니메이션, 속도, 데미지, 생명주기, 태그)
-            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 5f, "Enemy");
-            // 회전값에 따른 방향으로 탄환 발사
-            attackManage.ShootBulletRotate(ref instance, this.gameObject.transform, 360 / shootCount * i + rootRotateValue);
+            BounceAttack(-shootRandomRotate + rotateAddValue); // 왼쪽 방향 공격
+            BounceAttack(shootRandomRotate - rotateAddValue);  // 오른쪽 방향 공격
+            
+            rotateAddValue -= 2f;
+            yield return new WaitForSeconds(0.2f); // 0.3초 대기
         }
+        yield return new WaitForSeconds(attackEndStopTime); // 공격 종료 대기
+        ChangeState(new BossMoveState(this));
+
+    }
+
+
+    // BounceAttack 함수: 회전값에 따라 탄환을 발사
+    public void BounceAttack(float rotateValue)
+    {
+        // 탄환 생성
+        GameObject instance = Instantiate(enemyProjectile["EnemyBounceBullet"]);
+        // 탄환 데이터 설정 (애니메이션, 속도, 데미지, 생명주기, 태그)
+        projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 15f, "Enemy");
+        // 지정된 회전값과 손 위치 회전값 합산하여 탄환 회전 후 발사
+        attackManage.ShootBulletRotate(ref instance, this.transform, rotateValue + 90);
     }
 }

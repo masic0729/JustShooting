@@ -15,6 +15,12 @@ public class ProjectileManagement
         projectile.GetComponent<Projectile>().SetDamage(damage); // 데미지 설정
         projectile.GetComponent<Projectile>().SetLifeTime(lifeTime); // 생존 시간 설정
         projectile.transform.tag = tag; // 태그 설정 (Player / Enemy 등)
+
+        if (tag == "Enemy")
+        {
+            projectile.GetComponent<Projectile>().SetMoveSpeed(moveSpeed * StatManager.instance.e_projectileSpeedMultify); // 이동 속도 설정
+
+        }
     }
 
     // 애니메이션 기반 발사체 세팅
@@ -23,8 +29,14 @@ public class ProjectileManagement
     {
         projectile.GetComponent<Animator>().runtimeAnimatorController = animCtrl; // 애니메이션 컨트롤러 설정
         projectile.GetComponent<Projectile>().SetMoveSpeed(moveSpeed); // 이동 속도 설정
-        projectile.GetComponent<Projectile>().SetDamage(damage + StatManager.instance.p_damageFromCard); // 데미지 설정
+        projectile.GetComponent<Projectile>().SetDamage(damage); // 데미지 설정
         projectile.GetComponent<Projectile>().SetLifeTime(lifeTime); // 생존 시간 설정
         projectile.transform.tag = tag; // 태그 설정
+
+        if(tag == "Enemy")
+        {
+            projectile.GetComponent<Projectile>().SetMoveSpeed(moveSpeed * StatManager.instance.e_projectileSpeedMultify); // 이동 속도 설정
+
+        }
     }
 }
