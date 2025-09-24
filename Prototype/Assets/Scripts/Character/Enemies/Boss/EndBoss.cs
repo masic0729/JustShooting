@@ -76,14 +76,14 @@ public class EndBoss : Boss
     public void TransBossCollider()
     {
         Debug.Log("보스 콜라이더 변환");
-        if (enemyCol.enabled == false)
+        if (characterCol.enabled == false)
         {
-            enemyCol.enabled = true;
+            characterCol.enabled = true;
 
         }
-        else if (enemyCol.enabled == true)
+        else if (characterCol.enabled == true)
         {
-            enemyCol.enabled = false;
+            characterCol.enabled = false;
         }
     }
 

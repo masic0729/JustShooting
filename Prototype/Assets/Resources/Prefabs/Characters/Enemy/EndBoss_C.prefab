@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7022478471511380425}
   - component: {fileID: 4193225452458978377}
   - component: {fileID: 5986804855209294137}
-  - component: {fileID: 4227642908032406000}
   - component: {fileID: 3301031416493752608}
   - component: {fileID: 6406789138837974765}
+  - component: {fileID: 5306465815791258809}
   m_Layer: 0
   m_Name: EndBoss_C
   m_TagString: Enemy
@@ -153,44 +153,6 @@ MonoBehaviour:
     layerMixModes: 01000000
     layerBlendModes: 01000000
   updateTiming: 1
---- !u!114 &4227642908032406000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2352199838586986387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65cba1406fcc7f34a9ce1fa577f1690e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 4
-  objectMoveSpeedMultify: 0.5
-  anim: {fileID: 0}
-  hitExplosion: {fileID: 0}
-  destroyExplosion: {fileID: 0}
-  attackStats: {fileID: 0}
-  hp: 140
-  maxHp: 140
-  attackMultiplier: 1
-  attackDelay: 0
-  projectileMoveSpeedMultify: 1
-  characterGetDamageMultify: 1
-  stateIndex: 0
-  lastPosition: {x: 0, y: 0}
-  arrivePosition: {x: 0, y: 0}
-  enemyProjectiles:
-  - {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
-  attackData:
-    sprite: {fileID: 21300000, guid: 02d258acc9bd4344fba7f301403cfac7, type: 3}
-    animCtrl: {fileID: 0}
-    moveSpeed: 0
-  moveTimer: 0
-  isBoss: 1
-  root: {fileID: 0}
-  bossName: "\uD53C\uC544"
-  isFinalBoss: 0
 --- !u!50 &3301031416493752608
 Rigidbody2D:
   serializedVersion: 4
@@ -253,3 +215,44 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2.7}
   m_Direction: 0
+--- !u!114 &5306465815791258809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2352199838586986387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510173dfe1c7de94b914e496ba52c60d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 4
+  objectMoveSpeedMultify: 0.5
+  anim: {fileID: 0}
+  hitExplosion: {fileID: 0}
+  destroyExplosion: {fileID: 0}
+  attackStats: {fileID: 0}
+  characterCol: {fileID: 0}
+  hp: 400
+  maxHp: 400
+  attackMultiplier: 1
+  attackDelay: 0
+  projectileMoveSpeedMultify: 1
+  characterGetDamageMultify: 1
+  stateIndex: 0
+  lastPosition: {x: 0, y: 0}
+  arrivePosition: {x: 0, y: 0}
+  enemyProjectiles:
+  - {fileID: 8270318897632803940, guid: 04b05d4c118f3694f86a7f244bb3a53e, type: 3}
+  - {fileID: 6754591646332920581, guid: 7fb321ddfebfc594dbad536402f832ac, type: 3}
+  attackData:
+    sprite: {fileID: 0}
+    animCtrl: {fileID: 0}
+    moveSpeed: 0
+  moveTimer: 0
+  isBoss: 1
+  root: {fileID: 0}
+  bossName: "\uB77C\uD30C\uC5D8"
+  isFinalBoss: 1
+  maxPatten: 0

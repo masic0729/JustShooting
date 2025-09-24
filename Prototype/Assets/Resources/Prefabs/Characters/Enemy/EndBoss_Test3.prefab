@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   objectMoveSpeedMultify: 0.5
+  anim: {fileID: 0}
   hitExplosion: {fileID: 0}
   destroyExplosion: {fileID: 0}
   attackStats: {fileID: 0}
@@ -120,17 +121,22 @@ MonoBehaviour:
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
   stateIndex: 0
-  arriveVector: {x: 0, y: 0}
+  lastPosition: {x: 0, y: 0}
+  arrivePosition: {x: 0, y: 0}
+  enemyCol: {fileID: 0}
   enemyProjectiles:
   - {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
+  - {fileID: 6754591646332920581, guid: 4b9aef7e6a3fa5d47855a3deae15eec9, type: 3}
   attackData:
     sprite: {fileID: 21300000, guid: 02d258acc9bd4344fba7f301403cfac7, type: 3}
     animCtrl: {fileID: 0}
     moveSpeed: 10
+  moveTimer: 0
   isBoss: 1
   root: {fileID: 0}
   bossName: "\uB77C\uD30C\uC5D8"
   isFinalBoss: 1
+  maxPatten: 0
 --- !u!95 &4521334896567598453
 Animator:
   serializedVersion: 5

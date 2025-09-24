@@ -19,6 +19,7 @@ public class Character : IObject
     private Transform[] shootTransforms;
     // 공격 실행 및 관리 객체
     public AttackManagement attackManage;
+    public Collider2D characterCol;
 
     // 캐릭터 사망 시 발생하는 이벤트
     public Action OnCharacterDeath;
@@ -66,6 +67,7 @@ public class Character : IObject
         attackManage = new AttackManagement();
         projectileManage = new ProjectileManagement();
         characterInteraction = new ObjectInteraction();
+        characterCol = GetComponent<Collider2D>();
 
         OnCharacterDamaged += TakeDamage;                           //캐릭터는 기본적으로 공격받으면 체력이나 보호막이 감소한다
         //OnDamage += OnInvincibility;
@@ -176,6 +178,11 @@ public class Character : IObject
     public void TransIsInvincibilityFalse()
     {
         isInvincibility = false;
+    }
+
+    public bool GetCharacterColEnable()
+    {
+        return characterCol.enabled;
     }
 
     // Start & Update 등은 부모 클래스 호출만 하므로 생략 가능

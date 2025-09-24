@@ -27,7 +27,11 @@ public class ProjectileManagement
     public void SetProjectileData(ref GameObject projectile, RuntimeAnimatorController animCtrl,
         float moveSpeed, float damage, float lifeTime, string tag)
     {
-        projectile.GetComponent<Animator>().runtimeAnimatorController = animCtrl; // 애니메이션 컨트롤러 설정
+        if(animCtrl != null)
+        {
+            projectile.GetComponent<Animator>().runtimeAnimatorController = animCtrl; // 애니메이션 컨트롤러 설정
+
+        }
         projectile.GetComponent<Projectile>().SetMoveSpeed(moveSpeed); // 이동 속도 설정
         projectile.GetComponent<Projectile>().SetDamage(damage); // 데미지 설정
         projectile.GetComponent<Projectile>().SetLifeTime(lifeTime); // 생존 시간 설정

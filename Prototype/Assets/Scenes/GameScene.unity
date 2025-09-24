@@ -4551,7 +4551,7 @@ MonoBehaviour:
   waveGroups:
   - nextWaveDelay: 0
     wavesInGroup:
-    - enemyData: 8
+    - enemyData: 10
       spawnEnemyCount: 1
       spawnDelay: 0
       isCustomPosition: 0
@@ -4581,6 +4581,7 @@ MonoBehaviour:
   - {fileID: 2352199838586986387, guid: d02c95ddd59b6fb48829f46e0ecb63d5, type: 3}
   - {fileID: 7691790650951377814, guid: cc197105bf6c38d419a7f70db80c443e, type: 3}
   - {fileID: 7691790650951377814, guid: 065efb8081fa700458954ac9affb0f56, type: 3}
+  - {fileID: 2352199838586986387, guid: f464105438c63304cbb8338db8897546, type: 3}
   firstWaveTime: 3
   isEnemyA_Down: 0
 --- !u!4 &653613543
@@ -7004,6 +7005,7 @@ MonoBehaviour:
   hitExplosion: {fileID: 8525990746615576120, guid: 0fb68e8082f31db44b69bba846424a12, type: 3}
   destroyExplosion: {fileID: 5869829100119563513, guid: 1f6154d883d800e4d9e99a92c8f1fd48, type: 3}
   attackStats: {fileID: 11400000, guid: 6e0d28644fc26e6449bf4bfc72900094, type: 2}
+  characterCol: {fileID: 0}
   hp: 5
   maxHp: 5
   attackMultiplier: 1
@@ -9084,7 +9086,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1176474039}
   - component: {fileID: 1176474040}
-  - component: {fileID: 1176474041}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9120,22 +9121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
---- !u!114 &1176474041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176474038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d42d577684df11545bbcbe107842ff00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particlePrefabs:
-  - {fileID: 8525990746615576120, guid: b0e1dddb2493b6341bc362f241812f5f, type: 3}
-  - {fileID: 2433282508537954060, guid: a861b19cb9792164591eab6b8dc2e04f, type: 3}
-  poolSize: 10
 --- !u!1 &1190385649
 GameObject:
   m_ObjectHideFlags: 0
@@ -13875,6 +13860,7 @@ MonoBehaviour:
   hitExplosion: {fileID: 8525990746615576120, guid: 0fb68e8082f31db44b69bba846424a12, type: 3}
   destroyExplosion: {fileID: 0}
   attackStats: {fileID: 11400000, guid: 6e0d28644fc26e6449bf4bfc72900094, type: 2}
+  characterCol: {fileID: 0}
   hp: 100
   maxHp: 100
   attackMultiplier: 1

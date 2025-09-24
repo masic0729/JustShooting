@@ -3,10 +3,7 @@ using UnityEngine;
 
 public class EndBossTest : EndBoss
 {
-    // 공격 횟수 카운트 변수
-    private int attackCount;
-    // 공격 시 탄환 회전값 변수
-    float attackRotateValue;
+
 
     // Start 함수: 초기화 및 부모 클래스 Start 호출
     protected override void Start()
@@ -32,27 +29,6 @@ public class EndBossTest : EndBoss
     {
         base.OnTriggerEnter2D(collision);
     }
-
-    // Attack 함수: 공격 로직 처리
-    /*public override void Attack()
-    {
-        AudioManager.Instance.PlaySFX("Attack"); // 공격 사운드 재생
-        if (attackCount < 2)
-        {
-            SpreadAttack(10, 0); // 10발 공격, 회전값 0도
-            attackCount++;       // 공격 카운트 증가
-            attackRotateValue = 30f; // 회전값 설정
-        }
-        else
-        {
-            SpreadAttack(18, 0);  // 18발 공격, 회전값 0도
-            attackRotateValue = 0f; // 회전값 초기화
-            attackCount = 0;      // 카운트 초기화
-            anim.SetBool("Attack", false); // 공격 애니메이션 종료
-            base.Attack();   // 부모 클래스 공격 처리 호출
-        }
-    }*/
-
     public override void Attack()
     {
         base.Attack();
@@ -61,7 +37,7 @@ public class EndBossTest : EndBoss
     public void StartPatten(int pattenIndex)
     {
         if (pattenIndex == 0)
-            StartCoroutine(Patten1());
+            StartCoroutine(Patten0());
         if (pattenIndex == 1)
             StartCoroutine(Patten1());
     }
@@ -93,22 +69,33 @@ public class EndBossTest : EndBoss
         // 탄환 회전각 랜덤 지정 (40도~60도)
         float shootRandomRotate = Random.Range(40f, 60f);
         int rotateAddValue = 10;
+        int randStartAddRotate = Random.Range(0, 300);
 
-        int startRot = 0, endRot = 360;
+        int startRot = 0, endRot = 300;
+        bool isRotateRight = Random.Range(0, 100) > 50 ? true : false;
         for (int i = 0; i < shootRandom; i++)
         {
             
-            for(int j = startRot; j < endRot; j += 10)
+            for(int j = startRot + randStartAddRotate; j < endRot + randStartAddRotate; j += 10)
             {
                 Vector2 pos;
-                pos.x = Mathf.Sin(j * Mathf.Deg2Rad) * 5f;
-                pos.y = Mathf.Cos(j * Mathf.Deg2Rad) * 5f;
+                pos.x = Mathf.Sin(j * Mathf.Deg2Rad) * 12f;
+                pos.y = Mathf.Cos(j * Mathf.Deg2Rad) * 12f;
                 TargetArriveAttack(pos);
 
             }
             yield return new WaitForSeconds(0.3f);
-            startRot += rotateAddValue;
-            endRot += rotateAddValue;
+            if(isRotateRight == true)
+            {
+                startRot += rotateAddValue;
+                endRot += rotateAddValue;
+            }
+            else
+            {
+
+                startRot -= rotateAddValue;
+                endRot -= rotateAddValue;
+            }
         }
         yield return new WaitForSeconds(attackEndStopTime); // 공격 종료 대기
         ChangeState(new BossMoveState(this));
@@ -135,7 +122,7 @@ public class EndBossTest : EndBoss
         //이곳에 원형으로 소환 후, 소환하자마자 목표 타겟(0,0)으로 바라보며 이동한다
         GameObject instance = Instantiate(enemyProjectile["EnemyTargetDestroyBullet"]);
         instance.transform.position = spawnPos;
-        projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 15f, "Enemy");
+        projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 0.5f, 1f, 15f, "Enemy");
         attackManage.ShootBulletLookAt(ref instance, instance.GetComponent<EnemyTargetBullet>().GetTargetVector2());
     }
 }

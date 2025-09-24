@@ -19,26 +19,6 @@ public class PlayerWindBullet : Bullet
     {
         base.Update();
 
-        /*if (target != null)
-        {
-            targetBulletManager.TunningObject(ref thisGameObject, ref target, ref rotateValue, rotateAddValue);
-            rotateValue += 0.4f;
-        }
-        else
-        {
-            rotateValue = 0.3f;
-            //보스 탐지
-            //target = targetBulletManager.TargetSearching("Enemy", true);
-            target = targetBulletManager.TargetSearching(ref thisGameObject, "Enemy", true);
-
-        }
-
-        if (target == null)
-        {
-            //보스가 없으니 일반 몬스터 탐지
-            //target = targetBulletManager.TargetSearching("Enemy");
-
-        }*/
         if (target == null)
         {
             
@@ -46,7 +26,7 @@ public class PlayerWindBullet : Bullet
             targetBulletManager.TunningObject(ref thisGameObject, ref FakeObject, ref rotateValue, rotateAddValue);
         }
 
-        if (target.GetComponent<Enemy>().GetEnemyColEnable() == false)
+        if (target.GetComponent<Enemy>().GetCharacterColEnable() == false)
         {
             target = null;
         }

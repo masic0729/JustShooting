@@ -63,7 +63,13 @@ public class TargetBulletManagement
     // 발사체 위치 기준으로 타겟 탐색 (보통 플레이어가 사용하는 방식)
     public GameObject TargetSearching(ref GameObject thisProjectile, string targetTag, bool wantBoss = false)
     {
+        if(targetTag == "Player")
+        {
+            GameObject targetPlayer = GameObject.Find(targetTag);
+            return targetPlayer;
+        }
         GameObject[] instance = GameObject.FindGameObjectsWithTag(targetTag);
+        
 
         List<GameObject> targetCharacters = new List<GameObject>();
 
@@ -89,7 +95,7 @@ public class TargetBulletManagement
             targetDistance = (targetObjectsVec[i] - thisProjectile.transform.position).magnitude;
 
             //그 대상이 만약 보스라면 관계 없이 탐지 종료
-            if (wantBoss == true && targetCharacters[i].GetComponent<Enemy>().GetIsBoss() == true && targetCharacters[i].GetComponent<Enemy>().GetEnemyColEnable() == true)
+            if (wantBoss == true && targetCharacters[i].GetComponent<Enemy>().GetIsBoss() == true && targetCharacters[i].GetComponent<Enemy>().GetCharacterColEnable() == true)
             {
                 targetObject = targetCharacters[i];
                 break;
