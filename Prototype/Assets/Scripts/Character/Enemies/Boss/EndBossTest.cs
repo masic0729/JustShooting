@@ -61,16 +61,16 @@ public class EndBossTest : EndBoss
     public void StartPatten(int pattenIndex)
     {
         if (pattenIndex == 0)
-            StartCoroutine(Patten0());
+            StartCoroutine(Patten1());
         if (pattenIndex == 1)
-            StartCoroutine(Patten0());
+            StartCoroutine(Patten1());
     }
 
     public IEnumerator Patten0()
     {
-        // 발사 횟수 랜덤 지정 (2~4회)
+        // 발사 횟수 지정
         int shootRandom = 10;
-        // 탄환 회전각 랜덤 지정 (40도~60도)
+        // 탄환 회전각 랜덤 지정 (40도 ~ 60도)
         float shootRandomRotate = Random.Range(40f, 60f);
         float rotateAddValue = 0;
         for (int i = 0; i < shootRandom; i++)
@@ -86,9 +86,37 @@ public class EndBossTest : EndBoss
 
     }
 
+    public IEnumerator Patten1()
+    {
+        // 발사 횟수 지정
+        int shootRandom = 5;
+        // 탄환 회전각 랜덤 지정 (40도~60도)
+        float shootRandomRotate = Random.Range(40f, 60f);
+        int rotateAddValue = 10;
+
+        int startRot = 0, endRot = 360;
+        for (int i = 0; i < shootRandom; i++)
+        {
+            
+            for(int j = startRot; j < endRot; j += 10)
+            {
+                Vector2 pos;
+                pos.x = Mathf.Sin(j * Mathf.Deg2Rad) * 5f;
+                pos.y = Mathf.Cos(j * Mathf.Deg2Rad) * 5f;
+                TargetArriveAttack(pos);
+
+            }
+            yield return new WaitForSeconds(0.3f);
+            startRot += rotateAddValue;
+            endRot += rotateAddValue;
+        }
+        yield return new WaitForSeconds(attackEndStopTime); // 공격 종료 대기
+        ChangeState(new BossMoveState(this));
+    }
+
 
     // BounceAttack 함수: 회전값에 따라 탄환을 발사
-    public void BounceAttack(float rotateValue)
+    void BounceAttack(float rotateValue)
     {
         // 탄환 생성
         GameObject instance = Instantiate(enemyProjectile["EnemyBounceBullet"]);
@@ -96,5 +124,18 @@ public class EndBossTest : EndBoss
         projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 15f, "Enemy");
         // 지정된 회전값과 손 위치 회전값 합산하여 탄환 회전 후 발사
         attackManage.ShootBulletRotate(ref instance, this.transform, rotateValue + 90);
+    }
+
+    /// <summary>
+    /// 목표 지점으로 이동 후 자동 삭제되는 총알 발사.
+    /// 화면의 중앙(0,0)을 방향으로 총알이 발사된다.
+    /// </summary>
+    void TargetArriveAttack(Vector2 spawnPos)
+    {
+        //이곳에 원형으로 소환 후, 소환하자마자 목표 타겟(0,0)으로 바라보며 이동한다
+        GameObject instance = Instantiate(enemyProjectile["EnemyTargetDestroyBullet"]);
+        instance.transform.position = spawnPos;
+        projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 15f, "Enemy");
+        attackManage.ShootBulletLookAt(ref instance, instance.GetComponent<EnemyTargetBullet>().GetTargetVector2());
     }
 }

@@ -182,7 +182,7 @@ MonoBehaviour:
   arrivePosition: {x: 0, y: 0}
   enemyCol: {fileID: 0}
   enemyProjectiles:
-  - {fileID: 6754591646332920581, guid: f1adf0dbf21196b43af8925c772bd237, type: 3}
+  - {fileID: 6754591646332920581, guid: 4b9aef7e6a3fa5d47855a3deae15eec9, type: 3}
   - {fileID: 6754591646332920581, guid: 005b7f80eaf09ef4ba59cdf9bd4527c1, type: 3}
   attackData:
     sprite: {fileID: 21300000, guid: 02d258acc9bd4344fba7f301403cfac7, type: 3}
