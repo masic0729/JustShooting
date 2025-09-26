@@ -4,7 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance; // 싱글톤 인스턴스
-
+    [SerializeField] int stage = 1;
     //public bool isGameEnd = false;                                 //승패를 떠나서, 어쨋든 끝났을 때 처리하는 스탠스
 
     public enum GameState
@@ -60,12 +60,6 @@ public class GameManager : MonoBehaviour
     // 게임 종료 처리
     public void GameEnd(UI_Manager.ScreenInfo enumState)
     {
-        /*if(isGameEnd == false)
-        {
-            isGameEnd = true;
-            gameState = GameState.End;
-            StartCoroutine(EndStart(enumState));
-        }*/
 
         if (gameState != GameState.End)
         {
@@ -73,6 +67,11 @@ public class GameManager : MonoBehaviour
             gameState = GameState.End;
             StartCoroutine(EndStart(enumState)); // 종료 화면 전환
         }
+    }
+
+    public void StageUp()
+    {
+        stage++;
     }
 
     // 종료 연출 (1초 대기 후 화면 전환 + 배경음 변경)

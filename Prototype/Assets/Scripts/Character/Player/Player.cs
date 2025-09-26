@@ -66,16 +66,16 @@ public class Player : Character
         base.Init();
         InitDic(); // 딕셔너리 초기화
 
-        maxMoveX = 9.5f;          // 이동 가능 최대 X 좌표
-        maxMoveY = 4.5f;          // 이동 가능 최대 Y 좌표
-        attackDelay = 0.1f;       // 공격 간 딜레이 초기화
-        SetMoveSpeed(10f);        // 이동 속도 설정
+        maxMoveX = 9.5f;                                                                        // 이동 가능 최대 X 좌표
+        maxMoveY = 4.5f;                                                                        // 이동 가능 최대 Y 좌표
+        attackDelay = 0.1f;                                                                     // 공격 간 딜레이 초기화
+        SetMoveSpeed(10f);                                                                      // 이동 속도 설정
         powerStats = GetComponent<PlayerPower>();
-        commonInvincibilityTime = 2f;   // 무적 시간 설정
-        OnDamage += GetDamageEffect; // 데미지 입었을 때 효과 재생
-        OnDamage += UpdateHpUI;      // 체력 UI 갱신
-        OnCharacterDeath += PlayerDeath;       // 플레이어 사망 처리
-        SetShieldInvincibilityTime(5f);        //플레이어는 보호막에 의한 무적 시간은 5초이다
+        commonInvincibilityTime = 2f;                                                           // 무적 시간 설정
+        OnDamage += GetDamageEffect;                                                            // 데미지 입었을 때 효과 재생
+        OnDamage += UpdateHpUI;                                                                 // 체력 UI 갱신
+        OnCharacterDeath += PlayerDeath;                                                        // 플레이어 사망 처리
+        SetShieldInvincibilityTime(5f);                                                         //플레이어는 보호막에 의한 무적 시간은 5초이다
         circleCollider = GetComponent<CircleCollider2D>();
 
         // 히트 이펙트 오브젝트 인스턴스 생성 및 비활성화
@@ -83,7 +83,7 @@ public class Player : Character
         hitExplosion.transform.parent = this.transform;
         hitExplosion.SetActive(false);
 
-        SetCurrentBullet(BulletType.Wind); // 기본 총알 설정
+        SetCurrentBullet(BulletType.Wind);                                                      // 기본 총알 설정
         //StartCoroutine(powerStats.DefaultPowerUp()); // 기본 파워업 코루틴 시작
     }
 
@@ -92,26 +92,26 @@ public class Player : Character
     {
         for (int i = 0; i < bulletDataArray.Length; i++)
         {
-            var key = bulletDataArray[i].weaponName;   // 무기 이름 키
-            bulletDataDict[key] = bulletDataArray[i]; // 총알 데이터 저장
-            buffDict[key] = buffPrefabs[i];            // 버프 프리팹 저장
-            skillDict[key] = skillPrefabs[i];          // 스킬 프리팹 저장
+            var key = bulletDataArray[i].weaponName;                                            // 무기 이름 키
+            bulletDataDict[key] = bulletDataArray[i];                                           // 총알 데이터 저장
+            buffDict[key] = buffPrefabs[i];                                                     // 버프 프리팹 저장
+            skillDict[key] = skillPrefabs[i];                                                   // 스킬 프리팹 저장
         }
     }
 
     // 입력 처리 함수
     void HandleInput()
     {
-        MoveInput();          // 이동 입력 처리
-        HandleAttack();       // 공격 입력 처리
-        HandleWeaponSwitch(); // 무기 변경 입력 처리
+        MoveInput();                                                                            // 이동 입력 처리
+        HandleAttack();                                                                         // 공격 입력 처리
+        HandleWeaponSwitch();                                                                   // 무기 변경 입력 처
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            gameObject.SetActive(false); // F1 눌렀을 때 비활성화
+            gameObject.SetActive(false);                                                        // F1 눌렀을 때 비활성화
         }
 
-        if (Input.GetKeyDown(KeyCode.F3))
+        if (Input.GetKeyDown(KeyCode.F12))
         {
             // 무적 토글
             if (GetIsInvincibility())
@@ -131,6 +131,16 @@ public class Player : Character
         if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < maxMoveX) dir += Vector3.right;
         if (Input.GetKey(KeyCode.UpArrow) && transform.position.y < maxMoveY) dir += Vector3.up;
         if (Input.GetKey(KeyCode.DownArrow) && transform.position.y > -maxMoveY) dir += Vector3.down;
+
+        if (dir != Vector3.zero)
+        {
+            anim.SetBool("Move", true);
+
+        }
+        else
+        {
+            anim.SetBool("Move", false);
+        }
 
         ObjectMove(dir); // 실제 이동 처리
     }
