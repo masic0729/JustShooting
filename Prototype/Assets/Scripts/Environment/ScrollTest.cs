@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ScrollTest : MonoBehaviour
 {
-    public float scrollSpeed = 0.1f;
-    private Material bgMaterial;
+    [SerializeField] float scrollSpeed = 0.1f;
+    private MeshRenderer bgMaterial;
+    [SerializeField] Material[] backgroundParts;
     private Vector2 offset;
 
     void Start()
     {
         // Renderer에서 머테리얼 가져오기 (공유 인스턴스 사용 방지 위해 new)
-        bgMaterial = GetComponent<Renderer>().material;
-        offset = bgMaterial.mainTextureOffset;
+        bgMaterial = GetComponent<MeshRenderer>();
+        offset = bgMaterial.material.mainTextureOffset;
     }
 
     void Update()
@@ -22,6 +23,21 @@ public class ScrollTest : MonoBehaviour
         {
             offset.x = 0;
         }
-        bgMaterial.mainTextureOffset = offset;
+        bgMaterial.material.mainTextureOffset = offset;
+
+        if(Input.GetKeyDown(KeyCode.F8))
+        {
+            SetBackgroundPartByStage();
+        }
+    }
+
+
+    /// <summary>
+    /// 스테이지 전환에 의한 배경 변화
+    /// </summary>
+    public void SetBackgroundPartByStage()
+    {
+        bgMaterial.material = backgroundParts[1];
+        offset = bgMaterial.material.mainTextureOffset;
     }
 }

@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 90ca67b57e877424686fccccde32bd4b, type: 2}
+  - {fileID: 2100000, guid: d383e535a95d2f644bc309e0f780aacf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 2352199838586986387}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 04f4c0ee5ea5c6244b597c66e47ee7b0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5600d14b421b6544f9406e8094e0f22a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9db98c60740638449864eb028fbe7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 8f2cfa6b70f9ba84f963f6eae81bf778, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: cf1f5a21aa1b98842a14b2bda11c6908, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -171,6 +171,7 @@ MonoBehaviour:
   hitExplosion: {fileID: 0}
   destroyExplosion: {fileID: 0}
   attackStats: {fileID: 0}
+  characterCol: {fileID: 0}
   hp: 250
   maxHp: 250
   attackMultiplier: 1
@@ -180,7 +181,6 @@ MonoBehaviour:
   stateIndex: 0
   lastPosition: {x: 0, y: 0}
   arrivePosition: {x: 0, y: 0}
-  enemyCol: {fileID: 0}
   enemyProjectiles:
   - {fileID: 6754591646332920581, guid: 4b9aef7e6a3fa5d47855a3deae15eec9, type: 3}
   - {fileID: 6754591646332920581, guid: 005b7f80eaf09ef4ba59cdf9bd4527c1, type: 3}
