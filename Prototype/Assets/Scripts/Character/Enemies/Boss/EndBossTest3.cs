@@ -124,7 +124,6 @@ public class EndBossTest3 : EndBoss
 
         // 발사 횟수 지정
         const int shootCount = 2;
-        const int shootBulletsCount = 30;
 
         for (int i = 0; i < shootCount; i++)
         {
@@ -135,7 +134,7 @@ public class EndBossTest3 : EndBoss
             Vector2 playerpos = new Vector2(player.transform.position.x, 6.5f);
 
             StartCoroutine(DownAttack(playerpos));
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
 
         }
         yield return new WaitForSeconds(attackEndStopTime); // 공격 종료 대기
@@ -163,13 +162,13 @@ public class EndBossTest3 : EndBoss
 
     IEnumerator DownAttack(Vector2 spawnPos)
     {
-        const int shootBulletsCount = 30;
+        const int shootBulletsCount = 70;
         for(int i = 0; i < shootBulletsCount; i++)
         {
             float randX = Random.Range(-1f, 1f);
             Vector2 resultSpawnPos = new Vector2(spawnPos.x + randX, 6.5f);
 
-            GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], spawnPos, transform.rotation);
+            GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], resultSpawnPos, transform.rotation);
             instance.transform.Rotate(0, 0, 180);
             projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 1.7f, 1f, 7f, "Enemy");
             yield return new WaitForSeconds(0.05f);

@@ -3304,8 +3304,8 @@ MonoBehaviour:
   destroyExplosion: {fileID: 0}
   attackStats: {fileID: 0}
   characterCol: {fileID: 0}
-  hp: 700
-  maxHp: 700
+  hp: 2400
+  maxHp: 2400
   attackMultiplier: 1
   attackDelay: 0
   projectileMoveSpeedMultify: 1
