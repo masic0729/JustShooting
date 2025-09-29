@@ -24,6 +24,7 @@ public class EnemyBullet : Bullet
     protected override void Init()
     {
         base.Init(); // Bullet의 Init 호출
+        maxMoveY = 7f;
     }
 
     // 충돌 처리

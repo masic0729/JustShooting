@@ -69,7 +69,7 @@ public class Player : Character
         maxMoveX = 9.5f;                                                                        // 이동 가능 최대 X 좌표
         maxMoveY = 4.5f;                                                                        // 이동 가능 최대 Y 좌표
         attackDelay = 0.1f;                                                                     // 공격 간 딜레이 초기화
-        SetMoveSpeed(10f);                                                                      // 이동 속도 설정
+        SetMoveSpeed(5f);                                                                      // 이동 속도 설정
         powerStats = GetComponent<PlayerPower>();
         commonInvincibilityTime = 2f;                                                           // 무적 시간 설정
         OnDamage += GetDamageEffect;                                                            // 데미지 입었을 때 효과 재생
@@ -84,7 +84,6 @@ public class Player : Character
         hitExplosion.SetActive(false);
 
         SetCurrentBullet(BulletType.Wind);                                                      // 기본 총알 설정
-        //StartCoroutine(powerStats.DefaultPowerUp()); // 기본 파워업 코루틴 시작
     }
 
     // 딕셔너리 초기화 함수
@@ -188,6 +187,7 @@ public class Player : Character
             powerStats.SetIsActivedSkill(true);
             ActivateSkill();
             Invoke(nameof(ResetPowerRegen), PowerRestartDelay);
+            anim.SetTrigger("Skill");
         }
         else
         {

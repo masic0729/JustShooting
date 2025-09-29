@@ -26,6 +26,8 @@ public class PlayerWindSkill : PlayerEffect
         if(isTest == true)
             enemyBulletCount += 20;
 
+        if (enemyBulletCount > 20)
+            enemyBulletCount = 20;
         player.WindSkill(WindSkillBullet, enemyBulletCount);
 
         Destroy(this.gameObject);

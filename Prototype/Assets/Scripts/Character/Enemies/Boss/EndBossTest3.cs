@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class EndBossTest3 : EndBoss
 {
-
+    [SerializeField] Transform patten0Shooter;
     // Start 함수: 초기화 및 부모 클래스 Start 호출
     protected override void Start()
     {
@@ -39,7 +41,9 @@ public class EndBossTest3 : EndBoss
         if (pattenIndex == 0)
             StartCoroutine(Patten0());
         if (pattenIndex == 1)
-            StartCoroutine(Patten0());
+            StartCoroutine(Patten1());
+        if (pattenIndex == 2)
+            StartCoroutine(Patten2());
     }
 
     public IEnumerator Patten0()
@@ -48,17 +52,20 @@ public class EndBossTest3 : EndBoss
         const int shootCount = 3;
         const int shootBulletsCount = 3;
 
-        Vector2 spawnPos = transform.position;
+        Vector2 spawnPos = patten0Shooter.position;
 
-        for(int i = 0; i < shootCount; i++)
+        for (int i = 0; i < shootCount; i++)
         {
-            Vector2 yTransValue = new Vector2(0, 0.5f);
+            float rotateValue = 30f;
             float addSpeedValue = 0.1f;
+
             for (int j = 0; j < shootBulletsCount; j++)
             {
-                TunningAttack(spawnPos + yTransValue, addSpeedValue);
-                TunningAttack(spawnPos - yTransValue, addSpeedValue);
-                yTransValue *= 2;
+                TunningAttack(spawnPos, addSpeedValue, 0);
+
+                TunningAttack(spawnPos, addSpeedValue, rotateValue);
+                TunningAttack(spawnPos, addSpeedValue, -rotateValue);
+                rotateValue += 30;
                 addSpeedValue *= 2;
             }
             yield return new WaitForSeconds(0.2f);
@@ -71,65 +78,101 @@ public class EndBossTest3 : EndBoss
 
     public IEnumerator Patten1()
     {
-        /*// 발사 횟수 지정
-        int shootRandom = 5;
-        // 탄환 회전각 랜덤 지정 (40도~60도)
-        float shootRandomRotate = Random.Range(40f, 60f);
-        int rotateAddValue = 10;
-        int randStartAddRotate = Random.Range(0, 300);
+        float startSpawnY = 5f;
+        const float startSpawnX = 10f;
+        float addSpeedX = 0f;
+        const float shootDelay = 0.2f;
 
-        int startRot = 0, endRot = 300;
-        bool isRotateRight = Random.Range(0, 100) > 50 ? true : false;
-        for (int i = 0; i < shootRandom; i++)
+        for (int i = 0; i < 5; i++)
         {
+            Vector2 resultSpawnPos = new Vector2(startSpawnX, startSpawnY);
+            StartCoroutine(RepeatPatten1(resultSpawnPos, addSpeedX));
+            startSpawnY -= 2.0f;
+            yield return new WaitForSeconds(shootDelay);
+        }
+        addSpeedX += 4f;
+        startSpawnY += 0.25f;
 
-            for (int j = startRot + randStartAddRotate; j < endRot + randStartAddRotate; j += 10)
-            {
-                Vector2 pos;
-                pos.x = Mathf.Sin(j * Mathf.Deg2Rad) * 12f;
-                pos.y = Mathf.Cos(j * Mathf.Deg2Rad) * 12f;
-                TargetArriveAttack(pos);
+        yield return new WaitForSeconds(0.5f);
 
-            }
-            yield return new WaitForSeconds(0.3f);
-            if (isRotateRight == true)
-            {
-                startRot += rotateAddValue;
-                endRot += rotateAddValue;
-            }
-            else
-            {
+        for (int i = 0; i < 5; i++)
+        {
+            Vector2 resultSpawnPos = new Vector2(startSpawnX, startSpawnY);
+            StartCoroutine(RepeatPatten1(resultSpawnPos, addSpeedX));
 
-                startRot -= rotateAddValue;
-                endRot -= rotateAddValue;
-            }
-        }*/
+            startSpawnY += 2f;
+            yield return new WaitForSeconds(shootDelay);
+        }
+
         yield return new WaitForSeconds(attackEndStopTime); // 공격 종료 대기
         ChangeState(new BossMoveState(this));
     }
+    
+    IEnumerator RepeatPatten1(Vector2 spawnPos, float addSpeedValue)
+    {
+        for(int i = 0; i < 10; i++)
+        {
+            CommonAttack(spawnPos, addSpeedValue);
+            yield return new WaitForSeconds(0.07f);
 
+        }
+    }
+
+    public IEnumerator Patten2()
+    {
+        Player player = GameObject.Find("Player").GetComponent<Player>();
+
+        // 발사 횟수 지정
+        const int shootCount = 2;
+        const int shootBulletsCount = 30;
+
+        for (int i = 0; i < shootCount; i++)
+        {
+            if (player == null)
+                break;
+
+
+            Vector2 playerpos = new Vector2(player.transform.position.x, 6.5f);
+
+            StartCoroutine(DownAttack(playerpos));
+            yield return new WaitForSeconds(1.5f);
+
+        }
+        yield return new WaitForSeconds(attackEndStopTime); // 공격 종료 대기
+        ChangeState(new BossMoveState(this));
+
+    }
 
     // BounceAttack 함수: 회전값에 따라 탄환을 발사
-    void TunningAttack(Vector2 spawnPos, float addSpeedValue)
+    void TunningAttack(Vector2 spawnPos, float addSpeedValue, float rot)
     {
         // 탄환 생성
         GameObject instance = Instantiate(enemyProjectile["EnemyTunningBullet"], spawnPos, transform.rotation);
-        instance.transform.Rotate(0, 0, 90);
+        instance.transform.Rotate(0, 0, 90 + rot);
 
         // 탄환 데이터 설정 (애니메이션, 속도, 데미지, 생명주기, 태그)
-        projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 0.7f + addSpeedValue, 1f, 7f, "Enemy");
+        projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 1f + addSpeedValue, 1f, 7f, "Enemy");
     }
 
-    /// <summary>
-    /// 목표 지점으로 이동 후 자동 삭제되는 총알 발사.
-    /// 화면의 중앙(0,0)을 방향으로 총알이 발사된다.
-    /// </summary>
-    void TargetArriveAttack(Vector2 spawnPos)
+    void CommonAttack(Vector2 spawnPos, float addSpeedValue)
     {
-        //이곳에 원형으로 소환 후, 소환하자마자 목표 타겟(0,0)으로 바라보며 이동한다
-        GameObject instance = Instantiate(enemyProjectile["EnemyTargetBullet"]);
-        instance.transform.position = spawnPos;
-        projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 0.5f, 1f, 15f, "Enemy");
-        attackManage.ShootBulletLookAt(ref instance, instance.GetComponent<EnemyTargetBullet>().GetTargetVector2());
+        GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], spawnPos, transform.rotation);
+        instance.transform.Rotate(0, 0, 90);
+        projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 1f + addSpeedValue, 1f, 7f, "Enemy");
+    }
+
+    IEnumerator DownAttack(Vector2 spawnPos)
+    {
+        const int shootBulletsCount = 30;
+        for(int i = 0; i < shootBulletsCount; i++)
+        {
+            float randX = Random.Range(-1f, 1f);
+            Vector2 resultSpawnPos = new Vector2(spawnPos.x + randX, 6.5f);
+
+            GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], spawnPos, transform.rotation);
+            instance.transform.Rotate(0, 0, 180);
+            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 1.7f, 1f, 7f, "Enemy");
+            yield return new WaitForSeconds(0.05f);
+        }
     }
 }
