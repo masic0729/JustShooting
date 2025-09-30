@@ -20,7 +20,7 @@ public class BossMoveState : EnemyState
 
         enemy.moveTimer = 0;
         // x 좌표 랜덤 범위 설정
-        float randMoveX = Random.Range(1f, 9f);
+        float randMoveX = Random.Range(3f, 7f);
         // y 좌표 랜덤 범위 설정
         float randMoveY = Random.Range(-3.5f, 3.5f);
         RandStayTime();

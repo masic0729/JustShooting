@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18188584, g: 0.2275654, b: 0.3074171, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5166,16 +5166,7 @@ MonoBehaviour:
       - {x: 3, y: 0}
       - {x: 7, y: 0}
   - nextWaveDelay: 4
-    wavesInGroup:
-    - enemyData: 10
-      spawnEnemyCount: 1
-      spawnDelay: 0
-      isCustomPosition: 1
-      isRandPositionY: 0
-      spawnX_Value:
-      - 0
-      ArrivePosition:
-      - {x: 3, y: 0}
+    wavesInGroup: []
   - nextWaveDelay: 4
     wavesInGroup:
     - enemyData: 0
@@ -5310,6 +5301,7 @@ MonoBehaviour:
   - {fileID: 2352199838586986387, guid: d02c95ddd59b6fb48829f46e0ecb63d5, type: 3}
   - {fileID: 2352199838586986387, guid: c323e3aa62c302141b0336bd44ec65c5, type: 3}
   - {fileID: 2352199838586986387, guid: f464105438c63304cbb8338db8897546, type: 3}
+  - {fileID: 2352199838586986387, guid: 0f6814f20cb892741b102011e81018ac, type: 3}
   firstWaveTime: 3
   isEnemyA_Down: 0
 --- !u!1 &421618031
@@ -7918,7 +7910,7 @@ MonoBehaviour:
     wavesInGroup: []
   - nextWaveDelay: 0
     wavesInGroup:
-    - enemyData: 10
+    - enemyData: 8
       spawnEnemyCount: 1
       spawnDelay: 0
       isCustomPosition: 0

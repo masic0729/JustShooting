@@ -79,7 +79,7 @@ public class EndBossTest : EndBoss
             for(int j = startRot + randStartAddRotate; j < endRot + randStartAddRotate; j += 10)
             {
                 Vector2 pos;
-                pos.x = Mathf.Sin(j * Mathf.Deg2Rad) * 12f;
+                pos.x = Mathf.Sin(j * Mathf.Deg2Rad) * 12f - 2;
                 pos.y = Mathf.Cos(j * Mathf.Deg2Rad) * 12f;
                 TargetArriveAttack(pos);
 

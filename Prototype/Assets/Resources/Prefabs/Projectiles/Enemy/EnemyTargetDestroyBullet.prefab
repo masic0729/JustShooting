@@ -160,6 +160,6 @@ MonoBehaviour:
   damage: 0
   isPoolObject: 0
   rotateValue: 1
-  target: {x: 0, y: 0}
+  target: {x: -2, y: 0}
   isArriveDestroy: 1
   currentDistance: 5

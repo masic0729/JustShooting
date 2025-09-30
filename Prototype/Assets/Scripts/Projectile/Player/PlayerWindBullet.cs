@@ -26,13 +26,23 @@ public class PlayerWindBullet : Bullet
             targetBulletManager.TunningObject(ref thisGameObject, ref FakeObject, ref rotateValue, rotateAddValue);
         }
 
-        if (target.GetComponent<Enemy>().GetCharacterColEnable() == false)
+        if(target != null)
         {
-            target = null;
+
+            if (target.GetComponent<Enemy>().GetCharacterColEnable() == false)
+            {
+                target = null;
+            }
+            else
+            {
+                
+                targetBulletManager.TunningObject(ref thisGameObject, ref target, ref rotateValue, rotateAddValue);
+            }
         }
         else
         {
-            targetBulletManager.TunningObject(ref thisGameObject, ref target, ref rotateValue, rotateAddValue);
+            targetBulletManager.TunningObject(ref FakeObject, ref target, ref rotateValue, rotateAddValue);
+
         }
 
 
