@@ -5018,14 +5018,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveGroups:
-  - nextWaveDelay: 5
+  - nextWaveDelay: 3
     wavesInGroup:
     - enemyData: 0
-      spawnEnemyCount: 5
+      spawnEnemyCount: 10
       spawnDelay: 0.5
       isCustomPosition: 0
       isRandPositionY: 0
       spawnX_Value:
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
       - 0
       - 0
       - 0
@@ -5037,11 +5042,25 @@ MonoBehaviour:
       - {x: 0, y: 0}
       - {x: 0, y: 0}
       - {x: 0, y: 0}
+      - {x: 0, y: 0}
+      - {x: 0, y: 0}
+      - {x: 0, y: 0}
+      - {x: 0, y: 0}
+      - {x: 0, y: 0}
+    - enemyData: 1
+      spawnEnemyCount: 1
+      spawnDelay: 2
+      isCustomPosition: 0
+      isRandPositionY: 0
+      spawnX_Value:
+      - 0
+      ArrivePosition:
+      - {x: 0, y: 0}
   - nextWaveDelay: 3
     wavesInGroup:
     - enemyData: 1
       spawnEnemyCount: 3
-      spawnDelay: 1
+      spawnDelay: 3
       isCustomPosition: 0
       isRandPositionY: 1
       spawnX_Value:
@@ -5063,21 +5082,12 @@ MonoBehaviour:
       ArrivePosition:
       - {x: 2, y: 0}
       - {x: 8, y: 0}
-  - nextWaveDelay: 4
-    wavesInGroup:
-    - enemyData: 8
-      spawnEnemyCount: 1
-      spawnDelay: 0
-      isCustomPosition: 1
-      isRandPositionY: 0
-      spawnX_Value:
-      - 0
-      ArrivePosition:
-      - {x: 3, y: 0}
-  - nextWaveDelay: 5
+  - nextWaveDelay: 0
+    wavesInGroup: []
+  - nextWaveDelay: 3
     wavesInGroup:
     - enemyData: 0
-      spawnEnemyCount: 10
+      spawnEnemyCount: 5
       spawnDelay: 0.5
       isCustomPosition: 0
       isRandPositionY: 0
@@ -5087,17 +5097,7 @@ MonoBehaviour:
       - 0
       - 0
       - 0
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
       ArrivePosition:
-      - {x: 3, y: 0}
-      - {x: 3, y: 0}
-      - {x: 3, y: 0}
-      - {x: 3, y: 0}
-      - {x: 3, y: 0}
       - {x: 3, y: 0}
       - {x: 3, y: 0}
       - {x: 3, y: 0}
@@ -5105,7 +5105,7 @@ MonoBehaviour:
       - {x: 3, y: 0}
     - enemyData: 1
       spawnEnemyCount: 2
-      spawnDelay: 0
+      spawnDelay: 3
       isCustomPosition: 0
       isRandPositionY: 1
       spawnX_Value:
@@ -5114,19 +5114,14 @@ MonoBehaviour:
       ArrivePosition:
       - {x: 3, y: 0}
       - {x: 3, y: 0}
-  - nextWaveDelay: 2
+  - nextWaveDelay: 4
     wavesInGroup:
     - enemyData: 0
-      spawnEnemyCount: 10
+      spawnEnemyCount: 5
       spawnDelay: 0.5
       isCustomPosition: 0
       isRandPositionY: 0
       spawnX_Value:
-      - 0
-      - 0
-      - 0
-      - 0
-      - 0
       - 0
       - 0
       - 0
@@ -5138,14 +5133,9 @@ MonoBehaviour:
       - {x: 3, y: 0}
       - {x: 3, y: 0}
       - {x: 3, y: 0}
-      - {x: 3, y: 0}
-      - {x: 3, y: 0}
-      - {x: 3, y: 0}
-      - {x: 3, y: 0}
-      - {x: 3, y: 0}
     - enemyData: 2
       spawnEnemyCount: 2
-      spawnDelay: 0
+      spawnDelay: 3
       isCustomPosition: 0
       isRandPositionY: 1
       spawnX_Value:
@@ -5167,7 +5157,7 @@ MonoBehaviour:
       - {x: 7, y: 0}
   - nextWaveDelay: 4
     wavesInGroup:
-    - enemyData: 10
+    - enemyData: 8
       spawnEnemyCount: 1
       spawnDelay: 0
       isCustomPosition: 1
@@ -5180,7 +5170,7 @@ MonoBehaviour:
     wavesInGroup:
     - enemyData: 0
       spawnEnemyCount: 10
-      spawnDelay: 0
+      spawnDelay: 0.5
       isCustomPosition: 0
       isRandPositionY: 0
       spawnX_Value:
@@ -5207,7 +5197,7 @@ MonoBehaviour:
       - {x: 3, y: 0}
     - enemyData: 1
       spawnEnemyCount: 2
-      spawnDelay: 0
+      spawnDelay: 3
       isCustomPosition: 0
       isRandPositionY: 1
       spawnX_Value:
@@ -5218,7 +5208,7 @@ MonoBehaviour:
       - {x: 3, y: 0}
     - enemyData: 2
       spawnEnemyCount: 2
-      spawnDelay: 0
+      spawnDelay: 3
       isCustomPosition: 0
       isRandPositionY: 1
       spawnX_Value:
@@ -5227,7 +5217,7 @@ MonoBehaviour:
       ArrivePosition:
       - {x: 3, y: 0}
       - {x: 3, y: 0}
-  - nextWaveDelay: 6
+  - nextWaveDelay: 4
     wavesInGroup:
     - enemyData: 0
       spawnEnemyCount: 10
@@ -5258,7 +5248,7 @@ MonoBehaviour:
       - {x: 3, y: 0}
     - enemyData: 2
       spawnEnemyCount: 2
-      spawnDelay: 0
+      spawnDelay: 3
       isCustomPosition: 1
       isRandPositionY: 1
       spawnX_Value:
@@ -5269,7 +5259,7 @@ MonoBehaviour:
       - {x: 9, y: 0}
     - enemyData: 3
       spawnEnemyCount: 2
-      spawnDelay: 0
+      spawnDelay: 4
       isCustomPosition: 1
       isRandPositionY: 1
       spawnX_Value:
@@ -5280,7 +5270,7 @@ MonoBehaviour:
       - {x: 7, y: 0}
   - nextWaveDelay: 0
     wavesInGroup:
-    - enemyData: 11
+    - enemyData: 10
       spawnEnemyCount: 1
       spawnDelay: 0
       isCustomPosition: 1
