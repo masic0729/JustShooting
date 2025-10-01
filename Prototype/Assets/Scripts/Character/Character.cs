@@ -56,6 +56,8 @@ public class Character : IObject
     protected float shieldInvincibilityTime = 0f;               //보호막피해에 의한 무적시간
     // 무적 상태 여부
     protected bool isInvincibility;
+    [SerializeField] bool isAnimDeath = false; // 사망 애니메이션 존재 여부. 존재 시 사망/패배 애님 재생 후 삭제 관련 이벤트 처리
+    [SerializeField] bool isDestroy = true;
 
     /// <summary>
     /// 초기화 및 컴포넌트 설정, 이벤트 연결
@@ -73,7 +75,11 @@ public class Character : IObject
         //OnDamage += OnInvincibility;
 
         // 캐릭터 사망 시 게임 오브젝트 삭제
-        OnCharacterDeath += DestroyCharacter;
+        if(isDestroy == true)
+        {
+            OnCharacterDeath += DestroyCharacter;
+        }
+
         shootTransform = new Dictionary<string, Transform>();
 
         // 자식 트랜스폼 배열로 받아옴 (부모 제외)
@@ -128,7 +134,7 @@ public class Character : IObject
                 //SetHp(0);  
                 // 체력이 0 이하가 되면 0으로 설정하고 죽음 처리 실행
                 hp = 0;
-                OnCharacterDeath?.Invoke();
+                CharacterDeath();
             }
             else
             {
@@ -137,6 +143,12 @@ public class Character : IObject
             OnInvincibility(commonInvincibilityTime);
 
         }
+    }
+
+    public void CharacterDeath()
+    {
+        OnCharacterDeath?.Invoke();
+
     }
 
     /// <summary>

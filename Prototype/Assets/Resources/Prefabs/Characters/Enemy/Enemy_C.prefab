@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f184c323d614ea4db34bee50b4b158f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startShootY: 0
   yMoveSpeedMultify: 1
   isReverse: 0
 --- !u!1 &4683070181729999003
@@ -215,6 +216,7 @@ MonoBehaviour:
   hitExplosion: {fileID: 0}
   destroyExplosion: {fileID: 0}
   attackStats: {fileID: 0}
+  characterCol: {fileID: 0}
   hp: 20
   maxHp: 20
   attackMultiplier: 1
@@ -232,6 +234,7 @@ MonoBehaviour:
     moveSpeed: 5
   moveTimer: 0
   isBoss: 0
+  autoDestroy: 1
 --- !u!1 &5028269444858163927
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,5 +279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f184c323d614ea4db34bee50b4b158f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startShootY: 0
   yMoveSpeedMultify: 1
   isReverse: 1

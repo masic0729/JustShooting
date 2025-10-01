@@ -169,6 +169,7 @@ MonoBehaviour:
   hitExplosion: {fileID: 0}
   destroyExplosion: {fileID: 0}
   attackStats: {fileID: 0}
+  characterCol: {fileID: 0}
   hp: 15
   maxHp: 15
   attackMultiplier: 1
@@ -186,6 +187,7 @@ MonoBehaviour:
     moveSpeed: 5
   moveTimer: 0
   isBoss: 0
+  autoDestroy: 1
 --- !u!1 &3585849649420135481
 GameObject:
   m_ObjectHideFlags: 0

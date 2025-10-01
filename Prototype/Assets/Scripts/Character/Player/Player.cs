@@ -1,3 +1,4 @@
+using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -65,11 +66,11 @@ public class Player : Character
     {
         base.Init();
         InitDic(); // 딕셔너리 초기화
-
+        OnCharacterDamaged += PlayerHitTransMaterial;                                           //플레이어 충돌 시 깜빡임 구현
         maxMoveX = 9.5f;                                                                        // 이동 가능 최대 X 좌표
         maxMoveY = 4.5f;                                                                        // 이동 가능 최대 Y 좌표
         attackDelay = 0.1f;                                                                     // 공격 간 딜레이 초기화
-        SetMoveSpeed(5f);                                                                      // 이동 속도 설정
+        SetMoveSpeed(5f);                                                                       // 이동 속도 설정
         powerStats = GetComponent<PlayerPower>();
         commonInvincibilityTime = 2f;                                                           // 무적 시간 설정
         OnDamage += GetDamageEffect;                                                            // 데미지 입었을 때 효과 재생
@@ -295,6 +296,25 @@ public class Player : Character
         GameManager.instance.GameEnd(UI_Manager.ScreenInfo.Lose); // 게임 종료 처리 (패배)
         gameObject.SetActive(false);                 // 플레이어 비활성화
 
+    }
+
+    void PlayerHitTransMaterial(float fake)
+    {
+        StartCoroutine(HitTransformMesh());   
+    }
+
+    IEnumerator HitTransformMesh()
+    {
+        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        int transMeshCount = 10;
+        for(int i = 0; i < transMeshCount; i++)
+        {
+            renderer.enabled = false;
+            yield return new WaitForSeconds(commonInvincibilityTime / (transMeshCount * 2));
+            renderer.enabled = true;
+            yield return new WaitForSeconds(commonInvincibilityTime / (transMeshCount * 2));
+
+        }
     }
 
     // 이펙트 재생 코루틴

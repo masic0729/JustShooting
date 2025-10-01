@@ -3304,12 +3304,14 @@ MonoBehaviour:
   destroyExplosion: {fileID: 0}
   attackStats: {fileID: 0}
   characterCol: {fileID: 0}
-  hp: 1700
-  maxHp: 1700
+  hp: 1200
+  maxHp: 1200
   attackMultiplier: 1
   attackDelay: 0
   projectileMoveSpeedMultify: 1
   characterGetDamageMultify: 1
+  isAnimDeath: 1
+  isDestroy: 1
   stateIndex: 0
   lastPosition: {x: 0, y: 0}
   arrivePosition: {x: 0, y: 0}
@@ -3323,6 +3325,7 @@ MonoBehaviour:
     moveSpeed: 0
   moveTimer: 0
   isBoss: 1
+  autoDestroy: 0
   root: {fileID: 0}
   bossName: "\uB77C\uD30C\uC5D8"
   isFinalBoss: 1

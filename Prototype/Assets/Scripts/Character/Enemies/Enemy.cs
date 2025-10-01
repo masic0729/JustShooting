@@ -52,7 +52,26 @@ public class Enemy : Character
     // 보스 여부 플래그
     bool isBoss = false;
     // 고정 위치 사용 여부 플래그
+    
     protected bool isSelfPosition = true;
+    [SerializeField]
+    protected bool autoDestroy = false;
+
+    private void OnDestroy()
+    {
+        if(GetHp() > 0.0f && isBoss == false && autoDestroy == true)
+        {
+            int rotValue = 0;
+            for(int i = 0; i < 4; i++)
+            {
+                GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], transform.position, transform.rotation);
+                projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 10f, "Enemy");
+
+                instance.transform.Rotate(0, 0, rotValue);
+                rotValue += 90;
+            }
+        }
+    }
 
     // 초기 Awake 호출 (FSM 등 외부에서 설정)
     protected virtual void Awake()
@@ -77,6 +96,11 @@ public class Enemy : Character
     protected override void Init()
     {
         base.Init();
+
+        if(autoDestroy == true)
+        {
+            Destroy(this.gameObject, 13f);
+        }
 
         // 사망 시 기본 폭발 이펙트 연결
         OnCharacterDeath += DefaultEnemyDestroyEffect;
@@ -178,19 +202,5 @@ public class Enemy : Character
     {
         isBoss = state;
     }
-
-    // 적의 기본 공격 함수 (상속 시 오버라이드 가능)
-    /*virtual public void Attack()
-    {
-        Debug.Log("공격끝");
-        ChangeState(new BossMoveState(this));
-    }*/
-
-    /*virtual public IEnumerator Attack()
-    {
-        Debug.Log("공격");
-        yield return null;
-    }*/
-
-    
+   
 }
