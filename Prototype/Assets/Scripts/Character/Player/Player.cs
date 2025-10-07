@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class Player : Character
 {
@@ -24,8 +23,10 @@ public class Player : Character
     public PlayerBulletData[] bulletDataArray;
     // 버프 및 스킬 프리팹 배열
     public GameObject[] buffPrefabs, skillPrefabs;
+    [SerializeField] GameObject[] skillUseEffect;
     CircleCollider2D circleCollider;
     GameObject hitBox;
+    [SerializeField] GameObject buffOnObject;
 
     // 총알 데이터 딕셔너리 (무기 이름을 키로)
     Dictionary<string, PlayerBulletData> bulletDataDict = new();
@@ -66,7 +67,7 @@ public class Player : Character
     {
         base.Init();
         InitDic(); // 딕셔너리 초기화
-        OnCharacterDamaged += PlayerHitTransMaterial;                                           //플레이어 충돌 시 깜빡임 구현
+        //OnCharacterDamaged += CharacterHitTransMaterial;                                           //플레이어 충돌 시 깜빡임 구현
         maxMoveX = 9.5f;                                                                        // 이동 가능 최대 X 좌표
         maxMoveY = 4.5f;                                                                        // 이동 가능 최대 Y 좌표
         attackDelay = 0.1f;                                                                     // 공격 간 딜레이 초기화
@@ -74,10 +75,17 @@ public class Player : Character
         powerStats = GetComponent<PlayerPower>();
         commonInvincibilityTime = 2f;                                                           // 무적 시간 설정
         OnDamage += GetDamageEffect;                                                            // 데미지 입었을 때 효과 재생
-        OnDamage += UpdateHpUI;                                                                 // 체력 UI 갱신
+        OnDamage += UpdateHpUI;
+        OnDefDamage += DefDamaged;
+        // 체력 UI 갱신
         OnCharacterDeath += PlayerDeath;                                                        // 플레이어 사망 처리
         SetShieldInvincibilityTime(5f);                                                         //플레이어는 보호막에 의한 무적 시간은 5초이다
         circleCollider = GetComponent<CircleCollider2D>();
+
+        buffOnObject = Instantiate(buffOnObject, transform.position, transform.rotation);
+        buffOnObject.transform.parent = this.transform;
+        buffOnObject.transform.Translate(0, -1f, 0);
+        buffOnObject.SetActive(false);
 
         // 히트 이펙트 오브젝트 인스턴스 생성 및 비활성화
         hitExplosion = Instantiate(hitExplosion, transform.position, transform.rotation);
@@ -85,6 +93,7 @@ public class Player : Character
         hitExplosion.SetActive(false);
 
         SetCurrentBullet(BulletType.Wind);                                                      // 기본 총알 설정
+        anim.SetTrigger("Appear");
     }
 
     // 딕셔너리 초기화 함수
@@ -189,6 +198,8 @@ public class Player : Character
             ActivateSkill();
             Invoke(nameof(ResetPowerRegen), PowerRestartDelay);
             anim.SetTrigger("Skill");
+            buffOnObject.SetActive(false);
+
         }
         else
         {
@@ -199,6 +210,14 @@ public class Player : Character
         // 총알 타입 순차 변경 (0~2 반복)
         currentBullet = (BulletType)(((int)currentBullet + 1) % 3);
         SetCurrentBullet(currentBullet); // 변경된 총알 설정
+    }
+
+    public void DefDamaged()
+    {
+        if(GetShield() == 0)
+        {
+            UI_Manager.instance.defIcon.SetActive(false);
+        }
     }
 
     // 현재 총알 타입 설정 함수
@@ -298,24 +317,7 @@ public class Player : Character
 
     }
 
-    void PlayerHitTransMaterial(float fake)
-    {
-        StartCoroutine(HitTransformMesh());   
-    }
-
-    IEnumerator HitTransformMesh()
-    {
-        MeshRenderer renderer = GetComponent<MeshRenderer>();
-        int transMeshCount = 10;
-        for(int i = 0; i < transMeshCount; i++)
-        {
-            renderer.enabled = false;
-            yield return new WaitForSeconds(commonInvincibilityTime / (transMeshCount * 2));
-            renderer.enabled = true;
-            yield return new WaitForSeconds(commonInvincibilityTime / (transMeshCount * 2));
-
-        }
-    }
+    
 
     // 이펙트 재생 코루틴
     IEnumerator EffectCycle(GameObject effect)
@@ -350,30 +352,36 @@ public class Player : Character
     {
         Instantiate(buffDict[currentBullet.ToString()]); // 현재 무기 버프 인스턴스화
         AudioManager.Instance.PlaySFX("PowerOn");       // 파워 온 효과음 재생
+        buffOnObject.SetActive(true);
     }
 
     // 바람 스킬 함수
     public void WindSkill(GameObject bullet, int count)
     {
-        StartCoroutine(SkillShoot(bullet, count, 0.8f));  // 바람 스킬 총알 연사 시작
+        StartCoroutine(SkillShoot(bullet, count, 0.8f, "WindSkillUse"));  // 바람 스킬 총알 연사 시작
         AudioManager.Instance.PlaySFX("WindSkillShoot"); // 바람 스킬 효과음 재생
     }
 
     // 얼음 스킬 함수
     public void IcedSkill(GameObject bullet)
     {
-        StartCoroutine(SkillShoot(bullet, 15, 0.7f));    // 얼음 스킬 총알 연사 시작
+        StartCoroutine(SkillShoot(bullet, 15, 0.7f, "IcedSkillUse"));    // 얼음 스킬 총알 연사 시작
         AudioManager.Instance.PlaySFX("IcedSkill");      // 얼음 스킬 효과음 재생
+
     }
 
     // 스킬 총알 연사 코루틴
-    IEnumerator SkillShoot(GameObject prefab, int count, float damageRate)
+    IEnumerator SkillShoot(GameObject prefab, int count, float damageRate, string skillEffectName)
     {
         float delay = attackDelay * attackStats.attackDelayMultify; // 총알 발사 간 딜레이 계산
 
         for (int i = 0; i < count; i++)
         {
             GameObject instance = Instantiate(prefab, shootTransform["Skill"].position, shootTransform["Skill"].rotation); // 스킬 총알 인스턴스화
+
+            ParticleManager.Instance.PlayEffect(skillEffectName, transform.position);
+
+
             if (instance != null)
             {
                 instance.tag = "Player"; // 태그 설정

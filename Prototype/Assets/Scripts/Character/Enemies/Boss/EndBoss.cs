@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class EndBoss : Boss
 {
+    public GameObject BossCutIn;
     [SerializeField]
     // 최종 보스 여부 플래그
     bool isFinalBoss;
@@ -19,7 +20,6 @@ public class EndBoss : Boss
     protected override void Start()
     {
         base.Start();
-        Init();
     }
 
     /// <summary>
@@ -52,6 +52,7 @@ public class EndBoss : Boss
     {
         base.Init();
         TransBossCollider();
+        CardManager.instance.ShowCards();
 
         if (isFinalBoss == true)
         {
@@ -62,6 +63,8 @@ public class EndBoss : Boss
         {
             OnCharacterDeath += StageClearAction; // 일반 보스 클리어 이벤트
             OnCharacterDeath += RestartWave;      // 웨이브 재시작 (추후 제거 예정)
+            //OnCharacterDeath += GameManager.instance.StageUp;
+
         }
     }
 
@@ -95,6 +98,14 @@ public class EndBoss : Boss
         base.OnTriggerEnter2D(collision);
     }
 
+    public virtual void ShowReAction()
+    {
+        GameObject instance = Instantiate(BossCutIn);
+        Destroy(instance, 3f);
+        Debug.Log("컷인 실행됨");
+        
+    }
+
 
     // SpreadAttack 함수: 원형 탄환 발사
     public void SpreadAttack(int shootCount, float rootRotateValue)
@@ -115,5 +126,10 @@ public class EndBoss : Boss
         int result = Random.Range(0, maxPatten);
         anim.SetTrigger("Attack");
         anim.SetInteger("PattenIndex", result);
+    }
+
+    public bool GetIsFinalBoss()
+    {
+        return isFinalBoss;
     }
 }

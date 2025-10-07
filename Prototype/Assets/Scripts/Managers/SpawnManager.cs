@@ -76,7 +76,7 @@ public class SpawnManager : MonoBehaviour
     IEnumerator SpawnCoroutineGroup(WaveGroup group)
     {
         isSpawning = true;
-
+        isEnemyA_Down = Random.Range(0, 2) == 1 ? false : true;
         List<Coroutine> activeSpawns = new List<Coroutine>();
 
         foreach (var wave in group.wavesInGroup)

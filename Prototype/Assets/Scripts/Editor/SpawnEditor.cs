@@ -18,7 +18,7 @@ public class SpawnEditor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        EditorGUILayout.LabelField("Wave Groups", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("wave Groups", EditorStyles.boldLabel);
 
         // 각 WaveGroup 단위로 반복 처리
         for (int i = 0; i < waveGroups.arraySize; i++)
@@ -89,10 +89,10 @@ public class SpawnEditor : Editor
         }
 
         // WaveGroup 자체 추가/삭제 버튼
-        if (GUILayout.Button("Add new Wave Group"))
+        if (GUILayout.Button("Add new wave Group"))
             waveGroups.InsertArrayElementAtIndex(waveGroups.arraySize);
 
-        if (waveGroups.arraySize > 0 && GUILayout.Button("Delete Last Wave Group"))
+        if (waveGroups.arraySize > 0 && GUILayout.Button("Delete Last wave Group"))
             waveGroups.DeleteArrayElementAtIndex(waveGroups.arraySize - 1);
 
         serializedObject.ApplyModifiedProperties();

@@ -22,6 +22,7 @@ public class EndBossTest : EndBoss
     protected override void Init()
     {
         base.Init();
+        OnCharacterDeath += CardManager.instance.ShowCards;
     }
 
     // 충돌 처리 함수: 부모 클래스 충돌 처리 호출
@@ -32,6 +33,12 @@ public class EndBossTest : EndBoss
     public override void Attack()
     {
         base.Attack();
+    }
+
+    public override void ShowReAction()
+    {
+        base.ShowReAction();
+        //사운드 구현
     }
 
     public void StartPatten(int pattenIndex)
@@ -68,10 +75,9 @@ public class EndBossTest : EndBoss
         int shootRandom = 5;
         // 탄환 회전각 랜덤 지정 (40도~60도)
         float shootRandomRotate = Random.Range(40f, 60f);
-        int rotateAddValue = 10;
         int randStartAddRotate = Random.Range(0, 300);
 
-        int startRot = 0, endRot = 300;
+        int startRot = 0, endRot = 270;
         bool isRotateRight = Random.Range(0, 100) > 50 ? true : false;
         for (int i = 0; i < shootRandom; i++)
         {
@@ -85,7 +91,7 @@ public class EndBossTest : EndBoss
 
             }
             yield return new WaitForSeconds(0.3f);
-            if(isRotateRight == true)
+            /*if(isRotateRight == true)
             {
                 startRot += rotateAddValue;
                 endRot += rotateAddValue;
@@ -95,7 +101,7 @@ public class EndBossTest : EndBoss
 
                 startRot -= rotateAddValue;
                 endRot -= rotateAddValue;
-            }
+            }*/
         }
         yield return new WaitForSeconds(attackEndStopTime); // 공격 종료 대기
         ChangeState(new BossMoveState(this));

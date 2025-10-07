@@ -43,12 +43,12 @@ public class ParticleManager : MonoBehaviour
     }
 
     // 이펙트 재생 함수
-    public void PlayEffect(string effectName, Vector3 position)
+    public GameObject PlayEffect(string effectName, Vector3 position)
     {
         if (!particlePools.ContainsKey(effectName))
         {
             Debug.LogWarning(effectName + "이펙트 미등록");
-            return;
+            return null;
         }
 
         GameObject effect;
@@ -76,7 +76,7 @@ public class ParticleManager : MonoBehaviour
         {
             StartCoroutine(ReturnToPool(effectName, effect, ps.main.duration));
         }
-
+        return effect;
     }
 
     // 딜레이 후 이펙트를 풀로 복귀

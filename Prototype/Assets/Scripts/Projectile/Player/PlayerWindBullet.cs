@@ -7,7 +7,7 @@ public class PlayerWindBullet : Bullet
 {
     GameObject target;
     GameObject FakeObject;
-
+    Player player;
 
     protected override void Start()
     {
@@ -57,5 +57,9 @@ public class PlayerWindBullet : Bullet
         rotateRandom = randValue == 1 ? rotateRandom *= -1 : rotateRandom;
         this.gameObject.transform.Rotate(0, 0, rotateRandom);
         FakeObject = GameObject.Find("FakeObject");
+
+        player = GameObject.Find("Player").GetComponent<Player>();
+        damage = StatManager.instance.p_skillDamageMultify * player.attackStats.damage;
+
     }
 }

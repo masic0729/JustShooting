@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class CardManager : MonoBehaviour
 {
     public static CardManager instance;
+    public GameObject CardPanel;
     //리스트 관련해서 공부하는 기회의 스크립트. 결국 이 스크립트로 최종적으로 구현할 예정이지만, 학습에 중점을 두고 있음
     /*
     1. 카드인포를 기반으로 리스트를 받는다.
@@ -53,7 +54,7 @@ public class CardManager : MonoBehaviour
     private void Start()
     {
         CardListLoad();
-        ShowCards();
+        //ShowCards();
     }
 
     private void Update()
@@ -114,7 +115,7 @@ public class CardManager : MonoBehaviour
         //todo카드 프레임은 추후 변동되지 않거나, 추가 구현 요구
     }
 
-    void ShowCards()
+    public void ShowCards()
     {
         List<CardData> instanceCards = CardDataLoad();
         for(int i = 0; i < instanceCards.Count; i++)
@@ -122,6 +123,8 @@ public class CardManager : MonoBehaviour
             currentCards[i].SetActive(true);
             SetCard(currentCards[i], instanceCards[i]);
         }
+        CardPanel.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
 
@@ -136,6 +139,9 @@ public class CardManager : MonoBehaviour
         {
             currentCards[i].SetActive(false);
         }
+        CardPanel.SetActive(false);
+        Time.timeScale = 1.0f;
+
     }
 
 
@@ -263,6 +269,7 @@ public class CardManager : MonoBehaviour
         //또한 얼음 버프 효과가 발동이 되면, TakeDamage를 해지하고, 보호막 만을 위한 함수를 구독하여 유연하게 처리한다
         //쉴드로 피해를 상쇄할 때는 무적시간이 5초이다.
         StatManager.instance.playerData.SetShield(1);
+        UI_Manager.instance.defIcon.SetActive(true);
     }
 
     /// <summary>
@@ -298,7 +305,7 @@ public class CardManager : MonoBehaviour
     {
         Debug.Log("RandomSkill");
         StatManager.instance.isRandomSkill = true;
-        StatManager.instance.p_skillDamageMultify += 0.5f;
+        StatManager.instance.p_skillDamageMultify += 0.2f;
     }
 
     void tresh()

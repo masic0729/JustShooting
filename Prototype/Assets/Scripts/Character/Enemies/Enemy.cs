@@ -5,6 +5,8 @@ using UnityEngine;
 // 적 캐릭터의 기본 행동을 정의하는 클래스
 public class Enemy : Character
 {
+    [SerializeField] Sprite[] enemySprite;
+
     // 적의 상태 머신 관리용 변수
     public StateMachine enemyState;
     // 상태 인덱스 (보스 등 복잡한 상태 처리 시 사용)
@@ -48,6 +50,9 @@ public class Enemy : Character
     private float lastHitSoundTime = -1f;
     public float moveTimer = 0f;
 
+
+
+
     [SerializeField]
     // 보스 여부 플래그
     bool isBoss = false;
@@ -65,7 +70,7 @@ public class Enemy : Character
             for(int i = 0; i < 4; i++)
             {
                 GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], transform.position, transform.rotation);
-                projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed, 1f, 10f, "Enemy");
+                projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 1.2f, 1f, 10f, "Enemy");
 
                 instance.transform.Rotate(0, 0, rotValue);
                 rotValue += 90;
@@ -97,13 +102,18 @@ public class Enemy : Character
     {
         base.Init();
 
-        if(autoDestroy == true)
+        if(isBoss == false)
         {
-            Destroy(this.gameObject, 13f);
+            GetComponent<SpriteRenderer>().sprite = enemySprite[GameManager.instance.GetStage()];
+
+        }
+
+        if (autoDestroy == true)
+        {
+            Destroy(this.gameObject, 10f);
         }
 
         // 사망 시 기본 폭발 이펙트 연결
-        OnCharacterDeath += DefaultEnemyDestroyEffect;
         lastPosition = this.transform.position;
         movement = new ObjectMovement();
         thisGameObject = this.gameObject;
@@ -136,11 +146,7 @@ public class Enemy : Character
     }
 
     // 사망 시 폭발 이펙트 및 사운드 실행
-    void DefaultEnemyDestroyEffect()
-    {
-        ParticleManager.Instance.PlayEffect("EnemyExplosion", this.transform.position);
-        AudioManager.Instance.PlaySFX("EnemyExplosion");
-    }
+    
 
     // 상태 변경 요청 처리, 상태 머신에 위임
     public void ChangeState(EnemyState state)
@@ -168,9 +174,9 @@ public class Enemy : Character
         // 플레이어의 발사체와 충돌 시 히트 이펙트 출력
         if (collision.transform.tag == "Player" && (collision.GetComponent<Projectile>()))
         {
-            float randPos = Random.Range(-0.15f, 0.15f);
+            /*float randPos = Random.Range(-0.15f, 0.15f);
             Vector2 spawnHitEffectPosition = new Vector2(collision.transform.position.x + Mathf.Abs(randPos), transform.position.y + randPos);
-            ParticleManager.Instance.PlayEffect("EnemyHit", collision.ClosestPoint(spawnHitEffectPosition));
+            ParticleManager.Instance.PlayEffect("EnemyHit", collision.ClosestPoint(spawnHitEffectPosition));*/
             DemagedSound();
         }
     }
@@ -180,7 +186,11 @@ public class Enemy : Character
     {
         if (Time.time - lastHitSoundTime < hitSoundCooldown) return;
 
-        AudioManager.Instance.PlaySFX("EnemyHit");
+        if(hitSoundName == null)
+        {
+            hitSoundName = "EnemyHit";
+        }
+        AudioManager.Instance.PlaySFX(hitSoundName);
         lastHitSoundTime = Time.time;
     }
 
@@ -203,4 +213,5 @@ public class Enemy : Character
         isBoss = state;
     }
    
+
 }

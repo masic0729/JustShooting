@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerIcedBullet : Bullet
 {
     GameObject target;
-
+    Player player;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -13,6 +13,16 @@ public class PlayerIcedBullet : Bullet
         Init();
         target = targetBulletManager.TargetSearching(ref thisGameObject, "Enemy", false);
 
+        if (target == null)
+        {
+            target = targetBulletManager.TargetSearching(ref thisGameObject, "Enemy", true);
+
+        }
+
+        if(target == null)
+        {
+            target = GameObject.Find("FakeObject");
+        }
         targetBulletManager.DirectTargetObject(ref thisGameObject, ref target);
     }
 
@@ -25,6 +35,8 @@ public class PlayerIcedBullet : Bullet
     protected override void Init()
     {
         base.Init();
+        player = GameObject.Find("Player").GetComponent<Player>();
+        damage = StatManager.instance.p_skillDamageMultify * player.attackStats.damage;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

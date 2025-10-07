@@ -6,7 +6,7 @@ public class Projectile : IObject
 
     protected Vector3 projectileMoveVector; // 발사 방향 벡터
 
-    //GameObject ProjectileEffect; //정확히 어떤 것들이 있는 지 파악이 안되므로 선언만 하였음
+    [SerializeField] protected GameObject ProjectileHitEffect; //정확히 어떤 것들이 있는 지 파악이 안되므로 선언만 하였음
     ObjectInteraction projectileInteraction; // 피해 전달 클래스
 
     [SerializeField]
@@ -17,6 +17,7 @@ public class Projectile : IObject
 
     [SerializeField]
     private bool isPoolObject; //발사체의 출처가 풀링된 객채를 확인함
+    protected string hitSoundName = null;
 
     protected bool isCanMove = true; // 이동 가능 여부
 
@@ -80,7 +81,7 @@ public class Projectile : IObject
             this.transform.tag == "Enemy" && collision.transform.tag == "Player")
         {
             Character instanceHitCharacter = collision.GetComponent<Character>();
-
+            instanceHitCharacter.SetHitSoundName(hitSoundName);
             // 무적이 아닌 대상일 경우 피해 적용
             if (instanceHitCharacter != null && instanceHitCharacter.GetIsInvincibility() == false)
             {
@@ -100,10 +101,13 @@ public class Projectile : IObject
                     instanceHitCharacter.OnDamage?.Invoke();
                 }
 
-                // 디버깅 용: 플레이어 이름이 "Player"일 때 HP 출력
-                if (collision.transform.tag == "Player" && collision.transform.name == "Player")
+
+                if (ProjectileHitEffect != null)
                 {
-                    Debug.Log(collision.GetComponent<Player>().GetHp());
+                    //해당 부분에 이펙트 발생
+                    float randPos = Random.Range(-0.15f, 0.15f);
+                    Vector2 spawnHitEffectPosition = new Vector2(collision.transform.position.x + Mathf.Abs(randPos), transform.position.y + randPos);
+                    ParticleManager.Instance.PlayEffect(ProjectileHitEffect.name, collision.ClosestPoint(spawnHitEffectPosition));
                 }
             }
 

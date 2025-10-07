@@ -44,7 +44,7 @@ public class ObjectInteraction
 
             // 데미지를 입은 상태 처리 (피격 이펙트 및 무적처리 등)
             
-            character.OnDamage();
+            character.OnDamage?.Invoke();
         }
     }
 }

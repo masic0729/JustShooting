@@ -9,7 +9,7 @@ public class PlayerCommonBullet : Bullet
     float windAttackDelayTransValue = 0.05f;
     bool isCritical = false;                                //치명타 발생하는 발사체인 지 확인
     Player player;
-
+    [SerializeField] GameObject[] pHitEffects;
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -44,7 +44,20 @@ public class PlayerCommonBullet : Bullet
         {
             player = GameObject.Find("Player").GetComponent<Player>();
         }
-        
+
+        switch (bulletName)
+        {
+            case "Wind":
+                ProjectileHitEffect = pHitEffects[0];
+                break;
+            case "Iced":
+                ProjectileHitEffect = pHitEffects[1];
+                break;
+            case "Fire":
+                ProjectileHitEffect = pHitEffects[2];
+                break;
+        }
+
     }
 
     public void SetCritical()
@@ -55,6 +68,8 @@ public class PlayerCommonBullet : Bullet
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
+        
+
         base.OnTriggerEnter2D(collision);
         if (bulletName == player.GetPlayerWeaponName() && player.windBulletHitCount < 6 &&
             collision.transform.tag =="Enemy" && bulletName == "Wind" && player != null)
@@ -63,5 +78,6 @@ public class PlayerCommonBullet : Bullet
             player.windBulletHitCount++;
         }
         
+
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 //todo 윈드 불렛에 버그 확인. 얼음에도 있을 것 같고, 얼음은 없었던 것 같지만 한번 더 확인할 것. 인덱스를 벗어났다는 이슈
 
@@ -75,6 +76,9 @@ public class TargetBulletManagement
 
         for (int i = 0; i < instance.Length; i++)
         {
+            if (instance.Length > 1 && instance[i].name == "FakeObject")
+                continue;
+
             if (instance != null && instance[i].GetComponent<Character>() != null)
             {
                 targetCharacters.Add(instance[i]);

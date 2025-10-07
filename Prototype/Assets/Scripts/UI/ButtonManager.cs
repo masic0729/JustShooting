@@ -64,6 +64,16 @@ public class ButtonManager : MonoBehaviour
         ClickedButton = button;
     }
 
+    /// <summary>
+    /// 창 닫기 버튼에 주로 사용한다
+    /// </summary>
+    public void CloseParentGameObject()
+    {
+        this.gameObject.transform.parent.gameObject.SetActive(false);
+        //todo 혹시 시간 버그 터지면 여기 예외처리할것
+        Time.timeScale = 1.0f;
+    }
+
     // 마우스가 버튼 위에 올라갔을 때 크기 키우는 효과 시작
     public void OnButtonEnter(GameObject button)
     {

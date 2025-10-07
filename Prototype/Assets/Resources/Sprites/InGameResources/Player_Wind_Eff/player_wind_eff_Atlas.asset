@@ -1,21 +1,3 @@
-%YAML 1.1
-%TAG !u! tag:unity3d.com,2011:
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b194f808b1af6499c93410e504af42, type: 3}
-  m_Name: player_wind_eff_Atlas
-  m_EditorClassIdentifier: 
-  textureLoadingMode: 0
-  onDemandTextureLoader: {fileID: 0}
-  atlasFile: {fileID: 4900000, guid: a6393355b304a83418f3c243d00170b0, type: 3}
-  materials:
-  - {fileID: 2100000, guid: fbe1dd3e43bef7e4d8f0c3f05053d333, type: 2}
-  - {fileID: 2100000, guid: b9f6bdc4b8f7275488e5fc2cc2da6369, type: 2}
-  - {fileID: 2100000, guid: a01e0a664525c9141aac5ddd779dd328, type: 2}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2e5edc423de9c2a52c41a3a14accbcc53072df9512e3b83100fb68fd47127226
+size 777

@@ -46,6 +46,12 @@ public class EndBossTest3 : EndBoss
             StartCoroutine(Patten2());
     }
 
+    public override void ShowReAction()
+    {
+        base.ShowReAction();
+        //사운드 구현
+    }
+
     public IEnumerator Patten0()
     {
         // 발사 횟수 지정
@@ -165,12 +171,12 @@ public class EndBossTest3 : EndBoss
         const int shootBulletsCount = 70;
         for(int i = 0; i < shootBulletsCount; i++)
         {
-            float randX = Random.Range(-0.5f, 0.5f);
+            float randX = Random.Range(-1.0f, 1.0f);
             Vector2 resultSpawnPos = new Vector2(spawnPos.x + randX, 6.5f);
 
             GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], resultSpawnPos, transform.rotation);
             instance.transform.Rotate(0, 0, 180);
-            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 1.2f, 1f, 7f, "Enemy");
+            projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 1.0f, 1f, 7f, "Enemy");
             yield return new WaitForSeconds(0.05f);
         }
     }

@@ -11,7 +11,6 @@ public class Enemy_B : Enemy
     [SerializeField]
     // targetPosY 변수 선언: 현재 목표 y 위치
     float targetPosY;
-    [SerializeField]
     // shootCount 변수 선언: 한 번에 발사할 총알 수
     int shootCount = 8;
     // isArrivePoint 변수 선언: 목표 지점 도달 여부 판단용

@@ -6,7 +6,6 @@ public class BossMoveState : EnemyState
 {
     // 생성자: Enemy 객체를 받아 기본 EnemyState 초기화
     public BossMoveState(Enemy enemy) : base(enemy) { }
-    const float moveTime = 1f;
 
     /// <summary>
     /// 상태 진입 시 호출되는 함수

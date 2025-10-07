@@ -4,7 +4,10 @@ using System.Collections;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance; // 싱글톤 인스턴스
-    [SerializeField] int stage = 1;
+    [SerializeField] Player player;
+    [SerializeField] SpriteRenderer fadeScreen;
+    [SerializeField] int stage = 0;
+    [SerializeField] BackGroundScroll[] backgrounds;
     //public bool isGameEnd = false;                                 //승패를 떠나서, 어쨋든 끝났을 때 처리하는 스탠스
 
     public enum GameState
@@ -55,6 +58,11 @@ public class GameManager : MonoBehaviour
         {
             UI_Manager.instance.ShowScreen(UI_Manager.ScreenInfo.Pause);
         }
+
+        /*if(Input.GetKeyDown(KeyCode.F))
+        {
+            StartCoroutine(FadeInOutAction());
+        }*/
     }
 
     // 게임 종료 처리
@@ -69,9 +77,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PlayerWinReAction()
+    {
+        player.anim.SetTrigger("Win");
+    }
+
     public void StageUp()
     {
-        stage++;
+        //이곳에 배경 전환 및 화면 페이드 아웃/페이드 인
+        StartCoroutine(FadeInOutAction());
+    }
+
+    public int GetStage()
+    {
+        return stage;
     }
 
     // 종료 연출 (1초 대기 후 화면 전환 + 배경음 변경)
@@ -82,5 +101,31 @@ public class GameManager : MonoBehaviour
         //isGameEnd = true;
         gameState = GameState.End;
         AudioManager.Instance.PlayBGM("Soft1"); // 부드러운 배경음 전환
+    }
+    
+    IEnumerator FadeInOutAction()
+    {
+        for (int i = 0; i < 30; i++)
+        {
+            fadeScreen.color = new Vector4(0, 0, 0, i /30f);
+            yield return new WaitForSeconds(Time.deltaTime * 2.5f);
+
+        }
+        stage++;
+        
+        //배경 전환
+        for(int i = 0; i < backgrounds.Length; i++)
+        {
+            backgrounds[i].SetBackgroundPartByStage();
+        }
+
+        //이곳에스테이지 전환
+
+        for (int i = 30; i >= 0; i--)
+        {
+            fadeScreen.color = new Vector4(0, 0, 0, i / 30f);
+            yield return new WaitForSeconds(Time.deltaTime * 2.5f);
+
+        }
     }
 }

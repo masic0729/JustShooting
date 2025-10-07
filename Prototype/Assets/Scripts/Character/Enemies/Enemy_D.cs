@@ -61,12 +61,12 @@ public class Enemy_D : Enemy
     /// </summary>
     IEnumerator AttackEnemyBullet()
     {
-        const float shootTime = 3f; // 총 발사 시간
-        const int shootCount = 10;  // 발사할 탄환 수
+        const float shootTime = 1.5f; // 총 발사 시간
+        const int shootCount = 6;  // 발사할 탄환 수
         float reAttackDelay = shootTime / shootCount; // 탄환 발사 간격
 
     Repeat:
-        yield return new WaitForSeconds(attackDelay); // 초기 대기
+        yield return new WaitForSeconds(attackDelay * 2f); // 초기 대기
 
         // 탄환 연속 발사 루프
         for (int i = 0; i < shootCount; i++)

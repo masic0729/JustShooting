@@ -25,8 +25,8 @@ public class WaveEffect : MonoBehaviour
         Vector2 instanceValue = Vector2.zero;
         if(player != null)
         {
-            float rectHeight = rectTransform.rect.height / 100;
-            instanceValue = new Vector2(0, player.powerStats.playerPower * rectHeight - rectTransform.rect.height);
+            float rectWidth = rectTransform.rect.width / 50;
+            instanceValue = new Vector2(-rectTransform.rect.width - 110 + player.powerStats.playerPower * rectWidth, 88);
         }
         return instanceValue;
 

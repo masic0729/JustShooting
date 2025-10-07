@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -14,17 +14,21 @@ public class UI_Manager : MonoBehaviour
     }
 
     public static UI_Manager instance; // 싱글톤 인스턴스
-
+    public GameObject wave;
+    public Sprite[] waveImage;
+    Dictionary<string, Sprite> waveImageDic;
     public GameObject CountImage; // 카운트다운 이미지 그룹
     [SerializeField]
     private GameObject[] GameScreens; // 승패/일시정지 등의 화면 패널들
     Dictionary<string, GameObject> GameScreenName; // 이름으로 각 패널에 접근하기 위한 딕셔너리
+    public GameObject GuidePanel;
 
     [Header("PlayerWeapon")]
     public GameObject[] currentWeapon; // 현재 무기 UI 표시
     public GameObject[] nextWeapon;    // 다음 무기 UI 표시
 
     public GameObject[] hpIcons; // 플레이어 HP 아이콘들
+    public GameObject defIcon; // 카드에 의한 보호막 아이콘
 
     [Header("BossUI_Info")]
     public GameObject bossHp; // 보스 HP UI 패널
@@ -53,11 +57,20 @@ public class UI_Manager : MonoBehaviour
     void Init()
     {
         GameScreenName = new Dictionary<string, GameObject>();
+        waveImageDic = new Dictionary<string, Sprite>();
+
         for (int i = 0; i < GameScreens.Length; i++)
         {
             GameScreenName[GameScreens[i].name] = GameScreens[i]; // 이름을 기반으로 딕셔너리화
         }
+
+        
+        waveImageDic["Wind"] = waveImage[0];
+        waveImageDic["Iced"] = waveImage[1];
+        waveImageDic["Fire"] = waveImage[2];
+        
         bossHp.SetActive(false); // 보스 UI는 처음엔 비활성화
+        GuidePanel.SetActive(true);
     }
 
     // 게임 종료 화면(Pause, Win, Lose) 출력
@@ -90,10 +103,8 @@ public class UI_Manager : MonoBehaviour
                 currentWeapon[2].SetActive(true);
                 nextWeapon[0].SetActive(true);
                 break;
-                /*case "Lightning":
-                    lightningUI.SetActive(true);
-                    break;*/
         }
+        wave.GetComponent<Image>().sprite = waveImageDic[bulletType];
     }
 
     // 플레이어의 HP 수치에 따라 UI 아이콘 활성화

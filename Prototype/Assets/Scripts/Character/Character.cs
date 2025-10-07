@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +27,7 @@ public class Character : IObject
     // 캐릭터가 피해를 입었을 때 발생하는 이벤트
     public Action<float> OnCharacterDamaged;
     public Action OnDamage;
+    public Action OnDefDamage;
     // 발사 위치를 이름 기준으로 저장하는 딕셔너리
     public Dictionary<string, Transform> shootTransform;
 
@@ -58,6 +60,9 @@ public class Character : IObject
     protected bool isInvincibility;
     [SerializeField] bool isAnimDeath = false; // 사망 애니메이션 존재 여부. 존재 시 사망/패배 애님 재생 후 삭제 관련 이벤트 처리
     [SerializeField] bool isDestroy = true;
+
+    protected string hitSoundName = null;
+
 
     /// <summary>
     /// 초기화 및 컴포넌트 설정, 이벤트 연결
@@ -121,7 +126,9 @@ public class Character : IObject
                 //SetShield(GetShield() - damage);  
                 // 쉴드 감소
                 shield -= damage;
+                StartCoroutine(HitTransformMesh(shieldInvincibilityTime));
             }
+            OnDefDamage?.Invoke();
             OnInvincibility(shieldInvincibilityTime);
         }
         else
@@ -139,15 +146,62 @@ public class Character : IObject
             else
             {
                 hp -= damage;  // 체력 감소
+                StartCoroutine(HitTransformMesh(commonInvincibilityTime));
+
             }
             OnInvincibility(commonInvincibilityTime);
-
         }
+    }
+
+    /*protected void CharacterHitTransMaterial(float fake)
+    {
+        StartCoroutine(HitTransformMesh());
+    }*/
+
+    IEnumerator HitTransformMesh(float transTime)
+    {
+        float timer = 0f;
+
+        if(transTime != 0)
+        {
+            MeshRenderer renderer = GetComponent<MeshRenderer>();
+            /*
+            int transMeshCount = 10;
+
+            for (int i = 0; i < transMeshCount; i++)
+            {
+                renderer.enabled = false;
+                yield return new WaitForSeconds(commonInvincibilityTime / (transMeshCount * 2));
+                renderer.enabled = true;
+                yield return new WaitForSeconds(commonInvincibilityTime / (transMeshCount * 2));
+
+            }*/
+
+            while(timer < transTime)
+            {
+                renderer.enabled = false;
+                yield return new WaitForSeconds(0.2f);
+                renderer.enabled = true;
+                yield return new WaitForSeconds(0.2f);
+                timer += 0.4f;
+            }
+        }
+        
     }
 
     public void CharacterDeath()
     {
-        OnCharacterDeath?.Invoke();
+        if(anim == null)
+        {
+            OnCharacterDeath?.Invoke();
+        }
+        else
+        {
+            anim.SetTrigger("Death");
+            characterCol.enabled = false;
+            
+        }
+        DefaultEnemyDestroyEffect();
 
     }
 
@@ -157,6 +211,20 @@ public class Character : IObject
     void DestroyCharacter()
     {
         Destroy(this.gameObject);
+    }
+
+    public void SetHitSoundName(string soundName)
+    {
+        if (soundName == null || soundName == "")
+            return;
+
+        hitSoundName = soundName;
+    }
+
+    void DefaultEnemyDestroyEffect()
+    {
+        ParticleManager.Instance.PlayEffect("EnemyExplosion", this.transform.position);
+        AudioManager.Instance.PlaySFX("EnemyExplosion");
     }
 
     // 체력 관련 get/set
