@@ -37,6 +37,7 @@ public class PlayerIcedBullet : Bullet
         base.Init();
         player = GameObject.Find("Player").GetComponent<Player>();
         damage = StatManager.instance.p_skillDamageMultify * player.attackStats.damage;
+        hitSoundName = "IcedHit";
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

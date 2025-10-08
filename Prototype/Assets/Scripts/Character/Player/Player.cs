@@ -359,7 +359,7 @@ public class Player : Character
     public void WindSkill(GameObject bullet, int count)
     {
         StartCoroutine(SkillShoot(bullet, count, 0.8f, "WindSkillUse"));  // 바람 스킬 총알 연사 시작
-        AudioManager.Instance.PlaySFX("WindSkillShoot"); // 바람 스킬 효과음 재생
+        AudioManager.Instance.PlaySFX("WindSkill"); // 바람 스킬 효과음 재생
     }
 
     // 얼음 스킬 함수

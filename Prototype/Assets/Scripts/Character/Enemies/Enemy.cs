@@ -45,7 +45,7 @@ public class Enemy : Character
     protected float distanceNeedValue = 1f;
 
     // 피격음 재생 쿨타임(초)
-    private float hitSoundCooldown = 0.2f;
+    private float hitSoundCooldown = 0.08f;
     // 마지막 피격음 재생 시점 기록
     private float lastHitSoundTime = -1f;
     public float moveTimer = 0f;
@@ -172,7 +172,8 @@ public class Enemy : Character
         }
 
         // 플레이어의 발사체와 충돌 시 히트 이펙트 출력
-        if (collision.transform.tag == "Player" && (collision.GetComponent<Projectile>()))
+        if (collision.transform.tag == "Player" && collision.GetComponent<Projectile>() ||
+            collision.transform.tag == "Player" && collision.GetComponent<IEffect>() )
         {
             /*float randPos = Random.Range(-0.15f, 0.15f);
             Vector2 spawnHitEffectPosition = new Vector2(collision.transform.position.x + Mathf.Abs(randPos), transform.position.y + randPos);
@@ -188,7 +189,7 @@ public class Enemy : Character
 
         if(hitSoundName == null)
         {
-            hitSoundName = "EnemyHit";
+            hitSoundName = "ClickSample";
         }
         AudioManager.Instance.PlaySFX(hitSoundName);
         lastHitSoundTime = Time.time;

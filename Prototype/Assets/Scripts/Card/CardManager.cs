@@ -290,7 +290,7 @@ public class CardManager : MonoBehaviour
     void BigBullet()
     {
         Debug.Log("BigBullet");
-        StatManager.instance.p_projectileSizeMultify = 2f;
+        StatManager.instance.p_projectileSizeMultify = 1.5f;
         float playerMoveSpeed = StatManager.instance.playerData.GetObjectMoveSpeedMultify();
         float moveSpeedCalValue = StatManager.instance.p_moveSpeedTransValue;
         StatManager.instance.playerData.SetObjectMoveSpeedMultify(playerMoveSpeed * moveSpeedCalValue);
@@ -305,7 +305,7 @@ public class CardManager : MonoBehaviour
     {
         Debug.Log("RandomSkill");
         StatManager.instance.isRandomSkill = true;
-        StatManager.instance.p_skillDamageMultify += 0.2f;
+        StatManager.instance.p_skillDamageMultify += 0.3f;
     }
 
     void tresh()

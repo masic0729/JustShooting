@@ -61,5 +61,7 @@ public class PlayerWindBullet : Bullet
         player = GameObject.Find("Player").GetComponent<Player>();
         damage = StatManager.instance.p_skillDamageMultify * player.attackStats.damage;
 
+        hitSoundName = "WindHit";
+
     }
 }

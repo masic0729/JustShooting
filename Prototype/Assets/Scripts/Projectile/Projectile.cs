@@ -81,7 +81,10 @@ public class Projectile : IObject
             this.transform.tag == "Enemy" && collision.transform.tag == "Player")
         {
             Character instanceHitCharacter = collision.GetComponent<Character>();
-            instanceHitCharacter.SetHitSoundName(hitSoundName);
+            if(hitSoundName != null)
+            {
+                instanceHitCharacter.SetHitSoundName(hitSoundName);
+            }
             // 무적이 아닌 대상일 경우 피해 적용
             if (instanceHitCharacter != null && instanceHitCharacter.GetIsInvincibility() == false)
             {

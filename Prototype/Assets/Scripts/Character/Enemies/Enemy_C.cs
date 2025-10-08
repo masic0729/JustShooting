@@ -65,7 +65,7 @@ public class Enemy_C : Enemy
 
         if (isSelfPosition == true)
         {
-            currentTargetPos = new Vector2(transform.position.x - 22f, transform.position.y);
+            currentTargetPos = new Vector2(transform.position.x - 15f, transform.position.y);
         }
 
         /*currentShootPos = new Transform[2];

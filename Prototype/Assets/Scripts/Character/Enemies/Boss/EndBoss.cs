@@ -63,7 +63,6 @@ public class EndBoss : Boss
         {
             OnCharacterDeath += StageClearAction; // 일반 보스 클리어 이벤트
             OnCharacterDeath += RestartWave;      // 웨이브 재시작 (추후 제거 예정)
-            //OnCharacterDeath += GameManager.instance.StageUp;
 
         }
     }

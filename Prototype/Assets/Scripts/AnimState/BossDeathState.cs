@@ -9,8 +9,8 @@ public class BossDeathState : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         enemy = animator.GetComponent<EndBoss>();
+        enemy.StopAllCoroutines();
         enemy.ChangeState(new BossNullState(enemy));
-
         //클리어 했으니 충돌 판정 삭제
         if(enemy.GetIsFinalBoss() == true)
         {

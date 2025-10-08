@@ -52,7 +52,7 @@ public class Enemy_B : Enemy
         // 고정 위치 사용 시 기본 목표 위치 설정
         if (isSelfPosition == true)
         {
-            currentTargetPos = new Vector2(transform.position.x - 22f, targetPosY);
+            currentTargetPos = new Vector2(transform.position.x - 15f, targetPosY);
         }
 
         // 공격 코루틴 시작

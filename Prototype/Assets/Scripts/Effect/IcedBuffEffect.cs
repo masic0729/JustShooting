@@ -36,8 +36,5 @@ public class IcedBuffEffect : PlayerEffect
         player.OnCharacterDamaged += player.TakeDamage;
         player.OnCharacterDamaged -= DamagedAtBuff;
         player.OnCharacterDamaged -= DestroyBuff;
-
-        Destroy(this.gameObject);
-
     }
 }

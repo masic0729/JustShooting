@@ -23,6 +23,8 @@ public class EndBossTest : EndBoss
     {
         base.Init();
         OnCharacterDeath += CardManager.instance.ShowCards;
+        OnCharacterDeath += GameManager.instance.StageUp;
+
     }
 
     // 충돌 처리 함수: 부모 클래스 충돌 처리 호출

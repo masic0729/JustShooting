@@ -62,7 +62,7 @@ public class PlayerFireSkill : PlayerEffect
         }
         if(isHit == true)
         {
-            AudioManager.Instance.PlaySFX("EnemyHit");
+            AudioManager.Instance.PlaySFX("FireHit");
         }
     }
 }

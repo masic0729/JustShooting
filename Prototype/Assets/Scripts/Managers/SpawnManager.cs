@@ -107,11 +107,11 @@ public class SpawnManager : MonoBehaviour
             {
                 float x = info.ArrivePosition[i].x;
                 float y = info.isRandPositionY ? Random.Range(-4f, 4f) : info.ArrivePosition[i].y;
-                spawnPosition = new Vector2(x + 24f, y); // 오른쪽 화면 밖에서 생성
+                spawnPosition = new Vector2(x + 17f, y); // 오른쪽 화면 밖에서 생성
             }
             else
             {
-                spawnPosition = new Vector2(24f, Random.Range(-4f, 4f)); // 무작위 Y 위치
+                spawnPosition = new Vector2(17f, Random.Range(-4f, 4f)); // 무작위 Y 위치
             }
 
             // 적 프리팹 생성

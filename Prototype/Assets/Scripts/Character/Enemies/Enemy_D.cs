@@ -50,7 +50,7 @@ public class Enemy_D : Enemy
         // 이동 좌표 자동 설정 (좌측으로 x 22만큼 이동)
         if (isSelfPosition == true)
         {
-            currentTargetPos = new Vector2(transform.position.x - 22f, targetPosY);
+            currentTargetPos = new Vector2(transform.position.x - 15f, targetPosY);
         }
 
         targetMoveSpeed = GetMoveSpeed() / 2f; // 이동 속도 조절

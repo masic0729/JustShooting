@@ -48,21 +48,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        /*if(Input.GetKeyDown(KeyCode.Escape) && isGameEnd == false)
-        {
-            UI_Manager.instance.ShowScreen(UI_Manager.ScreenInfo.Pause);
-        }*/
-
         // 게임 중 ESC를 누르면 일시정지 화면 표시
         if (Input.GetKeyDown(KeyCode.Escape) && gameState == GameState.Play)
         {
             UI_Manager.instance.ShowScreen(UI_Manager.ScreenInfo.Pause);
         }
-
-        /*if(Input.GetKeyDown(KeyCode.F))
-        {
-            StartCoroutine(FadeInOutAction());
-        }*/
     }
 
     // 게임 종료 처리
@@ -113,11 +103,11 @@ public class GameManager : MonoBehaviour
         }
         stage++;
         
-        //배경 전환
-        for(int i = 0; i < backgrounds.Length; i++)
+        //배경 전환. 추후 리소스 받을 시 적용하면 됨
+        /*for(int i = 0; i < backgrounds.Length; i++)
         {
             backgrounds[i].SetBackgroundPartByStage();
-        }
+        }*/
 
         //이곳에스테이지 전환
 

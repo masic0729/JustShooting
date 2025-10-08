@@ -49,12 +49,16 @@ public class PlayerCommonBullet : Bullet
         {
             case "Wind":
                 ProjectileHitEffect = pHitEffects[0];
+                hitSoundName = "WindHit";
                 break;
             case "Iced":
                 ProjectileHitEffect = pHitEffects[1];
+                hitSoundName = "IcedHit";
+
                 break;
             case "Fire":
                 ProjectileHitEffect = pHitEffects[2];
+                hitSoundName = "FireHit";
                 break;
         }
 
