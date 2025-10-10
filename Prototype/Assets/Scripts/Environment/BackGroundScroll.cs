@@ -42,10 +42,10 @@ public class BackGroundScroll : MonoBehaviour
             bgMaterial.material = backgroundParts[1];
             offset = bgMaterial.material.mainTextureOffset;
         }
-        else
+/*        else
         {
             bgMaterial.enabled = false;
-        }
+        }*/
         
     }
 }

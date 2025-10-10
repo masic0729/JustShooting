@@ -95,26 +95,28 @@ public class GameManager : MonoBehaviour
     
     IEnumerator FadeInOutAction()
     {
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i <= 100; i++)
         {
-            fadeScreen.color = new Vector4(0, 0, 0, i /30f);
-            yield return new WaitForSeconds(Time.deltaTime * 2.5f);
+            fadeScreen.color = new Vector4(0, 0, 0, i /100f);
+            yield return new WaitForSeconds(Time.deltaTime);
 
-        }
+        }/*
+        fadeScreen.color = new Vector4(0, 0, 0, 1f);*/
+
         stage++;
-        
+
         //배경 전환. 추후 리소스 받을 시 적용하면 됨
-        /*for(int i = 0; i < backgrounds.Length; i++)
+        for (int i = 0; i < backgrounds.Length; i++)
         {
             backgrounds[i].SetBackgroundPartByStage();
-        }*/
+        }
 
         //이곳에스테이지 전환
 
-        for (int i = 30; i >= 0; i--)
+        for (int i = 100; i >= 0; i--)
         {
-            fadeScreen.color = new Vector4(0, 0, 0, i / 30f);
-            yield return new WaitForSeconds(Time.deltaTime * 2.5f);
+            fadeScreen.color = new Vector4(0, 0, 0, i / 100f);
+            yield return new WaitForSeconds(Time.deltaTime);
 
         }
     }

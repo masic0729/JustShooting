@@ -163,7 +163,6 @@
     <None Include="Assets\Resources\Spine\Boss\1boss\1boss\1boss.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Resources\Effect_2\BaseEffect\Hun0FX\Shader\SH_HunFX_common.shader" />
-    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\Resources\Sprites\UI_TestImages\Title\폰트 사이즈.txt" />
     <None Include="Assets\Resources\Sprites\InGameResources\Player_Power_Eff\player_power_eff.atlas.txt" />
@@ -181,6 +180,7 @@
     <None Include="Assets\Resources\Sprites\InGameResources\Player_Wind_Eff\player_wind_eff.atlas.txt" />
     <None Include="Assets\Resources\Sprites\TestObject\TestSpine\purple_U_Skeleton_ani.atlas.txt" />
     <None Include="Assets\Resources\Sounds\8-Bit_Action_Free\Readme.txt" />
+    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
