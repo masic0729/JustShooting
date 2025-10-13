@@ -11,19 +11,19 @@ public class IcedBuffEffect : PlayerEffect
     {
         base.Start();
         // 플레이어의 피격 기능 해제
-        player.OnCharacterDamaged -= player.TakeDamage;
-        player.OnCharacterDamaged += DestroyBuff;
-        player.OnCharacterDamaged += DamagedAtBuff;
+        player.SetIsBuffInvicibility(true);
         //player.SetShield(shieldValue);
 
         Invoke("DestroyBuff", 10f);                              //10초 뒤 자동 삭제
     }
 
-    
-    void DamagedAtBuff(float damage)
+
+    private void Update()
     {
-        player.OnInvincibility(player.GetCommonInvincibilityTime());
-        
+        if(player.GetIsBuffInvicibility() == false)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     /// <summary>
@@ -33,8 +33,7 @@ public class IcedBuffEffect : PlayerEffect
     /// <param cardName="damage">데미지는 비어있다.</param>
     void DestroyBuff(float damage)
     {
-        player.OnCharacterDamaged += player.TakeDamage;
-        player.OnCharacterDamaged -= DamagedAtBuff;
-        player.OnCharacterDamaged -= DestroyBuff;
+        player.SetIsBuffInvicibility(false);
+
     }
 }

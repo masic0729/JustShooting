@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     // 종료 연출 (1초 대기 후 화면 전환 + 배경음 변경)
     IEnumerator EndStart(UI_Manager.ScreenInfo enumState)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         UI_Manager.instance.ShowScreen(enumState); // 종료 화면 출력
         //isGameEnd = true;
         gameState = GameState.End;

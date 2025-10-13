@@ -64,18 +64,7 @@ public class Enemy : Character
 
     private void OnDestroy()
     {
-        if(GetHp() > 0.0f && isBoss == false && autoDestroy == true)
-        {
-            int rotValue = 0;
-            for(int i = 0; i < 4; i++)
-            {
-                GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], transform.position, transform.rotation);
-                projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 1.2f, 1f, 10f, "Enemy");
-
-                instance.transform.Rotate(0, 0, rotValue);
-                rotValue += 90;
-            }
-        }
+        
     }
 
     // 초기 Awake 호출 (FSM 등 외부에서 설정)
@@ -110,7 +99,7 @@ public class Enemy : Character
 
         if (autoDestroy == true)
         {
-            Destroy(this.gameObject, 10f);
+            Invoke("AutoDestroy", 10f);
         }
 
         // 사망 시 기본 폭발 이펙트 연결
@@ -134,6 +123,22 @@ public class Enemy : Character
 
         // 기본 도착 위치 설정
         arrivePosition = new Vector2(3f, 0);
+    }
+
+    public void AutoDestroy()
+    {
+        if (GetHp() > 0.0f && isBoss == false && autoDestroy == true)
+        {
+            int rotValue = Random.Range(0, 360);
+            for (int i = 0; i < 4; i++)
+            {
+                GameObject instance = Instantiate(enemyProjectile["EnemyBullet"], transform.position, transform.rotation);
+                projectileManage.SetProjectileData(ref instance, attackData.animCtrl, attackData.moveSpeed * 1.2f, 1f, 10f, "Enemy");
+
+                instance.transform.Rotate(0, 0, rotValue);
+                rotValue += 90;
+            }
+        }
     }
 
     // 화면 영역 벗어남 체크 후 오브젝트 파괴

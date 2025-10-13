@@ -1,3 +1,4 @@
+using Spine.Unity.Examples;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ public class Character : IObject
     public Action<float> OnCharacterDamaged;
     public Action OnDamage;
     public Action OnDefDamage;
+    //public Action BuffInvicibility;
     // 발사 위치를 이름 기준으로 저장하는 딕셔너리
     public Dictionary<string, Transform> shootTransform;
 
@@ -60,7 +62,7 @@ public class Character : IObject
     protected bool isInvincibility;
     [SerializeField] bool isAnimDeath = false; // 사망 애니메이션 존재 여부. 존재 시 사망/패배 애님 재생 후 삭제 관련 이벤트 처리
     [SerializeField] bool isDestroy = true;
-
+    private bool isBuffInvicibility = false;
     protected string hitSoundName = null;
 
 
@@ -112,6 +114,16 @@ public class Character : IObject
 
     public void TakeDamage(float damage)
     {
+        //플레이어 얼음속성의 보호막처럼 특수 보호막이 있으면,
+        //리턴 및 불변수를 통해 관리한다
+        if(isBuffInvicibility == true)
+        {
+            isBuffInvicibility = false;
+            OnInvincibility(commonInvincibilityTime);
+            StartCoroutine(HitTransformMesh(commonInvincibilityTime));
+
+            return;
+        }
         // 쉴드가 있을 경우 쉴드를 먼저 감소시킴
         if (shield > 0)
         {
@@ -208,7 +220,7 @@ public class Character : IObject
     /// <summary>
     /// 캐릭터 사망 시 게임 오브젝트 삭제 처리
     /// </summary>
-    void DestroyCharacter()
+    public void DestroyCharacter()
     {
         Destroy(this.gameObject);
     }
@@ -264,6 +276,12 @@ public class Character : IObject
     {
         return characterCol.enabled;
     }
+
+    public bool GetIsBuffInvicibility() => isBuffInvicibility;
+
+
+    public void SetIsBuffInvicibility(bool state) => isBuffInvicibility = state;
+
 
     // Start & Update 등은 부모 클래스 호출만 하므로 생략 가능
 }

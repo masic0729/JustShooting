@@ -44,6 +44,8 @@ public class Player : Character
     // 스킬 위치 트랜스폼
     public Transform skillTrans;
 
+    bool canInput = true;
+
     // 게임 시작 시 초기화 및 부모 Start 호출
     protected override void Start()
     {
@@ -55,7 +57,7 @@ public class Player : Character
     protected override void Update()
     {
         // 게임이 멈춘 경우 처리 중지
-        if (Time.timeScale <= 0) return;
+        if (Time.timeScale <= 0 || canInput == false) return;
 
         base.Update();
         HandleInput();         // 키 입력 처리 함수 호출
@@ -91,9 +93,10 @@ public class Player : Character
         hitExplosion = Instantiate(hitExplosion, transform.position, transform.rotation);
         hitExplosion.transform.parent = this.transform;
         hitExplosion.SetActive(false);
-
+        OnCharacterDeath -= DestroyCharacter;
         SetCurrentBullet(BulletType.Wind);                                                      // 기본 총알 설정
         anim.SetTrigger("Appear");
+        
     }
 
     // 딕셔너리 초기화 함수
@@ -111,6 +114,7 @@ public class Player : Character
     // 입력 처리 함수
     void HandleInput()
     {
+        
         MoveInput();                                                                            // 이동 입력 처리
         HandleAttack();                                                                         // 공격 입력 처리
         HandleWeaponSwitch();                                                                   // 무기 변경 입력 처
@@ -307,14 +311,14 @@ public class Player : Character
     }
 
     // 플레이어 사망 처리 함수
-    void PlayerDeath()
+    public void PlayerDeath()
     {
         //StartCoroutine(EffectCycle(destroyExplosion)); // 사망 이펙트 재생 (X4)
         Instantiate(destroyExplosion, skillTrans.position, transform.rotation); // 사망 이펙트 인스턴스화
         AudioManager.Instance.PlaySFX("PlayerHitSample"); // 사망 효과음 재생
         GameManager.instance.GameEnd(UI_Manager.ScreenInfo.Lose); // 게임 종료 처리 (패배)
-        gameObject.SetActive(false);                 // 플레이어 비활성화
-
+        //gameObject.SetActive(false);                 // 플레이어 비활성화
+        canInput = false;
     }
 
     

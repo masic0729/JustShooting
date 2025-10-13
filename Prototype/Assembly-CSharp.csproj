@@ -121,6 +121,7 @@
     <Compile Include="Assets\Scripts\Managers\PoolManager.cs" />
     <Compile Include="Assets\Scripts\Character\FSM\BossAttackState2.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
+    <Compile Include="Assets\PlayerDeathState.cs" />
     <Compile Include="Assets\Scripts\Practice\PRA_Anim.cs" />
     <Compile Include="Assets\Scripts\Projectile\ProjectileManagement.cs" />
     <Compile Include="Assets\Scripts\Environment\TitleScrollBG.cs" />
