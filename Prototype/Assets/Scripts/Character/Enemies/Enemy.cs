@@ -138,6 +138,7 @@ public class Enemy : Character
                 instance.transform.Rotate(0, 0, rotValue);
                 rotValue += 90;
             }
+            Destroy(this.gameObject);
         }
     }
 
