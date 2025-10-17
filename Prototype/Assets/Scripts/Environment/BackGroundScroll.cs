@@ -13,7 +13,7 @@ public class BackGroundScroll : MonoBehaviour
     {
         // Renderer에서 머테리얼 가져오기 (공유 인스턴스 사용 방지 위해 new)
         bgMaterial = GetComponent<MeshRenderer>();
-        offset = bgMaterial.material.mainTextureOffset;
+        //offset = bgMaterial.material.mainTextureOffset;
     }
 
     void Update()

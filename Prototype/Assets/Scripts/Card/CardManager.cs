@@ -179,7 +179,7 @@ public class CardManager : MonoBehaviour
                 Debug.Log("오류 발생. 카드 이름 매치 안됐음");
                 break;
         }
-        
+        UI_Manager.instance.UpdateCardSelectLog(instance.SelectIcon);
         
     }
 

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] SpriteRenderer fadeScreen;
     [SerializeField] int stage = 0;
-    [SerializeField] BackGroundScroll[] backgrounds;
+    [SerializeField] GameObject[] backgrounds;
     //public bool isGameEnd = false;                                 //승패를 떠나서, 어쨋든 끝났을 때 처리하는 스탠스
 
     public enum GameState
@@ -103,13 +103,15 @@ public class GameManager : MonoBehaviour
         }/*
         fadeScreen.color = new Vector4(0, 0, 0, 1f);*/
 
+        backgrounds[stage].SetActive(false);
         stage++;
+        backgrounds[stage].SetActive(true);
 
-        //배경 전환. 추후 리소스 받을 시 적용하면 됨
+/*
+ *      //배경 전환. 추후 리소스 받을 시 적용하면 됨
         for (int i = 0; i < backgrounds.Length; i++)
         {
-            backgrounds[i].SetBackgroundPartByStage();
-        }
+        }*/
 
         //이곳에스테이지 전환
 

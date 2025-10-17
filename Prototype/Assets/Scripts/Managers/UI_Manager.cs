@@ -13,26 +13,29 @@ public class UI_Manager : MonoBehaviour
         Pause
     }
 
-    public static UI_Manager instance; // 싱글톤 인스턴스
+    public static UI_Manager instance;                                      // 싱글톤 인스턴스
     public GameObject wave;
     public Sprite[] waveImage;
     Dictionary<string, Sprite> waveImageDic;
-    public GameObject CountImage; // 카운트다운 이미지 그룹
+    public GameObject CountImage;                                           // 카운트다운 이미지 그룹
     [SerializeField]
-    private GameObject[] GameScreens; // 승패/일시정지 등의 화면 패널들
-    Dictionary<string, GameObject> GameScreenName; // 이름으로 각 패널에 접근하기 위한 딕셔너리
+    private GameObject[] GameScreens;                                       // 승패/일시정지 등의 화면 패널들
+    Dictionary<string, GameObject> GameScreenName;                          // 이름으로 각 패널에 접근하기 위한 딕셔너리
     public GameObject GuidePanel;
 
     [Header("PlayerWeapon")]
-    public GameObject[] currentWeapon; // 현재 무기 UI 표시
-    public GameObject[] nextWeapon;    // 다음 무기 UI 표시
+    public GameObject[] currentWeapon;                                      // 현재 무기 UI 표시
+    public GameObject[] nextWeapon;                                         // 다음 무기 UI 표시
 
-    public GameObject[] hpIcons; // 플레이어 HP 아이콘들
-    public GameObject defIcon; // 카드에 의한 보호막 아이콘
+    public GameObject[] hpIcons;                                            // 플레이어 HP 아이콘들
+    public GameObject[] selectCardLogs;                                     // 선택된 카드 로그들       
+    public GameObject defIcon;                                              // 카드에 의한 보호막 아이콘
 
     [Header("BossUI_Info")]
-    public GameObject bossHp; // 보스 HP UI 패널
+    public GameObject bossHp;                                               // 보스 HP UI 패널
     //public GameObject lightningUI;
+
+    [SerializeField] private int cardGetCount = 0;                          // 획득한 카드 수      
 
     private void Awake()
     {
@@ -71,6 +74,11 @@ public class UI_Manager : MonoBehaviour
         
         bossHp.SetActive(false); // 보스 UI는 처음엔 비활성화
         GuidePanel.SetActive(true);
+
+        for(int i = 0; i < selectCardLogs.Length; i++)
+        {
+            selectCardLogs[i].SetActive(false);
+        }
     }
 
     // 게임 종료 화면(Pause, Win, Lose) 출력
@@ -120,6 +128,13 @@ public class UI_Manager : MonoBehaviour
         {
             hpIcons[i].SetActive(true);
         }
+    }
+
+    public void UpdateCardSelectLog(Sprite sprite)
+    {
+        selectCardLogs[cardGetCount].GetComponent<Image>().sprite = sprite;
+        selectCardLogs[cardGetCount].SetActive(true);
+        cardGetCount++;
     }
 
     // 시작 시 카운트다운 연출
