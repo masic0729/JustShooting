@@ -206,6 +206,8 @@ public class Character : IObject
         if(anim == null)
         {
             OnCharacterDeath?.Invoke();
+
+            DefaultEnemyDestroyEffect();
         }
         else
         {
@@ -213,7 +215,6 @@ public class Character : IObject
             characterCol.enabled = false;
             
         }
-        DefaultEnemyDestroyEffect();
 
     }
 

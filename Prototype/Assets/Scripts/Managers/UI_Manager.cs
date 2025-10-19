@@ -170,7 +170,7 @@ public class UI_Manager : MonoBehaviour
     public void ShowBossHp(string bossName)
     {
         bossHp.SetActive(true);
-        bossHp.GetComponentInChildren<TextMeshProUGUI>().text = bossName;
+        //bossHp.GetComponentInChildren<TextMeshProUGUI>().text = bossName;
     }
 
     // 보스 체력바 숨기기
