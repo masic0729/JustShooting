@@ -78,6 +78,8 @@ public class ButtonManager : MonoBehaviour
     public void OnButtonEnter(GameObject button)
     {
         StopAllCoroutines(); // 이전 애니메이션 중지
+        button.transform.localScale = buttonDefaultScale;
+
         StartCoroutine(ScaleTo(button)); // 크기 확대 코루틴 시작
     }
 
@@ -85,7 +87,9 @@ public class ButtonManager : MonoBehaviour
     public void OnButtonExit(GameObject button)
     {
         StopAllCoroutines(); // 이전 애니메이션 중지
-        StartCoroutine(ScaleReturn(button)); // 크기 복귀 코루틴 시작
+        //StartCoroutine(ScaleReturn(button)); // 크기 복귀 코루틴 시작
+        button.transform.localScale = buttonDefaultScale;
+
     }
 
     // 버튼을 일정 시간 동안 확대하는 코루틴
@@ -93,8 +97,8 @@ public class ButtonManager : MonoBehaviour
     {
         float duration = 0.1f; // 애니메이션 시간
         float elapsed = 0f;
-        Vector3 start = button.transform.localScale;
-        Vector3 arrive = start * scaleMultiplier;
+        Vector3 start = buttonDefaultScale;
+        Vector3 arrive = buttonDefaultScale * scaleMultiplier;
 
         //애니메이션 오류를 대처하기 위해 처음부터 스케일 값을 1로 강제 변경한다.
         button.transform.localScale = new Vector3(1, 1, 1);
