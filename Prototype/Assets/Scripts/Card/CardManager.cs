@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -109,10 +110,24 @@ public class CardManager : MonoBehaviour
         card.transform.Find("CardFrame").GetComponent<Button>().onClick.AddListener(() =>
         {
             CardEvent(data.cardName);
-            CloseCardSelect();
+            //CloseCardSelect();
+            StartCoroutine(CardCloseAction());
+            //Invoke("CloseCardSelect", 1.0f);
         });
 
         //todo카드 프레임은 추후 변동되지 않거나, 추가 구현 요구
+    }
+
+    /// <summary>
+    /// 카드 선택 후 TimeScale상태 관계 없이 반드시 1초 뒤
+    /// 창 닫기 및 기능 적용 등 지연 실행을 한다.
+    /// 이때 1초 동안 카드 선택 시 이펙트 및 사운드가 출력 되는 것을 목표로 한다.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator CardCloseAction()
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        CloseCardSelect();
     }
 
     public void ShowCards()
@@ -124,7 +139,7 @@ public class CardManager : MonoBehaviour
             SetCard(currentCards[i], instanceCards[i]);
         }
         CardPanel.SetActive(true);
-        Time.timeScale = 0.0f;
+        //Time.timeScale = 0.0f;
     }
 
 
