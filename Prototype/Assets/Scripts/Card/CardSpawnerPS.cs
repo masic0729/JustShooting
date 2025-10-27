@@ -38,9 +38,6 @@ public class CardSpawnerPS : MonoBehaviour
         // 3) Àç»ý
 
         ps[0].Play(true);
-        ps[1].Stop();
-        ps[2].Stop();
-        ps[3].Stop();
     }
 
     void Update()
@@ -49,7 +46,7 @@ public class CardSpawnerPS : MonoBehaviour
         if (Time.timeScale == 0f)
         {
             float dt = Time.unscaledDeltaTime;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < ps.Length; i++)
             {
                 if (ps[i] && ps[i].isPlaying)
                     ps[i].Simulate(dt, true, false, false);

@@ -11,7 +11,7 @@ public class CardManager : MonoBehaviour
     public GameObject CardPanel;
     public GameObject CardNotClickPanel;
     public Animator CardViewAnim;
-    public ParticleSystem[] cardParticles;
+    public Animator[] cardAnims;
     //리스트 관련해서 공부하는 기회의 스크립트. 결국 이 스크립트로 최종적으로 구현할 예정이지만, 학습에 중점을 두고 있음
     /*
     1. 카드인포를 기반으로 리스트를 받는다.
@@ -98,7 +98,7 @@ public class CardManager : MonoBehaviour
         return cards;
     }
 
-    void SetCard(GameObject card, CardData data, ParticleSystem ps)
+    void SetCard(GameObject card, CardData data, Animator anim)
     {
 
         Debug.Log(card.transform.Find("CardFrame/Icon"));
@@ -113,8 +113,9 @@ public class CardManager : MonoBehaviour
         card.transform.Find("CardFrame").GetComponent<Button>().onClick.AddListener(() =>
         {
             CardEvent(data.cardName);
-            StartCoroutine(CardCloseAction());
+            StartCoroutine(CardCloseAction(anim));
             CardNotClickPanel.SetActive(true);
+
         });
 
         //todo카드 프레임은 추후 변동되지 않거나, 추가 구현 요구
@@ -126,9 +127,9 @@ public class CardManager : MonoBehaviour
     /// 이때 1초 동안 카드 선택 시 이펙트 및 사운드가 출력 되는 것을 목표로 한다.
     /// </summary>
     /// <returns></returns>
-    IEnumerator CardCloseAction()
+    IEnumerator CardCloseAction(Animator anim)
     {
-        PlaySelectCard();
+        PlaySelectCard(anim);
 
         yield return new WaitForSecondsRealtime(1.0f);
         CloseCardSelect();
@@ -140,7 +141,7 @@ public class CardManager : MonoBehaviour
         for (int i = 0; i < instanceCards.Count; i++)
         {
             currentCards[i].SetActive(true);
-            SetCard(currentCards[i], instanceCards[i], cardParticles[i]);
+            SetCard(currentCards[i], instanceCards[i], cardAnims[i]);
         }
         CardPanel.SetActive(true);
         CardNotClickPanel.SetActive(false);
@@ -238,12 +239,12 @@ public class CardManager : MonoBehaviour
         StatManager.instance.playerData.ShowCardText(stateCommant);
     }
 
-    public void PlaySelectCard()
+    public void PlaySelectCard(Animator anim)
     {
         /*var main = ps.main;
-        main.useUnscaledTime = true;
-        ps.Play();
-        Debug.Log("이펙트 실행됨" + ps.gameObject.name);*/
+        main.useUnscaledTime = true;*/
+        anim.SetTrigger("CardClick");
+        Debug.Log("이펙트 실행됨" + anim.gameObject.name);
         CardViewAnim.SetTrigger("CloseCard");
     }
 
