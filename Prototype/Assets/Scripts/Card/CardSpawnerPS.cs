@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI; // UIParticleSystem이 MaskableGraphic 계열일 때 필요
 
@@ -33,11 +34,13 @@ public class CardSpawnerPS : MonoBehaviour
             ps[i].Clear(true);
             ps[i].Simulate(0f, true, true, true);
 
-            // 3) 재생
-            ps[i].Play(true);
         }
+        // 3) 재생
 
-        //Debug.Log("카드 파티클 시작 (unscaled)");
+        ps[0].Play(true);
+        ps[1].Stop();
+        ps[2].Stop();
+        ps[3].Stop();
     }
 
     void Update()
@@ -46,7 +49,7 @@ public class CardSpawnerPS : MonoBehaviour
         if (Time.timeScale == 0f)
         {
             float dt = Time.unscaledDeltaTime;
-            for (int i = 0; i < ps.Length; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (ps[i] && ps[i].isPlaying)
                     ps[i].Simulate(dt, true, false, false);
@@ -59,5 +62,6 @@ public class CardSpawnerPS : MonoBehaviour
                     uiGraphics[i].SetVerticesDirty();
             }
         }
+        
     }
 }

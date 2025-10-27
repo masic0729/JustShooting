@@ -9,6 +9,9 @@ public class CardManager : MonoBehaviour
 {
     public static CardManager instance;
     public GameObject CardPanel;
+    public GameObject CardNotClickPanel;
+    public Animator CardViewAnim;
+    public ParticleSystem[] cardParticles;
     //리스트 관련해서 공부하는 기회의 스크립트. 결국 이 스크립트로 최종적으로 구현할 예정이지만, 학습에 중점을 두고 있음
     /*
     1. 카드인포를 기반으로 리스트를 받는다.
@@ -42,7 +45,7 @@ public class CardManager : MonoBehaviour
 
     void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -60,7 +63,7 @@ public class CardManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             ShowCards();
         }
@@ -95,7 +98,7 @@ public class CardManager : MonoBehaviour
         return cards;
     }
 
-    void SetCard(GameObject card, CardData data)
+    void SetCard(GameObject card, CardData data, ParticleSystem ps)
     {
 
         Debug.Log(card.transform.Find("CardFrame/Icon"));
@@ -106,13 +109,12 @@ public class CardManager : MonoBehaviour
         //이건 맞아. cardInfo에 기능을 넣고, 이후 버튼 온클릭에 넣어서 실행을 하든, 여기서 카드 이름을 기반으로 버튼에 넣던가
 
         card.transform.Find("CardFrame").GetComponent<Button>().onClick.RemoveAllListeners();
-        
+
         card.transform.Find("CardFrame").GetComponent<Button>().onClick.AddListener(() =>
         {
             CardEvent(data.cardName);
-            //CloseCardSelect();
             StartCoroutine(CardCloseAction());
-            //Invoke("CloseCardSelect", 1.0f);
+            CardNotClickPanel.SetActive(true);
         });
 
         //todo카드 프레임은 추후 변동되지 않거나, 추가 구현 요구
@@ -126,6 +128,8 @@ public class CardManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator CardCloseAction()
     {
+        PlaySelectCard();
+
         yield return new WaitForSecondsRealtime(1.0f);
         CloseCardSelect();
     }
@@ -133,13 +137,14 @@ public class CardManager : MonoBehaviour
     public void ShowCards()
     {
         List<CardData> instanceCards = CardDataLoad();
-        for(int i = 0; i < instanceCards.Count; i++)
+        for (int i = 0; i < instanceCards.Count; i++)
         {
             currentCards[i].SetActive(true);
-            SetCard(currentCards[i], instanceCards[i]);
+            SetCard(currentCards[i], instanceCards[i], cardParticles[i]);
         }
         CardPanel.SetActive(true);
-        //Time.timeScale = 0.0f;
+        CardNotClickPanel.SetActive(false);
+        CardViewAnim.SetTrigger("ShowCard");
     }
 
 
@@ -150,7 +155,7 @@ public class CardManager : MonoBehaviour
     void CloseCardSelect()
     {
         Debug.Log("카드 닫음");
-        for(int i = 0; i < currentCards.Length; i++)
+        for (int i = 0; i < currentCards.Length; i++)
         {
             currentCards[i].SetActive(false);
         }
@@ -162,16 +167,16 @@ public class CardManager : MonoBehaviour
 
     void CardEvent(string cardName)
     {
-        
+
         CardData instance = dupliCardData.Find(CardData => CardData.cardName == cardName);
-        if(cardName != "Random")
+        if (cardName != "Random")
         {
             //Debug.Log(instance.cardName + "삭제됨");
             dupliCardData.Remove(instance);
         }
         switch (cardName)
         {
-            
+
             case "Random":
                 RandomCard();
                 break;
@@ -195,7 +200,7 @@ public class CardManager : MonoBehaviour
                 break;
         }
         UI_Manager.instance.UpdateCardSelectLog(instance.SelectIcon);
-        
+
     }
 
     /// <summary>
@@ -220,7 +225,7 @@ public class CardManager : MonoBehaviour
             case 1:
                 StatManager.instance.randomAddMoveSpeed += 0.1f;
                 float playerMoveSpeed = StatManager.instance.playerData.GetObjectMoveSpeedMultify();
-                StatManager.instance.playerData.SetObjectMoveSpeedMultify(playerMoveSpeed *  (1 + StatManager.instance.randomAddMoveSpeed));
+                StatManager.instance.playerData.SetObjectMoveSpeedMultify(playerMoveSpeed * (1 + StatManager.instance.randomAddMoveSpeed));
                 stateCommant = "이동속도 상승";
                 break;
             case 2:
@@ -233,6 +238,14 @@ public class CardManager : MonoBehaviour
         StatManager.instance.playerData.ShowCardText(stateCommant);
     }
 
+    public void PlaySelectCard()
+    {
+        /*var main = ps.main;
+        main.useUnscaledTime = true;
+        ps.Play();
+        Debug.Log("이펙트 실행됨" + ps.gameObject.name);*/
+        CardViewAnim.SetTrigger("CloseCard");
+    }
 
     /// <summary>
     /// 최대 목숨 기준 감소된 목숨만큼 피해량 증가 기능
@@ -247,11 +260,11 @@ public class CardManager : MonoBehaviour
         int currentPlayerHp = (int)player.GetMaxHp() - (int)player.GetHp();
 
         //체력이 감소된 채로 카드를 획득했다면 적용
-        
-        
+
+
         StatManager.instance.p_damageFromCard += StatManager.instance.p_bulletDamageUpByLossHp * currentPlayerHp;
         player.OnDamage += PlayerHitCheckForCard;
-        
+
     }
 
     /// <summary>
@@ -309,7 +322,7 @@ public class CardManager : MonoBehaviour
         float playerMoveSpeed = StatManager.instance.playerData.GetObjectMoveSpeedMultify();
         float moveSpeedCalValue = StatManager.instance.p_moveSpeedTransValue;
         StatManager.instance.playerData.SetObjectMoveSpeedMultify(playerMoveSpeed * moveSpeedCalValue);
-        
+
     }
 
     /// <summary>
@@ -321,155 +334,5 @@ public class CardManager : MonoBehaviour
         Debug.Log("RandomSkill");
         StatManager.instance.isRandomSkill = true;
         StatManager.instance.p_skillDamageMultify += 0.3f;
-    }
-
-    void tresh()
-    {
-    /*
-    //특정 개수만큼 등장 가능한 카드 리스트를 필터링하여 반환 (주석 처리됨)
-    public List<PlayerCardData> GetAvailableCardChoices(int count)
-    {
-        // 스킬 카드 중 현재 레벨이 최대 레벨 미만인 카드 필터링
-        List<PlayerCardData> availableSkillCards = allCards
-            .Where(card => card.isSkill && card.currentLevel < card.maxLevel)
-            .ToList();
-
-        // 일반 카드 중 아직 등장하지 않은 카드 필터링
-        List<PlayerCardData> availableNormalCards = allCards
-            .Where(card => !card.isSkill && !card.hasAppearedYet)
-            .ToList();
-
-        // 스킬 카드가 모두 만렙인 경우 일반 카드만 반환
-        if (availableSkillCards.Count == 0)
-        {
-            return availableNormalCards
-                .OrderBy(_ => Random.value)
-                .Take(Mathf.Min(count, availableNormalCards.Count))
-                .ToList();
-        }
-
-        // 등장 가능한 카드 수가 부족한 경우 모든 카드 반환
-        if (availableSkillCards.Count + availableNormalCards.Count <= count)
-        {
-            return availableSkillCards
-                .Concat(availableNormalCards)
-                .ToList();
-        }
-
-        // 정상적인 카드 선택 (스킬 카드 1~2장 포함)
-        int skillCardCount = Mathf.Min(availableSkillCards.Count, Random.Range(1, 3));
-        int normalCardCount = count - skillCardCount;
-
-        var selectedSkill = availableSkillCards
-            .OrderBy(_ => Random.value)
-            .Take(skillCardCount);
-
-        var selectedNormal = availableNormalCards
-            .OrderBy(_ => Random.value)
-            .Take(normalCardCount);
-
-        return selectedSkill.Concat(selectedNormal).ToList();
-    }
-    */
-    }
-
-    void tresh2()
-    {
-/*
-        /// <summary>
-        /// 기본적으로 3장의 카드를 무작위로 가져온다.
-        /// 첫 카드는 반드시 랜덤카드만 등장한다
-        /// 나머지 두 곳은 미선택된 일반카드가 등장한다.
-        /// 지속적으로 일반카드를 선택하여 일반카드가 2장 미만일 경우 1장만 반환할 수 있으며, 모두 획득 시 더 이상 등장하지 않는다.
-        /// </summary>
-        /// <param cardName="getCount">가져올 카드 개수. 기본값은 2장이다 </param>
-        /// <returns>선택된 카드 리스트</returns>
-        public List<CardInfo> GetCards(int getCount = 2)
-        {
-            *//*Dictionary<CardInfo, string> cardName;
-            cardName = new Dictionary<CardInfo, string>();
-            for(int i = 0; i < loadedCards.Length; i++)
-            {
-                cardName[loadedCards[i]] = loadedCards[i].cardName;
-            }
-            List<CardInfo> randCards = allCards.OrderBy( CardInfo => UnityEngine.Random.value).ToList();*//*
-
-            List<CardInfo> randCards;
-            randCards.FirstOrDefault(CardInfo => CardInfo.cardType == CardInfo.CardType.Random);
-            //randCards = allCards.FirstOrDefault(allCards.cardType == CardInfo.CardType.Random);
-
-
-            return randCards.Take(getCount).ToList();
-        }
-
-        void SetCard(GameObject card, CardInfo data)
-        {
-
-            Debug.Log(card.transform.Find("CardFrame/Icon"));
-            card.transform.Find("CardFrame/Icon").GetComponent<Image>().sprite = data.icon;
-            card.transform.Find("CardFrame/Comment").GetComponent<TextMeshProUGUI>().text = data.description;
-            card.transform.Find("CardFrame/CardName").GetComponent<TextMeshProUGUI>().text = data.cardName;
-
-            //이건 맞아. cardInfo에 기능을 넣고, 이후 버튼 온클릭에 넣어서 실행을 하든, 여기서 카드 이름을 기반으로 버튼에 넣던가
-
-            card.transform.Find("CardFrame").GetComponent<Button>().onClick.RemoveAllListeners();
-            //cardAction = CardEvent(data.cardName);
-            //cardAction += SelectCard(data.cardName);
-            card.transform.Find("CardFrame").GetComponent<Button>().onClick.AddListener(() =>
-            {
-                SelectCard(data.cardName);
-                CardEvent(data.cardName);
-            });
-
-            //todo카드 프레임은 추후 변동되지 않거나, 추가 구현 요구
-        }
-
-        /// <summary>
-        /// 현재는 기본 구현으로 만들고, 이후 기획안을 기반으로 구현할 것.
-        /// </summary>
-        public void ShowCards()
-        {
-            int loadCard;
-            //카드 리스트가 2장 이상이면 정상 호출
-            if (allCards.Count > 1)
-            {
-                loadCard = 2;
-            }
-            else
-            {
-                loadCard = allCards.Count;
-            }
-            List<CardInfo> instanceCards = GetCards(loadCard);
-
-            for (int i = 0; i < loadCard; i++)
-            {
-                SetCard(currentCards[i + 1], instanceCards[i]);
-            }
-        }
-
-        /// <summary>
-        /// 카드 선택 이후 카드효과 적용 및 선택한 카드는 리스트에서 삭제해야한다. 또한 테스트용의 경우 카드가 랜덤으로 다시 돌려야 한다.
-        /// </summary>
-        void SelectCard(string cardName)
-        {
-            if (cardName == "Random")
-                return;
-            //리스트에서 제외시키는 기능구현. 하지만 랜덤 카드는 삭제되지 않는다
-            //CardInfo removeCard = allCards.FirstOrDefault(CardInfo => CardInfo.cardName == cardName);
-
-            CardInfo removeCard = null;
-
-            foreach (CardInfo card in allCards)
-            {
-                if (card.cardName == cardName)
-                {
-                    removeCard = card;
-                    break;
-                }
-            }
-
-            if (removeCard != null)
-                allCards.Remove(removeCard);
-        }*/
     }
 }
