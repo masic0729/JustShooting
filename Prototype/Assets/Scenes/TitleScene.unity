@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterVolume: 1
-  BGM_Volume: 0.3
+  BGM_Volume: 0.2
   Interface_Volume: 0.7
   SFX_Volume: 1
 --- !u!4 &194968496
@@ -1015,6 +1015,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1309177109}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: ButtonSoundOutPut
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &733972563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1170,6 +1182,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: GuideManager, Assembly-CSharp
         m_MethodName: NextGuide
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1309177109}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: ButtonSoundOutPut
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3415,6 +3439,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 49aa29f3460a01443ac41542d27984e2, type: 3}
   - {fileID: 8300000, guid: 6a63694f6aa741f4e8a925cc2e30092e, type: 3}
   - {fileID: 8300000, guid: 83c662945fbeb1a4f929c0fd91c382d8, type: 3}
+  - {fileID: 8300000, guid: be9247f10987d0d4f98bdadf102d5b0a, type: 3}
+  - {fileID: 8300000, guid: 8885ff0b71951c141bdd5bde9798842f, type: 3}
+  - {fileID: 8300000, guid: 859043491b0c9774fb49a08b2b4b4e8f, type: 3}
+  - {fileID: 8300000, guid: c16907c8fc65761479fcc4624b49c0b6, type: 3}
+  - {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
+  - {fileID: 8300000, guid: 5d4627950d91ab54492ce5a9dc4e1d51, type: 3}
+  - {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
+  - {fileID: 8300000, guid: 2db90d2a1e5fae247abe4c61b0cbd5f5, type: 3}
   infClips:
   - {fileID: 8300000, guid: df8749d7cbe18754195d7f642a01dfea, type: 3}
   bgmClips:
@@ -3436,7 +3468,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -54,6 +54,8 @@ public class EndBossTest3 : EndBoss
 
     public IEnumerator Patten0()
     {
+        AudioManager.Instance.PlaySFX("Boss3Patten1");
+
         // 발사 횟수 지정
         const int shootCount = 3;
         const int shootBulletsCount = 3;
@@ -84,6 +86,8 @@ public class EndBossTest3 : EndBoss
 
     public IEnumerator Patten1()
     {
+        AudioManager.Instance.PlaySFX("Boss3Patten2");
+
         float startSpawnY = 5f;
         const float startSpawnX = 10f;
         float addSpeedX = 0f;
@@ -126,6 +130,7 @@ public class EndBossTest3 : EndBoss
 
     public IEnumerator Patten2()
     {
+
         Player player = GameObject.Find("Player").GetComponent<Player>();
 
         // 발사 횟수 지정
@@ -168,6 +173,8 @@ public class EndBossTest3 : EndBoss
 
     IEnumerator DownAttack(Vector2 spawnPos)
     {
+        AudioManager.Instance.PlaySFX("Boss3Patten3");
+
         const int shootBulletsCount = 70;
         for(int i = 0; i < shootBulletsCount; i++)
         {

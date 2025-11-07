@@ -13,6 +13,7 @@ public class EndBoss : Boss
     // 최종 보스 여부 플래그
     bool isFinalBoss;
     public int maxPatten;
+    public string cutInSound;
 
     /// <summary>
     /// 초기화 및 부모 Start 호출
@@ -53,7 +54,7 @@ public class EndBoss : Boss
         base.Init();
         TransBossCollider();
         CardManager.instance.ShowCards();
-
+        //OnCharacterDeath += DeathEffect;
         if (isFinalBoss == true)
         {
             OnCharacterDeath += FinalEndBossDeath; // 최종 보스일 경우 승리 이벤트 연결
@@ -67,6 +68,11 @@ public class EndBoss : Boss
         }
     }
 
+    public void DeathEffect()
+    {
+        ParticleManager.Instance.PlayEffect(destroyExplosion.name,this.transform.position);
+        AudioManager.Instance.PlaySFX("EnemyExplosion");
+    }
     /// <summary>
     /// 스테이지 클리어 시 추가 동작 (맵 변경, 포탈 생성 등)
     /// </summary>
@@ -100,6 +106,7 @@ public class EndBoss : Boss
     public virtual void ShowReAction()
     {
         GameObject instance = Instantiate(BossCutIn);
+        AudioManager.Instance.PlaySFX(cutInSound);
         Destroy(instance, 3f);
         Debug.Log("컷인 실행됨");
         

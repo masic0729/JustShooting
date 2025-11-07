@@ -4894,7 +4894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &414130673
 Transform:
   m_ObjectHideFlags: 0
@@ -9349,6 +9349,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1338081186}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: ButtonSoundOutPut
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &758725903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13468,6 +13480,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 49aa29f3460a01443ac41542d27984e2, type: 3}
   - {fileID: 8300000, guid: 6a63694f6aa741f4e8a925cc2e30092e, type: 3}
   - {fileID: 8300000, guid: 83c662945fbeb1a4f929c0fd91c382d8, type: 3}
+  - {fileID: 8300000, guid: be9247f10987d0d4f98bdadf102d5b0a, type: 3}
+  - {fileID: 8300000, guid: 8885ff0b71951c141bdd5bde9798842f, type: 3}
+  - {fileID: 8300000, guid: 859043491b0c9774fb49a08b2b4b4e8f, type: 3}
+  - {fileID: 8300000, guid: c16907c8fc65761479fcc4624b49c0b6, type: 3}
+  - {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
+  - {fileID: 8300000, guid: 5d4627950d91ab54492ce5a9dc4e1d51, type: 3}
+  - {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
+  - {fileID: 8300000, guid: 6792b6b45ca8fe44582900cba9ef704b, type: 3}
   infClips:
   - {fileID: 8300000, guid: df8749d7cbe18754195d7f642a01dfea, type: 3}
   bgmClips:
@@ -13476,7 +13496,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: df7359a175451de40aee84abff6fec6d, type: 3}
   audioSourcePrefab: {fileID: 5832911902891719984, guid: 54680c8f18cce00449530dbd7d2e65b9, type: 3}
   initialPoolSize: 10
-  bgmSource: {fileID: 1074754588}
+  bgmSource: {fileID: 0}
 --- !u!4 &1074754590
 Transform:
   m_ObjectHideFlags: 0
@@ -14338,6 +14358,7 @@ MonoBehaviour:
   stage: 0
   backgrounds:
   - {fileID: 207042420}
+  - {fileID: 250605992}
   gameState: 0
 --- !u!1 &1190385649
 GameObject:
@@ -14439,7 +14460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1200580532
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15238,7 +15259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1311326484
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15951,7 +15972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1395598010
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16657,7 +16678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1431085890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23282,6 +23303,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: GuideManager, Assembly-CSharp
         m_MethodName: NextGuide
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1338081186}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: ButtonSoundOutPut
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -146,6 +146,7 @@ public class CardManager : MonoBehaviour
         CardPanel.SetActive(true);
         CardNotClickPanel.SetActive(false);
         CardViewAnim.SetTrigger("ShowCard");
+        AudioManager.Instance.PlaySFX("ShowCard");
     }
 
 
@@ -162,12 +163,12 @@ public class CardManager : MonoBehaviour
         }
         CardPanel.SetActive(false);
         Time.timeScale = 1.0f;
-
     }
 
 
     void CardEvent(string cardName)
     {
+        AudioManager.Instance.PlaySFX("GameStartSample");
 
         CardData instance = dupliCardData.Find(CardData => CardData.cardName == cardName);
         if (cardName != "Random")

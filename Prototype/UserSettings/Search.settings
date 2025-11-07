@@ -8,7 +8,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.310DEAF3" = "h:#sharedmaterial=Assets/Resources/Fonts/SEBANG_Gothic_OTF_Bold.asset"
+	"last_search.310DEAF3" = "p:audioclip="
 	"OpenInspectorPreview.310DEAF3" = "0"
 	"currentGroup.310DEAF3" = "all"
 }

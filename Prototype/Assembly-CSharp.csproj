@@ -109,6 +109,7 @@
     <Compile Include="Assets\UI_ParticleSystem\Runtime\Scripts\Effects\ShineEffect.cs" />
     <Compile Include="Assets\Scripts\Managers\UI_Manager.cs" />
     <Compile Include="Assets\UI_ParticleSystem\Runtime\Scripts\Controls\ReorderableList\ReorderableListElement.cs" />
+    <Compile Include="Assets\Scripts\Projectile\BaseEnemyBullet.cs" />
     <Compile Include="Assets\UI_ParticleSystem\Runtime\Scripts\Layout\FancyScrollView\GridView\FancyGridViewCell.cs" />
     <Compile Include="Assets\UI_ParticleSystem\Runtime\Scripts\Controls\ComboBox\DropDownListButton.cs" />
     <Compile Include="Assets\Scripts\Projectile\Projectile.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="Assets\Scripts\Projectile\BounceBullet.cs" />
     <Compile Include="Assets\Scripts\Character\Enemies\Enemy.cs" />
     <Compile Include="Assets\UI_ParticleSystem\Runtime\Scripts\Effects\ShaderEffects\UISoftAdditiveEffect.cs" />
+    <Compile Include="Assets\Scripts\Projectile\EnemyBulletTransColor.cs" />
     <Compile Include="Assets\UI_ParticleSystem\Runtime\Scripts\Layout\ScrollSnapScrollbarHelper.cs" />
     <Compile Include="Assets\Scripts\AnimState\PlayerWinState.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerPower.cs" />

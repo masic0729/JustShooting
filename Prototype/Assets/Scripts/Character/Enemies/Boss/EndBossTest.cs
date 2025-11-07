@@ -53,6 +53,8 @@ public class EndBossTest : EndBoss
 
     public IEnumerator Patten0()
     {
+        AudioManager.Instance.PlaySFX("Boss1Patten1");
+
         // 발사 횟수 지정
         int shootRandom = 10;
         // 탄환 회전각 랜덤 지정 (40도 ~ 60도)
@@ -73,6 +75,8 @@ public class EndBossTest : EndBoss
 
     public IEnumerator Patten1()
     {
+        AudioManager.Instance.PlaySFX("Boss1Patten2");
+
         // 발사 횟수 지정
         int shootRandom = 5;
         // 탄환 회전각 랜덤 지정 (40도~60도)
