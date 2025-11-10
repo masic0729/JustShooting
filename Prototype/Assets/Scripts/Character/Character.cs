@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Character : IObject
 {
@@ -72,6 +73,10 @@ public class Character : IObject
     protected override void Init()
     {
         anim = GetComponent<Animator>();
+        if (anim != null)
+        {
+            StartCoroutine(RandAnimIndex());
+        }
         attackStats = gameObject.AddComponent<AttackStats>();
         attackManage = new AttackManagement();
         projectileManage = new ProjectileManagement();
@@ -82,7 +87,7 @@ public class Character : IObject
         //OnDamage += OnInvincibility;
 
         // 캐릭터 사망 시 게임 오브젝트 삭제
-        if(isDestroy == true)
+        if (isDestroy == true)
         {
             OnCharacterDeath += DestroyCharacter;
         }
@@ -101,6 +106,17 @@ public class Character : IObject
         }
     }
 
+    IEnumerator RandAnimIndex()
+    {
+        int result = 0;
+    Repeat:
+        yield return new WaitForSeconds(1f);
+        result = UnityEngine.Random.Range(0, 3);
+        anim.SetInteger("AnimIndex", result);
+
+        goto Repeat;
+    }
+
     /// <summary>
     /// 피해를 입으면 무적 상태 시작 및 피해 이벤트 발생
     /// </summary>
@@ -109,14 +125,14 @@ public class Character : IObject
         SetIsInvincibility(true);
         Invoke("TransIsInvincibilityFalse", InvincibilityTime);
         //OnCharacterDamaged?.Invoke();
-        
+
     }
 
     public void TakeDamage(float damage)
     {
         //플레이어 얼음속성의 보호막처럼 특수 보호막이 있으면,
         //리턴 및 불변수를 통해 관리한다
-        if(isBuffInvicibility == true)
+        if (isBuffInvicibility == true)
         {
             isBuffInvicibility = false;
             OnInvincibility(commonInvincibilityTime);
@@ -174,7 +190,7 @@ public class Character : IObject
     {
         float timer = 0f;
 
-        if(transTime != 0)
+        if (transTime != 0)
         {
             MeshRenderer renderer = GetComponent<MeshRenderer>();
             /*
@@ -189,7 +205,7 @@ public class Character : IObject
 
             }*/
 
-            while(timer < transTime)
+            while (timer < transTime)
             {
                 renderer.enabled = false;
                 yield return new WaitForSeconds(0.2f);
@@ -198,12 +214,12 @@ public class Character : IObject
                 timer += 0.4f;
             }
         }
-        
+
     }
 
     public void CharacterDeath()
     {
-        if(anim == null)
+        if (anim == null)
         {
             OnCharacterDeath?.Invoke();
 
@@ -213,7 +229,7 @@ public class Character : IObject
         {
             anim.SetTrigger("Death");
             characterCol.enabled = false;
-            
+
         }
 
     }
