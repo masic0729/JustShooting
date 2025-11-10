@@ -385,6 +385,7 @@
     <None Include="Assets\UI_ParticleSystem\Runtime\Resources\Shaders\UI Particle AddSmooth.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\UI_ParticleSystem\Runtime\Resources\Shaders\UIImageCrop.shader" />
+    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\Resources\Spine\eri\eri\player_eri.atlas.txt" />
     <None Include="Assets\Resources\Prefabs\BossCutAnim\3boss_cutin\3BOSS_LD.atlas.txt" />
     <None Include="Assets\Resources\Spine\Player\1team_eri.atlas.txt" />

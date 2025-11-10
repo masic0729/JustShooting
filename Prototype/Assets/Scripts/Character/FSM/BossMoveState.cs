@@ -6,6 +6,7 @@ public class BossMoveState : EnemyState
 {
     // 생성자: Enemy 객체를 받아 기본 EnemyState 초기화
     public BossMoveState(Enemy enemy) : base(enemy) { }
+    int moveCount = -1;
 
     /// <summary>
     /// 상태 진입 시 호출되는 함수
@@ -16,7 +17,7 @@ public class BossMoveState : EnemyState
         base.Enter();
         enemy.stateIndex++; // 상태 이동 횟수 증가
         enemy.lastPosition = enemy.transform.position;
-
+        moveCount = Random.Range(1, 3);
         enemy.moveTimer = 0;
         // x 좌표 랜덤 범위 설정
         float randMoveX = Random.Range(3f, 7f);
@@ -52,7 +53,7 @@ public class BossMoveState : EnemyState
         // 상태 시간이 만료되면 다음 상태 결정
         if (stateTime <= 0)
         {
-            if (enemy.stateIndex >= 3)
+            if (enemy.stateIndex >= moveCount)
             {
                 enemy.stateIndex = 0; // 상태 횟수 초기화
                 enemy.ChangeState(new BossAttactState(enemy)); // 공격 상태로 전환

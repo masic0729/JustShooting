@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // 게임 중 ESC를 누르면 일시정지 화면 표시
-        if (Input.GetKeyDown(KeyCode.Escape) && gameState == GameState.Play)
+        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0)
         {
             UI_Manager.instance.ShowScreen(UI_Manager.ScreenInfo.Pause);
         }
