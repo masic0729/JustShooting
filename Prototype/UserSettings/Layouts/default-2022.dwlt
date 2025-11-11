@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 216
+  controlID: 176
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 64
+  controlID: 18
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 88
+  controlID: 50
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 924.1074, y: 482.36566, z: 4.2899914}
     speed: 2
-    m_Value: {x: 0.21118855, y: -0.08422041, z: 0}
+    m_Value: {x: 21.674519, y: 0.009038091, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 581.58453
     speed: 2
-    m_Value: 3.6207044
+    m_Value: 7.149969
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1094,21 +1094,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 6cb4fbff38b5fbff14bafbff50bbfbff7abbfbffa2bcfbff4c09fcff5414fcff2015fcff181afcff541bfcff7e1bfcff4e21fcff9844fcff6445fcff5c4afcff984bfcffc24bfcff3282fcffd4d4fcff2617fdffdc17fdfffafaffff64840000dcc9000074ca0000d8ca0000decb0000cacc000082cd000088410100
+      m_ExpandedIDs: d8b0fdffb0b2fdff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: StateImage
-        m_OriginalName: StateImage
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -200838
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 10}
       m_SearchString: 
@@ -1197,7 +1197,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Resources/Prefabs/BossCutAnim
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1205,16 +1205,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Resources/Prefabs/BossCutAnim
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: C:\Program Files (x86)\Masic\Private\JustShooting\Prototype
+  m_LastProjectPath: C:\Users\552ST\Desktop\JustShooting\Prototype
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 509b0000
-    m_LastClickedID: 39760
-    m_ExpandedIDs: 000000008e93000090930000929300009493000096930000989300009a9300009c9300009e930000149b0000269b0000429b00004e9b0000589b0000aacf0000accf000000ca9a3b
+    m_SelectedIDs: ea0a0000
+    m_LastClickedID: 2794
+    m_ExpandedIDs: 000000001606000062060000ba080000d609000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1242,7 +1242,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008e93000090930000929300009493000096930000989300009a9300009c9300009e930000
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1273,15 +1273,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 90d90000422501002ad900000eda00005a9d02005ad80000be7b0000e6480100b248010000000000186c030090dc010058dc010076d9020006920000987c0000487e0000207c0000ce790000fa790000327e0000dc320100de0e0200229200001ae3000058e20000ca880000d0890000a8790000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: button_03
-      m_OriginalName: button_03
+      m_Name: 3_boss
+      m_OriginalName: 3_boss
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 35280
+      m_UserData: 65722
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
