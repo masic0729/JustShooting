@@ -119,10 +119,10 @@ public class Player : Character
         HandleAttack();                                                                         // 공격 입력 처리
         HandleWeaponSwitch();                                                                   // 무기 변경 입력 처
 
-        if (Input.GetKeyDown(KeyCode.F1))
+/*        if (Input.GetKeyDown(KeyCode.F1))
         {
             gameObject.SetActive(false);                                                        // F1 눌렀을 때 비활성화
-        }
+        }*/
 
         if (Input.GetKeyDown(KeyCode.F12))
         {

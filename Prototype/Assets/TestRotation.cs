@@ -11,11 +11,11 @@ public class TestRotation : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W) && canKeyDown == true)
+        /*if(Input.GetKeyDown(KeyCode.W) && canKeyDown == true)
         {
             StopAllCoroutines();
             StartCoroutine(RotateCameraZ());
-        }
+        }*/
     }
 
     IEnumerator RotateCameraZ()

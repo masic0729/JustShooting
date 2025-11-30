@@ -15,14 +15,14 @@ public class TestAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.U))
+        /*if(Input.GetKeyDown(KeyCode.U))
         {
             anim.SetTrigger("TestTrigger");
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
             anim.SetTrigger("TestTrigger2");
-        }
+        }*/
     }
 
     public void Test()
