@@ -72,8 +72,6 @@ public class PlayerCommonBullet : Bullet
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        
-
         base.OnTriggerEnter2D(collision);
         if (bulletName == player.GetPlayerWeaponName() && player.windBulletHitCount < 6 &&
             collision.transform.tag =="Enemy" && bulletName == "Wind" && player != null)
@@ -81,7 +79,6 @@ public class PlayerCommonBullet : Bullet
             player.attackStats.attackDelayMultify -= windAttackDelayTransValue;
             player.windBulletHitCount++;
         }
-        
-
+     
     }
 }

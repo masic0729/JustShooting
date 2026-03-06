@@ -10,8 +10,6 @@ public class PoolManager : MonoBehaviour
 
     public Dictionary<string, IObjectPool<GameObject>> Pools; //정의된 발사체를 등록하려는 데이터
 
-    //int defaultCapacity = 10; //최소 풀링 오브젝트 개수
-    //int maxPoolSize = 130; //최대 풀링 오브젝트 개수
 
     private void Awake()
     {
