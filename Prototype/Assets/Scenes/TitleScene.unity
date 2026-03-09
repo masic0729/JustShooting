@@ -1107,8 +1107,8 @@ MonoBehaviour:
   logText: {fileID: 287914975}
   environment: LIVE
   gameId: GM-2783-6964EF6A_IND
-  applicationKey: YOUR_APPLICATION_KEY
-  loginFitst: TEST_0306
+  applicationKey: 7efc3ef1c4b4b420fdbfd4e0e466590673dbeedfbdc255467b12104debad1db1
+  loginFirst: LOGIN_FIRST
   bossKill: LOGIN_FIRST
   bossSkillCount: 0
   runCallbackInterval: 0.1

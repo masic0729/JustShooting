@@ -20,7 +20,7 @@ public class STOVEPCSDK3Manager : MonoBehaviour
 
     [Header("Achievement Test")]
     //[SerializeField] private string testStatId = "TEST_0306";
-    [SerializeField] private string loginFitst = "LOGIN_FIRST";
+    [SerializeField] private string loginFirst = "LOGIN_FIRST";
     [SerializeField] private string bossKill = "BOSSKILL";
 
     [SerializeField] private int bossSkillCount = 0;
@@ -194,7 +194,7 @@ public class STOVEPCSDK3Manager : MonoBehaviour
         hasTriggeredTestAchievement = true;
 
         //GameSupport_ModifyStat(loginFitst, 1, onModifyStatFinished);
-        SetPlayAction(loginFitst, 1, onModifyStatFinished);
+        SetPlayAction(loginFirst, 1, onModifyStatFinished);
 
         //SafeLog("테스트 업적용 Stat 갱신 요청 보냄");
     }
