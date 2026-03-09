@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1105,6 +1105,13 @@ MonoBehaviour:
   baseResult: {fileID: 1616329290}
   gameResult: {fileID: 417091331}
   logText: {fileID: 287914975}
+  environment: LIVE
+  gameId: GM-2783-6964EF6A_IND
+  applicationKey: YOUR_APPLICATION_KEY
+  loginFitst: TEST_0306
+  bossKill: LOGIN_FIRST
+  bossSkillCount: 0
+  runCallbackInterval: 0.1
 --- !u!4 &573801177
 Transform:
   m_ObjectHideFlags: 0
@@ -2695,7 +2702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1064448185
 RectTransform:
   m_ObjectHideFlags: 0

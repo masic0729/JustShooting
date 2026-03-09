@@ -62,10 +62,11 @@ public class EndBoss : Boss
         }
         else
         {
-            OnCharacterDeath += StageClearAction; // 일반 보스 클리어 이벤트
             OnCharacterDeath += RestartWave;      // 웨이브 재시작 (추후 제거 예정)
 
         }
+        OnCharacterDeath += StageClearAction; // 일반 보스 클리어 이벤트
+
     }
 
     public void DeathEffect()
@@ -74,11 +75,15 @@ public class EndBoss : Boss
         AudioManager.Instance.PlaySFX("EnemyExplosion");
     }
     /// <summary>
-    /// 스테이지 클리어 시 추가 동작 (맵 변경, 포탈 생성 등)
+    /// 스테이지 클리어 시 추가 동작으로,
+    /// 업적 달성에 활용한다
+    /// 
     /// </summary>
     void StageClearAction()
     {
-        Debug.Log("스테이지 클리어. 클리어 이후 맵 변경, 몬스터 데이터, 포탈 생성 등 다양한 기능 추가 요구");
+        string id = STOVEPCSDK3Manager.instance.GetBossKill();
+        int count = STOVEPCSDK3Manager.instance.GetBossSkillCount();
+        STOVEPCSDK3Manager.instance.SetPlayAction(id, count + 1, null);
     }
 
     public void TransBossCollider()
