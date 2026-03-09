@@ -2,18 +2,19 @@ using System.Collections;
 using UnityEngine;
 using static Stove.PCSDK.Base;
 using static Stove.PCSDK.GameSupport;
+using UnityEngine.UI;
 
-public class BaseSDK : MonoBehaviour
+public class StovePCSDK3Manager1 : MonoBehaviour
 {
-    public static BaseSDK instance;
+    public static StovePCSDK3Manager1 instance;
 
     private StovePCInitializeParam initParam;
-
-    // GameSupport 콜백 보관
     private OnModifyStatFinished onModifyStatFinished;
-
-    // 테스트 중복 방지
     private bool hasTriggeredTestAchievement = false;
+
+    public GameObject baseResult;
+    public GameObject gameResult;
+    public Text logText;
 
     private void Awake()
     {
@@ -33,15 +34,16 @@ public class BaseSDK : MonoBehaviour
         initParam = new StovePCInitializeParam
         {
             environment = "LIVE",
-            gameId = "여기에_실제_GAME_ID",
-            applicationKey = "여기에_실제_APP_KEY"
+            gameId = "GM-2783-6964EF6A_IND",
+            applicationKey = "7efc3ef1c4b4b420fdbfd4e0e466590673dbeedfbdc255467b12104debad1db1"
         };
+        logText.text = "준비중";
 
-        Base_RestartAppIfNecessaryAsync(initParam, 60000, (CallbackResult callbackResult, bool restartAppIfNecessary) =>
+        Base_RestartAppIfNecessaryAsync(initParam, 30000, (CallbackResult callbackResult, bool restartAppIfNecessary) =>
         {
             if (restartAppIfNecessary)
             {
-                Debug.Log("스토브 런처로 실행해야 합니다.");
+                logText.text = ("스토브 런처로 실행해야 합니다.");
                 Application.Quit();
                 return;
             }
@@ -50,12 +52,12 @@ public class BaseSDK : MonoBehaviour
             {
                 if (!callbackResult2.result.IsSuccessful())
                 {
-                    Debug.LogError("Base SDK 초기화 실패");
+                    logText.text = ($"Base SDK 초기화 실패: {callbackResult2.result}");
                     return;
                 }
 
-                Debug.Log("Base SDK 초기화 성공");
-
+                logText.text = ("Base SDK 초기화 성공");
+                baseResult.SetActive(true);
                 InitializeGameSupportAndTriggerTest();
             });
         });
@@ -65,18 +67,17 @@ public class BaseSDK : MonoBehaviour
     {
         var result = GameSupport_Initialize();
 
+        // SDK 버전에 따라 result.IsSuccessful() 형태일 수도 있음
         if (!result.IsSuccessful())
         {
-            Debug.LogError("GameSupport SDK 초기화 실패");
+            logText.text = ($"GameSupport SDK 초기화 실패: {result}");
             return;
         }
 
-        Debug.Log("GameSupport SDK 초기화 성공");
+        logText.text = ("GameSupport SDK 초기화 성공");
+        gameResult.SetActive(true);
 
-        // 콜백 등록
         onModifyStatFinished = OnModifyStatFinishedCallback;
-
-        // 게임 시작하자마자 테스트 업적 발동
         TriggerTestAchievementOnce();
     }
 
@@ -87,21 +88,19 @@ public class BaseSDK : MonoBehaviour
 
         hasTriggeredTestAchievement = true;
 
-        // TEST_0306 스탯을 1 증가
         GameSupport_ModifyStat("TEST_0306", 1, onModifyStatFinished);
-
-        Debug.Log("테스트 업적용 Stat 갱신 요청 보냄");
+        logText.text = ("테스트 업적용 Stat 갱신 요청 보냄");
     }
 
     private void OnModifyStatFinishedCallback(CallbackResult callbackResult, StovePCModifyStatValue stat)
     {
         if (callbackResult.result.IsSuccessful())
         {
-            Debug.Log($"Stat 갱신 성공. 현재 값: {stat.currentValue}");
+            logText.text = ("Stat 갱신 성공");
         }
         else
         {
-            Debug.LogError($"Stat 갱신 실패: {callbackResult.result}");
+            logText.text = ($"Stat 갱신 실패: {callbackResult.result}");
         }
     }
 }
