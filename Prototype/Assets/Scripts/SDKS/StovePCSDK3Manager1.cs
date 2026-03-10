@@ -1,3 +1,4 @@
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,6 @@ public class STOVEPCSDK3Manager : MonoBehaviour
     public static STOVEPCSDK3Manager instance;
 
     [Header("UI")]
-    public GameObject baseResult;
-    public GameObject gameResult;
     public Text logText;
 
     [Header("STOVE Init")]
@@ -59,12 +58,6 @@ public class STOVEPCSDK3Manager : MonoBehaviour
         {
             Debug.LogError("[STOVE] logText가 연결되지 않았습니다.");
         }
-
-        if (baseResult != null)
-            baseResult.SetActive(false);
-
-        if (gameResult != null)
-            gameResult.SetActive(false);
 
         // 콜백 루프 시작
         StartRunCallbackLoop();
@@ -143,9 +136,6 @@ public class STOVEPCSDK3Manager : MonoBehaviour
         isBaseInitialized = true;
         SafeLog("Base SDK 초기화 성공");
 
-        if (baseResult != null)
-            baseResult.SetActive(true);
-
         InitializeGameSupportAndTriggerTest();
     }
 
@@ -163,8 +153,6 @@ public class STOVEPCSDK3Manager : MonoBehaviour
         isGameSupportInitialized = true;
         SafeLog("GameSupport SDK 초기화 성공");
 
-        if (gameResult != null)
-            gameResult.SetActive(true);
 
         onModifyStatFinished = OnModifyStatFinishedCallback;
 
@@ -212,7 +200,7 @@ public class STOVEPCSDK3Manager : MonoBehaviour
 
     private void OnModifyStatFinishedCallback(CallbackResult callbackResult, StovePCModifyStatValue stat)
     {
-        /*Debug.Log($"[STOVE] ModifyStat 결과: {callbackResult.result}");
+        Debug.Log($"[STOVE] ModifyStat 결과: {callbackResult.result}");
 
         if (callbackResult.result.IsSuccessful())
         {
@@ -221,7 +209,7 @@ public class STOVEPCSDK3Manager : MonoBehaviour
         else
         {
             logText.text = ($"Stat 갱신 실패: {callbackResult.result}");
-        }*/
+        }
     }
 
     private void OnApplicationQuit()
