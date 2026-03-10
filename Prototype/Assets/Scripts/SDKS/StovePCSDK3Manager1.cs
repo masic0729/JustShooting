@@ -142,7 +142,7 @@ public class STOVEPCSDK3Manager : MonoBehaviour
         InitializeGameSupportAndTriggerTest();
 
         //초기화 성공 이후 IAP 초기화 시작
-        STOVEIAPManager.Instance.InitByBaseSDK();
+        STOVEIAPManager.Instance.IAPInitialize();
     }
 
     private void InitializeGameSupportAndTriggerTest()

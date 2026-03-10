@@ -37,10 +37,9 @@ public class STOVEIAPManager : MonoBehaviour
     }
 
     /// <summary>
-    /// BaseSDK 관련 스크립트가 이 스크립트 초기화를 진행한다.
-    /// 다시 말해  BaseSDK 초기화를 먼저 한 후에 진행해야 하므로, 이러하다
+    /// 결제 결과는 해당 함수로 할 수 있다
     /// </summary>
-    public void InitByBaseSDK()
+    public void DonateResultInit()
     {
         _onStartPurchaseFinished = (
         CallbackResult callbackResult,
@@ -63,8 +62,11 @@ public class STOVEIAPManager : MonoBehaviour
         };
     }
 
-    // 3. Button click이나 특정 이벤트 처리 함수 내에서 IAP_Initialize를 진행합니다.
-    public void OnClickIAPInitialize()
+    /// <summary>
+    /// BaseSDK 관련 스크립트가 이 스크립트 초기화를 진행한다.
+    /// 다시 말해  BaseSDK 초기화를 먼저 한 후에 진행해야 하므로, 이러하다
+    /// </summary>
+    public void IAPInitialize()
     {
         // 4. IAP_Initialize 호출
         //    주의) IAP_Initialize 수행 전 Base_Initialize가 완료되어야 합니다.
@@ -73,6 +75,7 @@ public class STOVEIAPManager : MonoBehaviour
         {
             // IAP SDK 초기화 성공 시 로직을 구현
             DonateButton.SetActive(true);
+            DonateResultInit();
         }
     }
 
