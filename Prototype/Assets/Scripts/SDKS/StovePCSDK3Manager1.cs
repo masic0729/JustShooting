@@ -36,6 +36,8 @@ public class STOVEPCSDK3Manager : MonoBehaviour
     private bool isBaseInitialized = false;
     private bool isGameSupportInitialized = false;
 
+    bool isIAP_Inited = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -77,6 +79,7 @@ public class STOVEPCSDK3Manager : MonoBehaviour
         SafeLog("준비중");
 
         Base_RestartAppIfNecessaryAsync(initParam, 30000, OnRestartAppIfNecessaryFinished);
+        
     }
 
     private void StartRunCallbackLoop()
@@ -137,6 +140,9 @@ public class STOVEPCSDK3Manager : MonoBehaviour
         SafeLog("Base SDK 초기화 성공");
 
         InitializeGameSupportAndTriggerTest();
+
+        //초기화 성공 이후 IAP 초기화 시작
+        STOVEIAPManager.Instance.InitByBaseSDK();
     }
 
     private void InitializeGameSupportAndTriggerTest()
@@ -251,4 +257,6 @@ public class STOVEPCSDK3Manager : MonoBehaviour
     public void SetBossSkillCount(int value) => bossSkillCount = value;
 
     public int GetBossSkillCount() => bossSkillCount;
+
+    public void SetIAP_Inited(bool state) => isIAP_Inited = state;
 }
