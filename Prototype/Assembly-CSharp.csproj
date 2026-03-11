@@ -383,7 +383,6 @@
     <None Include="Assets\Resources\Spine\Boss\1boss\1boss.atlas.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Resources\Sprites\InGameResources\Player_Hit_Eff\skeleton.atlas.txt" />
-    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\UI_ParticleSystem\Runtime\Resources\Shaders\UISoftAdditive.shader" />
     <None Include="Assets\UI_ParticleSystem\Runtime\Resources\Shaders\UI Particle AddSmooth.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />

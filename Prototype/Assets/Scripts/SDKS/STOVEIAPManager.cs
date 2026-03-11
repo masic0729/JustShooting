@@ -34,12 +34,13 @@ public class STOVEIAPManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        
     }
 
     /// <summary>
     /// 결제 결과는 해당 함수로 할 수 있다
     /// </summary>
-    public void DonateResultInit()
+    public void DonateResult()
     {
         _onStartPurchaseFinished = (
         CallbackResult callbackResult,
@@ -66,7 +67,7 @@ public class STOVEIAPManager : MonoBehaviour
     /// BaseSDK 관련 스크립트가 이 스크립트 초기화를 진행한다.
     /// 다시 말해  BaseSDK 초기화를 먼저 한 후에 진행해야 하므로, 이러하다
     /// </summary>
-    public void IAPInitialize()
+    public void IAP_Init()
     {
         // 4. IAP_Initialize 호출
         //    주의) IAP_Initialize 수행 전 Base_Initialize가 완료되어야 합니다.
@@ -75,7 +76,7 @@ public class STOVEIAPManager : MonoBehaviour
         {
             // IAP SDK 초기화 성공 시 로직을 구현
             DonateButton.SetActive(true);
-            DonateResultInit();
+            //DonateResultInit();
         }
     }
 
@@ -84,7 +85,7 @@ public class STOVEIAPManager : MonoBehaviour
     {
         isAlreadyClickButton = true;
 
-        // 6. 구현 의도에 맞게 상품 구매에 대한 적절한 operation을 설정하세요.
+        // 6. 구현 의도에 맞게 상품 구매에 대한 적절한 operation을 설정
         var param = new StovePCPurchaseOption
         {
             operation = StovePCPurchaseOperation.WITH_WEBVIEW_AND_CONFIRM_RESULT,
