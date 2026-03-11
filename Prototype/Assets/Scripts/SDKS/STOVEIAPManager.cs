@@ -76,7 +76,7 @@ public class STOVEIAPManager : MonoBehaviour
         {
             // IAP SDK 초기화 성공 시 로직을 구현
             DonateButton.SetActive(true);
-            //DonateResultInit();
+            DonateResult();
         }
     }
 

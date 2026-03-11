@@ -338,6 +338,7 @@
     <None Include="Assets\UI_ParticleSystem\Runtime\Resources\Shaders\UIAdditive.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Resources\Effect_2\BaseEffect\Hun0FX\Shader\SH_HunFX_common.shader" />
+    <None Include="Assets\AddressableAssetsData\link.xml" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\UI_ParticleSystem\Runtime\Resources\Shaders\UI Particle Add.shader" />
     <None Include="Assets\Resources\Sprites\UI_TestImages\Title\폰트 사이즈.txt" />
